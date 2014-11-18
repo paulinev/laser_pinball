@@ -1,0 +1,78 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/clock_divider
+T_opt
+Z1 V]iCiT4eicQz9DKkj?^^mA3
+Z2 04 14 4 work clk_divider_tb fast 0
+Z3 04 4 4 work glbl fast 0
+Z4 =1-f04da20f0f58-546ba044-4ce4-464d
+Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip
+Z6 OE;O;6.4a;39
+T_opt1
+Z7 V`>FPNPIP1<an<a3ngl??i0
+Z8 04 16 4 work clock_divider_v2 fast 0
+R3
+Z9 =1-f04da20f0f58-546b9e9e-e3e52-45b0
+R5
+R6
+T_opt2
+Z10 VJUUdb2fQb9kP_?0bmgk>>2
+R2
+R3
+Z11 =1-f04da20f0f58-546b9ff2-abab9-462c
+R5
+R6
+vclk_divider_tb
+Z12 I<5BO:fQoz6DM3lK]=MVmG1
+Z13 V0599h?WQ@gza0JeAgW7;h1
+Z14 w1416339516
+Z15 8../../clk_divider_tb.v
+Z16 F../../clk_divider_tb.v
+L0 25
+Z17 OE;L;6.4a;39
+r1
+31
+Z18 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z19 !s100 CQ[lg=@[Z50z`C3d[6^h]0
+!s85 0
+vclock_divider_v1
+Z20 IEUFM48?=_8]9i=Q@jBA5P2
+Z21 VfV126QB9BzBbL;_bN7@VS3
+Z22 w1416338464
+Z23 8../../clock_divider_v1.v
+Z24 F../../clock_divider_v1.v
+L0 21
+R17
+r1
+31
+R18
+Z25 !s100 g<T:JIc0D^<`De[3l>gPO0
+!s85 0
+vclock_divider_v2
+Z26 I73Q5lDJF?zBD`Xi9=Ab3Y2
+Z27 V5]X987cZgeUz6m4g8dCVa0
+Z28 w1416339200
+Z29 8../../clk_divider_v2.v
+Z30 F../../clk_divider_v2.v
+L0 21
+R17
+r1
+31
+R18
+Z31 !s100 kZzRTnR>]:SlPJ2D_aH4e2
+!s85 0
+vglbl
+Z32 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z33 VnN]4Gon>inod6>M^M2[SV1
+Z34 w1202685744
+Z35 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z36 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+L0 5
+R17
+r1
+31
+R18
+Z37 !s100 T?5S;>bN`@zG_25]R_4A33
+!s85 0

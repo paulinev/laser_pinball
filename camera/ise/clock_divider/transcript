@@ -1,0 +1,47 @@
+# //  ModelSim SE 6.4a Aug 28 2008 Linux 3.2.0-70-generic
+# //
+# //  Copyright 1991-2008 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# do {clk_divider_tb.fdo} 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module clock_divider_v2
+# 
+# Top level modules:
+# 	clock_divider_v2
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module clk_divider_tb
+# 
+# Top level modules:
+# 	clk_divider_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip -lib work -t 1ps clk_divider_tb glbl 
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: paulinev  Hostname: eecs-digital-04  ProcessID: 17964
+#           Attempting to use alternate WLF file "./wlftQBPO2b".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftQBPO2b
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftQBPO2b
+# Design is being optimized...
+# Loading work.clk_divider_tb(fast)
+# Loading work.clock_divider_v2(fast)
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
+restart -f
+# Loading work.clk_divider_tb(fast)
+# Loading work.clock_divider_v2(fast)
+# Loading work.glbl(fast)
+run 10us
