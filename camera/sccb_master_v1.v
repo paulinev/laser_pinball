@@ -19,16 +19,17 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module sccb_master_v1(
-    input clk,
+    input clk, // SCCB clock - 100kHz
     input start,
     input reset,
-    input [6:0] slave_addr,
-    input [7:0] reg_addr,
-    input [7:0] data,
-    input rw,
-    inout wire sdiod,
-    output wire sdioc,
-    output reg cs,
+    input [6:0] slave_addr, // ID address
+    input [7:0] reg_addr, // sub-address
+    input [7:0] data, // write data
+    input rw, // read-write flag
+    inout wire sdiod, // bidirectional data bus
+    output wire sdioc, // data sampled at rising edge of clock
+    output reg cs, // camera doesn't have this so i'm not being picky about its timing
+	 output reg [7:0] data_out, // data from read
     output reg done
     );
 	 
@@ -38,9 +39,9 @@ module sccb_master_v1(
 	reg [6:0] latched_slave_addr;
 	reg [7:0] latched_reg_addr;
 	reg [7:0] latched_data;
-	reg [7:0] read_data;
 	reg latched_rw;
 	reg sdioc_enable = 0;
+	reg two_phase_write_done = 0;
 	
 	localparam IDLE = 0;
 	localparam START = 1;
@@ -56,7 +57,7 @@ module sccb_master_v1(
 	localparam RW = 10;
 	
 	assign sdioc = (~sdioc_enable) ? 1 : ~clk;
-	assign sdiod = (latched_rw) ? 1'bZ : sdiod_out;
+	assign sdiod = (latched_rw & two_phase_write_done & state == DATA_READ) ? 1'bZ : sdiod_out;
 	
 	// SDIOC driver
 	always @(negedge clk) begin // delay clock by half a cycle
@@ -97,27 +98,27 @@ module sccb_master_v1(
 				START: begin
 					sdiod_out <= 0;
 					cs <= 0;
-					state <= latched_rw ? REG_ADDR : ID_ADDR;
-					count <= latched_rw ? 8 : 6;
+					state <= ID_ADDR; // all transmissions start by sending ID address
+					count <= 6; // 7 bits of ID 
 				end
 				
 				// three-phase write
 				ID_ADDR: begin
-					sdiod_out <= latched_slave_addr[count];
-					if (count == 0) state <= RW;
+					sdiod_out <= latched_slave_addr[count]; // transmit ID address
+					if (count == 0) state <= RW; // go to rw flag
 					else count <= count - 1;
 				end
 				
 				RW: begin
-					sdiod_out <= latched_rw;
+					sdiod_out <= two_phase_write_done & latched_rw; // transmit read-write
 					state <= DNC_1;
 				end
 				
-				// don't care bit for three-phase write
+				// don't care bit for ID to sub-address transition
 				DNC_1: begin
-					//sdiod_out <= 0;
-					sdiod_out <= 1'bZ;
-					state <= REG_ADDR;
+					sdiod_out <= 0; // master must drive at logical zero
+					//sdiod_out <= 1'bZ;
+					state <= two_phase_write_done ? DATA_READ : REG_ADDR;
 					count <= 7;
 				end
 				
@@ -127,15 +128,16 @@ module sccb_master_v1(
 					else count <= count - 1;
 				end
 				
-				// don't care bit for second phase of three-phase write
+				// don't care bit for phase 2
 				DNC_2: begin
-					sdiod_out <= 1;
-					state <= latched_rw ? DATA_READ : DATA_WRITE;
-					count <= 7;
+					sdiod_out <= 1; // master must assert as 1 during read cycle; don't care for write
+					state <= latched_rw ? ID_ADDR : DATA_WRITE;
+					count <= latched_rw ? 6 : 7;
+					two_phase_write_done <= latched_rw;
 				end
 				
 				DATA_READ: begin
-					read_data[count] <= sdiod;
+					data_out[count] <= sdiod;
 					if (count == 0) state <= DNC_3;
 					else count <= count - 1;
 				end
@@ -146,7 +148,7 @@ module sccb_master_v1(
 					else count <= count - 1;
 				end
 				
-				// don't care bit for third phase of write cycle
+				// don't care bit for phase two/three
 				DNC_3: begin
 					sdiod_out <= 1'bZ;
 					state <= STOP_1;

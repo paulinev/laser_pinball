@@ -36,22 +36,15 @@ module sccb_master_tb;
 	// Outputs
 	wire sdioc;
 	wire cs;
+	wire [7:0] data_out;
 	wire done;
 
 	// Bidirs
 	wire sdiod;
 	
-	wire sccb_clk;
-	// Instantiate clock divider
-	i2c_clock_divider sccb_clk_gen (
-		.rst(reset),
-		.ref_clk(clk),
-		.i2c_clk(sccb_clk)
-	);
-
 	// Instantiate the Unit Under Test (UUT)
 	sccb_master_v1 uut (
-		.clk(sccb_clk), 
+		.clk(clk), 
 		.start(start), 
 		.reset(reset), 
 		.slave_addr(slave_addr), 
@@ -60,7 +53,8 @@ module sccb_master_tb;
 		.rw(rw), 
 		.sdiod(sdiod), 
 		.sdioc(sdioc), 
-		.cs(cs), 
+		.cs(cs),
+		.data_out(data_out),
 		.done(done)
 	);
 
@@ -83,7 +77,8 @@ module sccb_master_tb;
 		slave_addr = 7'b1010111;
 		reg_addr = 8'b10101010;
 		data = 8'b00101101;
-		rw = 0; // write test
+		rw = 1; // read test
+		//rw = 0; //write test
 		#10;
 		start = 1;
 		#10;

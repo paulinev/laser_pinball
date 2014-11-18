@@ -12,6 +12,7 @@ entity sccb_master_v1 is
         sdiod           : inout  vl_logic;
         sdioc           : out    vl_logic;
         cs              : out    vl_logic;
+        data_out        : out    vl_logic_vector(7 downto 0);
         done            : out    vl_logic
     );
 end sccb_master_v1;
