@@ -1,0 +1,30 @@
+# //  ModelSim SE 6.4a Aug 28 2008 Linux 3.13.0-29-generic
+# //
+# //  Copyright 1991-2008 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# do {i2c_clock_divider.fdo} 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module i2c_clock_divider
+# 
+# Top level modules:
+# 	i2c_clock_divider
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip -lib work -t 1ps i2c_clock_divider glbl 
+# Loading work.i2c_clock_divider(fast)
+# Loading work.glbl(fast)
+# ** Warning: (vsim-3010) [TSCALE] - Module 'glbl' has a `timescale directive in effect, but previous modules do not.
+#         Region: /glbl
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs

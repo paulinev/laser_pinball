@@ -1,0 +1,38 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/sccb_master
+T_opt
+Z1 V6;GhbZDcAFd17eHFCCXge3
+Z2 04 14 4 work sccb_master_v1 fast 0
+Z3 04 4 4 work glbl fast 0
+Z4 =1-005056893942-546a92f0-945ad-e9a0
+Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip
+Z6 OE;O;6.4a;39
+vglbl
+Z7 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z8 VnN]4Gon>inod6>M^M2[SV1
+Z9 w1202685744
+Z10 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z11 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+L0 5
+Z12 OE;L;6.4a;39
+r1
+31
+Z13 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z14 !s100 T?5S;>bN`@zG_25]R_4A33
+!s85 0
+vsccb_master_v1
+Z15 I6AkP[b]iBm:5MRz:Od[iW2
+Z16 VSo2NK`TBVX1Lg[o@EJSV81
+Z17 w1416270568
+Z18 8../../sccb_master_v1.v
+Z19 F../../sccb_master_v1.v
+L0 21
+R12
+r1
+31
+R13
+Z20 !s100 hhJfI9Df@j?LD?GhV9^B?2
+!s85 0

@@ -9,7 +9,7 @@ module i2c_clock_divider(
 	//100MHz to 100kHz, not sure what the Virtex 5 is
 	reg [9:0] count = 0;
 	
-	initial i2c_clk = 0;
+	i2c_clk = 0;
 	
 	always @(posedge ref_clk) begin
 		
