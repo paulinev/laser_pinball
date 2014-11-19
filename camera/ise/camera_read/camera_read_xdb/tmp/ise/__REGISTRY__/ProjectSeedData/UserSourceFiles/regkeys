@@ -1,0 +1,12 @@
+NUM_USER_FILES
+3
+s
+user_file_1
+../../mybram.v
+s
+user_file_2
+../../frame_buffer.v
+s
+user_file_3
+../../camera_save.v
+s
