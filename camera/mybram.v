@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Should store exactly one frame of RGB888 data
 // Each line is one pixel
-module mybram #(parameter LOGSIZE=19, WIDTH=24)
+module mybram #(parameter LOGSIZE=9, WIDTH=24)
               (input wire [LOGSIZE-1:0] addr,
                input wire clk,
                input wire [WIDTH-1:0] din,

@@ -1,0 +1,13 @@
+
+
+
+// Instantiate the module
+mybram instance_name (
+    .addr(addr), 
+    .clk(clk), 
+    .din(din), 
+    .dout(dout), 
+    .we(we)
+    );
+
+

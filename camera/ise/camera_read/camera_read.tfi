@@ -1,0 +1,18 @@
+
+
+
+// Instantiate the module
+camera_read instance_name (
+    .reset(reset), 
+    .clk(clk), 
+    .vsync(vsync), 
+    .href(href), 
+    .pclk(pclk), 
+    .data_in(data_in), 
+    .xclk(xclk), 
+    .data_out(data_out), 
+    .pixel_done(pixel_done), 
+    .frame_done(frame_done)
+    );
+
+

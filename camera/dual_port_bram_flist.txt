@@ -1,0 +1,12 @@
+# Output products list for <dual_port_bram>
+dual_port_bram.asy
+dual_port_bram.ngc
+dual_port_bram.sym
+dual_port_bram.v
+dual_port_bram.veo
+dual_port_bram.vhd
+dual_port_bram.vho
+dual_port_bram.xco
+dual_port_bram_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+dual_port_bram_flist.txt
+dual_port_bram_xmdf.tcl

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootFolder label="COREGEN" treetype="folder" language="COREGEN">
+	<Folder label="VERILOG Component Instantiation" treetype="folder">
+		<Template label="dual_port_bram" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+dual_port_bram YourInstanceName (
+    .clka(clka),
+    .dina(dina), // Bus [7 : 0] 
+    .addra(addra), // Bus [18 : 0] 
+    .wea(wea), // Bus [0 : 0] 
+    .clkb(clkb),
+    .addrb(addrb), // Bus [18 : 0] 
+    .doutb(doutb)); // Bus [7 : 0] 
+
+ 
+		</Template>
+	</Folder>
+	<Folder label="VHDL Component Instantiation" treetype="folder">
+		<Template label="dual_port_bram" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component dual_port_bram
+    port (
+    clka: IN std_logic;
+    dina: IN std_logic_VECTOR(7 downto 0);
+    addra: IN std_logic_VECTOR(18 downto 0);
+    wea: IN std_logic_VECTOR(0 downto 0);
+    clkb: IN std_logic;
+    addrb: IN std_logic_VECTOR(18 downto 0);
+    doutb: OUT std_logic_VECTOR(7 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : dual_port_bram
+        port map (
+            clka =&gt; clka,
+            dina =&gt; dina,
+            addra =&gt; addra,
+            wea =&gt; wea,
+            clkb =&gt; clkb,
+            addrb =&gt; addrb,
+            doutb =&gt; doutb);
+ 
+		</Template>
+	</Folder>
+</RootFolder>

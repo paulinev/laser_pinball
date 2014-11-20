@@ -1,0 +1,170 @@
+--------------------------------------------------------------------------------
+Release 10.1.03 Trace  (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
+/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/camera_read/camera_read.ise
+-intstyle ise -v 3 -s 4 -xml labkit labkit.ncd -o labkit.twr labkit.pcf -ucf
+/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/labkit.ucf
+
+Design file:              labkit.ncd
+Physical constraint file: labkit.pcf
+Device,package,speed:     xc2v6000,bf957,-4 (PRODUCTION 1.121 2008-07-25, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: NET "user1_4_IBUFG" PERIOD = 37 ns HIGH 50%;
+
+ 694 paths analyzed, 58 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum period is   5.854ns.
+--------------------------------------------------------------------------------
+Slack:                  31.146ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/vcount_2 (FF)
+  Destination:          vga/vcount_9 (FF)
+  Requirement:          37.000ns
+  Data Path Delay:      5.854ns (Levels of Logic = 2)
+  Clock Path Skew:      0.000ns
+  Source Clock:         pclk rising at 0.000ns
+  Destination Clock:    pclk rising at 37.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: vga/vcount_2 to vga/vcount_9
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X119Y93.XQ     Tcko                  0.568   vga/vcount<2>
+                                                       vga/vcount_2
+    SLICE_X116Y93.F1     net (fanout=5)        1.454   vga/vcount<2>
+    SLICE_X116Y93.X      Tilo                  0.439   vga/vreset9
+                                                       vga/vreset9
+    SLICE_X114Y95.F2     net (fanout=2)        1.148   vga/vreset9
+    SLICE_X114Y95.X      Tilo                  0.439   vga/vcount_and0000
+                                                       vga/vcount_and00001
+    SLICE_X119Y96.SR     net (fanout=5)        1.526   vga/vcount_and0000
+    SLICE_X119Y96.CLK    Tsrck                 0.280   vga/vcount<8>
+                                                       vga/vcount_9
+    -------------------------------------------------  ---------------------------
+    Total                                      5.854ns (1.726ns logic, 4.128ns route)
+                                                       (29.5% logic, 70.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  31.146ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/vcount_2 (FF)
+  Destination:          vga/vcount_8 (FF)
+  Requirement:          37.000ns
+  Data Path Delay:      5.854ns (Levels of Logic = 2)
+  Clock Path Skew:      0.000ns
+  Source Clock:         pclk rising at 0.000ns
+  Destination Clock:    pclk rising at 37.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: vga/vcount_2 to vga/vcount_8
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X119Y93.XQ     Tcko                  0.568   vga/vcount<2>
+                                                       vga/vcount_2
+    SLICE_X116Y93.F1     net (fanout=5)        1.454   vga/vcount<2>
+    SLICE_X116Y93.X      Tilo                  0.439   vga/vreset9
+                                                       vga/vreset9
+    SLICE_X114Y95.F2     net (fanout=2)        1.148   vga/vreset9
+    SLICE_X114Y95.X      Tilo                  0.439   vga/vcount_and0000
+                                                       vga/vcount_and00001
+    SLICE_X119Y96.SR     net (fanout=5)        1.526   vga/vcount_and0000
+    SLICE_X119Y96.CLK    Tsrck                 0.280   vga/vcount<8>
+                                                       vga/vcount_8
+    -------------------------------------------------  ---------------------------
+    Total                                      5.854ns (1.726ns logic, 4.128ns route)
+                                                       (29.5% logic, 70.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  31.375ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               vga/hcount_6 (FF)
+  Destination:          vga/blank (FF)
+  Requirement:          37.000ns
+  Data Path Delay:      5.625ns (Levels of Logic = 3)
+  Clock Path Skew:      0.000ns
+  Source Clock:         pclk rising at 0.000ns
+  Destination Clock:    pclk rising at 37.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: vga/hcount_6 to vga/blank
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X114Y91.XQ     Tcko                  0.568   vga/hcount<6>
+                                                       vga/hcount_6
+    SLICE_X115Y94.G2     net (fanout=6)        1.058   vga/hcount<6>
+    SLICE_X115Y94.Y      Tilo                  0.439   vga/hreset1
+                                                       vga/hblankon21_SW1
+    SLICE_X115Y93.F1     net (fanout=3)        0.499   N26
+    SLICE_X115Y93.X      Tilo                  0.439   vga/hreset
+                                                       vga/hreset1
+    SLICE_X116Y94.G2     net (fanout=4)        0.500   vga/hreset
+    SLICE_X116Y94.Y      Tilo                  0.439   vga/hblank
+                                                       vga/next_hblank
+    SLICE_X116Y95.BY     net (fanout=2)        1.313   vga/blank_or00001
+    SLICE_X116Y95.CLK    Tdick                 0.370   vga/blank
+                                                       vga/blank
+    -------------------------------------------------  ---------------------------
+    Total                                      5.625ns (2.255ns logic, 3.370ns route)
+                                                       (40.1% logic, 59.9% route)
+
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock user1<4>
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+user1<4>       |    5.854|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0
+
+Constraints cover 694 paths, 0 nets, and 191 connections
+
+Design statistics:
+   Minimum period:   5.854ns{1}   (Maximum frequency: 170.823MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Thu Nov 20 17:57:35 2014 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 333 MB
+
+
+

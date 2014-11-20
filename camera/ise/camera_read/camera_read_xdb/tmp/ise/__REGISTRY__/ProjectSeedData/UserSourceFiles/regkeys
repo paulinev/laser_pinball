@@ -1,5 +1,5 @@
 NUM_USER_FILES
-4
+8
 s
 user_file_1
 ../../mybram.v
@@ -12,4 +12,16 @@ user_file_3
 s
 user_file_4
 ../../vga_display.v
+s
+user_file_5
+debounce.v
+s
+user_file_6
+../../labkit.v
+s
+user_file_7
+../../labkit.ucf
+s
+user_file_8
+../../dual_port_bram.xco
 s
