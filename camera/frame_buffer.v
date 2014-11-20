@@ -21,6 +21,7 @@
 
 // Output two pixels in YCbCr422 once every four clock cycles
 // Pixel done is asserted once a pixel is latched
+// Captures one frame of data (vysnc to vsync)
 module camera_read(
     input reset,
     input clk,
@@ -42,7 +43,7 @@ module camera_read(
 	
 	always @(posedge pclk) begin // run off the pclk signal; should be the same as xclk
 		
-		if (reset) begin
+		if (reset) begin // use start signal as reset
 			we <= 0;
 			data_out <= 32'b0;
 			frame_done <= 0;
@@ -52,19 +53,30 @@ module camera_read(
 		
 		else begin
 			if (href & ~vsync & ~frame_done & running) begin // look for data while href is high
-				if (count == 3) data_out[31:24] <= data_in;
-				else if (count == 2) data_out[23:16] <= data_in;
-				else if (count == 1) data_out[15:8] <= data_in;
+				if (count == 3) begin
+					data_out[31:24] <= data_in; // using camera defaults and capturing in YCbCr; Y0
+					pixel_done <= 0;
+				end
+				else if (count == 2) begin
+					data_out[23:16] <= data_in; // Cb0/Cb1
+					pixel_done <= 0;
+				end
+				else if (count == 1) begin
+					data_out[15:8] <= data_in; // Cr0/Cr1
+					pixel_done <= 0;
+				end
 				else begin
-					data_out[7:0] <= data_in;
+					data_out[7:0] <= data_in; // Y1
 					pixel_done <= 1;
 				end
-				count <= count - 1;
-				pixel_done <= 0				
+				count <= count - 1;		
 			end
 			
-			else if (~running & vsync) running <= 1;
-			else if (vsync) frame_done <= 1; // end on second pulse of vsync
+			else if (~running & vsync) running <= 1; // start capturing data when vsync goes high so we don't capture the middle of a frame
+			else if (running & vsync) begin
+				frame_done <= 1; // end on second pulse of vsync
+				running = 0;
+			end
 		end
 	end
 endmodule

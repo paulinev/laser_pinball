@@ -1,5 +1,5 @@
 NUM_USER_FILES
-3
+4
 s
 user_file_1
 ../../mybram.v
@@ -9,4 +9,7 @@ user_file_2
 s
 user_file_3
 ../../camera_save.v
+s
+user_file_4
+../../vga_display.v
 s

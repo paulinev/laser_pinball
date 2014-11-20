@@ -838,7 +838,8 @@ proc restore { { project_dir "" } } {
   set user_files { 
       "../../camera_save.v" 
       "../../frame_buffer.v" 
-      "../../mybram.v"}
+      "../../mybram.v" 
+      "../../vga_display.v"}
 
   HandleException {
     AddUserFiles $iProjHelper $user_files
