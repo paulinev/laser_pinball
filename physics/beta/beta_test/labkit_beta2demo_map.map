@@ -1,0 +1,71 @@
+Release 10.1.03 Map K.39 (lin64)
+Xilinx Map Application Log File for Design 'labkit_beta2demo'
+
+Design Information
+------------------
+Command Line   : map -ise
+/afs/athena.mit.edu/user/j/i/jisenhar/Documents/6.111/laser_pinball/physics/beta
+/beta_test/beta_test.ise -intstyle ise -p xc2v6000-bf957-4 -cm area -pr off -k 4
+-c 100 -tx off -o labkit_beta2demo_map.ncd labkit_beta2demo.ngd
+labkit_beta2demo.pcf 
+Target Device  : xc2v6000
+Target Package : bf957
+Target Speed   : -4
+Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
+Mapped Date    : Wed Nov 19 18:06:46 2014
+
+Mapping design into LUTs...
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:  335
+Logic Utilization:
+  Number of Slice Flip Flops:           273 out of  67,584    1%
+  Number of 4 input LUTs:             1,469 out of  67,584    2%
+Logic Distribution:
+  Number of occupied Slices:            837 out of  33,792    2%
+    Number of Slices containing only related logic:     837 out of     837 100%
+    Number of Slices containing unrelated logic:          0 out of     837   0%
+      *See NOTES below for an explanation of the effects of unrelated logic.
+  Total Number of 4 input LUTs:       1,546 out of  67,584    2%
+    Number used as logic:             1,320
+    Number used as a route-thru:         77
+    Number used for Dual Port RAMs:     144
+      (Two LUTs used per Dual Port RAM)
+    Number used as Shift registers:       5
+  Number of bonded IOBs:                576 out of     684   84%
+  Number of RAMB16s:                      8 out of     144    5%
+  Number of MULT18X18s:                   2 out of     144    1%
+  Number of BUFGMUXs:                     2 out of      16   12%
+  Number of DCMs:                         1 out of      12    8%
+
+Peak Memory Usage:  497 MB
+Total REAL time to MAP completion:  4 secs 
+Total CPU time to MAP completion:   4 secs 
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Mapping completed.
+See MAP report file "labkit_beta2demo_map.mrp" for details.
