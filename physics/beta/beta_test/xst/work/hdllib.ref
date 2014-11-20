@@ -1,0 +1,12 @@
+MO xcmem NULL ../labkit_beta2demo/cmem.v vlg5A/xcmem.bin 1416437502
+MO display_16hex NULL ../labkit_beta2demo/display_16hex.v vlg51/display__16hex.bin 1416437502
+MO shift_right NULL ../labkit_beta2demo/shift_right.v vlg7B/shift__right.bin 1416437502
+MO clock300hz NULL labkit_beta2demo.v vlg45/clock300hz.bin 1416437502
+MO lab9 NULL ../labkit_beta2demo/lab9.v vlg58/lab9.bin 1416437502
+MO debounce NULL ../labkit_beta2demo/debounce.v vlg1D/debounce.bin 1416437502
+MO vga NULL ../labkit_beta2demo/vga.v vlg6A/vga.bin 1416437502
+MO xfont NULL ../labkit_beta2demo/font.v vlg37/xfont.bin 1416437502
+MO beta2 NULL ../labkit_beta2demo/beta2.v vlg7E/beta2.bin 1416437502
+MO ps2 NULL ../labkit_beta2demo/ps2.v vlg61/ps2.bin 1416437502
+MO labkit_beta2demo NULL labkit_beta2demo.v vlg7D/labkit__beta2demo.bin 1416437502
+MO decode NULL ../labkit_beta2demo/decode.v vlg50/decode.bin 1416437502

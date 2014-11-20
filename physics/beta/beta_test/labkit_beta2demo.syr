@@ -1,0 +1,1817 @@
+Release 10.1.03 - xst K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to /afs/athena.mit.edu/user/j/i/jisenhar/Documents/6.111/laser_pinball/physics/beta/beta_test/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to /afs/athena.mit.edu/user/j/i/jisenhar/Documents/6.111/laser_pinball/physics/beta/beta_test/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Reading design: labkit_beta2demo.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "labkit_beta2demo.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "labkit_beta2demo"
+Output Format                      : NGC
+Target Device                      : xc2v6000-4-bf957
+
+---- Source Options
+Top Module Name                    : labkit_beta2demo
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Convert Tristates To Logic         : Yes
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : labkit_beta2demo.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../labkit_beta2demo/shift_right.v" in library work
+Compiling verilog file "../labkit_beta2demo/font.v" in library work
+Module <shift_right> compiled
+Compiling verilog file "../labkit_beta2demo/decode.v" in library work
+Module <xfont> compiled
+Compiling verilog file "../labkit_beta2demo/cmem.v" in library work
+Module <decode> compiled
+Compiling verilog file "../labkit_beta2demo/vga.v" in library work
+Module <xcmem> compiled
+Compiling verilog file "../labkit_beta2demo/ps2.v" in library work
+Module <vga> compiled
+Compiling verilog file "../labkit_beta2demo/lab9.v" in library work
+Module <ps2> compiled
+Compiling verilog file "../labkit_beta2demo/display_16hex.v" in library work
+Module <lab9> compiled
+Compiling verilog file "../labkit_beta2demo/debounce.v" in library work
+Module <display_16hex> compiled
+Compiling verilog file "../labkit_beta2demo/beta2.v" in library work
+Module <debounce> compiled
+Compiling verilog file "labkit_beta2demo.v" in library work
+Module <beta2> compiled
+Module <labkit_beta2demo> compiled
+Module <clock300hz> compiled
+No errors in compilation
+Analysis of file <"labkit_beta2demo.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <labkit_beta2demo> in library <work>.
+
+Analyzing hierarchy for module <debounce> in library <work> with parameters.
+	DELAY = "00000000000001111010000100100000"
+
+Analyzing hierarchy for module <clock300hz> in library <work>.
+
+Analyzing hierarchy for module <beta2> in library <work>.
+
+Analyzing hierarchy for module <lab9> in library <work>.
+
+Analyzing hierarchy for module <vga> in library <work>.
+
+Analyzing hierarchy for module <ps2> in library <work>.
+
+Analyzing hierarchy for module <display_16hex> in library <work>.
+
+Analyzing hierarchy for module <decode> in library <work>.
+
+Analyzing hierarchy for module <shift_right> in library <work>.
+
+Analyzing hierarchy for module <xcmem> in library <work>.
+
+Analyzing hierarchy for module <xfont> in library <work>.
+
+WARNING:Xst:2591 - "labkit_beta2demo.v" line 320: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit_beta2demo.v" line 320: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit_beta2demo.v" line 320: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "labkit_beta2demo.v" line 320: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <labkit_beta2demo>.
+Module <labkit_beta2demo> is correct for synthesis.
+ 
+    Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "CLKFX_DIVIDE =  13" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "CLKFX_MULTIPLY =  24" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "CLKIN_PERIOD =  37.0000000000000000" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "CLK_FEEDBACK =  NONE" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "DSS_MODE =  NONE" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "FACTORY_JF =  C080" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "SIM_MODE =  SAFE" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <vclk1> in unit <labkit_beta2demo>.
+    Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <labkit_beta2demo>.
+Analyzing module <debounce> in library <work>.
+	DELAY = 32'sb00000000000001111010000100100000
+Module <debounce> is correct for synthesis.
+ 
+Analyzing module <clock300hz> in library <work>.
+Module <clock300hz> is correct for synthesis.
+ 
+Analyzing module <beta2> in library <work>.
+Module <beta2> is correct for synthesis.
+ 
+Analyzing module <decode> in library <work>.
+Module <decode> is correct for synthesis.
+ 
+Analyzing module <shift_right> in library <work>.
+Module <shift_right> is correct for synthesis.
+ 
+Analyzing module <lab9> in library <work>.
+Module <lab9> is correct for synthesis.
+ 
+    Set user-defined property "INIT =  000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_00 =  0000000000000000000000000000000000000000000000000000002103042C35" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_01 =  0000000000000000000000000000000000000000000000000000980000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_09 =  5854504C4844403C3834302C2824201C1814FF2E726E65705588000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_0A =  CCCCCCCCCCCCCCCCCCCCCCB0CC004C021AFC948C8884807C7874706C6864605C" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_0B =  746C203218FC0069726967493BCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_0C =  74706C6864605C5854504C4844403C3834302C2824201C1814FF2E212B11FC20" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_0D =  C7E414E4EBE400D0402C4CE8303C2800C40207FCDB098C048C008C8884807C78" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_0E =  1D150D66554E45463E3D362E25261E160E077809010A830B030C040605760000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_0F =  49413A31322A21221A5A524C4B423B33342B231B1C5D5B544D44433C352C2D24" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_10 =  14205920120000F20002F0F6E0FF001C18140400F81C18140400726B7475294A" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_11 =  00050007000004D2D3E400FF080100040800F9040200E1FF0008E51358201120" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_12 =  00000000000000000000313F14348C668C380714FB00FFC20400030400010003" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_13 =  0000000000000000000000587800000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_14 =  0000000000000000000000006888000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_15 =  14CC5801CC7CCC0DCC14FC0458889C0000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_16 =  30302C2C2828242420201C1C1818141410100C0C08080404000000FCFC181405" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_17 =  70706C6C6868646460605C5C5858545450504C4C4848444440403C3C38383434" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_18 =  4844403C3834302C2824201C1814140014020018011814FC0400020078787474" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_19 =  5030FC80040000040094517F5381948C8884807C7874706C6864605C5854504C" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_1A =  0D8050030AFC04FC04FC0430330001003700015A005C2168480058780420001C" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_1B =  FCFCFC50FCFC01000000FF0000000303FFFC040F0A30FC800400FB3004005000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_1C =  041C0008FC04FC04FC04FC044645444342413938373635343332313000FCFCFC" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_1D =  00FC04FC04FC04FC0400FCFC000400FC0400FCFCFCFCFCFCFCFCF801B110020F" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_1E =  F4FC040A6E2C70745301015400FCFCFCFCFCFCFCFC00F6FA01088F057F040400" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_1F =  00000000000000FA04E60A6B0074F80A0400F002FF03743E01049C0A01FCFC05" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_22 =  0000E40000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_26 =  FC04000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_27 =  00000000000000000000000001590355054F074909450B4100FCFC200161037A" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_2A =  647C007400000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_2B =  04FC0400FCFCFCFCFCFC06E7FC046800016401D80268FCFC05F7FC04FC04FC04" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_2C =  20054AE0008400FCFCFCFCFCFC06CCFC046C00016401D8026CFCFC05D8FC04FC" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_2D =  000000DEFCFC061BFC04E50A02004101FA02040004000000FC20D702F8040007" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_31 =  000000000000000000000000000000000000000000000000000000000000F400" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_35 =  00000000000000000000000000000000000000000000000000FB079C019C0000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m0> in unit <lab9>.
+    Set user-defined property "SRVAL =  000" for instance <m0> in unit <lab9>.
+    Set user-defined property "WRITE_MODE =  WRITE_FIRST" for instance <m0> in unit <lab9>.
+    Set user-defined property "INIT =  000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_00 =  0000000000000000000000000000000000000000000000000000000102030103" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_09 =  000000000000000000000000000000000000FF2E757464656E02000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_0A =  0505050505050505050505060500050000FF0000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_0B =  696F610202FF006F756E616C0205050505050505050505050505050505050505" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_0C =  00000000000000000000000000000000000000000000000000FF2E200202FF30" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_0D =  FF060006FF06000C0D0D090609090D00060000FFFF0100000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_0E =  777109083D2D30393837363534333231608C8B8A898887868584838281330000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_0F =  2E2C6D6E627663787A0A273B6C6B6A6867666473615C5D5B706F697579747265" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_10 =  00000000000707FF070000FF0000000000000001FF000000000093929190202F" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_11 =  02000100040407FFFF061000000007070000FF000010FF000007FF0000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_12 =  00000000000000000000FF0100FF000100FF0100FF00FFFF0700000710000800" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_13 =  00000000000000000000000F1100000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_14 =  0000000000000000000000001618000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_15 =  000A09000A000A000A00FF00091A1A0000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_16 =  000000000000000000000000000000000000000000000000000000FFFF0C0C00" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_17 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_18 =  000000000000000000000000000000000000000C000C00FF0000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_19 =  0D8CFF8C000080070700FEFFFEFF000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_1A =  008C0D0000FF00FF00FF008CFE000000FE0000FE00FE006569000F11000D000D" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_1B =  FFFFFF0DFFFF00001010FF001010000000FF0000008CFF8C0000FF8C00000080" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_1C =  0000F800FF00FF00FF00FF000000000000000000000000000000000000FFFFFF" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_1D =  F8FF00FF00FF00FF0000FFFFF800F8FF0000FFFFFFFFFFFFFFFFFF00FF0E0000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_1E =  FFFF000A6B2069207400000F00FFFFFFFFFFFFFFFFF8FFFF0000FF0000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_1F =  00000000000000FF00FF00010011FF00000000000000112000001C0000FFFF00" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_22 =  00000F0000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_26 =  FF00000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_27 =  00000000000000000000000000000000000000000000000000FFFF0000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_2A =  0015001500000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_2B =  00FF0000FFFFFFFFFFFF00FFFF001500000000130015FFFF00FFFF00FF00FF00" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_2C =  0000FFFFF81800FFFFFFFFFFFF00FFFF001500000000130015FFFF00FFFF00FF" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_2D =  000000FFFFFF00FEFF00FF0000F85900FF0000000028F8F8FF00FF00FF000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000001600" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_35 =  00000000000000000000000000000000000000000000000000FF001C001C0000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m1> in unit <lab9>.
+    Set user-defined property "SRVAL =  000" for instance <m1> in unit <lab9>.
+    Set user-defined property "WRITE_MODE =  WRITE_FIRST" for instance <m1> in unit <lab9>.
+    Set user-defined property "INIT =  000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_00 =  000000000000000000000000000000000000000000000000000000FFFFFFFFFF" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_09 =  3F1FFFDFBF9F7F5F3F1FFFDFBF9F7F5F3F1FFF2E70652063659F000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_0A =  00000000000000000000000000E00000001EBFDFBF9F7F5F3F1FFFDFBF9F7F5F" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_0B =  6F63749F9F1E006E63736C6C9F00000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_0C =  1FFFDFBF9F7F5F3F1FFFDFBF9F7F5F3F1FFFDFBF9F7F5F3F1FFF2E2E9F9F1E78" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_0D =  FFFF1F1FE01F000000000000000000E00000001EFF9F1F001FFEDFBF9F7F5F3F" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_0E =  575109082B5F29282A265E25242340217E8C8B8A898887868584838281330000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_0F =  3E3C4D4E425643585A0A223A4C4B4A4847464453417C7D7B504F495559545245" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_10 =  20E120E120FF5FFF1FE120E12000FE5F3F1FE1201F5F3F1FDE0093929190203F" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_11 =  1FFF1FFF1F425FE2FF3F212121E0025F2121FF21E240E242413FE2E120E120E1" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_12 =  00000000000000000000FF9F1FFF1F9F1FFF9F1FFF2100FF3F21E23F1FFF1FFF" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_13 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_14 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_15 =  3F1F1FE120001F9F3F1F9DBD0000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_16 =  4140414041404140414041404140414041404140414041404140FCBD9D1F1F9F" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_17 =  4140414041404140414041404140414041404140414041404140414041404140" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_18 =  BF9F7F5F3F1FFFDFBF9F7F5F3F1F1FFE1FE0001F001F1FFFDE0000FC41404140" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_19 =  1F1FE12000E01FFFFFBFFF9FFF9FBFDFBF9F7F5F3F1FFFDFBF9F7F5F3F1FFFDF" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_1A =  E2413FE2405DBD3DBD1DBDFFFF030003FF0300E003FF007220FEDFBF203F203F" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_1B =  3DBD5D3FBD7D214140436341630042417F7DBDE2403FE24121E1E2412141413F" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_1C =  2101205F5DBD3DBD1DBD9DBD00000000000000000000000000000000FCBD1DBD" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_1D =  207DBD5DBD3DBD9DBDFCBD1D809F1C1DBDFCBD9DBD1DBD3DBD5DE2429F000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_1E =  607DBD0079426E7461000000FCBD9DBD3DBD5DBD7D01FFE363429FE0027F2141" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_1F =  00000000000000FF42E1209F025FE12063039F0000007F0000001F0000BD7D00" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_22 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_26 =  3DBD000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_27 =  00000000000000000000FC3FE120E120E120E120E120E120FCBD3D00E120E120" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_2A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_2B =  BD3DBDFCBD3DBD5DBD7D00607DBD3F3FE2412102413FBD7D00607DBD5DBD3DBD" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_2C =  20E19F9FA93FFCBD3DBD5DBD7D00607DBD3F3FE2412102413FBD7D00607DBD5D" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_2D =  000000FFBD7D00607DBDE00300030000FF008404E1248960E1209F00FFA505E1" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_35 =  00000000000000000000000000000000000000000000000000FF001F001F0000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m2> in unit <lab9>.
+    Set user-defined property "SRVAL =  000" for instance <m2> in unit <lab9>.
+    Set user-defined property "WRITE_MODE =  WRITE_FIRST" for instance <m2> in unit <lab9>.
+    Set user-defined property "INIT =  000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_00 =  0000000000000000000000000000000000000000000000000000007777777777" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_09 =  6666656565656565656564646464646464647700747269747877000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_0A =  808080808080808080808080806F60F0F4606367676767676767666666666666" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_0B =  6E61207777600020747420657780808080808080808080808080808080808080" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_0C =  6362626262626262626161616161616161606060606060606077002E7777C400" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_0D =  7767646077600080808080808080806F60F0E060777764C4606F636363636363" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_0E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_0F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_10 =  D07BD07BD06760776477D07BD0E06F60606077E060646464C700000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_11 =  C077C077C0E060777764A4E0F477E060F46077C07B9077E060C07B7BD07BD07B" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_12 =  000000000000000000007777607764776077776077A0E87764A47B60C077C077" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_13 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_14 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_15 =  C064C07BD4C0607760C067C30000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_16 =  64606460646064606460646064606460646064606460646064606FC363646077" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_17 =  6460646064606460646064606460646064606460646064606460646064606460" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_18 =  6565656565656464646464646464606F607BD464C4606463C700006F64606460" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_19 =  64C07BD4C067C067676377777777636767676767676766666666666666666565" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_1A =  7BD4607BD064C364C364C3FF7764C0607764C47760770065746FC3C364606460" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_1B =  60C36064C360C064A4A0E860B0B0F0E0C064C37BD0C07BD4C0677BD4C06460C0" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_1C =  F0F880C064C364C364C367C3000000000000000000000000000000006FC360C3" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_1D =  8064C364C364C367C36FC36083778064C36FC363C360C360C3607BC47760F0E0" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_1E =  7C64C3002E756779720400006FC363C360C360C36080777BC4F87777E0C0C060" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_1F =  0000000000000077C07BD077606077D0C0647704E00460000404600004C36004" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_22 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_26 =  64C3000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_27 =  000000000000000000006FC07BD07BD07BD07BD07BD07BD06FC360C47BD477D8" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_2A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_2B =  C364C36FC360C360C360047C64C364C077D0C064F060C360047C64C364C364C3" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_2C =  D87B777780616FC360C360C360047C64C364C077D0C060F060C360047C64C364" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_2D =  00000077C360047C64C377D0048000047704C0607B90808077D8770477C0647B" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_35 =  00000000000000000000000000000000000000000000000000770464C0600000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <m3> in unit <lab9>.
+    Set user-defined property "SRVAL =  000" for instance <m3> in unit <lab9>.
+    Set user-defined property "WRITE_MODE =  WRITE_FIRST" for instance <m3> in unit <lab9>.
+Analyzing module <vga> in library <work>.
+Module <vga> is correct for synthesis.
+ 
+Analyzing module <xcmem> in library <work>.
+Module <xcmem> is correct for synthesis.
+ 
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_0B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_0C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_0D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_0E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_0F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_10 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_11 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_12 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_13 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_14 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_15 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_16 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_17 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_18 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_19 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_1A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_1B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_1C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_1D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_1E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_1F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_22 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_26 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_27 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_2A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_2B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_2C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_35 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_A =  0" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INIT_B =  00000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "SIM_COLLISION_CHECK =  ALL" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "SRVAL_A =  0" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "SRVAL_B =  00000" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "WRITE_MODE_A =  WRITE_FIRST" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "WRITE_MODE_B =  WRITE_FIRST" for instance <mlo> in unit <xcmem>.
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_0B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_0C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_0D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_0E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_0F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_10 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_11 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_12 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_13 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_14 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_15 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_16 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_17 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_18 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_19 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_1A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_1B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_1C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_1D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_1E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_1F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_20 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_21 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_22 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_23 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_24 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_25 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_26 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_27 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_28 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_29 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_2A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_2B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_2C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_2D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_2E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_2F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_35 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_A =  0" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "INIT_B =  00000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "SIM_COLLISION_CHECK =  ALL" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "SRVAL_A =  0" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "SRVAL_B =  00000" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "WRITE_MODE_A =  WRITE_FIRST" for instance <mhi> in unit <xcmem>.
+    Set user-defined property "WRITE_MODE_B =  WRITE_FIRST" for instance <mhi> in unit <xcmem>.
+Analyzing module <xfont> in library <work>.
+Module <xfont> is correct for synthesis.
+ 
+    Set user-defined property "INIT =  000" for instance <font> in unit <xfont>.
+    Set user-defined property "INITP_00 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INITP_01 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INITP_02 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INITP_03 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INITP_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INITP_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INITP_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INITP_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_00 =  1818181818181818FFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_01 =  181818180000000000F8F818181818180000000000FFFF000000000018181818" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_02 =  1818181818F8F8000000000018181818181F1F000000000000000000001F1F18" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_03 =  0000000000000000000000000000000000000000FF81818181818181818181FF" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_04 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_05 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_06 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_07 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_08 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_09 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_0A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_0B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_0C =  0000002466666600000018180018183C3C3C1800000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_0D =  62000000000018187C06063C60603E18000036367F3636367F36360000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_0E =  00000000000000301818180000003B6E667F7D386C6C38000000466630180C66" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_0F =  663CFF3C66000000000030180C0606060C1830000000060C18303030180C0600" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_10 =  0000000000301C1C00000000000000000000000018187E181800000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_11 =  000080C06030180C0603010000001C1C00000000000000000000000000007E00" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_12 =  30180C0663633E0000007E18181818187818080000003E63737B6B6F67633E00" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_13 =  60607E0000000F06067F66361E0E060000003E6303031E0303633E0000007F63" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_14 =  00001818180C060303637F0000003C6666667C6060301C0000003C6606063C60" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_15 =  1C00001C1C000000000038180C0C3E6666663C0000003C66666E3C3666663C00" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_16 =  000000000000060C18306030180C060000180C1C1C00001C1C0000000000001C" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_17 =  00000C0C000C0C0603633E00000030180C0603060C18300000000000007E007E" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_18 =  33333E3333337E0000006666667E6666663C180000003E60606F6F6F63633C00" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_19 =  30317F0000007C363333333333367C0000001E336060606063331E0000007E33" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_1A =  00001F336367606063331E000000783030323E3231337F0000007F3130323E32" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_1B =  6606060606060F0000003C181818181818183C000000666666667E6666666600" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_1C =  7F77630000007F3333313030303078000000733336363E363633730000003C66" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_1D =  00001C366363636363361C0000006363676F7F7B73636300000063636363636B" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_1E =  33363E3333337E0000000F063E6F676363361C000000783030303E3333337E00" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_1F =  6666660000003C1818181818185A7E0000003C66660C386066663C0000007333" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_20 =  000036366B6B6363636363000000183C666666666666660000003C6666666666" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_21 =  3130180C0C677F0000003C1818183C666666660000006666663C183C66666600" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_22 =  06061E0000000103060C18306040000000001E181818181818181E0000007F63" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_23 =  007F00000000000000000000000000000000000063361C0800001E0606060606" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_24 =  33333E303030700000003B66663E063C00000000000000000000000000306060" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_25 =  0000000000003B666666663E06060E0000003C666060663C0000000000006E33" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_26 =  3C66063E6666663B0000000000003C1818183E18181B0E0000003C66607E663C" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_27 =  0606061E0006060000003F0C0C0C0C3C000C0C000000733333333B3630306000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_28 =  0000000000003F0C0C0C0C0C0C0C3C0000007333363C3633303070003C646606" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_29 =  00003C666666663C00000000000066666666667C000000000000636B6B6B6B7E" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_2A =  303B3776000000000F063E666666663B0000000078303E333333336E00000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_2B =  0000000000001C363030307E3010000000003C660C30663C0000000000007830" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_2C =  000036366B6B6363000000000000183C666666660000000000003B6666666666" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_2D =  1806437F00000000780C061E3333333300000000000063361C1C366300000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_2E =  181870000000181818180018181818000000070C0C1830180C0C070000007F61" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_2F =  00007E7E7E7E7E7E7E7E7E000000000000000000CEDA730000007018180C060C" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_30 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_31 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_32 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_33 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_34 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_35 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_36 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_37 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_38 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_39 =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_3A =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_3B =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_3C =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_3D =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_3E =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "INIT_3F =  0000000000000000000000000000000000000000000000000000000000000000" for instance <font> in unit <xfont>.
+    Set user-defined property "SRVAL =  000" for instance <font> in unit <xfont>.
+    Set user-defined property "WRITE_MODE =  WRITE_FIRST" for instance <font> in unit <xfont>.
+Analyzing module <ps2> in library <work>.
+Module <ps2> is correct for synthesis.
+ 
+Analyzing module <display_16hex> in library <work>.
+INFO:Xst:1433 - Contents of array <dots> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+Module <display_16hex> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2561 - Always blocking tristate driving signal <flash_data> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <ram0_data> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <user1> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <user2> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <user3> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <user4> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <ram1_data> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <daughtercard> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <systemace_data> in unit <labkit_beta2demo> is removed.
+INFO:Xst:2561 - Always blocking tristate driving signal <tv_in_i2c_data> in unit <labkit_beta2demo> is removed.
+
+Synthesizing Unit <debounce>.
+    Related source file is "../labkit_beta2demo/debounce.v".
+    Found 1-bit register for signal <clean>.
+    Found 19-bit up counter for signal <count>.
+    Found 1-bit register for signal <new>.
+    Found 1-bit xor2 for signal <new$xor0000> created at line 11.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   2 D-type flip-flop(s).
+Unit <debounce> synthesized.
+
+
+Synthesizing Unit <clock300hz>.
+    Related source file is "labkit_beta2demo.v".
+    Found 17-bit register for signal <lfsr>.
+    Found 1-bit xor2 for signal <lfsr$xor0000> created at line 432.
+    Summary:
+	inferred  17 D-type flip-flop(s).
+Unit <clock300hz> synthesized.
+
+
+Synthesizing Unit <ps2>.
+    Related source file is "../labkit_beta2demo/ps2.v".
+    Found 8x8-bit dual-port RAM <Mram_fifo> for signal <fifo>.
+    Found 3-bit comparator equal for signal <fifo_empty>.
+    Found 1-bit register for signal <fifo_overflow>.
+    Found 1-bit xor9 for signal <and0000$xor0000> created at line 37.
+    Found 4-bit register for signal <count>.
+    Found 4-bit adder for signal <count$addsub0000> created at line 46.
+    Found 3-bit comparator equal for signal <fifo_overflow$cmp_eq0000> created at line 40.
+    Found 3-bit register for signal <ps2c_sync>.
+    Found 3-bit up counter for signal <rptr>.
+    Found 10-bit register for signal <shift>.
+    Found 1-bit register for signal <timeout>.
+    Found 3-bit up counter for signal <wptr>.
+    Found 3-bit adder for signal <wptr_inc>.
+    Summary:
+	inferred   1 RAM(s).
+	inferred   2 Counter(s).
+	inferred  19 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   2 Comparator(s).
+	inferred   1 Xor(s).
+Unit <ps2> synthesized.
+
+
+Synthesizing Unit <display_16hex>.
+    Related source file is "../labkit_beta2demo/display_16hex.v".
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clock (rising_edge)                            |
+    | Reset              | dreset (positive)                              |
+    | Reset type         | synchronous                                    |
+    | Reset State        | 00000000                                       |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 16x40-bit ROM for signal <dots>.
+    Found 1-bit register for signal <disp_ce_b>.
+    Found 1-bit register for signal <disp_data_out>.
+    Found 1-bit register for signal <disp_rs>.
+    Found 1-bit register for signal <disp_reset_b>.
+    Found 1-bit 40-to-1 multiplexer for signal <$varindex0000> created at line 159.
+    Found 4-bit register for signal <char_index>.
+    Found 4-bit subtractor for signal <char_index$addsub0000> created at line 165.
+    Found 1-bit register for signal <clock>.
+    Found 32-bit register for signal <control>.
+    Found 5-bit up counter for signal <count>.
+    Found 10-bit register for signal <dot_index>.
+    Found 10-bit addsub for signal <dot_index$share0000> created at line 94.
+    Found 4-bit 16-to-1 multiplexer for signal <nibble>.
+    Found 8-bit down counter for signal <reset_count>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 ROM(s).
+	inferred   2 Counter(s).
+	inferred  51 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   5 Multiplexer(s).
+Unit <display_16hex> synthesized.
+
+
+Synthesizing Unit <decode>.
+    Related source file is "../labkit_beta2demo/decode.v".
+    Found 1-bit register for signal <msel>.
+    Found 1-bit register for signal <annul>.
+    Found 1-bit register for signal <mwrite>.
+    Summary:
+	inferred   3 D-type flip-flop(s).
+Unit <decode> synthesized.
+
+
+Synthesizing Unit <shift_right>.
+    Related source file is "../labkit_beta2demo/shift_right.v".
+Unit <shift_right> synthesized.
+
+
+Synthesizing Unit <beta2>.
+    Related source file is "../labkit_beta2demo/beta2.v".
+WARNING:Xst:646 - Signal <wd_mult> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <npc_inc<31>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <mult> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 32x32-bit dual-port RAM <Mram_regfile> for signal <regfile>.
+    Found 32x32-bit dual-port RAM <Mram_regfile_ren> for signal <regfile>.
+    Found 32-bit adder carry in for signal <addsub>.
+    Found 32-bit 4-to-1 multiplexer for signal <boole>.
+    Found 32-bit xor2 for signal <boole$xor0000> created at line 89.
+    Found 1-bit xor2 for signal <cmp_0$xor0000> created at line 80.
+    Found 32-bit register for signal <inst>.
+    Found 32-bit register for signal <npc>.
+    Found 32-bit adder for signal <npc_inc>.
+    Found 32-bit register for signal <pc_inc>.
+    Found 5-bit register for signal <rc_save>.
+    Found 32-bit shifter logical left for signal <shift$shift0000> created at line 87.
+    Found 32-bit xor2 for signal <xb>.
+    Summary:
+	inferred   2 RAM(s).
+	inferred 101 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  32 Multiplexer(s).
+	inferred   1 Combinational logic shifter(s).
+Unit <beta2> synthesized.
+
+
+Synthesizing Unit <lab9>.
+    Related source file is "../labkit_beta2demo/lab9.v".
+WARNING:Xst:647 - Input <addr<13:11>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+Unit <lab9> synthesized.
+
+
+Synthesizing Unit <xcmem>.
+    Related source file is "../labkit_beta2demo/cmem.v".
+Unit <xcmem> synthesized.
+
+
+Synthesizing Unit <xfont>.
+    Related source file is "../labkit_beta2demo/font.v".
+Unit <xfont> synthesized.
+
+
+Synthesizing Unit <vga>.
+    Related source file is "../labkit_beta2demo/vga.v".
+WARNING:Xst:643 - "../labkit_beta2demo/vga.v" line 98: The result of a 6x7-bit multiplication is partially used. Only the 12 least significant bits are used. If you are doing this on purpose, you may safely ignore this warning. Otherwise, make sure you are not losing information, leading to unexpected circuit behavior.
+    Found 1-bit register for signal <vsync>.
+    Found 1-bit register for signal <irq_60Hz>.
+    Found 3-bit register for signal <rgb>.
+    Found 1-bit register for signal <hsync>.
+    Found 12-bit adder for signal <char_addr>.
+    Found 6x7-bit multiplier for signal <char_addr$mult0001> created at line 98.
+    Found 7-bit register for signal <column>.
+    Found 1-bit xor2 for signal <f_pixel$xor0000> created at line 112.
+    Found 11-bit adder for signal <font_addr>.
+    Found 7x4-bit multiplier for signal <font_addr$mult0000> created at line 108.
+    Found 3-bit up counter for signal <h>.
+    Found 1-bit register for signal <hblank>.
+    Found 10-bit up counter for signal <hcount>.
+    Found 7-bit adder for signal <next_column$addsub0000> created at line 83.
+    Found 6-bit adder for signal <next_row$addsub0000> created at line 86.
+    Found 1-bit register for signal <pcount>.
+    Found 1-bit register for signal <reverse>.
+    Found 6-bit register for signal <row>.
+    Found 4-bit up counter for signal <v>.
+    Found 1-bit register for signal <vblank>.
+    Found 10-bit up counter for signal <vcount>.
+    Summary:
+	inferred   4 Counter(s).
+	inferred  23 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   2 Multiplier(s).
+	inferred   1 Multiplexer(s).
+Unit <vga> synthesized.
+
+
+Synthesizing Unit <labkit_beta2demo>.
+    Related source file is "labkit_beta2demo.v".
+WARNING:Xst:2565 - Inout <user3<28>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<29>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<5>> is never assigned.
+WARNING:Xst:647 - Input <button0> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <button1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <button2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <button3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user3<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<7>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<9>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<10>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<10>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<11>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<11>> is never assigned.
+WARNING:Xst:647 - Input <clock1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <clock2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<12>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<12>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<13>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<13>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_aef> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<14>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<14>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_aff> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<15>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<20>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<15>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<21>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<16>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<22>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<17>> is never assigned.
+WARNING:Xst:647 - Input <systemace_irq> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<18>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<23>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<0>> is never assigned.
+WARNING:Xst:647 - Input <clock_feedback_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <daughtercard<19>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<24>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<1>> is never assigned.
+WARNING:Xst:647 - Input <disp_data_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user2<10>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<25>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<30>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<11>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<31>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<26>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<12>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<32>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<27>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<13>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<33>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<28>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<14>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<34>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<29>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<15>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<20>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<40>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<35>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<7>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<21>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<16>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<41>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<36>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<17>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<22>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<37>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<42>> is never assigned.
+WARNING:Xst:2565 - Inout <flash_data<9>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<23>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<18>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<38>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<43>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<24>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<19>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<39>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<3>> is never assigned.
+WARNING:Xst:2565 - Inout <tv_in_i2c_data> is never assigned.
+WARNING:Xst:2565 - Inout <user4<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<30>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<25>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<7>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<31>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<5>> is never assigned.
+WARNING:Xst:647 - Input <flash_sts> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user4<8>> is never assigned.
+WARNING:Xst:647 - Input <rs232_rxd> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user2<27>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<9>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<28>> is never assigned.
+WARNING:Xst:647 - Input <mouse_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user1<7>> is never assigned.
+WARNING:Xst:647 - Input <rs232_cts> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user2<29>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<9>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<10>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<1>> is never assigned.
+WARNING:Xst:647 - Input <switch> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user4<11>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<12>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<13>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<14>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<20>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<15>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<6>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<16>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<21>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<10>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<7>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<22>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<17>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<11>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<8>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<23>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<18>> is never assigned.
+WARNING:Xst:647 - Input <button_left> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<12>> is never assigned.
+WARNING:Xst:2565 - Inout <daughtercard<9>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<19>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<24>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<13>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<0>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<30>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<25>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<14>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<1>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<31>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<20>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<2>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<15>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<27>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<3>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<16>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<21>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<7>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_data_valid> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user4<28>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<22>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<4>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<17>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_hff> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram0_data<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<10>> is never assigned.
+WARNING:Xst:2565 - Inout <user4<29>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<23>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<5>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<18>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<9>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<11>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_ycrcb> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram0_data<10>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<24>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<6>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<19>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<12>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<11>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<7>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<25>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<30>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<13>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<2>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<12>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<31>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<8>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<3>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<14>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<13>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<32>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<9>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<27>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<4>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<15>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<20>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<14>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_line_clock1> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<28>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<33>> is never assigned.
+WARNING:Xst:647 - Input <tv_in_line_clock2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<0>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<16>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<5>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<21>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<20>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<15>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<29>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<34>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<17>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<6>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<22>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<21>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<16>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<35>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<18>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<7>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<23>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<22>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<17>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<3>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<10>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<24>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<8>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<19>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<23>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<18>> is never assigned.
+WARNING:Xst:647 - Input <ac97_sdata_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<4>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<11>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<25>> is never assigned.
+WARNING:Xst:2565 - Inout <user2<9>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<30>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<24>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<19>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<5>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<12>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<31>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<25>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<30>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<6>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<13>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<27>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<31>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<26>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<7>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<14>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<28>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<32>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<27>> is never assigned.
+WARNING:Xst:2565 - Inout <ram1_data<8>> is never assigned.
+WARNING:Xst:2565 - Inout <systemace_data<15>> is never assigned.
+WARNING:Xst:2565 - Inout <user1<29>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<28>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<33>> is never assigned.
+WARNING:Xst:647 - Input <systemace_mpbrdy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram1_data<9>> is never assigned.
+WARNING:Xst:647 - Input <button_right> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram0_data<34>> is never assigned.
+WARNING:Xst:2565 - Inout <ram0_data<29>> is never assigned.
+WARNING:Xst:647 - Input <button_down> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <ram0_data<35>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<10>> is never assigned.
+WARNING:Xst:647 - Input <mouse_clock> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user3<11>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<12>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<13>> is never assigned.
+WARNING:Xst:647 - Input <ac97_bit_clock> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user3<14>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<20>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<15>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<21>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<16>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<22>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<17>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<23>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<18>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<24>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<19>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<0>> is never assigned.
+WARNING:Xst:647 - Input <button_up> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:2565 - Inout <user3<30>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<25>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<1>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<26>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<31>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
+WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
+    Using one-hot encoding for signal <mdin_sel>.
+    Found 3-bit register for signal <mdin_sel>.
+    Found 1-bit register for signal <rd_ps2>.
+    Summary:
+	inferred   4 D-type flip-flop(s).
+Unit <labkit_beta2demo> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 3
+ 32x32-bit dual-port RAM                               : 2
+ 8x8-bit dual-port RAM                                 : 1
+# ROMs                                                 : 1
+ 16x40-bit ROM                                         : 1
+# Multipliers                                          : 2
+ 6x7-bit multiplier                                    : 1
+ 7x4-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 10
+ 10-bit addsub                                         : 1
+ 11-bit adder                                          : 1
+ 12-bit adder                                          : 1
+ 3-bit adder                                           : 1
+ 32-bit adder                                          : 1
+ 32-bit adder carry in                                 : 1
+ 4-bit adder                                           : 1
+ 4-bit subtractor                                      : 1
+ 6-bit adder                                           : 1
+ 7-bit adder                                           : 1
+# Counters                                             : 9
+ 10-bit up counter                                     : 2
+ 19-bit up counter                                     : 1
+ 3-bit up counter                                      : 3
+ 4-bit up counter                                      : 1
+ 5-bit up counter                                      : 1
+ 8-bit down counter                                    : 1
+# Registers                                            : 35
+ 1-bit register                                        : 20
+ 10-bit register                                       : 2
+ 17-bit register                                       : 1
+ 3-bit register                                        : 3
+ 32-bit register                                       : 4
+ 4-bit register                                        : 2
+ 5-bit register                                        : 1
+ 6-bit register                                        : 1
+ 7-bit register                                        : 1
+# Comparators                                          : 2
+ 3-bit comparator equal                                : 2
+# Multiplexers                                         : 4
+ 1-bit 40-to-1 multiplexer                             : 1
+ 1-bit 8-to-1 multiplexer                              : 1
+ 32-bit 4-to-1 multiplexer                             : 1
+ 4-bit 16-to-1 multiplexer                             : 1
+# Logic shifters                                       : 1
+ 32-bit shifter logical left                           : 1
+# Xors                                                 : 7
+ 1-bit xor2                                            : 4
+ 1-bit xor9                                            : 1
+ 32-bit xor2                                           : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <hexdisp1/state/FSM> on signal <state[1:3]> with sequential encoding.
+----------------------
+ State    | Encoding
+----------------------
+ 00000000 | 000
+ 00000001 | 001
+ 00000010 | 010
+ 00000011 | 011
+ 00000100 | 100
+ 00000101 | 101
+ 00000110 | 110
+----------------------
+Loading device for application Rf_Device from file '2v6000.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
+
+Synthesizing (advanced) Unit <beta2>.
+INFO:Xst - The RAM <Mram_regfile> will be implemented as a BLOCK RAM, absorbing the following register(s): <inst>
+    -----------------------------------------------------------------------
+    | ram_type           | Block                               |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     mode           | write-first                         |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <werf>          | high     |
+    |     addrA          | connected to signal <wa>            |          |
+    |     diA            | connected to signal <wd>            |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     mode           | read-first                          |          |
+    |     clkB           | connected to signal <clk>           | rise     |
+    |     enB            | connected to signal <msel>          | low      |
+    |     addrB          | connected to signal <mdin>          |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+    | optimization       | speed                               |          |
+    -----------------------------------------------------------------------
+INFO:Xst - HDL ADVISOR - The RAM <Mram_regfile_ren> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <werf>          | high     |
+    |     addrA          | connected to signal <wa>            |          |
+    |     diA            | connected to signal <wd>            |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 32-word x 32-bit                    |          |
+    |     addrB          | connected to signal <ra2>           |          |
+    |     doB            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <beta2> synthesized (advanced).
+
+Synthesizing (advanced) Unit <ps2>.
+INFO:Xst - HDL ADVISOR - The RAM <Mram_fifo> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 8-word x 8-bit                      |          |
+    |     clkA           | connected to signal <clk>           | rise     |
+    |     weA            | connected to signal <_and0000_0>    | high     |
+    |     addrA          | connected to signal <wptr>          |          |
+    |     diA            | connected to signal <shift>         |          |
+    -----------------------------------------------------------------------
+    | Port B                                                              |
+    |     aspect ratio   | 8-word x 8-bit                      |          |
+    |     addrB          | connected to signal <rptr>          |          |
+    |     doB            | connected to signal <fifo_data>     |          |
+    -----------------------------------------------------------------------
+Unit <ps2> synthesized (advanced).
+
+Synthesizing (advanced) Unit <vga>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_font_addr_mult0000 by adding 1 register level(s).
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_char_addr_mult0001 by adding 1 register level(s).
+Unit <vga> synthesized (advanced).
+INFO:Xst:2261 - The FF/Latch <rgb_0> in Unit <vga> is equivalent to the following 2 FFs/Latches, which will be removed : <rgb_1> <rgb_2> 
+WARNING:Xst:2677 - Node <mdin_sel_0> of sequential type is unconnected in block <labkit_beta2demo>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 3
+ 32x32-bit dual-port block RAM                         : 1
+ 32x32-bit dual-port distributed RAM                   : 1
+ 8x8-bit dual-port distributed RAM                     : 1
+# ROMs                                                 : 1
+ 16x40-bit ROM                                         : 1
+# Multipliers                                          : 2
+ 6x7-bit multiplier                                    : 1
+ 7x4-bit multiplier                                    : 1
+# Adders/Subtractors                                   : 10
+ 10-bit addsub                                         : 1
+ 11-bit adder                                          : 1
+ 12-bit adder                                          : 1
+ 3-bit adder                                           : 1
+ 31-bit adder                                          : 1
+ 32-bit adder carry in                                 : 1
+ 4-bit adder                                           : 1
+ 4-bit subtractor                                      : 1
+ 6-bit adder                                           : 1
+ 7-bit adder                                           : 1
+# Counters                                             : 9
+ 10-bit up counter                                     : 2
+ 19-bit up counter                                     : 1
+ 3-bit up counter                                      : 3
+ 4-bit up counter                                      : 1
+ 5-bit up counter                                      : 1
+ 8-bit down counter                                    : 1
+# Registers                                            : 220
+ Flip-Flops                                            : 220
+# Comparators                                          : 2
+ 3-bit comparator equal                                : 2
+# Multiplexers                                         : 4
+ 1-bit 40-to-1 multiplexer                             : 1
+ 1-bit 8-to-1 multiplexer                              : 1
+ 32-bit 4-to-1 multiplexer                             : 1
+ 4-bit 16-to-1 multiplexer                             : 1
+# Logic shifters                                       : 1
+ 32-bit shifter logical left                           : 1
+# Xors                                                 : 7
+ 1-bit xor2                                            : 4
+ 1-bit xor9                                            : 1
+ 32-bit xor2                                           : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2146 - In block <vga>, Counter <hcount> <h> are equivalent, XST will keep only <hcount>.
+WARNING:Xst:1710 - FF/Latch <npc_0> (without init value) has a constant value of 0 in block <beta2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <npc_1> (without init value) has a constant value of 0 in block <beta2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pc_inc_0> (without init value) has a constant value of 0 in block <beta2>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pc_inc_1> (without init value) has a constant value of 0 in block <beta2>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <labkit_beta2demo> ...
+
+Optimizing unit <shift_right> ...
+
+Optimizing unit <clock300hz> ...
+
+Optimizing unit <ps2> ...
+
+Optimizing unit <display_16hex> ...
+
+Optimizing unit <decode> ...
+
+Optimizing unit <beta2> ...
+
+Optimizing unit <vga> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block labkit_beta2demo, actual ratio is 2.
+FlipFlop cpu/ctl/msel has been replicated 2 time(s)
+FlipFlop cpu/inst_26 has been replicated 1 time(s)
+FlipFlop cpu/inst_27 has been replicated 1 time(s)
+FlipFlop cpu/inst_31 has been replicated 1 time(s)
+FlipFlop dbreset/clean has been replicated 1 time(s)
+FlipFlop kbd/wptr_0 has been replicated 1 time(s)
+FlipFlop kbd/wptr_1 has been replicated 1 time(s)
+FlipFlop kbd/wptr_2 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+Processing Unit <labkit_beta2demo> :
+	Found 7-bit shift register for signal <hexdisp1/control_30>.
+	Found 7-bit shift register for signal <hexdisp1/control_22>.
+	Found 7-bit shift register for signal <hexdisp1/control_14>.
+	Found 7-bit shift register for signal <hexdisp1/control_6>.
+Unit <labkit_beta2demo> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 259
+ Flip-Flops                                            : 259
+# Shift Registers                                      : 4
+ 7-bit shift register                                  : 4
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : labkit_beta2demo.ngr
+Top Level Output File Name         : labkit_beta2demo
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 576
+
+Cell Usage :
+# BELS                             : 1803
+#      GND                         : 1
+#      INV                         : 24
+#      LUT1                        : 75
+#      LUT2                        : 95
+#      LUT2_D                      : 1
+#      LUT2_L                      : 6
+#      LUT3                        : 268
+#      LUT3_D                      : 50
+#      LUT3_L                      : 21
+#      LUT4                        : 725
+#      LUT4_D                      : 50
+#      LUT4_L                      : 81
+#      MUXCY                       : 149
+#      MUXF5                       : 119
+#      MUXF6                       : 5
+#      MUXF7                       : 1
+#      VCC                         : 1
+#      XORCY                       : 131
+# FlipFlops/Latches                : 273
+#      FD                          : 54
+#      FDE                         : 109
+#      FDR                         : 16
+#      FDRE                        : 67
+#      FDRS                        : 16
+#      FDSE                        : 11
+# RAMS                             : 48
+#      RAM16X1D                    : 8
+#      RAM32X1D                    : 32
+#      RAMB16_S36_S36              : 1
+#      RAMB16_S4_S18               : 2
+#      RAMB16_S9                   : 5
+# Shift Registers                  : 5
+#      SRL16                       : 1
+#      SRL16E                      : 4
+# Clock Buffers                    : 2
+#      BUFG                        : 2
+# IO Buffers                       : 244
+#      IBUF                        : 3
+#      IBUFG                       : 1
+#      OBUF                        : 240
+# DCMs                             : 1
+#      DCM                         : 1
+# MULTs                            : 2
+#      MULT18X18                   : 2
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2v6000bf957-4 
+
+ Number of Slices:                      809  out of  33792     2%  
+ Number of Slice Flip Flops:            273  out of  67584     0%  
+ Number of 4 input LUTs:               1545  out of  67584     2%  
+    Number used as logic:              1396
+    Number used as Shift registers:       5
+    Number used as RAMs:                144
+ Number of IOs:                         576
+ Number of bonded IOBs:                 244  out of    684    35%  
+ Number of BRAMs:                         8  out of    144     5%  
+ Number of MULT18X18s:                    2  out of    144     1%  
+ Number of GCLKs:                         2  out of     16    12%  
+ Number of DCMs:                          1  out of     12     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock_27mhz                        | vclk1:CLKFX            | 278   |
+hexdisp1/clock1                    | BUFG                   | 43    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 33.719ns (Maximum Frequency: 29.657MHz)
+   Minimum input arrival time before clock: 5.924ns
+   Maximum output required time after clock: 8.425ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_27mhz'
+  Clock period: 33.719ns (frequency: 29.657MHz)
+  Total number of paths / destination ports: 3141975 / 1043
+-------------------------------------------------------------------------
+Delay:               18.264ns (Levels of Logic = 26)
+  Source:            cpu/inst_29 (FF)
+  Destination:       dpy/b/mlo (RAM)
+  Source Clock:      clock_27mhz rising 1.8X
+  Destination Clock: clock_27mhz rising 1.8X
+
+  Data Path: cpu/inst_29 to dpy/b/mlo
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             18   0.568   1.058  cpu/inst_29 (cpu/inst_29)
+     LUT4:I2->O            8   0.439   1.124  cpu/ctl/mem_next_SW0_SW0 (N279)
+     LUT3:I0->O            2   0.439   0.736  cpu/ctl/mem_next_SW51 (N442)
+     LUT4:I2->O            8   0.439   0.840  cpu/ra2<0>1_1 (cpu/ra2<0>1)
+     RAM32X1D:DPRA0->DPO    3   1.374   0.759  cpu/Mram_regfile_ren1 (cpu/_varindex0001<0>)
+     LUT4:I2->O           20   0.439   1.075  cpu/b<0>1_1 (cpu/b<0>1)
+     LUT3:I2->O            1   0.439   0.000  cpu/Madd_addsub_lut<0> (cpu/Madd_addsub_lut<0>)
+     MUXCY:S->O            1   0.298   0.000  cpu/Madd_addsub_cy<0> (cpu/Madd_addsub_cy<0>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<1> (cpu/Madd_addsub_cy<1>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<2> (cpu/Madd_addsub_cy<2>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<3> (cpu/Madd_addsub_cy<3>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<4> (cpu/Madd_addsub_cy<4>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<5> (cpu/Madd_addsub_cy<5>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<6> (cpu/Madd_addsub_cy<6>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<7> (cpu/Madd_addsub_cy<7>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<8> (cpu/Madd_addsub_cy<8>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<9> (cpu/Madd_addsub_cy<9>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<10> (cpu/Madd_addsub_cy<10>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<11> (cpu/Madd_addsub_cy<11>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<12> (cpu/Madd_addsub_cy<12>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<13> (cpu/Madd_addsub_cy<13>)
+     MUXCY:CI->O           1   0.053   0.000  cpu/Madd_addsub_cy<14> (cpu/Madd_addsub_cy<14>)
+     XORCY:CI->O           4   1.274   0.781  cpu/Madd_addsub_xor<15> (cpu/addsub<15>)
+     LUT4:I2->O            2   0.439   0.735  cpu/ma<15>1 (ma<15>)
+     LUT4:I2->O            1   0.439   0.000  highmem_wg_lut<15> (highmem_wg_lut<15>)
+     MUXCY:S->O            6   1.501   0.828  highmem_wg_cy<15> (highmem)
+     LUT3:I2->O            2   0.439   0.702  _and00011 (_and0001)
+     RAMB16_S4_S18:WEB         0.359          dpy/b/mlo
+    ----------------------------------------
+    Total                     18.264ns (9.628ns logic, 8.636ns route)
+                                       (52.7% logic, 47.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'hexdisp1/clock1'
+  Clock period: 13.699ns (frequency: 72.996MHz)
+  Total number of paths / destination ports: 3121 / 75
+-------------------------------------------------------------------------
+Delay:               13.699ns (Levels of Logic = 14)
+  Source:            hexdisp1/char_index_1 (FF)
+  Destination:       hexdisp1/disp_data_out (FF)
+  Source Clock:      hexdisp1/clock1 rising
+  Destination Clock: hexdisp1/clock1 rising
+
+  Data Path: hexdisp1/char_index_1 to hexdisp1/disp_data_out
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             15   0.568   1.274  hexdisp1/char_index_1 (hexdisp1/char_index_1)
+     LUT4:I0->O            1   0.439   0.802  hexdisp1/char_index<1>11 (hexdisp1/char_index<1>2)
+     LUT2:I0->O            1   0.439   0.000  hexdisp1/Mmux_nibble_31 (hexdisp1/Mmux_nibble_31)
+     MUXF5:I1->O          29   0.436   1.365  hexdisp1/Mmux_nibble_2_f5_0 (hexdisp1/nibble<1>)
+     LUT4:I0->O            2   0.439   0.735  hexdisp1/Mrom_dots1311 (hexdisp1/Mrom_dots12)
+     LUT3:I2->O            1   0.439   0.000  hexdisp1/Mmux__varindex0000_131 (hexdisp1/Mmux__varindex0000_131)
+     MUXF5:I0->O           1   0.436   0.000  hexdisp1/Mmux__varindex0000_11_f5_0 (hexdisp1/Mmux__varindex0000_11_f51)
+     MUXF6:I1->O           1   0.447   0.000  hexdisp1/Mmux__varindex0000_10_f6 (hexdisp1/Mmux__varindex0000_10_f6)
+     MUXF7:I0->O           1   0.447   0.726  hexdisp1/Mmux__varindex0000_8_f7 (hexdisp1/Mmux__varindex0000_8_f7)
+     LUT2:I1->O            1   0.439   0.000  hexdisp1/disp_data_out_mux0000782 (hexdisp1/disp_data_out_mux0000782)
+     MUXF5:I0->O           1   0.436   0.803  hexdisp1/disp_data_out_mux000078_f5 (hexdisp1/disp_data_out_mux000078)
+     LUT3:I0->O            1   0.439   0.000  hexdisp1/disp_data_out_mux0000131_G (N904)
+     MUXF5:I1->O           2   0.436   0.910  hexdisp1/disp_data_out_mux0000131 (hexdisp1/disp_data_out_mux0000131)
+     LUT2:I1->O            1   0.439   0.000  hexdisp1/disp_data_out_mux00001692 (hexdisp1/disp_data_out_mux00001691)
+     MUXF5:I0->O           1   0.436   0.000  hexdisp1/disp_data_out_mux0000169_f5 (hexdisp1/disp_data_out_mux0000)
+     FDE:D                     0.370          hexdisp1/disp_data_out
+    ----------------------------------------
+    Total                     13.699ns (7.085ns logic, 6.614ns route)
+                                       (51.7% logic, 48.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 40 / 40
+-------------------------------------------------------------------------
+Offset:              5.924ns (Levels of Logic = 4)
+  Source:            keyboard_data (PAD)
+  Destination:       kbd/Mram_fifo8 (RAM)
+  Destination Clock: clock_27mhz rising 1.8X
+
+  Data Path: keyboard_data to kbd/Mram_fifo8
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.825   0.986  keyboard_data_IBUF (keyboard_data_IBUF)
+     LUT4:I0->O            1   0.439   0.557  kbd/_and000011_SW0 (N46)
+     LUT4:I3->O            8   0.439   0.873  kbd/_and000011 (kbd/wptr_not0001)
+     LUT3:I2->O            8   0.439   0.840  kbd/_and000012 (kbd/_and0000_0)
+     RAM16X1D:WE               0.525          kbd/Mram_fifo1
+    ----------------------------------------
+    Total                      5.924ns (2.667ns logic, 3.257ns route)
+                                       (45.0% logic, 55.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 55 / 32
+-------------------------------------------------------------------------
+Offset:              8.425ns (Levels of Logic = 6)
+  Source:            c1/lfsr_6 (FF)
+  Destination:       led<6> (PAD)
+  Source Clock:      clock_27mhz rising 1.8X
+
+  Data Path: c1/lfsr_6 to led<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.568   0.987  c1/lfsr_6 (c1/lfsr_6)
+     LUT4:I0->O            1   0.439   0.000  c1/clk_300Hz_cmp_eq0000_wg_lut<1> (c1/clk_300Hz_cmp_eq0000_wg_lut<1>)
+     MUXCY:S->O            1   0.298   0.000  c1/clk_300Hz_cmp_eq0000_wg_cy<1> (c1/clk_300Hz_cmp_eq0000_wg_cy<1>)
+     MUXCY:CI->O           1   0.053   0.000  c1/clk_300Hz_cmp_eq0000_wg_cy<2> (c1/clk_300Hz_cmp_eq0000_wg_cy<2>)
+     MUXCY:CI->O           1   0.053   0.000  c1/clk_300Hz_cmp_eq0000_wg_cy<3> (c1/clk_300Hz_cmp_eq0000_wg_cy<3>)
+     MUXCY:CI->O           3   0.942   0.725  c1/clk_300Hz_cmp_eq0000_wg_cy<4> (clk_300Hz)
+     OBUF:I->O                 4.361          led_6_OBUF (led<6>)
+    ----------------------------------------
+    Total                      8.425ns (6.714ns logic, 1.711ns route)
+                                       (79.7% logic, 20.3% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'hexdisp1/clock1'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              5.630ns (Levels of Logic = 1)
+  Source:            hexdisp1/disp_rs (FF)
+  Destination:       disp_rs (PAD)
+  Source Clock:      hexdisp1/clock1 rising
+
+  Data Path: hexdisp1/disp_rs to disp_rs
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.568   0.701  hexdisp1/disp_rs (hexdisp1/disp_rs)
+     OBUF:I->O                 4.361          disp_rs_OBUF (disp_rs)
+    ----------------------------------------
+    Total                      5.630ns (4.929ns logic, 0.701ns route)
+                                       (87.5% logic, 12.5% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 35.00 secs
+Total CPU time to Xst completion: 33.16 secs
+ 
+--> 
+
+
+Total memory usage is 509252 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  320 (   0 filtered)
+Number of infos    :   19 (   0 filtered)
+
