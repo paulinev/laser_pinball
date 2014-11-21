@@ -1,0 +1,13 @@
+# Output products list for <ILDA_rom>
+ILDA_rom.asy
+ILDA_rom.mif
+ILDA_rom.ngc
+ILDA_rom.sym
+ILDA_rom.v
+ILDA_rom.veo
+ILDA_rom.vhd
+ILDA_rom.vho
+ILDA_rom.xco
+ILDA_rom_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+ILDA_rom_flist.txt
+ILDA_rom_xmdf.tcl
