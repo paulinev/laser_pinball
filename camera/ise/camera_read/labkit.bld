@@ -11,6 +11,9 @@ amera_read/camera_read.ise -intstyle ise -dd _ngo -sd
 Reading NGO file
 "/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/
 camera_read/labkit.ngc" ...
+Loading design module
+"/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/dual
+_port_bram.ngc"...
 Reading in constraint information from
 '/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/labk
 it.ucf'...
@@ -29,6 +32,12 @@ Done...
 Checking Partitions ...
 
 Checking expanded design ...
+WARNING:NgdBuild:478 - clock net camera_in<0> with clock driver camera_buf
+   drives no clock pins
+WARNING:NgdBuild:478 - clock net href_in with clock driver href_buf drives no
+   clock pins
+WARNING:NgdBuild:478 - clock net vsync_in with clock driver vsync_buf drives no
+   clock pins
 WARNING:NgdBuild:470 - bidirect pad net 'user3<28>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user3<4>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user3<29>' has no legal driver
@@ -93,7 +102,6 @@ WARNING:NgdBuild:470 - bidirect pad net 'user2<16>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<41>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<36>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'flash_data<8>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<0>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<3>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<17>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<22>' has no legal driver
@@ -106,12 +114,10 @@ WARNING:NgdBuild:470 - bidirect pad net 'user2<23>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<18>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<38>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<43>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<2>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<5>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<24>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<19>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<39>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<3>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'tv_in_i2c_data' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<6>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<30>' has no legal driver
@@ -121,7 +127,6 @@ WARNING:NgdBuild:470 - bidirect pad net 'user2<26>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<31>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<8>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<27>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<6>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<9>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<28>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user1<7>' has no legal driver
@@ -314,9 +319,9 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings: 275
+  Number of warnings: 274
 
-Total memory usage is 229216 kilobytes
+Total memory usage is 230820 kilobytes
 
 Writing NGD file "labkit.ngd" ...
 

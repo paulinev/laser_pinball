@@ -4,8 +4,8 @@
      changes made to this file may result in unpredictable
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
-<DeviceUsageSummary rev="41">
-<DesignStatistics TimeStamp="Thu Nov 20 17:57:53 2014"><group name="NetStatistics">
+<DeviceUsageSummary rev="42">
+<DesignStatistics TimeStamp="Fri Nov 21 15:23:45 2014"><group name="NetStatistics">
 <item name="NumNets_Active" rev="41">
 <attrib name="value" value="1002"/></item>
 <item name="NumNets_Gnd" rev="41">
@@ -64,73 +64,30 @@
 <attrib name="value" value="3"/></item>
 </group>
 <group name="MiscellaneousStatistics">
-<item name="AGG_BONDED_IO" rev="40">
+<item name="AGG_BONDED_IO" rev="42">
 <attrib name="value" value="576"/></item>
-<item name="AGG_IO" rev="40">
+<item name="AGG_IO" rev="42">
 <attrib name="value" value="576"/></item>
-<item name="NUM_4_INPUT_LUT" rev="40">
-<attrib name="value" value="49"/></item>
-<item name="NUM_BONDED_IOB" rev="40">
+<item name="NUM_4_INPUT_LUT" rev="42">
+<attrib name="value" value="280"/></item>
+<item name="NUM_BONDED_IOB" rev="42">
 <attrib name="value" value="576"/></item>
-<item name="NUM_BUFGMUX" rev="40">
+<item name="NUM_BUFGMUX" rev="42">
+<attrib name="value" value="5"/></item>
+<item name="NUM_LUT_RT" rev="42">
+<attrib name="value" value="54"/></item>
+<item name="NUM_RAMB16" rev="42">
+<attrib name="value" value="150"/></item>
+<item name="NUM_SHIFT" rev="42">
 <attrib name="value" value="1"/></item>
-<item name="NUM_LUT_RT" rev="40">
-<attrib name="value" value="18"/></item>
-<item name="NUM_RAMB16" rev="40">
+<item name="NUM_SLICE" rev="42">
+<attrib name="value" value="156"/></item>
+<item name="NUM_SLICE_FF" rev="42">
+<attrib name="value" value="82"/></item>
+<item name="Xilinx Core blk_mem_gen_v2_8, Xilinx CORE Generator 10.1.03_ip3" rev="42">
 <attrib name="value" value="1"/></item>
-<item name="NUM_SLICE" rev="40">
-<attrib name="value" value="29"/></item>
-<item name="NUM_SLICE_FF" rev="40">
-<attrib name="value" value="25"/></item>
 </group>
 </DesignStatistics>
-<DeviceUsage TimeStamp="Thu Nov 20 17:57:53 2014"><group name="SiteSummary">
-<item name="BUFGMUX" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="1"/></item>
-<item name="BUFGMUX_GCLKMUX" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="1"/></item>
-<item name="BUFGMUX_GCLK_BUFFER" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="1"/></item>
-<item name="IOB" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="576"/></item>
-<item name="IOB_INBUF" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="335"/></item>
-<item name="IOB_OUTBUF" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="241"/></item>
-<item name="IOB_PAD" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="576"/></item>
-<item name="RAMB16" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="1"/></item>
-<item name="RAMB16_RAMB16" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="1"/></item>
-<item name="RAMB16_RAMB16A" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="1"/></item>
-<item name="SLICE" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="29"/></item>
-<item name="SLICE_C1VDD" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="2"/></item>
-<item name="SLICE_CYMUXF" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="10"/></item>
-<item name="SLICE_CYMUXG" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="8"/></item>
-<item name="SLICE_F" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="24"/></item>
-<item name="SLICE_FFX" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="11"/></item>
-<item name="SLICE_FFY" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="14"/></item>
-<item name="SLICE_G" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="25"/></item>
-<item name="SLICE_GNDF" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="8"/></item>
-<item name="SLICE_GNDG" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="8"/></item>
-<item name="SLICE_XORF" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="10"/></item>
-<item name="SLICE_XORG" rev="41">
-<attrib name="total" value="1000000"/><attrib name="used" value="10"/></item>
-</group>
-</DeviceUsage>
 <ReportConfigData TimeStamp="Thu Nov 20 17:57:53 2014"><group name="RAMB16_RAMB16A">
 <item name="PORTA_ATTR" rev="41">
 <attrib name="512X36" value="1"/></item>

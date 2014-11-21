@@ -1,0 +1,143 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/camera_read
+T_opt
+Z1 V<PETWUg]n;^hQ@MkOFdJD0
+Z2 04 14 4 work camera_save_tb fast 0
+Z3 04 4 4 work glbl fast 0
+Z4 =1-005056893942-546f8f2c-c0511-9d8
+Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
+Z6 OE;O;6.4a;39
+T_opt1
+Z7 V3SZzTDBC?e[NU^8TIhMN<0
+R2
+R3
+Z8 =1-005056893942-546f8983-a1b3e-ee20
+R5
+R6
+T_opt2
+VKEP1kI[lJ0_nlUGX[mZ6]0
+Z9 04 24 4 work camera_save_with_read_tb fast 0
+R3
+Z10 =1-005056893942-546f9ba0-d759-49fc
+R5
+R6
+vcamera_read
+Z11 ILAULg<_=[<Ig6Klob=^Qf0
+Z12 Vb4c]b>YY9R6]?QOh>Ai]c3
+Z13 w1416597754
+Z14 8../../frame_buffer.v
+Z15 F../../frame_buffer.v
+L0 26
+Z16 OE;L;6.4a;39
+r1
+31
+Z17 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z18 !s100 NWU3GDaD8fT6D?3IRP8M;0
+!s85 0
+vcamera_read_tb
+Z19 I?]P^@8a`C68GSaP<lQ`I<1
+Z20 V10CZ<I_[D>c4PbbC^lgS50
+Z21 w1416594435
+Z22 8../../testbenches/camera_read_tb.v
+Z23 F../../testbenches/camera_read_tb.v
+L0 25
+R16
+r1
+31
+R17
+Z24 !s100 FeMfzPZ^TnIEU82U5XiKa0
+!s85 0
+vcamera_save
+Z25 IO>A0B:aOKOd1WX;=0TQef2
+Z26 V99_h?a`Y60:`zo=71G<U]0
+Z27 w1416600443
+Z28 8../../camera_save.v
+Z29 F../../camera_save.v
+L0 22
+R16
+r1
+31
+R17
+Z30 !s100 4=8oB4e@PD>WPRG:eZZOK2
+!s85 0
+vcamera_save_tb
+Z31 I2NEWh<j5j]Fn_g82jRBj73
+Z32 Vz=J1Mn1[z_lVeQA@k]TIJ2
+Z33 w1416595821
+Z34 8../../testbenches/camera_save_tb.v
+Z35 F../../testbenches/camera_save_tb.v
+L0 25
+R16
+r1
+31
+R17
+Z36 !s100 JkldN6nYX[L4OoMfISl702
+!s85 0
+vcamera_save_with_read_tb
+Z37 Im601JhGNcaEOUT]Xjo2M72
+Z38 V:OQd0dSUk[>5kiSjfj1Q02
+Z39 w1416597716
+Z40 8../../testbenches/camera_save_with_read_tb.v
+Z41 F../../testbenches/camera_save_with_read_tb.v
+L0 25
+R16
+r1
+31
+R17
+Z42 !s100 DO^6kT@g4UZXkX^URn2Qz2
+!s85 0
+vdebounce
+Z43 IddSbeL3JVQea^Wazc]JLE3
+Z44 V@On=XSj^giU=kEZIGflc12
+Z45 w1412535744
+Z46 8debounce.v
+Z47 Fdebounce.v
+L0 4
+R16
+r1
+31
+R17
+Z48 !s100 [MTFE0USYGMSG1bJoQ[bm0
+!s85 0
+vglbl
+Z49 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z50 VnN]4Gon>inod6>M^M2[SV1
+Z51 w1202685744
+Z52 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z53 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+L0 5
+R16
+r1
+31
+R17
+Z54 !s100 T?5S;>bN`@zG_25]R_4A33
+!s85 0
+vlabkit
+Z55 IW4Nzj?^b5P[Jm5oFa6[l13
+Z56 V>n^fIP3Uc9<5=^]bF[^T71
+Z57 w1416524232
+Z58 8../../labkit.v
+Z59 F../../labkit.v
+L0 67
+R16
+r1
+31
+R17
+Z60 !s100 DmZ74jTH=I^]AL3jY2eED1
+!s85 0
+vxvga_640x480
+Z61 IZLVocEkiPIRYigh>MD<9`0
+Z62 Vf0ZC<XXJmzoHK:`gcAlj:3
+Z63 w1416425601
+Z64 8../../vga_display.v
+Z65 F../../vga_display.v
+L0 28
+R16
+r1
+31
+R17
+Z66 !s100 nVHR2fXchE81_h;;RMiZN3
+!s85 0
