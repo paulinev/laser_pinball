@@ -1,0 +1,389 @@
+Release 10.1.03 Map K.39 (lin64)
+Xilinx Mapping Report File for Design 'hardware_interface'
+
+Design Information
+------------------
+Command Line   : map -ise
+/afs/athena.mit.edu/user/w/b/wbraun/Private/6_111/FinalProject/Hardware_interfac
+e/laser_projector/laser_projector.ise -intstyle ise -p xc5vlx50t-ff1136-3 -w
+-logic_opt off -ol high -t 1 -cm area -pr off -k 6 -lc off -power off -o
+hardware_interface_map.ncd hardware_interface.ngd hardware_interface.pcf 
+Target Device  : xc5vlx50t
+Target Package : ff1136
+Target Speed   : -3
+Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
+Mapped Date    : Sun Nov 16 23:27:56 2014
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:   56
+Slice Logic Utilization:
+  Number of Slice Registers:                   176 out of  28,800    1%
+    Number used as Flip Flops:                 176
+  Number of Slice LUTs:                        168 out of  28,800    1%
+    Number used as logic:                      167 out of  28,800    1%
+      Number using O6 output only:             156
+      Number using O5 output only:              10
+      Number using O5 and O6:                    1
+    Number used as exclusive route-thru:         1
+  Number of route-thrus:                        11 out of  57,600    1%
+    Number using O6 output only:                11
+
+Slice Logic Distribution:
+  Number of occupied Slices:                    80 out of   7,200    1%
+  Number of LUT Flip Flop pairs used:          241
+    Number with an unused Flip Flop:            65 out of     241   26%
+    Number with an unused LUT:                  73 out of     241   30%
+    Number of fully used LUT-FF pairs:         103 out of     241   42%
+    Number of unique control sets:              12
+    Number of slice register sites lost
+      to control set restrictions:              24 out of  28,800    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        65 out of     480   13%
+
+Specific Feature Utilization:
+  Number of BlockRAM/FIFO:                       2 out of      60    3%
+    Number using BlockRAM only:                  2
+    Total primitives used:
+      Number of 36k BlockRAM used:               2
+    Total Memory used (KB):                     72 out of   2,160    3%
+  Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
+    Number used as BUFGs:                        2
+
+Peak Memory Usage:  708 MB
+Total REAL time to MAP completion:  30 secs 
+Total CPU time to MAP completion:   19 secs 
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Modular Design Summary
+Section 11 - Timing Report
+Section 12 - Configuration String Information
+Section 13 - Control Set Information
+Section 14 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:LIT:243 - Logical network GPIO_DIP_SW5_IBUF has no load.
+WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 5
+   more times for the following (max. 5 shown):
+   GPIO_DIP_SW6_IBUF,
+   GPIO_DIP_SW7_IBUF,
+   GPIO_DIP_SW8_IBUF,
+   AUDIO_SDATA_IN_IBUF,
+   CLK_27MHZ_FPGA_IBUF
+   To see the details of these warning messages, please use the -detail switch.
+WARNING:PhysDesignRules:368 - The signal <DVI_D7_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D8_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D9_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_DE_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_20_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_30_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_22_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_40_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_32_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_24_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_16_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_50_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_42_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_34_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_26_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_18_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_60_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_52_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_44_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_36_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_28_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_62_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_54_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_46_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_38_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_64_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_56_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_48_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_58_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <AUDIO_SDATA_OUT_OBUF> is incomplete.
+   The signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <AUDIO_SYNC_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_GPIO1_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_RESET_B_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <CLK_27MHZ_FPGA_IBUF> is incomplete.
+   The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_H_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_V_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D10_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D11_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <AUDIO_SDATA_IN_IBUF> is incomplete.
+   The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:368 - The signal <AUDIO_BIT_CLK_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_XCLK_N_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_XCLK_P_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW5_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW6_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW7_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW8_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D0_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D1_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D2_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D3_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D4_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D5_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_D6_OBUF> is incomplete. The signal
+   is not driven by any source pin in the design.
+
+Section 3 - Informational
+-------------------------
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
+   0.000 to 85.000 Celsius)
+INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
+   1.050 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Pack:1650 - Map created a placed design.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   2 block(s) removed
+   4 block(s) optimized away
+
+Section 5 - Removed Logic
+-------------------------
+Unused block "big_hazor/little_phazor/test_pattern_rom/GND" (ZERO) removed.
+Unused block "big_hazor/little_phazor/test_pattern_rom/VCC" (ONE) removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+GND 		big_hazor/little_phazor/test_pattern_rom/BU2/XST_GND
+VCC 		big_hazor/little_phazor/test_pattern_rom/BU2/XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Strength | Rate |              |          | Delay    |
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+| AUDIO_BIT_CLK                      | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| AUDIO_SDATA_IN                     | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| AUDIO_SDATA_OUT                    | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| AUDIO_SYNC                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| CLK_27MHZ_FPGA                     | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| DVI_D0                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D1                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D2                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D3                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D4                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D5                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D6                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D7                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D8                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D9                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D10                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D11                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_DE                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_GPIO1                          | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_H                              | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_RESET_B                        | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_V                              | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_XCLK_N                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_XCLK_P                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_DIP_SW1                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW2                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW3                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW4                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW5                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW6                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW7                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW8                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_2                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_4                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_6                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_8                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_10                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_12                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_14                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_16                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_18                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_20                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_22                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_24                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_26                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_28                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_30                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_32                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_34                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_36                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_38                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_40                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_42                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_44                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_46                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_48                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_50                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_52                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_54                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_56                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_58                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_60                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_62                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_64                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| USER_CLK                           | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Modular Design Summary
+-----------------------------------
+Modular Design not used for this design.
+
+Section 11 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Development System Reference Guide "TRACE" chapter.
+
+Section 12 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 13 - Control Set Information
+------------------------------------
+Use the "-detail" map option to print out Control Set Information.
+
+Section 14 - Utilization by Hierarchy
+-------------------------------------
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Module                  | Partition | Slices*       | Slice Reg     | LUTs          | LUTRAM        | BRAM/FIFO | DSP48E  | BUFG  | BUFIO | BUFR  | DCM   | PLL   | Full Hierarchical Name                                                                                                       |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| hardware_interface/     |           | 4/82          | 1/176         | 11/168        | 0/0           | 0/2       | 0/0     | 2/2   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface                                                                                                           |
+| +big_hazor              |           | 0/78          | 0/175         | 0/157         | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor                                                                                                 |
+| ++galvo_clk             |           | 9/9           | 13/13         | 23/23         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/galvo_clk                                                                                       |
+| ++little_phazor         |           | 9/28          | 28/69         | 1/58          | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor                                                                                   |
+| +++ilda_playback        |           | 19/19         | 41/41         | 57/57         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/ilda_playback                                                                     |
+| +++test_pattern_rom     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom                                                                  |
+| ++++BU2                 |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom/BU2                                                              |
+| +++++U0                 |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom/BU2/U0                                                           |
+| ++++++blk_mem_generator |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator                                         |
+| +++++++valid.cstr       |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/2       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr                              |
+| ++++++++ramloop[0].ram. |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r             |
+| +++++++++v5_init.ram    |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram |
+| ++++++++ramloop[1].ram. |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r             |
+| +++++++++v5_init.ram    |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r/v5_init.ram |
+| ++projector_dac         |           | 17/41         | 50/93         | 25/76         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/projector_dac                                                                                   |
+| +++DAC_SPI              |           | 24/24         | 43/43         | 51/51         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/big_hazor/projector_dac/DAC_SPI                                                                           |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+* Slices can be packed with basic elements from multiple hierarchies.
+  Therefore, a slice will be counted in every hierarchical module
+  that each of its packed basic elements belong to.
+** For each column, there are two numbers reported <A>/<B>.
+   <A> is the number of elements that belong to that specific hierarchical module.
+   <B> is the total number of elements from that hierarchical module and any lower level
+   hierarchical modules below.
+*** The LUTRAM column counts all LUTs used as memory including RAM, ROM, and shift registers.

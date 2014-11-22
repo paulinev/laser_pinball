@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map K.39 on Thu Nov 20 17:56:51 2014
+// Written by: Map K.39 on Fri Nov 21 15:23:44 2014
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -580,6 +580,9 @@ COMP "user4<9>" LOCATE = SITE "B19" LEVEL 1;
 COMP "ram0_adv_ld" LOCATE = SITE "V26" LEVEL 1;
 COMP "clock_feedback_out" LOCATE = SITE "AL28" LEVEL 1;
 NET "user1_4_IBUFG" BEL "pclk_buf.GCLKMUX" USELOCALCONNECT;
+NET "user1_6_IBUFG" BEL "camera_buf.GCLKMUX" USELOCALCONNECT;
+NET "user1_3_IBUFG" BEL "href_buf.GCLKMUX" USELOCALCONNECT;
+NET "user1_2_IBUFG" BEL "vsync_buf.GCLKMUX" USELOCALCONNECT;
 NET "user1_4_IBUFG" PERIOD = 37 ns HIGH 50%;
 SCHEMATIC END;
 

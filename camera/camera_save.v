@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+//`default_nettype none;
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -18,6 +19,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
+// TO BE CLOCKED ON ~PCLK
+// Note that BRAM must be clocked on PCLK (not its inversion)
 module camera_save(
     input clk,
     input reset,
@@ -39,12 +43,10 @@ module camera_save(
 	 localparam SAVE_PIXEL_2 = 2;
 	 localparam VGA_DRIVE = 3;
 	 reg [1:0] state = 0;
-	 reg [3:0] col_count = 0; //16
-	 reg [3:0] row_count = 0; //10
-	 reg [7:0] pixel_count = 0;
+	 
 
 	 reg [WIDTH-1:0] pixel_out_2;
-	 reg got_pixel = 0;
+	 
 	 initial begin
 		we = 1;
 		addr = 0;
@@ -60,43 +62,37 @@ module camera_save(
 		else begin
 			case(state)
 				WAIT_PIXEL: begin
-					if (pixel_done) begin
+					if (pixel_done & ~frame_done) begin
 						pixel_out <= data_in[23:16];
 						we <= 0;
+						if (addr < 307200) addr <= addr + 1;
+						else addr <= 0;
 						state <= SAVE_PIXEL_2;
 					end
-					else state <= WAIT_PIXEL;
 						
-					/*if (pixel_done==1 && frame_done==0 && col_count==15 && row_count==9) begin
-						pixel_out <= data_in[23:16];//, data_in[31:24], data_in[15:8]}; // YCbCr
-						//pixel_out_2 <= data_in[7:0];//, data_in[31:24], data_in[15:8]};
-						col_count <= 0;
-						we <= 0;
-						state <= SAVE_PIXEL_2;
-					end
 					else if (frame_done) begin
 						state <= VGA_DRIVE;
 						addr <= 0;
 						we <= 1;
 					end
-					else state <= WAIT_PIXEL;*/
+					else begin
+						state <= WAIT_PIXEL;
+						we <= 1;
+					end
 				end
 
 				SAVE_PIXEL_1: begin
-					pixel_out <= pixel_out_2;
-					addr <= addr + 1;
+					we <= 0;
 					state <= SAVE_PIXEL_2;
 				end
 				
 				SAVE_PIXEL_2: begin
 					we <= 1;
-					if (addr < 307200) addr <= addr + 1;
-					else addr <= 0;
 					state <= WAIT_PIXEL;
 				end
 				
 				VGA_DRIVE: begin
-					if (addr < 512) begin // loop through pixels
+					if (addr < 307200) begin // loop through pixels
 						addr <= addr + 1;
 					end
 					else addr <= 0;

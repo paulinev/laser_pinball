@@ -1,4 +1,4 @@
-//`default_nettype none
+`default_nettype none
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -335,35 +335,34 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 										 
 // Wire up camera inputs
 	wire sioc;
-	assign sioc = user1[0];
+	BUFG sioc_buf (.O(sioc), .I(user1[0]));
 	wire siod;
 	assign siod = user1[1];
 	wire vsync_in;
-	assign vsync_in = user1[2];
+	BUFG vsync_buf (.O(vsync_in), .I(user1[2]));
 	wire href_in;
-	assign href_in = user1[3];
+	BUFG href_buf (.O(href_in), .I(user1[3]));
 	wire pclk;
 	BUFG pclk_buf (.O(pclk), .I(user1[4]));
 	wire xclk;
 	assign user1[5] = clock_27mhz;
 	wire [7:0] camera_in;
-	assign camera_in = user1[13:6];
+	BUFG camera_buf (.O(camera_in), .I(user1[13:6]));
 	
 // Instantiate camera reader
 	wire [31:0] pixel_out;
 	wire pixel_done, frame_done;
-	camera_read reader (
-    .reset(rst), 
-    .clk(pclk), 
-    .vsync(vsync_in), 
-    .href(href_in), 
-    .pclk(pclk), 
-    .data_in(camera_in), 
-    .xclk(xclk), 
-    .data_out(pixel_out), 
-    .pixel_done(pixel_done), 
-    .frame_done(frame_done)
-    );
+	camera_read read (
+		.reset(rst), 
+		.clk(clock_27mhz), 
+		.vsync(vsync_in), 
+		.href(href_in), 
+		.pclk(pclk), 
+		.data_in(camera_in), 
+		.data_out(pixel_out), 
+		.pixel_done(pixel_done), 
+		.frame_done(frame_done)
+	);
 
 // Instantiate camera save
 	wire we;
@@ -371,7 +370,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [7:0] save_pixel_out;
 	assign led = {we, 7'b1};
 	camera_save frame_buffer(
-		.clk(pclk),
+		.clk(~pclk),
 		.reset(rst),
 		.pixel_done(pixel_done),
 		.data_in(pixel_out),

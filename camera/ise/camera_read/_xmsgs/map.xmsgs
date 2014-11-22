@@ -8,7 +8,7 @@
 <msg type="warning" file="LIT" num="243" delta="unknown" >Logical network <arg fmt="%s" index="1">user3&lt;28&gt;_IBUF</arg> has no load.
 </msg>
 
-<msg type="warning" file="LIT" num="395" delta="unknown" >The above <arg fmt="%s" index="1">warning</arg> message <arg fmt="%s" index="2">base_net_load_rule</arg> is repeated <arg fmt="%d" index="3">333</arg> more times for the following (max. 5 shown):
+<msg type="warning" file="LIT" num="395" delta="unknown" >The above <arg fmt="%s" index="1">warning</arg> message <arg fmt="%s" index="2">base_net_load_rule</arg> is repeated <arg fmt="%d" index="3">327</arg> more times for the following (max. 5 shown):
 <arg fmt="%s" index="4">user3&lt;4&gt;_IBUF,
 user3&lt;29&gt;_IBUF,
 user3&lt;5&gt;_IBUF,
@@ -24,6 +24,23 @@ To see the details of these <arg fmt="%s" index="5">warning</arg> messages, plea
 </msg>
 
 <msg type="info" file="LIT" num="244" delta="unknown" >All of the single ended outputs in this design are using slew rate limited output drivers. The delay on speed critical single ended outputs can be dramatically reduced by designating them as fast outputs.
+</msg>
+
+<msg type="warning" file="LIT" num="178" delta="unknown" >Clock buffer <arg fmt="%s" index="1">BUFGMUX symbol &quot;physical_group_camera_in&lt;0&gt;/camera_buf&quot; (output signal=camera_in&lt;0&gt;)</arg> does not drive clock loads. Driving only non-clock loads with a clock buffer will cause ALL of the dedicated clock routing resources for this buffer to be wasted. The non-clock loads are:
+<arg fmt="%s" index="2">Pin D of read/data_out_16</arg>
+</msg>
+
+<msg type="warning" file="LIT" num="178" delta="unknown" >Clock buffer <arg fmt="%s" index="1">BUFGMUX symbol &quot;physical_group_href_in/href_buf&quot; (output signal=href_in)</arg> does not drive clock loads. Driving only non-clock loads with a clock buffer will cause ALL of the dedicated clock routing resources for this buffer to be wasted. The non-clock loads are:
+<arg fmt="%s" index="2">Pin I1 of read/data_out_15_not000111
+Pin I2 of read/pixel_done_not00011</arg>
+</msg>
+
+<msg type="warning" file="LIT" num="178" delta="unknown" >Clock buffer <arg fmt="%s" index="1">BUFGMUX symbol &quot;physical_group_vsync_in/vsync_buf&quot; (output signal=vsync_in)</arg> does not drive clock loads. Driving only non-clock loads with a clock buffer will cause ALL of the dedicated clock routing resources for this buffer to be wasted. The non-clock loads are:
+<arg fmt="%s" index="2">Pin CE of read/running
+Pin I1 of read/frame_done_not00011
+Pin I1 of read/running_and00001
+Pin I0 of read/data_out_15_not000111
+Pin I0 of read/pixel_done_not00011</arg>
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">ram1_data&lt;0&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
@@ -258,9 +275,6 @@ To see the details of these <arg fmt="%s" index="5">warning</arg> messages, plea
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">tv_in_ycrcb&lt;18&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">button_enter_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">tv_in_ycrcb&lt;19&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
@@ -725,7 +739,7 @@ To see the details of these <arg fmt="%s" index="5">warning</arg> messages, plea
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user2&lt;18&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
-<msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user1&lt;0&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
+<msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user1_0_IBUFG</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user3&lt;11&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
@@ -752,9 +766,6 @@ To see the details of these <arg fmt="%s" index="5">warning</arg> messages, plea
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user2&lt;28&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
-<msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user1&lt;2&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
-</msg>
-
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">flash_data&lt;1&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
@@ -765,9 +776,6 @@ To see the details of these <arg fmt="%s" index="5">warning</arg> messages, plea
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user2&lt;29&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user1&lt;3&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">flash_data&lt;2&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
@@ -816,9 +824,6 @@ To see the details of these <arg fmt="%s" index="5">warning</arg> messages, plea
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user2&lt;2&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user1&lt;6&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">flash_data&lt;5&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
@@ -1025,76 +1030,7 @@ To see the details of these <arg fmt="%s" index="5">warning</arg> messages, plea
 <msg type="warning" file="PhysDesignRules" num="367" delta="unknown" >The signal &lt;<arg fmt="%s" index="1">user4&lt;9&gt;_IBUF</arg>&gt; is incomplete. The signal does not drive any load pins in the design.
 </msg>
 
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA8</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA9</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA10</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA11</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA12</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA13</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA14</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA15</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA16</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA17</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA18</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA19</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA20</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA21</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA22</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA23</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA24</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA25</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA26</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA27</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA28</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA29</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA30</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
-</msg>
-
-<msg type="warning" file="PhysDesignRules" num="812" delta="unknown" >Dangling pin &lt;<arg fmt="%s" index="1">DOA31</arg>&gt; on block:&lt;<arg fmt="%s" index="2">fbuf/Mram_mem.A</arg>&gt;:&lt;<arg fmt="%s" index="3">RAMB16_RAMB16A</arg>&gt;.
+<msg type="error" file="Pack" num="2310" delta="unknown" >Too many comps of type &quot;<arg fmt="%s" index="1">RAMB16</arg>&quot; found to fit this device.
 </msg>
 
 </messages>

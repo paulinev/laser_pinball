@@ -1,0 +1,8 @@
+verilog work "spi_master.v"
+verilog work "rom_playback.v"
+verilog work "./ILDA_rom.v"
+verilog work "projector_interface.v"
+verilog work "galvo_update_rate.v"
+verilog work "DAC_FSM.v"
+verilog work "projector_module.v"
+verilog work "hardware_interface.v"

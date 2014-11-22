@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/la
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/camera_read/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: labkit.prj
@@ -219,8 +219,6 @@ INFO:Xst:2561 - Always blocking tristate driving signal <ram1_data> in unit <lab
 INFO:Xst:2561 - Always blocking tristate driving signal <daughtercard> in unit <labkit> is removed.
 INFO:Xst:2561 - Always blocking tristate driving signal <systemace_data> in unit <labkit> is removed.
 INFO:Xst:2561 - Always blocking tristate driving signal <tv_in_i2c_data> in unit <labkit> is removed.
-INFO:Xst:2679 - Register <frame_done> in unit <camera_read> has a constant value of 0 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <running> in unit <camera_read> has a constant value of 0 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <debounce>.
     Related source file is "debounce.v".
@@ -236,39 +234,33 @@ Unit <debounce> synthesized.
 
 Synthesizing Unit <camera_read>.
     Related source file is "../../frame_buffer.v".
-WARNING:Xst:646 - Signal <running> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 4x1-bit ROM for signal <pixel_done$mux0000>.
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <frame_done>.
     Found 32-bit register for signal <data_out>.
     Found 1-bit register for signal <pixel_done>.
     Found 2-bit down counter for signal <count>.
+    Found 1-bit register for signal <running>.
     Summary:
-	inferred   1 ROM(s).
 	inferred   1 Counter(s).
-	inferred  33 D-type flip-flop(s).
+	inferred  35 D-type flip-flop(s).
 Unit <camera_read> synthesized.
 
 
 Synthesizing Unit <camera_save>.
     Related source file is "../../camera_save.v".
-WARNING:Xst:647 - Input <frame_done> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <data_in<31:24>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <data_in<15:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1780 - Signal <row_count> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <pixel_out_2> is used but never assigned. This sourceless signal will be automatically connected to value 00000000.
-WARNING:Xst:1780 - Signal <pixel_count> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <got_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <col_count> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <pixel_out_2> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
     Found 8-bit register for signal <pixel_out>.
     Found 19-bit register for signal <addr>.
     Found 1-bit register for signal <we>.
-    Found 19-bit comparator less for signal <addr$cmp_lt0000> created at line 93.
-    Found 19-bit comparator less for signal <addr$cmp_lt0001> created at line 99.
-    Found 19-bit adder for signal <addr$share0000> created at line 61.
+    Found 19-bit comparator less for signal <addr$cmp_lt0000> created at line 68.
+    Found 19-bit adder for signal <addr$share0000> created at line 63.
     Found 2-bit register for signal <state>.
     Summary:
 	inferred  30 D-type flip-flop(s).
 	inferred   1 Adder/Subtractor(s).
-	inferred   2 Comparator(s).
+	inferred   1 Comparator(s).
 Unit <camera_save> synthesized.
 
 
@@ -583,7 +575,7 @@ WARNING:Xst:2565 - Inout <user3<31>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<2>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<27>> is never assigned.
 WARNING:Xst:2565 - Inout <user3<3>> is never assigned.
-WARNING:Xst:646 - Signal <xclk> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <xclk> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <vcount> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <siod> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <sioc> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -596,21 +588,19 @@ INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmet
 HDL Synthesis Report
 
 Macro Statistics
-# ROMs                                                 : 1
- 4x1-bit ROM                                           : 1
 # Adders/Subtractors                                   : 1
  19-bit adder                                          : 1
 # Counters                                             : 4
  10-bit up counter                                     : 2
  19-bit up counter                                     : 1
  2-bit down counter                                    : 1
-# Registers                                            : 44
- 1-bit register                                        : 41
+# Registers                                            : 46
+ 1-bit register                                        : 43
  19-bit register                                       : 1
  2-bit register                                        : 1
  8-bit register                                        : 1
-# Comparators                                          : 2
- 19-bit comparator less                                : 2
+# Comparators                                          : 1
+ 19-bit comparator less                                : 1
 # Xors                                                 : 1
  1-bit xor2                                            : 1
 
@@ -621,51 +611,59 @@ Macro Statistics
 =========================================================================
 
 Loading device for application Rf_Device from file '2v6000.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
-
-Synthesizing (advanced) Unit <camera_read>.
-INFO:Xst - In order to maximize performance and save block RAM resources, the small ROM <Mrom_pixel_done_mux0000> will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
-Unit <camera_read> synthesized (advanced).
-WARNING:Xst:2677 - Node <data_out_29> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_31> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_30> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_28> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_27> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_26> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_25> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_24> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_15> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_14> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_11> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_13> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_12> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_10> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_9> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_8> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_7> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_6> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_5> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_4> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_3> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_2> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_1> of sequential type is unconnected in block <reader>.
-WARNING:Xst:2677 - Node <data_out_0> of sequential type is unconnected in block <reader>.
+WARNING:Xst:1710 - FF/Latch <data_out_23> (without init value) has a constant value of 0 in block <read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_20> (without init value) has a constant value of 0 in block <read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_22> (without init value) has a constant value of 0 in block <read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_21> (without init value) has a constant value of 0 in block <read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_19> (without init value) has a constant value of 0 in block <read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_18> (without init value) has a constant value of 0 in block <read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <data_out_17> (without init value) has a constant value of 0 in block <read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_out_1> (without init value) has a constant value of 0 in block <frame_buffer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_out_2> (without init value) has a constant value of 0 in block <frame_buffer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_out_3> (without init value) has a constant value of 0 in block <frame_buffer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_out_4> (without init value) has a constant value of 0 in block <frame_buffer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_out_5> (without init value) has a constant value of 0 in block <frame_buffer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_out_6> (without init value) has a constant value of 0 in block <frame_buffer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_out_7> (without init value) has a constant value of 0 in block <frame_buffer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <data_out_29> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_31> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_30> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_28> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_27> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_26> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_25> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_24> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_15> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_14> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_11> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_13> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_12> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_10> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_9> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_8> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_7> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_6> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_5> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_2> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_4> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_3> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_1> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_0> of sequential type is unconnected in block <read>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# ROMs                                                 : 1
- 4x1-bit ROM                                           : 1
 # Adders/Subtractors                                   : 1
  19-bit adder                                          : 1
 # Counters                                             : 4
  10-bit up counter                                     : 2
  19-bit up counter                                     : 1
  2-bit down counter                                    : 1
-# Registers                                            : 70
- Flip-Flops                                            : 70
-# Comparators                                          : 2
- 19-bit comparator less                                : 2
+# Registers                                            : 72
+ Flip-Flops                                            : 72
+# Comparators                                          : 1
+ 19-bit comparator less                                : 1
 # Xors                                                 : 1
  1-bit xor2                                            : 1
 
@@ -674,39 +672,32 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+INFO:Xst:2261 - The FF/Latch <data_out_7> in Unit <camera_read> is equivalent to the following 6 FFs/Latches, which will be removed : <data_out_6> <data_out_5> <data_out_2> <data_out_4> <data_out_3> <data_out_1> 
+INFO:Xst:2261 - The FF/Latch <data_out_23> in Unit <camera_read> is equivalent to the following 6 FFs/Latches, which will be removed : <data_out_20> <data_out_22> <data_out_21> <data_out_19> <data_out_18> <data_out_17> 
+INFO:Xst:2261 - The FF/Latch <data_out_29> in Unit <camera_read> is equivalent to the following 6 FFs/Latches, which will be removed : <data_out_31> <data_out_30> <data_out_28> <data_out_27> <data_out_26> <data_out_25> 
+INFO:Xst:2261 - The FF/Latch <data_out_15> in Unit <camera_read> is equivalent to the following 6 FFs/Latches, which will be removed : <data_out_14> <data_out_11> <data_out_13> <data_out_12> <data_out_10> <data_out_9> 
+WARNING:Xst:1710 - FF/Latch <data_out_29> (without init value) has a constant value of 0 in block <camera_read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_23> (without init value) has a constant value of 0 in block <camera_read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_15> (without init value) has a constant value of 0 in block <camera_read>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_7> (without init value) has a constant value of 0 in block <camera_read>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <labkit> ...
 
 Optimizing unit <camera_read> ...
 
 Optimizing unit <camera_save> ...
-WARNING:Xst:1293 - FF/Latch <state_0> has a constant value of 0 in block <camera_save>. This FF/Latch will be trimmed during the optimization process.
 
 Optimizing unit <xvga_640x480> ...
-WARNING:Xst:2677 - Node <reader/data_out_0> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_1> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_2> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_3> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_4> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_5> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_6> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_7> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_8> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_9> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_10> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_12> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_13> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_11> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_14> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_15> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_24> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_25> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_26> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_27> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_28> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_30> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_31> of sequential type is unconnected in block <labkit>.
-WARNING:Xst:2677 - Node <reader/data_out_29> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:1710 - FF/Latch <frame_buffer/pixel_out_7> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <frame_buffer/pixel_out_6> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <frame_buffer/pixel_out_5> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <frame_buffer/pixel_out_4> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <frame_buffer/pixel_out_3> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <frame_buffer/pixel_out_2> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <frame_buffer/pixel_out_1> (without init value) has a constant value of 0 in block <labkit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <read/data_out_0> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_8> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_24> of sequential type is unconnected in block <labkit>.
 
 Mapping all equations...
 WARNING:Xst:2036 - Inserting OBUF on port <vga_out_red<7>> driven by black box <dual_port_bram>. Possible simulation mismatch.
@@ -742,8 +733,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 86
- Flip-Flops                                            : 86
+# Registers                                            : 75
+ Flip-Flops                                            : 75
 
 =========================================================================
 
@@ -772,32 +763,35 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 254
+# BELS                             : 256
 #      GND                         : 1
 #      INV                         : 9
 #      LUT1                        : 54
-#      LUT2                        : 8
-#      LUT3                        : 11
+#      LUT2                        : 5
+#      LUT3                        : 19
 #      LUT3_D                      : 1
 #      LUT3_L                      : 1
-#      LUT4                        : 45
+#      LUT4                        : 39
+#      LUT4_D                      : 2
 #      LUT4_L                      : 6
 #      MUXCY                       : 59
+#      MUXF5                       : 1
 #      VCC                         : 1
 #      XORCY                       : 58
-# FlipFlops/Latches                : 86
+# FlipFlops/Latches                : 75
 #      FD                          : 2
-#      FDE                         : 12
+#      FDE                         : 5
 #      FDR                         : 30
-#      FDRE                        : 40
+#      FDRE                        : 35
+#      FDRS                        : 1
 #      FDS                         : 2
 # Shift Registers                  : 1
 #      SRL16                       : 1
-# Clock Buffers                    : 2
-#      BUFG                        : 2
-# IO Buffers                       : 254
-#      IBUF                        : 12
-#      IBUFG                       : 1
+# Clock Buffers                    : 6
+#      BUFG                        : 6
+# IO Buffers                       : 248
+#      IBUF                        : 2
+#      IBUFG                       : 5
 #      OBUF                        : 241
 # Others                           : 1
 #      dual_port_bram              : 1
@@ -809,13 +803,13 @@ Device utilization summary:
 Selected Device : 2v6000bf957-4 
 
  Number of Slices:                       72  out of  33792     0%  
- Number of Slice Flip Flops:             86  out of  67584     0%  
- Number of 4 input LUTs:                136  out of  67584     0%  
-    Number used as logic:               135
+ Number of Slice Flip Flops:             75  out of  67584     0%  
+ Number of 4 input LUTs:                137  out of  67584     0%  
+    Number used as logic:               136
     Number used as Shift registers:       1
  Number of IOs:                         576
- Number of bonded IOBs:                 254  out of    684    37%  
- Number of GCLKs:                         2  out of     16    12%  
+ Number of bonded IOBs:                 248  out of    684    36%  
+ Number of GCLKs:                         6  out of     16    37%  
 
 ---------------------------
 Partition Resource Summary:
@@ -839,7 +833,7 @@ Clock Information:
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
 clock_27mhz                        | IBUF+BUFG              | 22    |
-user1<4>                           | IBUFG+BUFG             | 65    |
+user1<4>                           | IBUFG+BUFG             | 54    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -850,10 +844,10 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 6.775ns (Maximum Frequency: 147.601MHz)
-   Minimum input arrival time before clock: 3.540ns
+   Minimum period: 7.858ns (Maximum Frequency: 127.259MHz)
+   Minimum input arrival time before clock: 6.221ns
    Maximum output required time after clock: 6.403ns
-   Maximum combinational path delay: 9.014ns
+   Maximum combinational path delay: 9.472ns
 
 Timing Detail:
 --------------
@@ -889,29 +883,26 @@ Delay:               5.808ns (Levels of Logic = 7)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'user1<4>'
-  Clock period: 6.775ns (frequency: 147.601MHz)
-  Total number of paths / destination ports: 1132 / 98
+  Clock period: 7.858ns (frequency: 127.259MHz)
+  Total number of paths / destination ports: 1398 / 92
 -------------------------------------------------------------------------
-Delay:               6.775ns (Levels of Logic = 5)
-  Source:            vga/hcount_1 (FF)
-  Destination:       vga/blank (FF)
+Delay:               3.929ns (Levels of Logic = 2)
+  Source:            read/pixel_done (FF)
+  Destination:       frame_buffer/addr_18 (FF)
   Source Clock:      user1<4> rising
-  Destination Clock: user1<4> rising
+  Destination Clock: user1<4> falling
 
-  Data Path: vga/hcount_1 to vga/blank
+  Data Path: read/pixel_done to frame_buffer/addr_18
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              3   0.568   1.010  vga/hcount_1 (vga/hcount_1)
-     LUT4_L:I0->LO         1   0.439   0.140  vga/hblankon21_SW0 (N28)
-     LUT4:I3->O            5   0.439   0.804  vga/hblankon21 (vga/N7)
-     LUT4_L:I2->LO         1   0.439   0.134  vga/hreset1_1 (vga/hreset1)
-     LUT3:I2->O           11   0.439   0.942  vga/vreset33 (vga/vcount_and0000)
-     LUT4:I2->O            2   0.439   0.702  vga/next_vblank (vga/next_vblank)
-     FDS:S                     0.280          vga/blank
+     FDRE:C->Q             5   0.568   1.056  read/pixel_done (read/pixel_done)
+     LUT4_D:I0->O         18   0.439   1.058  frame_buffer/addr_mux0000<0>345 (frame_buffer/N21)
+     LUT4:I2->O            1   0.439   0.000  frame_buffer/addr_mux0000<8>1 (frame_buffer/addr_mux0000<8>)
+     FDR:D                     0.370          frame_buffer/addr_10
     ----------------------------------------
-    Total                      6.775ns (3.043ns logic, 3.732ns route)
-                                       (44.9% logic, 55.1% route)
+    Total                      3.929ns (1.816ns logic, 2.113ns route)
+                                       (46.2% logic, 53.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
@@ -935,27 +926,29 @@ Offset:              3.540ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'user1<4>'
-  Total number of paths / destination ports: 30 / 19
+  Total number of paths / destination ports: 14 / 9
 -------------------------------------------------------------------------
-Offset:              3.276ns (Levels of Logic = 2)
+Offset:              6.221ns (Levels of Logic = 4)
   Source:            user1<2> (PAD)
-  Destination:       reader/data_out_16 (FF)
+  Destination:       read/data_out_16 (FF)
   Destination Clock: user1<4> rising
 
-  Data Path: user1<2> to reader/data_out_16
+  Data Path: user1<2> to read/data_out_16
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             3   0.825   0.933  user1_2_IBUF (user1_2_IBUF)
-     LUT4:I1->O            8   0.439   0.839  reader/data_out_23_not00011 (reader/data_out_23_not0001)
-     FDRE:CE                   0.240          reader/data_out_23
+     IBUFG:I->O            1   1.414   0.517  user1_2_IBUFG (user1_2_IBUFG)
+     BUFG:I->O             5   0.589   1.056  vsync_buf (vsync_in)
+     LUT4:I0->O            3   0.439   1.009  read/data_out_15_not000111 (read/pixel_done_and0000)
+     LUT3:I0->O            1   0.439   0.517  read/data_out_23_not00011 (read/data_out_23_not0001)
+     FDRE:CE                   0.240          read/data_out_16
     ----------------------------------------
-    Total                      3.276ns (1.504ns logic, 1.772ns route)
-                                       (45.9% logic, 54.1% route)
+    Total                      6.221ns (3.121ns logic, 3.100ns route)
+                                       (50.2% logic, 49.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'user1<4>'
-  Total number of paths / destination ports: 51 / 51
+  Total number of paths / destination ports: 44 / 44
 -------------------------------------------------------------------------
 Offset:              6.403ns (Levels of Logic = 2)
   Source:            vga/blank (FF)
@@ -977,7 +970,7 @@ Offset:              6.403ns (Levels of Logic = 2)
 Timing constraint: Default path analysis
   Total number of paths / destination ports: 28 / 28
 -------------------------------------------------------------------------
-Delay:               9.014ns (Levels of Logic = 4)
+Delay:               9.472ns (Levels of Logic = 4)
   Source:            user1<4> (PAD)
   Destination:       vga_out_pixel_clock (PAD)
 
@@ -986,25 +979,25 @@ Delay:               9.014ns (Levels of Logic = 4)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      IBUFG:I->O            1   1.414   0.517  user1_4_IBUFG (user1_4_IBUFG)
-     BUFG:I->O            66   0.589   1.176  pclk_buf (pclk)
-     INV:I->O              1   0.439   0.517  vga_out_pixel_clock1_INV_0 (vga_out_pixel_clock_OBUF)
+     BUFG:I->O            32   0.589   1.088  pclk_buf (pclk)
+     INV:I->O             24   0.439   1.064  vga_out_pixel_clock1_INV_0 (vga_out_pixel_clock_OBUF)
      OBUF:I->O                 4.361          vga_out_pixel_clock_OBUF (vga_out_pixel_clock)
     ----------------------------------------
-    Total                      9.014ns (6.803ns logic, 2.211ns route)
-                                       (75.5% logic, 24.5% route)
+    Total                      9.472ns (6.803ns logic, 2.669ns route)
+                                       (71.8% logic, 28.2% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.28 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 6.11 secs
  
 --> 
 
 
-Total memory usage is 456840 kilobytes
+Total memory usage is 452432 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  381 (   0 filtered)
-Number of infos    :   45 (   0 filtered)
+Number of infos    :   46 (   0 filtered)
 

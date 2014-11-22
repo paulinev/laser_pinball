@@ -1,0 +1,786 @@
+Release 10.1.03 - xst K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to /afs/athena.mit.edu/user/w/b/wbraun/Private/6_111/FinalProject/Hardware_interface/laser_projector/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Parameter xsthdpdir set to /afs/athena.mit.edu/user/w/b/wbraun/Private/6_111/FinalProject/Hardware_interface/laser_projector/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.04 secs
+ 
+--> 
+Reading design: hardware_interface.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "hardware_interface.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "hardware_interface"
+Output Format                      : NGC
+Target Device                      : xc5vlx50t-3-ff1136
+
+---- Source Options
+Top Module Name                    : hardware_interface
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Use DSP Block                      : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : off
+Reduce Control Sets                : off
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 32
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Library Search Order               : hardware_interface.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "spi_master.v" in library work
+Compiling verilog file "rom_playback.v" in library work
+Module <spi_master> compiled
+Compiling verilog file "./ILDA_rom.v" in library work
+Module <rom_playback> compiled
+Compiling verilog file "projector_interface.v" in library work
+Module <ILDA_rom> compiled
+Compiling verilog file "galvo_update_rate.v" in library work
+Module <projector_interface> compiled
+Compiling verilog file "DAC_FSM.v" in library work
+Module <galvo_update_rate> compiled
+Compiling verilog file "projector_module.v" in library work
+Module <DAC_drive> compiled
+Compiling verilog file "hardware_interface.v" in library work
+Module <projector_module> compiled
+Module <hardware_interface> compiled
+No errors in compilation
+Analysis of file <"hardware_interface.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <hardware_interface> in library <work>.
+
+Analyzing hierarchy for module <projector_module> in library <work>.
+
+Analyzing hierarchy for module <projector_interface> in library <work>.
+
+Analyzing hierarchy for module <galvo_update_rate> in library <work> with parameters.
+	FAST = "00000000000000000000011010100100"
+	MED1 = "00000000000000000000100111000100"
+	MED2 = "00000000000000000000011111010000"
+	SLOW = "00000000000000000000111000010000"
+
+Analyzing hierarchy for module <DAC_drive> in library <work> with parameters.
+	LATCH_DELAY = "00000000000000000000000000000100"
+	SPI_CLK_DIV = "00000000000000000000000000000010"
+
+Analyzing hierarchy for module <rom_playback> in library <work> with parameters.
+	LOG_ROM_SIZE = "00000000000000000000000000001011"
+
+Analyzing hierarchy for module <spi_master> in library <work> with parameters.
+	CLK_DIV = "00000000000000000000000000000010"
+	CS_DELAY = "00000000000000000000000000000100"
+	DATA_WIDTH = "00000000000000000000000000010000"
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <hardware_interface>.
+Module <hardware_interface> is correct for synthesis.
+ 
+Analyzing module <projector_module> in library <work>.
+Module <projector_module> is correct for synthesis.
+ 
+Analyzing module <projector_interface> in library <work>.
+Module <projector_interface> is correct for synthesis.
+ 
+Analyzing module <rom_playback> in library <work>.
+	LOG_ROM_SIZE = 32'sb00000000000000000000000000001011
+Module <rom_playback> is correct for synthesis.
+ 
+Analyzing module <galvo_update_rate> in library <work>.
+	FAST = 32'sb00000000000000000000011010100100
+	MED1 = 32'sb00000000000000000000100111000100
+	MED2 = 32'sb00000000000000000000011111010000
+	SLOW = 32'sb00000000000000000000111000010000
+Module <galvo_update_rate> is correct for synthesis.
+ 
+Analyzing module <DAC_drive> in library <work>.
+	LATCH_DELAY = 32'sb00000000000000000000000000000100
+	SPI_CLK_DIV = 32'sb00000000000000000000000000000010
+Module <DAC_drive> is correct for synthesis.
+ 
+Analyzing module <spi_master> in library <work>.
+	CLK_DIV = 32'sb00000000000000000000000000000010
+	CS_DELAY = 32'sb00000000000000000000000000000100
+	DATA_WIDTH = 32'sb00000000000000000000000000010000
+INFO:Xst:1432 - Contents of array <tx_data> may be accessed with a negative index, causing simulation mismatch.
+INFO:Xst:1433 - Contents of array <tx_data> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+Module <spi_master> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <galvo_update_rate>.
+    Related source file is "galvo_update_rate.v".
+    Found 1-bit register for signal <strobe_out>.
+    Found 12-bit register for signal <counter>.
+    Found 12-bit comparator greatequal for signal <counter$cmp_ge0000> created at line 49.
+    Found 12-bit comparator greatequal for signal <counter$cmp_ge0001> created at line 45.
+    Found 13-bit comparator greatequal for signal <counter$cmp_ge0002> created at line 41.
+    Found 13-bit comparator greatequal for signal <counter$cmp_ge0003> created at line 37.
+    Found 12-bit adder for signal <counter$share0000> created at line 34.
+    Summary:
+	inferred  13 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+Unit <galvo_update_rate> synthesized.
+
+
+Synthesizing Unit <rom_playback>.
+    Related source file is "rom_playback.v".
+    Found finite state machine <FSM_0> for signal <FSM_state>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 7                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 4                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 11-bit register for signal <rom_address>.
+    Found 32-bit register for signal <out_data>.
+    Found 11-bit adder for signal <rom_address$addsub0000> created at line 41.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  43 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+Unit <rom_playback> synthesized.
+
+
+Synthesizing Unit <spi_master>.
+    Related source file is "spi_master.v".
+    Found finite state machine <FSM_1> for signal <FSM_state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 14                                             |
+    | Inputs             | 4                                              |
+    | Outputs            | 8                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 16-bit register for signal <data_out>.
+    Found 1-bit register for signal <CSN>.
+    Found 1-bit register for signal <mosi>.
+    Found 1-bit register for signal <done>.
+    Found 1-bit register for signal <sclk>.
+    Found 1-bit 16-to-1 multiplexer for signal <$varindex0000> created at line 51.
+    Found 8-bit register for signal <clk_counter>.
+    Found 8-bit adder for signal <clk_counter$addsub0000>.
+    Found 5-bit register for signal <data_index>.
+    Found 5-bit adder for signal <data_index$addsub0000> created at line 55.
+    Found 8-bit register for signal <delay_counter>.
+    Found 8-bit adder for signal <delay_counter$addsub0000>.
+    Found 16-bit register for signal <tx_data>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  57 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   1 Multiplexer(s).
+Unit <spi_master> synthesized.
+
+
+Synthesizing Unit <projector_interface>.
+    Related source file is "projector_interface.v".
+WARNING:Xst:1305 - Output <frame_done> is never assigned. Tied to value 0.
+WARNING:Xst:647 - Input <reset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <data_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <ILDA_command<4:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Register <rom_next> equivalent to <DAC_start> has been removed
+    Found 3-bit register for signal <laser_rgb>.
+    Found 1-bit register for signal <DAC_start>.
+    Found 12-bit register for signal <DAC_x>.
+    Found 12-bit register for signal <DAC_y>.
+    Summary:
+	inferred  28 D-type flip-flop(s).
+Unit <projector_interface> synthesized.
+
+
+Synthesizing Unit <DAC_drive>.
+    Related source file is "DAC_FSM.v".
+WARNING:Xst:646 - Signal <dout> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_2> for signal <FSM_state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 11                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 3-bit register for signal <laser_rgb_latched>.
+    Found 1-bit register for signal <done>.
+    Found 1-bit register for signal <dac_latch>.
+    Found 5-bit down counter for signal <clk_counter>.
+    Found 16-bit register for signal <SPI_din>.
+    Found 1-bit register for signal <SPI_start>.
+    Found 12-bit register for signal <x_stored>.
+    Found 12-bit register for signal <y_stored>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred  46 D-type flip-flop(s).
+Unit <DAC_drive> synthesized.
+
+
+Synthesizing Unit <projector_module>.
+    Related source file is "projector_module.v".
+WARNING:Xst:647 - Input <physics_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1780 - Signal <projection_frame_done> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <projection_data> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000000000000000.
+Unit <projector_module> synthesized.
+
+
+Synthesizing Unit <hardware_interface>.
+    Related source file is "hardware_interface.v".
+WARNING:Xst:1306 - Output <AUDIO_SDATA_OUT> is never assigned.
+WARNING:Xst:1306 - Output <DVI_XCLK_N> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D0> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D1> is never assigned.
+WARNING:Xst:1306 - Output <DVI_XCLK_P> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D2> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D3> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D4> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D5> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D6> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D7> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D8> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D9> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_20> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_16> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_22> is never assigned.
+WARNING:Xst:1306 - Output <DVI_H> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_18> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_24> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_30> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_26> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_32> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_28> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_34> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_40> is never assigned.
+WARNING:Xst:1306 - Output <DVI_DE> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_36> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_42> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_38> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_44> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_50> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_46> is never assigned.
+WARNING:Xst:1306 - Output <DVI_V> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_52> is never assigned.
+WARNING:Xst:647 - Input <GPIO_DIP_SW5> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <GPIO_DIP_SW6> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <HDR1_48> is never assigned.
+WARNING:Xst:647 - Input <GPIO_DIP_SW7> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <HDR1_54> is never assigned.
+WARNING:Xst:647 - Input <GPIO_DIP_SW8> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <HDR1_60> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_56> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_62> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_58> is never assigned.
+WARNING:Xst:1306 - Output <HDR1_64> is never assigned.
+WARNING:Xst:1306 - Output <AUDIO_BIT_CLK> is never assigned.
+WARNING:Xst:1306 - Output <DVI_GPIO1> is never assigned.
+WARNING:Xst:1306 - Output <DVI_RESET_B> is never assigned.
+WARNING:Xst:647 - Input <AUDIO_SDATA_IN> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <AUDIO_SYNC> is never assigned.
+WARNING:Xst:647 - Input <CLK_27MHZ_FPGA> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <DVI_D10> is never assigned.
+WARNING:Xst:1306 - Output <DVI_D11> is never assigned.
+    Found 1-bit register for signal <clk>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <hardware_interface> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 6
+ 11-bit adder                                          : 1
+ 12-bit adder                                          : 1
+ 5-bit adder                                           : 1
+ 6-bit adder                                           : 1
+ 8-bit adder                                           : 2
+# Counters                                             : 1
+ 5-bit down counter                                    : 1
+# Registers                                            : 40
+ 1-bit register                                        : 26
+ 11-bit register                                       : 1
+ 12-bit register                                       : 5
+ 16-bit register                                       : 2
+ 3-bit register                                        : 2
+ 32-bit register                                       : 1
+ 5-bit register                                        : 1
+ 8-bit register                                        : 2
+# Comparators                                          : 4
+ 12-bit comparator greatequal                          : 2
+ 13-bit comparator greatequal                          : 2
+# Multiplexers                                         : 1
+ 1-bit 16-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <big_hazor/little_phazor/ilda_playback/FSM_state> on signal <FSM_state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 000
+ 001   | 001
+ 010   | 010
+ 011   | 011
+ 100   | 110
+-------------------
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <big_hazor/projector_dac/DAC_SPI/FSM_state> on signal <FSM_state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 000
+ 0001  | 001
+ 0010  | 011
+ 0011  | 010
+ 0100  | 110
+ 0101  | 111
+ 0110  | 101
+-------------------
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <big_hazor/projector_dac/FSM_state> on signal <FSM_state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 000
+ 0001  | 001
+ 0010  | 011
+ 0011  | 010
+ 0100  | 110
+ 0101  | 111
+ 0110  | 101
+-------------------
+Loading device for application Rf_Device from file '5vlx50t.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
+Reading core <ILDA_rom.ngc>.
+Loading core <ILDA_rom> for timing and area information for instance <test_pattern_rom>.
+WARNING:Xst:1710 - FF/Latch <data_out_0> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_1> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_2> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_3> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_4> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_5> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_6> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_9> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_7> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_8> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_10> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_11> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_12> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_13> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_14> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_out_15> (without init value) has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <SPI_din_14> has a constant value of 0 in block <DAC_drive>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <tx_data_14> has a constant value of 0 in block <DAC_SPI>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <out_data_0> of sequential type is unconnected in block <ilda_playback>.
+WARNING:Xst:2677 - Node <out_data_1> of sequential type is unconnected in block <ilda_playback>.
+WARNING:Xst:2677 - Node <out_data_2> of sequential type is unconnected in block <ilda_playback>.
+WARNING:Xst:2677 - Node <out_data_3> of sequential type is unconnected in block <ilda_playback>.
+WARNING:Xst:2677 - Node <out_data_4> of sequential type is unconnected in block <ilda_playback>.
+WARNING:Xst:2677 - Node <done> of sequential type is unconnected in block <projector_dac>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 6
+ 11-bit adder                                          : 1
+ 12-bit adder                                          : 1
+ 4-bit adder                                           : 1
+ 5-bit adder                                           : 1
+ 8-bit adder                                           : 2
+# Counters                                             : 1
+ 5-bit down counter                                    : 1
+# Registers                                            : 180
+ Flip-Flops                                            : 180
+# Comparators                                          : 4
+ 12-bit comparator greatequal                          : 2
+ 13-bit comparator greatequal                          : 2
+# Multiplexers                                         : 1
+ 1-bit 16-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1293 - FF/Latch <tx_data_14> has a constant value of 0 in block <spi_master>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <hardware_interface> ...
+
+Optimizing unit <galvo_update_rate> ...
+
+Optimizing unit <rom_playback> ...
+
+Optimizing unit <spi_master> ...
+
+Optimizing unit <projector_interface> ...
+
+Optimizing unit <DAC_drive> ...
+WARNING:Xst:1293 - FF/Latch <clk_counter_4> has a constant value of 0 in block <DAC_drive>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <clk_counter_3> has a constant value of 0 in block <DAC_drive>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <clk_counter_3> has a constant value of 0 in block <DAC_drive>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <clk_counter_4> has a constant value of 0 in block <DAC_drive>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <big_hazor/little_phazor/ilda_playback/out_data_0> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <big_hazor/little_phazor/ilda_playback/out_data_1> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <big_hazor/little_phazor/ilda_playback/out_data_2> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <big_hazor/little_phazor/ilda_playback/out_data_3> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <big_hazor/little_phazor/ilda_playback/out_data_4> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <big_hazor/projector_dac/done> of sequential type is unconnected in block <hardware_interface>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block hardware_interface, actual ratio is 1.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 176
+ Flip-Flops                                            : 176
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : hardware_interface.ngr
+Top Level Output File Name         : hardware_interface
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 65
+
+Cell Usage :
+# BELS                             : 207
+#      GND                         : 2
+#      INV                         : 4
+#      LUT1                        : 11
+#      LUT2                        : 11
+#      LUT3                        : 15
+#      LUT4                        : 18
+#      LUT5                        : 61
+#      LUT6                        : 52
+#      MUXCY                       : 11
+#      MUXF7                       : 8
+#      VCC                         : 2
+#      XORCY                       : 12
+# FlipFlops/Latches                : 176
+#      FD                          : 98
+#      FDE                         : 72
+#      FDR                         : 3
+#      FDS                         : 3
+# RAMS                             : 2
+#      RAMB36_EXP                  : 2
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 11
+#      IBUF                        : 4
+#      OBUF                        : 7
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 5vlx50tff1136-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             176  out of  28800     0%  
+ Number of Slice LUTs:                  172  out of  28800     0%  
+    Number used as Logic:               172  out of  28800     0%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    239
+   Number with an unused Flip Flop:      63  out of    239    26%  
+   Number with an unused LUT:            67  out of    239    28%  
+   Number of fully used LUT-FF pairs:   109  out of    239    45%  
+   Number of unique control sets:        12
+
+IO Utilization: 
+ Number of IOs:                          65
+ Number of bonded IOBs:                  12  out of    480     2%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:                2  out of     60     3%  
+    Number using Block RAM only:          2
+ Number of BUFG/BUFGCTRLs:                2  out of     32     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                                        | Clock buffer(FF name)                                                                                                              | Load  |
+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------+
+clk1                                                | BUFG                                                                                                                               | 177   |
+big_hazor/little_phazor/test_pattern_rom/BU2/dbiterr| NONE(big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 2     |
+USER_CLK                                            | BUFGP                                                                                                                              | 1     |
+----------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                                              | Buffer(FF name)                                                                                                                    | Load  |
+------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------+
+big_hazor/little_phazor/test_pattern_rom/BU2/dbiterr(big_hazor/little_phazor/test_pattern_rom/BU2/XST_GND:G)| NONE(big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 16    |
+------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 2.832ns (Maximum Frequency: 353.057MHz)
+   Minimum input arrival time before clock: 2.649ns
+   Maximum output required time after clock: 3.222ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk1'
+  Clock period: 2.832ns (frequency: 353.057MHz)
+  Total number of paths / destination ports: 1505 / 295
+-------------------------------------------------------------------------
+Delay:               2.832ns (Levels of Logic = 3)
+  Source:            big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+  Destination:       big_hazor/little_phazor/ilda_playback/FSM_state_FFd3 (FF)
+  Source Clock:      clk1 rising
+  Destination Clock: clk1 rising
+
+  Data Path: big_hazor/little_phazor/test_pattern_rom/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP to big_hazor/little_phazor/ilda_playback/FSM_state_FFd3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB36_EXP:REGCLKAU->DOA3    1   1.750   0.549  U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (douta(3))
+     end scope: 'BU2'
+     end scope: 'big_hazor/little_phazor/test_pattern_rom'
+     LUT3:I0->O            1   0.086   0.361  big_hazor/little_phazor/ilda_playback/FSM_state_FFd3-In_SW0 (N18)
+     LUT5:I4->O            1   0.086   0.000  big_hazor/little_phazor/ilda_playback/FSM_state_FFd3-In1 (big_hazor/little_phazor/ilda_playback/FSM_state_FFd3-In1)
+     FDR:D                    -0.022          big_hazor/little_phazor/ilda_playback/FSM_state_FFd3
+    ----------------------------------------
+    Total                      2.832ns (1.922ns logic, 0.910ns route)
+                                       (67.9% logic, 32.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'USER_CLK'
+  Clock period: 1.099ns (frequency: 909.753MHz)
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               1.099ns (Levels of Logic = 0)
+  Source:            clk (FF)
+  Destination:       clk (FF)
+  Source Clock:      USER_CLK rising
+  Destination Clock: USER_CLK rising
+
+  Data Path: clk to clk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              1   0.396   0.235  clk (clk1)
+     FDR:R                     0.468          clk
+    ----------------------------------------
+    Total                      1.099ns (0.864ns logic, 0.235ns route)
+                                       (78.6% logic, 21.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk1'
+  Total number of paths / destination ports: 114 / 39
+-------------------------------------------------------------------------
+Offset:              2.649ns (Levels of Logic = 4)
+  Source:            GPIO_DIP_SW4 (PAD)
+  Destination:       big_hazor/galvo_clk/counter_11 (FF)
+  Destination Clock: clk1 rising
+
+  Data Path: GPIO_DIP_SW4 to big_hazor/galvo_clk/counter_11
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   0.694   0.858  GPIO_DIP_SW4_IBUF (GPIO_DIP_SW4_IBUF)
+     LUT6:I0->O            1   0.086   0.361  big_hazor/galvo_clk/counter_mux0000<0>182 (big_hazor/galvo_clk/counter_mux0000<0>182)
+     LUT5:I4->O           12   0.086   0.478  big_hazor/galvo_clk/counter_mux0000<0>1116 (big_hazor/galvo_clk/counter_mux0000<0>1116)
+     LUT5:I3->O            1   0.086   0.000  big_hazor/galvo_clk/counter_mux0000<11>1 (big_hazor/galvo_clk/counter_mux0000<11>)
+     FD:D                     -0.022          big_hazor/galvo_clk/counter_0
+    ----------------------------------------
+    Total                      2.649ns (0.952ns logic, 1.697ns route)
+                                       (35.9% logic, 64.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk1'
+  Total number of paths / destination ports: 7 / 7
+-------------------------------------------------------------------------
+Offset:              3.222ns (Levels of Logic = 2)
+  Source:            big_hazor/projector_dac/laser_rgb_latched_2 (FF)
+  Destination:       HDR1_10 (PAD)
+  Source Clock:      clk1 rising
+
+  Data Path: big_hazor/projector_dac/laser_rgb_latched_2 to HDR1_10
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.396   0.235  big_hazor/projector_dac/laser_rgb_latched_2 (big_hazor/projector_dac/laser_rgb_latched_2)
+     INV:I->O              1   0.212   0.235  _AUX_1<2>1_INV_0 (HDR1_10_OBUF)
+     OBUF:I->O                 2.144          HDR1_10_OBUF (HDR1_10)
+    ----------------------------------------
+    Total                      3.222ns (2.752ns logic, 0.470ns route)
+                                       (85.4% logic, 14.6% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 9.81 secs
+ 
+--> 
+
+
+Total memory usage is 587472 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   96 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
+
