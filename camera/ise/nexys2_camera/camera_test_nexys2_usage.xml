@@ -4,55 +4,55 @@
      changes made to this file may result in unpredictable
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
-<DeviceUsageSummary rev="2">
-<DesignStatistics TimeStamp="Mon Nov 24 13:24:35 2014"><group name="NetStatistics">
-<item name="NumNets_Active" rev="2">
+<DeviceUsageSummary rev="3">
+<DesignStatistics TimeStamp="Mon Nov 24 13:37:23 2014"><group name="NetStatistics">
+<item name="NumNets_Active" rev="3">
 <attrib name="value" value="76"/></item>
-<item name="NumNets_Gnd" rev="2">
+<item name="NumNets_Gnd" rev="3">
 <attrib name="value" value="1"/></item>
-<item name="NumNets_Vcc" rev="2">
+<item name="NumNets_Vcc" rev="3">
 <attrib name="value" value="1"/></item>
-<item name="NumNodesOfType_Active_CLKPIN" rev="2">
+<item name="NumNodesOfType_Active_CLKPIN" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="NumNodesOfType_Active_DOUBLE" rev="2">
+<item name="NumNodesOfType_Active_DOUBLE" rev="3">
 <attrib name="value" value="7"/></item>
-<item name="NumNodesOfType_Active_DUMMY" rev="2">
+<item name="NumNodesOfType_Active_DUMMY" rev="3">
 <attrib name="value" value="6"/></item>
-<item name="NumNodesOfType_Active_DUMMYBANK" rev="2">
+<item name="NumNodesOfType_Active_DUMMYBANK" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="NumNodesOfType_Active_DUMMYESC" rev="2">
+<item name="NumNodesOfType_Active_DUMMYESC" rev="3">
 <attrib name="value" value="3"/></item>
-<item name="NumNodesOfType_Active_GLOBAL" rev="2">
+<item name="NumNodesOfType_Active_GLOBAL" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="NumNodesOfType_Active_HUNIHEX" rev="2">
+<item name="NumNodesOfType_Active_HUNIHEX" rev="3">
 <attrib name="value" value="4"/></item>
-<item name="NumNodesOfType_Active_INPUT" rev="2">
+<item name="NumNodesOfType_Active_INPUT" rev="3">
 <attrib name="value" value="4"/></item>
-<item name="NumNodesOfType_Active_IOBOUTPUT" rev="2">
+<item name="NumNodesOfType_Active_IOBOUTPUT" rev="3">
 <attrib name="value" value="1"/></item>
-<item name="NumNodesOfType_Active_OMUX" rev="2">
+<item name="NumNodesOfType_Active_OMUX" rev="3">
 <attrib name="value" value="4"/></item>
-<item name="NumNodesOfType_Active_OUTPUT" rev="2">
+<item name="NumNodesOfType_Active_OUTPUT" rev="3">
 <attrib name="value" value="4"/></item>
-<item name="NumNodesOfType_Active_VFULLHEX" rev="2">
+<item name="NumNodesOfType_Active_VFULLHEX" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="NumNodesOfType_Active_VUNIHEX" rev="2">
+<item name="NumNodesOfType_Active_VUNIHEX" rev="3">
 <attrib name="value" value="12"/></item>
-<item name="NumNodesOfType_Gnd_INPUT" rev="2">
+<item name="NumNodesOfType_Gnd_INPUT" rev="3">
 <attrib name="value" value="21"/></item>
-<item name="NumNodesOfType_Gnd_OMUX" rev="2">
+<item name="NumNodesOfType_Gnd_OMUX" rev="3">
 <attrib name="value" value="21"/></item>
-<item name="NumNodesOfType_Gnd_OUTPUT" rev="2">
+<item name="NumNodesOfType_Gnd_OUTPUT" rev="3">
 <attrib name="value" value="16"/></item>
-<item name="NumNodesOfType_Vcc_CLKPIN" rev="2">
+<item name="NumNodesOfType_Vcc_CLKPIN" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="NumNodesOfType_Vcc_CNTRLPIN" rev="2">
+<item name="NumNodesOfType_Vcc_CNTRLPIN" rev="3">
 <attrib name="value" value="8"/></item>
-<item name="NumNodesOfType_Vcc_DUMMYBANK" rev="2">
+<item name="NumNodesOfType_Vcc_DUMMYBANK" rev="3">
 <attrib name="value" value="8"/></item>
-<item name="NumNodesOfType_Vcc_INPUT" rev="2">
+<item name="NumNodesOfType_Vcc_INPUT" rev="3">
 <attrib name="value" value="7"/></item>
-<item name="NumNodesOfType_Vcc_VCCOUT" rev="2">
+<item name="NumNodesOfType_Vcc_VCCOUT" rev="3">
 <attrib name="value" value="9"/></item>
 </group>
 <group name="MiscellaneousStatistics">
@@ -70,146 +70,146 @@
 <attrib name="value" value="2"/></item>
 </group>
 </DesignStatistics>
-<DeviceUsage TimeStamp="Mon Nov 24 13:24:35 2014"><group name="SiteSummary">
-<item name="BUFGMUX" rev="2">
+<DeviceUsage TimeStamp="Mon Nov 24 13:37:23 2014"><group name="SiteSummary">
+<item name="BUFGMUX" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="2"/></item>
-<item name="BUFGMUX_GCLKMUX" rev="2">
+<item name="BUFGMUX_GCLKMUX" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="2"/></item>
-<item name="BUFGMUX_GCLK_BUFFER" rev="2">
+<item name="BUFGMUX_GCLK_BUFFER" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="2"/></item>
-<item name="DCM" rev="2">
+<item name="DCM" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="2"/></item>
-<item name="DCM_DCM" rev="2">
+<item name="DCM_DCM" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="2"/></item>
-<item name="IBUF" rev="2">
+<item name="IBUF" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="21"/></item>
-<item name="IBUF_INBUF" rev="2">
+<item name="IBUF_INBUF" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="21"/></item>
-<item name="IBUF_PAD" rev="2">
+<item name="IBUF_PAD" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="21"/></item>
-<item name="IOB" rev="2">
+<item name="IOB" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="30"/></item>
-<item name="IOB_OUTBUF" rev="2">
+<item name="IOB_OUTBUF" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="30"/></item>
-<item name="IOB_PAD" rev="2">
+<item name="IOB_PAD" rev="3">
 <attrib name="total" value="1000000"/><attrib name="used" value="30"/></item>
 </group>
 </DeviceUsage>
-<ReportConfigData TimeStamp="Mon Nov 24 13:24:35 2014"><group name="IBUF_PAD">
-<item name="IOATTRBOX" rev="2">
+<ReportConfigData TimeStamp="Mon Nov 24 13:37:23 2014"><group name="IBUF_PAD">
+<item name="IOATTRBOX" rev="3">
 <attrib name="LVCMOS33" value="21"/></item>
 </group>
 <group name="BUFGMUX_GCLKMUX">
-<item name="DISABLE_ATTR" rev="2">
+<item name="DISABLE_ATTR" rev="3">
 <attrib name="LOW" value="2"/></item>
 </group>
 <group name="IOB_PAD">
-<item name="DRIVEATTRBOX" rev="2">
+<item name="DRIVEATTRBOX" rev="3">
 <attrib name="8" value="8"/><attrib name="12" value="22"/></item>
-<item name="IOATTRBOX" rev="2">
+<item name="IOATTRBOX" rev="3">
 <attrib name="LVCMOS25" value="2"/><attrib name="LVCMOS33" value="28"/></item>
-<item name="SLEW" rev="2">
+<item name="SLEW" rev="3">
 <attrib name="SLOW" value="22"/><attrib name="FAST" value="8"/></item>
 </group>
 <group name="DCM_DCM">
-<item name="CLKDV_DIVIDE" rev="2">
+<item name="CLKDV_DIVIDE" rev="3">
 <attrib name="2" value="2"/></item>
-<item name="CLKOUT_PHASE_SHIFT" rev="2">
+<item name="CLKOUT_PHASE_SHIFT" rev="3">
 <attrib name="NONE" value="2"/></item>
-<item name="DESKEW_ADJUST" rev="2">
+<item name="DESKEW_ADJUST" rev="3">
 <attrib name="6" value="2"/></item>
-<item name="DFS_FREQUENCY_MODE" rev="2">
+<item name="DFS_FREQUENCY_MODE" rev="3">
 <attrib name="LOW" value="2"/></item>
-<item name="DLL_FREQUENCY_MODE" rev="2">
+<item name="DLL_FREQUENCY_MODE" rev="3">
 <attrib name="LOW" value="2"/></item>
-<item name="DUTY_CYCLE_CORRECTION" rev="2">
+<item name="DUTY_CYCLE_CORRECTION" rev="3">
 <attrib name="TRUE" value="2"/></item>
-<item name="FACTORY_JF1" rev="2">
+<item name="FACTORY_JF1" rev="3">
 <attrib name="0XC0" value="2"/></item>
-<item name="FACTORY_JF2" rev="2">
+<item name="FACTORY_JF2" rev="3">
 <attrib name="0X80" value="2"/></item>
 </group>
 </ReportConfigData>
-<ReportPinData TimeStamp="Mon Nov 24 13:24:35 2014"><group name="IBUF_PAD">
-<item name="PAD" rev="2">
+<ReportPinData TimeStamp="Mon Nov 24 13:37:23 2014"><group name="IBUF_PAD">
+<item name="PAD" rev="3">
 <attrib name="value" value="21"/></item>
 </group>
 <group name="IBUF_INBUF">
-<item name="IN" rev="2">
+<item name="IN" rev="3">
 <attrib name="value" value="21"/></item>
-<item name="OUT" rev="2">
+<item name="OUT" rev="3">
 <attrib name="value" value="21"/></item>
 </group>
 <group name="BUFGMUX_GCLK_BUFFER">
-<item name="IN" rev="2">
+<item name="IN" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="OUT" rev="2">
+<item name="OUT" rev="3">
 <attrib name="value" value="2"/></item>
 </group>
 <group name="IOB_OUTBUF">
-<item name="IN" rev="2">
+<item name="IN" rev="3">
 <attrib name="value" value="30"/></item>
-<item name="OUT" rev="2">
+<item name="OUT" rev="3">
 <attrib name="value" value="30"/></item>
 </group>
 <group name="IBUF">
-<item name="I" rev="2">
+<item name="I" rev="3">
 <attrib name="value" value="21"/></item>
-<item name="PAD" rev="2">
+<item name="PAD" rev="3">
 <attrib name="value" value="21"/></item>
 </group>
 <group name="BUFGMUX_GCLKMUX">
-<item name="I0" rev="2">
+<item name="I0" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="OUT" rev="2">
+<item name="OUT" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="S" rev="2">
+<item name="S" rev="3">
 <attrib name="value" value="2"/></item>
 </group>
 <group name="IOB_PAD">
-<item name="PAD" rev="2">
+<item name="PAD" rev="3">
 <attrib name="value" value="30"/></item>
 </group>
 <group name="IOB">
-<item name="O1" rev="2">
+<item name="O1" rev="3">
 <attrib name="value" value="30"/></item>
-<item name="PAD" rev="2">
+<item name="PAD" rev="3">
 <attrib name="value" value="30"/></item>
 </group>
 <group name="DCM_DCM">
-<item name="CLKFX" rev="2">
+<item name="CLKFX" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="CLKIN" rev="2">
+<item name="CLKIN" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="PSCLK" rev="2">
+<item name="PSCLK" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="PSEN" rev="2">
+<item name="PSEN" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="PSINCDEC" rev="2">
+<item name="PSINCDEC" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="RST" rev="2">
+<item name="RST" rev="3">
 <attrib name="value" value="2"/></item>
 </group>
 <group name="BUFGMUX">
-<item name="I0" rev="2">
+<item name="I0" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="O" rev="2">
+<item name="O" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="S" rev="2">
+<item name="S" rev="3">
 <attrib name="value" value="2"/></item>
 </group>
 <group name="DCM">
-<item name="CLKFX" rev="2">
+<item name="CLKFX" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="CLKIN" rev="2">
+<item name="CLKIN" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="PSCLK" rev="2">
+<item name="PSCLK" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="PSEN" rev="2">
+<item name="PSEN" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="PSINCDEC" rev="2">
+<item name="PSINCDEC" rev="3">
 <attrib name="value" value="2"/></item>
-<item name="RST" rev="2">
+<item name="RST" rev="3">
 <attrib name="value" value="2"/></item>
 </group>
 </ReportPinData>
