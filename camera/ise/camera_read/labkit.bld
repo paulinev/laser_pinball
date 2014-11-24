@@ -19,6 +19,9 @@ Reading in constraint information from
 it.ucf'...
 Gathering constraint information from source properties...
 Done.
+INFO:NgdBuild:889 - Pad net 'siod_buf/IO' is not connected to an external port
+   in this design.  A new port 'IO' has been added and is connected to this
+   signal.
 
 Resolving constraint associations...
 Checking Constraint Associations...
@@ -32,12 +35,6 @@ Done...
 Checking Partitions ...
 
 Checking expanded design ...
-WARNING:NgdBuild:478 - clock net camera_in<0> with clock driver camera_buf
-   drives no clock pins
-WARNING:NgdBuild:478 - clock net href_in with clock driver href_buf drives no
-   clock pins
-WARNING:NgdBuild:478 - clock net vsync_in with clock driver vsync_buf drives no
-   clock pins
 WARNING:NgdBuild:470 - bidirect pad net 'user3<28>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user3<4>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user3<29>' has no legal driver
@@ -108,7 +105,6 @@ WARNING:NgdBuild:470 - bidirect pad net 'user2<22>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<37>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<42>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'flash_data<9>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<1>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<4>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<23>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<18>' has no legal driver
@@ -129,10 +125,7 @@ WARNING:NgdBuild:470 - bidirect pad net 'user4<8>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<27>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<9>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<28>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<7>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<29>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<8>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<9>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<0>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<10>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'daughtercard<1>' has no legal driver
@@ -189,25 +182,21 @@ WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<22>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'systemace_data<4>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<17>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram0_data<8>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<10>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user4<29>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<23>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'systemace_data<5>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<18>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram0_data<9>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<0>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<11>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram0_data<10>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<24>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'systemace_data<6>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<19>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<1>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<12>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram0_data<11>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'systemace_data<7>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<25>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<30>' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'user1<13>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'user2<2>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram0_data<12>' has no legal driver
 WARNING:NgdBuild:470 - bidirect pad net 'ram1_data<31>' has no legal driver
@@ -319,9 +308,9 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings: 274
+  Number of warnings: 263
 
-Total memory usage is 230820 kilobytes
+Total memory usage is 233744 kilobytes
 
 Writing NGD file "labkit.ngd" ...
 

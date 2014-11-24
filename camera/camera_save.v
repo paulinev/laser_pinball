@@ -50,6 +50,7 @@ module camera_save(
 	 initial begin
 		we = 1;
 		addr = 0;
+		pixel_out = 0;
 	 end
 	
 	always @(posedge clk) begin

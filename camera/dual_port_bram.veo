@@ -33,12 +33,12 @@
 //----------- Begin Cut here for INSTANTIATION Template ---// INST_TAG
 dual_port_bram YourInstanceName (
 	.clka(clka),
-	.dina(dina), // Bus [7 : 0] 
+	.dina(dina), // Bus [5 : 0] 
 	.addra(addra), // Bus [18 : 0] 
 	.wea(wea), // Bus [0 : 0] 
 	.clkb(clkb),
 	.addrb(addrb), // Bus [18 : 0] 
-	.doutb(doutb)); // Bus [7 : 0] 
+	.doutb(doutb)); // Bus [5 : 0] 
 
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

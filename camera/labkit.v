@@ -1,4 +1,4 @@
-`default_nettype none
+//`default_nettype none
 
 ///////////////////////////////////////////////////////////////////////////////
 //
@@ -303,12 +303,12 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // systemace_irq and systemace_mpbrdy are inputs
 
    // Logic Analyzer
-   assign analyzer1_data = 16'h0;
-   assign analyzer1_clock = 1'b1;
+   //assign analyzer1_data = 16'h0;
+   //assign analyzer1_clock = 1'b1;
    assign analyzer2_data = 16'h0;
    assign analyzer2_clock = 1'b1;
-   assign analyzer3_data = 16'h0;
-   assign analyzer3_clock = 1'b1;
+   //assign analyzer3_data = 16'h0;
+   //assign analyzer3_clock = 1'b1;
    assign analyzer4_data = 16'h0;
    assign analyzer4_clock = 1'b1;
 			    
@@ -337,17 +337,28 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire sioc;
 	BUFG sioc_buf (.O(sioc), .I(user1[0]));
 	wire siod;
-	assign siod = user1[1];
+	IOBUF siod_buf (.O(siod), .I(user1[1]));
 	wire vsync_in;
-	BUFG vsync_buf (.O(vsync_in), .I(user1[2]));
+	IBUF vsync_buf (.O(vsync_in), .I(user1[2]));
+	//assign vsync_in = user1[2];
 	wire href_in;
-	BUFG href_buf (.O(href_in), .I(user1[3]));
+	IBUF href_buf (.O(href_in), .I(user1[3]));
+	//assign href_in = user1[3];
 	wire pclk;
+	//assign pclk = user1[4];
 	BUFG pclk_buf (.O(pclk), .I(user1[4]));
 	wire xclk;
-	assign user1[5] = clock_27mhz;
+	OBUF clk_buf (.O(user1[5]), .I(clock_27mhz));
 	wire [7:0] camera_in;
-	BUFG camera_buf (.O(camera_in), .I(user1[13:6]));
+	//assign camera_in = user1[13:6];
+	IBUF camera_buf0 (.O(camera_in[0]), .I(user1[6]));
+	IBUF camera_buf1 (.O(camera_in[1]), .I(user1[7]));
+	IBUF camera_buf2 (.O(camera_in[2]), .I(user1[8]));
+	IBUF camera_buf3 (.O(camera_in[3]), .I(user1[9]));
+	IBUF camera_buf4 (.O(camera_in[4]), .I(user1[10]));
+	IBUF camera_buf5 (.O(camera_in[5]), .I(user1[11]));
+	IBUF camera_buf6 (.O(camera_in[6]), .I(user1[12]));
+	IBUF camera_buf7 (.O(camera_in[7]), .I(user1[13]));
 	
 // Instantiate camera reader
 	wire [31:0] pixel_out;
@@ -357,7 +368,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 		.clk(clock_27mhz), 
 		.vsync(vsync_in), 
 		.href(href_in), 
-		.pclk(pclk), 
+		.pclk(clock_27mhz), 
 		.data_in(camera_in), 
 		.data_out(pixel_out), 
 		.pixel_done(pixel_done), 
@@ -370,7 +381,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [7:0] save_pixel_out;
 	assign led = {we, 7'b1};
 	camera_save frame_buffer(
-		.clk(~pclk),
+		.clk(~clock_27mhz),
 		.reset(rst),
 		.pixel_done(pixel_done),
 		.data_in(pixel_out),
@@ -380,10 +391,10 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 		.we(we)
 	);
 	
-	wire [7:0] bram_out;
+	wire [5:0] bram_out;
 	dual_port_bram fbuf(
-		.clka(pclk),
-		.dina(save_pixel_out),
+		.clka(clock_27mhz),
+		.dina(save_pixel_out[7:2]),
 		.addra(addr),
 		.wea(we),
 		.clkb(pclk),
@@ -395,7 +406,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	wire [9:0] vcount, hcount;
 	wire vsync_out, hsync_out, blank_out;
 	xvga_640x480 vga (
-		.vclock(pclk),
+		.vclock(clock_27mhz),
 		.hcount(hcount),    // pixel number on current line
 		.vcount(vcount),	 // line number
 		.vsync(vsync_out),
@@ -405,13 +416,18 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
 	// VGA Output.  In order to meet the setup and hold times of the
    // AD7125, we send it ~clock_65mhz.
-   assign vga_out_red = bram_out[7:0];
-   assign vga_out_green = bram_out[7:0];
-   assign vga_out_blue = bram_out[7:0];
+   assign vga_out_red = {bram_out[5:0], 2'b00};
+   assign vga_out_green = {bram_out[5:0], 2'b00};
+   assign vga_out_blue = {bram_out[5:0], 2'b00};
    assign vga_out_sync_b = 1'b1;    // not used
    assign vga_out_blank_b = ~blank_out;
-   assign vga_out_pixel_clock = ~pclk;
+   assign vga_out_pixel_clock = ~clock_27mhz;
    assign vga_out_hsync = hsync_out;
-   assign vga_out_vsync = vsync_out;					 
-												
+   assign vga_out_vsync = vsync_out;
+
+	assign analyzer3_data[15:0] = {pclk, pixel_done, save_pixel_out, we, blank_out, hsync_out, vsync_out, frame_done, clock_27mhz};
+	assign analyzer3_clock = clock_27mhz;
+	assign analyzer1_data[15:0] = {href_in, vsync_in, we, bram_out, camera_in, rst, 3'b0};
+	assign analyzer1_clock = clock_27mhz;
+	
 endmodule

@@ -43,12 +43,12 @@ Library XilinxCoreLib;
 ENTITY dual_port_bram IS
 	port (
 	clka: IN std_logic;
-	dina: IN std_logic_VECTOR(7 downto 0);
+	dina: IN std_logic_VECTOR(5 downto 0);
 	addra: IN std_logic_VECTOR(18 downto 0);
 	wea: IN std_logic_VECTOR(0 downto 0);
 	clkb: IN std_logic;
 	addrb: IN std_logic_VECTOR(18 downto 0);
-	doutb: OUT std_logic_VECTOR(7 downto 0));
+	doutb: OUT std_logic_VECTOR(5 downto 0));
 END dual_port_bram;
 
 ARCHITECTURE dual_port_bram_a OF dual_port_bram IS
@@ -56,12 +56,12 @@ ARCHITECTURE dual_port_bram_a OF dual_port_bram IS
 component wrapped_dual_port_bram
 	port (
 	clka: IN std_logic;
-	dina: IN std_logic_VECTOR(7 downto 0);
+	dina: IN std_logic_VECTOR(5 downto 0);
 	addra: IN std_logic_VECTOR(18 downto 0);
 	wea: IN std_logic_VECTOR(0 downto 0);
 	clkb: IN std_logic;
 	addrb: IN std_logic_VECTOR(18 downto 0);
-	doutb: OUT std_logic_VECTOR(7 downto 0));
+	doutb: OUT std_logic_VECTOR(5 downto 0));
 end component;
 
 -- Configuration specification 
@@ -72,9 +72,9 @@ end component;
 			c_mem_type => 1,
 			c_prim_type => 1,
 			c_sinita_val => "0",
-			c_read_width_b => 8,
+			c_read_width_b => 6,
 			c_family => "virtex2",
-			c_read_width_a => 8,
+			c_read_width_a => 6,
 			c_disable_warn_bhv_coll => 0,
 			c_write_mode_b => "READ_FIRST",
 			c_init_file_name => "no_coe_file_loaded",
@@ -96,8 +96,8 @@ end component;
 			c_use_ecc => 0,
 			c_algorithm => 1,
 			c_disable_warn_bhv_range => 0,
-			c_write_width_b => 8,
-			c_write_width_a => 8,
+			c_write_width_b => 6,
+			c_write_width_a => 6,
 			c_read_depth_b => 307200,
 			c_read_depth_a => 307200,
 			c_byte_size => 9,

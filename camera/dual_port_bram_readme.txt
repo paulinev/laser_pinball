@@ -1,5 +1,5 @@
 The following files were generated for 'dual_port_bram' in directory 
-/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera:
+/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/:
 
 dual_port_bram.asy:
    Graphical symbol information file. Used by the ISE tools and some

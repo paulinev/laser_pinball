@@ -1,11 +1,11 @@
 Release 10.1.03 - par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-Thu Nov 20 17:57:30 2014
+Sun Nov 23 20:30:18 2014
 
 All signals are completely routed.
 
-WARNING:ParHelpers:361 - There are 333 loadless signals in this design. This design will cause Bitgen to issue DRC
+WARNING:ParHelpers:361 - There are 322 loadless signals in this design. This design will cause Bitgen to issue DRC
    warnings.
 
    ac97_bit_clock_IBUF
@@ -15,7 +15,6 @@ WARNING:ParHelpers:361 - There are 333 loadless signals in this design. This des
    button2_IBUF
    button3_IBUF
    button_down_IBUF
-   button_enter_IBUF
    button_left_IBUF
    button_right_IBUF
    button_up_IBUF
@@ -215,18 +214,12 @@ WARNING:ParHelpers:361 - There are 333 loadless signals in this design. This des
    tv_in_ycrcb<7>_IBUF
    tv_in_ycrcb<8>_IBUF
    tv_in_ycrcb<9>_IBUF
-   user1<0>_IBUF
-   user1<10>_IBUF
-   user1<11>_IBUF
-   user1<12>_IBUF
-   user1<13>_IBUF
    user1<14>_IBUF
    user1<15>_IBUF
    user1<16>_IBUF
    user1<17>_IBUF
    user1<18>_IBUF
    user1<19>_IBUF
-   user1<1>_IBUF
    user1<20>_IBUF
    user1<21>_IBUF
    user1<22>_IBUF
@@ -237,14 +230,10 @@ WARNING:ParHelpers:361 - There are 333 loadless signals in this design. This des
    user1<27>_IBUF
    user1<28>_IBUF
    user1<29>_IBUF
-   user1<2>_IBUF
    user1<30>_IBUF
    user1<31>_IBUF
-   user1<3>_IBUF
-   user1<6>_IBUF
-   user1<7>_IBUF
-   user1<8>_IBUF
-   user1<9>_IBUF
+   user1_0_IBUFG
+   user1_1_IBUF
    user2<0>_IBUF
    user2<10>_IBUF
    user2<11>_IBUF

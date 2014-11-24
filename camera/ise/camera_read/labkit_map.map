@@ -11,39 +11,38 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Fri Nov 21 15:23:39 2014
+Mapped Date    : Sun Nov 23 20:29:32 2014
 
 Mapping design into LUTs...
 Running directed packing...
 Running delay-based LUT packing...
 Running related packing...
-ERROR:Pack:2310 - Too many comps of type "RAMB16" found to fit this device.
 
 Design Summary
 --------------
 
 Design Summary:
-Number of errors:      1
-Number of warnings:  334
+Number of errors:      0
+Number of warnings:  325
 Logic Utilization:
-  Number of Slice Flip Flops:            82 out of  67,584    1%
-  Number of 4 input LUTs:               226 out of  67,584    1%
+  Number of Slice Flip Flops:            96 out of  67,584    1%
+  Number of 4 input LUTs:               196 out of  67,584    1%
 Logic Distribution:
-  Number of occupied Slices:            156 out of  33,792    1%
-    Number of Slices containing only related logic:     156 out of     156 100%
-    Number of Slices containing unrelated logic:          0 out of     156   0%
+  Number of occupied Slices:            147 out of  33,792    1%
+    Number of Slices containing only related logic:     147 out of     147 100%
+    Number of Slices containing unrelated logic:          0 out of     147   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         280 out of  67,584    1%
-    Number used as logic:               225
+  Total Number of 4 input LUTs:         250 out of  67,584    1%
+    Number used as logic:               195
     Number used as a route-thru:         54
     Number used as Shift registers:       1
   Number of bonded IOBs:                576 out of     684   84%
-  Number of RAMB16s:                    150 out of     144  104% (OVERMAPPED)
-  Number of BUFGMUXs:                     5 out of      16   31%
+  Number of RAMB16s:                    113 out of     144   78%
+  Number of BUFGMUXs:                     2 out of      16   12%
 
 Peak Memory Usage:  494 MB
-Total REAL time to MAP completion:  5 secs 
-Total CPU time to MAP completion:   4 secs 
+Total REAL time to MAP completion:  4 secs 
+Total CPU time to MAP completion:   3 secs 
 
 NOTES:
 
@@ -65,4 +64,3 @@ NOTES:
 
 Mapping completed.
 See MAP report file "labkit_map.mrp" for details.
-Problem encountered during the packing phase.
