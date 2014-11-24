@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2011-08-10T18:45:46</DateModified>
+  <DateModified>2014-11-23T14:49:41</DateModified>
   <ModuleName>GPIO_demo</ModuleName>
   <SummaryTimeStamp>2011-08-10T18:45:03</SummaryTimeStamp>
-  <SavedFilePath>C:/Xilinx_projects/Nexys3_ISE_GPIO_UART/iseconfig/GPIO_demo.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Xilinx_projects/Nexys3_ISE_GPIO_UART</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Users/Jake/laser_pinball/physics/nexys3/Nexys3_ISE_GPIO_UART/iseconfig/GPIO_demo.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Users/Jake/laser_pinball/physics/nexys3/Nexys3_ISE_GPIO_UART\</ImplementationReportsDirectory>
   <DateInitialized>2011-08-10T18:44:06</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

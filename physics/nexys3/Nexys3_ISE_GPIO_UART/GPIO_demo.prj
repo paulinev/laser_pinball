@@ -1,0 +1,3 @@
+vhdl work "UART_TX_CTRL.vhd"
+vhdl work "btn_debounce.vhd"
+vhdl work "GPIO_demo.vhd"

@@ -3,31 +3,28 @@
 // * remember to comment out assignment to pins you will drive
 
 module beta2demo(
-     // clocks
-     clock_50MHz, clock_socket,
 
+	  gclk,
+	  
      // 256k x 32 SRAM
-     sram_a,sram_ce_b,sram_we_b,
+     /*sram_a,sram_ce_b,sram_we_b,
      sram_io1,sram_ce1,sram_ub1,sram_lb1,
-     sram_io2,sram_ce2,sram_ub2,sram_lb2,
+     sram_io2,sram_ce2,sram_ub2,sram_lb2,*/
 
      // I/O
-     segment,an,sw,btn,led,
-     vga_r,vga_g,vga_b,vga_hs,vga_vs,
-     ps2_d,ps2_c,
-     rs232_rxd,rs232_txd,rs232_rxd_a,rs232_txd_a,
-     flash_d0,flash_oe,flash_rclk,
+     seg,an,sw,btn,led,
+     red,green,blue,hsync,vsync
+     //ps2_d,ps2_c,
+     //rs232_rxd,rs232_txd,rs232_rxd_a,rs232_txd_a,
+     //flash_d0,flash_oe,flash_rclk,
 
      // expansion connectors
-     A1_4,A1_21,A1_22,
+    /* A1_4,A1_21,A1_22,
      A2_io,A2_db,A2_astb,A2_dstb,A2_write,A2_wait,A2_reset,
-     B1_db,B1_adr,B1_we,B1_oe,B1_cs,B1_astb,B1_dstb,B1_write,B1_wait,B1_reset,B1_int
+     B1_db,B1_adr,B1_we,B1_oe,B1_cs,B1_astb,B1_dstb,B1_write,B1_wait,B1_reset,B1_int*/
      );
 
-   input clock_50MHz;
-   input clock_socket;
-
-   output [17:0] sram_a;
+   /*output [17:0] sram_a;
    output 	 sram_ce_b;
    output 	 sram_we_b;
    inout [15:0]  sram_io1;
@@ -37,21 +34,23 @@ module beta2demo(
    inout [15:0]  sram_io2;
    output 	 sram_ce2;
    output 	 sram_ub2;
-   output 	 sram_lb2;
+   output 	 sram_lb2;*/
+	
+	input gclk;
 
-   output [7:0]  segment;   // active low
-   output [3:0]  an;        // active low
-   input [7:0] 	 sw;
-   input [3:0] 	 btn;
-   output [7:0]  led;
+   output [7:0]  	seg;   // active low
+   output [3:0]  	an;    // active low
+   input [7:0] 	sw;
+   input [4:0] 	btn;
+   output [7:0] 	led;
 
-   output 	 vga_r;
-   output 	 vga_g;
-   output 	 vga_b;
-   output 	 vga_hs;
-   output 	 vga_vs;
+   output [2:0] 	red;
+   output [2:0]	green;
+   output [1:0]	blue;
+   output 	 hsync;
+   output 	 vsync;
 
-   inout 	 ps2_d;
+   /*inout 	 ps2_d;
    input 	 ps2_c;
 
    input 	 rs232_rxd;
@@ -83,10 +82,10 @@ module beta2demo(
    inout 	 B1_write;
    inout 	 B1_wait;
    inout 	 B1_reset;
-   inout 	 B1_int;
+   inout 	 B1_int;*/
 
    // SRAM pins
-   assign sram_a = 18'h0;
+   /*assign sram_a = 18'h0;
    assign sram_ce_b = 1'b1;
    assign sram_we_b = 1'b1;
    assign sram_io1 = 18'h0;
@@ -96,25 +95,20 @@ module beta2demo(
    assign sram_io2 = 1'b0;
    assign sram_ce2 = 1'b0;
    assign sram_ub2 = 1'b0;
-   assign sram_lb2 = 1'b0;
+   assign sram_lb2 = 1'b0;*/
 
    // misc. I/O
-   //assign segment = 8'hFF;   // active low
+   //assign seg = 8'hFF;   // active low
    //assign an = 4'hF;         // active low
-   //assign led = 8'hAA;       // show it's us!!!
-   //assign vga_r = 1'b0;
-   //assign vga_g = 1'b0;
-   //assign vga_b = 1'b0;
-   //assign vga_hs = 1'b0;
-   //assign vga_vs = 1'b0;
-   assign ps2_d = 1'bz;
+   //assign led[6:0] = sw[6:0];       // show it's us!!!
+  /* assign ps2_d = 1'bz;
    assign rs232_txd = 1'b0;
    assign rs232_txd_a = 1'b0;
    assign flash_oe = 1'b1;
-   assign flash_rclk = 1'b0;
+   assign flash_rclk = 1'b0;*/
 
    // expansion connectors
-   assign A1_4 = 1'b0;
+  /* assign A1_4 = 1'b0;
    assign A1_21 = 1'b0;
    assign A1_22 = 1'b0;
    assign A2_io = 18'h00000;
@@ -134,7 +128,19 @@ module beta2demo(
    assign B1_write = 1'b0;
    assign B1_wait = 1'b0;
    assign B1_reset = 1'b0;
-   assign B1_int = 1'b0;
+   assign B1_int = 1'b0;*/
+	
+	//////////////////////////////////////////////////////////////////////
+	//
+	// CLOCK GENERATION
+	//
+	//////////////////////////////////////////////////////////////////////
+	
+	wire clock_50MHz_unbuf;
+	wire clock_50MHz;
+	BUFIO2 #(.DIVIDE(4), .USE_DOUBLER("TRUE"), .DIVIDE_BYPASS("FALSE"))
+		beta_clk1(.DIVCLK(clock_50MHz_unbuf), .I(gclk));
+	BUFG beta_clk2(.I(clock_50MHz_unbuf), .O(clock_50MHz));
 
    //////////////////////////////////////////////////////////////////////
    //
@@ -181,7 +187,7 @@ module beta2demo(
       rd_ps2 <= !mwe && sel_ps2;
    end
 
-   // select data to send back to beta
+   // select data /to send back to beta
    always @ (mdin_sel or ramout or dpyout or ps2out)
      case (mdin_sel)
        default: mdin = ramout;
@@ -194,8 +200,12 @@ module beta2demo(
    lab9 mem(ma[15:2],clk,mdout,ramout,mwe & sel_ram);
 
    // 80x40 character display
-   vga dpy(clk,vga_hs,vga_vs,{vga_r,vga_g,vga_b},irq_60Hz,sel_60Hz,
+	wire vga_r, vga_g, vga_b;
+   vga dpy(clk,hsync,vsync,{vga_r,vga_g,vga_b},irq_60Hz,sel_60Hz,
            mwe & sel_dpy,ma[11:2],mdout,dpyout);
+	assign red = {vga_r, 2'b00};
+	assign green = {vga_g, 2'b00};
+	assign blue = {vga_b, 1'b0};
 
    // ps2 interface
    ps2 kbd(clk,reset,clk_300Hz,ps2_c,ps2_d,
@@ -208,6 +218,6 @@ module beta2demo(
    assign led = {7'd0,irq};
 
    // show memory address in the 7-segments display
-   segdisplay lights(clk,1'b1,ma[15:0],an,segment,clk_300Hz);
+   segdisplay lights(clk,1'b1,ma[15:0],an,seg,clk_300Hz);
 
 endmodule // beta2demo

@@ -1,0 +1,949 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.20 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.21 secs
+ 
+--> Reading design: GPIO_demo.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "GPIO_demo.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "GPIO_demo"
+Output Format                      : NGC
+Target Device                      : xc6slx16-3-csg324
+
+---- Source Options
+Top Module Name                    : GPIO_demo
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\UART_TX_CTRL.vhd" into library work
+Parsing entity <UART_TX_CTRL>.
+Parsing architecture <Behavioral> of entity <uart_tx_ctrl>.
+Parsing VHDL file "C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\btn_debounce.vhd" into library work
+Parsing entity <btn_debounce>.
+Parsing architecture <Behavioral> of entity <btn_debounce>.
+Parsing VHDL file "C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\GPIO_demo.vhd" into library work
+Parsing entity <GPIO_demo>.
+Parsing architecture <Behavioral> of entity <gpio_demo>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <GPIO_demo> (architecture <Behavioral>) from library <work>.
+INFO:HDLCompiler:679 - "C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\GPIO_demo.vhd" Line 308. Case statement is complete. others clause is never selected
+
+Elaborating entity <btn_debounce> (architecture <Behavioral>) from library <work>.
+
+Elaborating entity <UART_TX_CTRL> (architecture <Behavioral>) from library <work>.
+INFO:HDLCompiler:679 - "C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\UART_TX_CTRL.vhd" Line 97. Case statement is complete. others clause is never selected
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <GPIO_demo>.
+    Related source file is "C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\GPIO_demo.vhd".
+    Found 4-bit register for signal <tmrVal>.
+    Found 4-bit register for signal <btnReg>.
+    Found 3-bit register for signal <uartState>.
+    Found 8-bit register for signal <sendStr<0>>.
+    Found 8-bit register for signal <sendStr<1>>.
+    Found 8-bit register for signal <sendStr<2>>.
+    Found 8-bit register for signal <sendStr<3>>.
+    Found 8-bit register for signal <sendStr<4>>.
+    Found 8-bit register for signal <sendStr<5>>.
+    Found 8-bit register for signal <sendStr<6>>.
+    Found 8-bit register for signal <sendStr<7>>.
+    Found 8-bit register for signal <sendStr<8>>.
+    Found 8-bit register for signal <sendStr<9>>.
+    Found 8-bit register for signal <sendStr<10>>.
+    Found 8-bit register for signal <sendStr<11>>.
+    Found 8-bit register for signal <sendStr<12>>.
+    Found 8-bit register for signal <sendStr<13>>.
+    Found 8-bit register for signal <sendStr<14>>.
+    Found 8-bit register for signal <sendStr<15>>.
+    Found 8-bit register for signal <sendStr<16>>.
+    Found 8-bit register for signal <sendStr<17>>.
+    Found 8-bit register for signal <sendStr<18>>.
+    Found 8-bit register for signal <sendStr<19>>.
+    Found 8-bit register for signal <sendStr<20>>.
+    Found 8-bit register for signal <sendStr<21>>.
+    Found 8-bit register for signal <sendStr<22>>.
+    Found 8-bit register for signal <sendStr<23>>.
+    Found 8-bit register for signal <sendStr<24>>.
+    Found 8-bit register for signal <sendStr<25>>.
+    Found 8-bit register for signal <sendStr<26>>.
+    Found 31-bit register for signal <strEnd>.
+    Found 31-bit register for signal <strIndex>.
+    Found 1-bit register for signal <uartSend>.
+    Found 8-bit register for signal <uartData>.
+    Found 27-bit register for signal <tmrCntr>.
+    Found finite state machine <FSM_0> for signal <uartState>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 10                                             |
+    | Inputs             | 3                                              |
+    | Outputs            | 3                                              |
+    | Clock              | CLK (rising_edge)                              |
+    | Reset              | btnDeBnc<4> (positive)                         |
+    | Reset type         | synchronous                                    |
+    | Reset State        | rst_reg                                        |
+    | Power Up State     | rst_reg                                        |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 27-bit adder for signal <tmrCntr[26]_GND_5_o_add_5_OUT> created at line 223.
+    Found 4-bit adder for signal <tmrVal[3]_GND_5_o_add_10_OUT> created at line 239.
+    Found 31-bit adder for signal <strIndex[30]_GND_5_o_add_110_OUT> created at line 338.
+    Found 16x8-bit Read Only RAM for signal <SSEG_CA>
+INFO:Xst:3019 - HDL ADVISOR - 256 flip-flops were inferred for signal <sendStr>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
+    Found 8-bit 27-to-1 multiplexer for signal <strIndex[4]_X_5_o_wide_mux_115_OUT> created at line 349.
+    Found 31-bit comparator equal for signal <strIndex[30]_strEnd[30]_equal_18_o> created at line 296
+    Summary:
+	inferred   1 RAM(s).
+	inferred   3 Adder/Subtractor(s).
+	inferred 322 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   3 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <GPIO_demo> synthesized.
+
+Synthesizing Unit <btn_debounce>.
+    Related source file is "C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\btn_debounce.vhd".
+    Found 16-bit register for signal <btn0_cntr>.
+    Found 1-bit register for signal <btn1_reg>.
+    Found 16-bit register for signal <btn1_cntr>.
+    Found 1-bit register for signal <btn2_reg>.
+    Found 16-bit register for signal <btn2_cntr>.
+    Found 1-bit register for signal <btn3_reg>.
+    Found 16-bit register for signal <btn3_cntr>.
+    Found 1-bit register for signal <btn4_reg>.
+    Found 16-bit register for signal <btn4_cntr>.
+    Found 1-bit register for signal <btn0_reg>.
+    Found 16-bit adder for signal <btn0_cntr[15]_GND_6_o_add_2_OUT> created at line 71.
+    Found 16-bit adder for signal <btn1_cntr[15]_GND_6_o_add_8_OUT> created at line 95.
+    Found 16-bit adder for signal <btn2_cntr[15]_GND_6_o_add_14_OUT> created at line 119.
+    Found 16-bit adder for signal <btn3_cntr[15]_GND_6_o_add_20_OUT> created at line 143.
+    Found 16-bit adder for signal <btn4_cntr[15]_GND_6_o_add_26_OUT> created at line 167.
+    Summary:
+	inferred   5 Adder/Subtractor(s).
+	inferred  85 D-type flip-flop(s).
+	inferred   5 Multiplexer(s).
+Unit <btn_debounce> synthesized.
+
+Synthesizing Unit <UART_TX_CTRL>.
+    Related source file is "C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\UART_TX_CTRL.vhd".
+    Found 14-bit register for signal <bitTmr>.
+    Found 31-bit register for signal <bitIndex>.
+    Found 10-bit register for signal <txData>.
+    Found 1-bit register for signal <txBit>.
+    Found 2-bit register for signal <txState>.
+    Found finite state machine <FSM_1> for signal <txState>.
+    -----------------------------------------------------------------------
+    | States             | 3                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 3                                              |
+    | Outputs            | 3                                              |
+    | Clock              | CLK (rising_edge)                              |
+    | Power Up State     | rdy                                            |
+    | Encoding           | auto                                           |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 14-bit adder for signal <bitTmr[13]_GND_7_o_add_7_OUT> created at line 112.
+    Found 31-bit adder for signal <bitIndex[30]_GND_7_o_add_14_OUT> created at line 127.
+    Found 1-bit 10-to-1 multiplexer for signal <bitIndex[3]_X_7_o_Mux_22_o> created at line 147.
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred  56 D-type flip-flop(s).
+	inferred   2 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+Unit <UART_TX_CTRL> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 16x8-bit single-port Read Only RAM                    : 1
+# Adders/Subtractors                                   : 10
+ 14-bit adder                                          : 1
+ 16-bit adder                                          : 5
+ 27-bit adder                                          : 1
+ 31-bit adder                                          : 2
+ 4-bit adder                                           : 1
+# Registers                                            : 48
+ 1-bit register                                        : 7
+ 10-bit register                                       : 1
+ 14-bit register                                       : 1
+ 16-bit register                                       : 5
+ 27-bit register                                       : 1
+ 31-bit register                                       : 3
+ 4-bit register                                        : 2
+ 8-bit register                                        : 28
+# Comparators                                          : 1
+ 31-bit comparator equal                               : 1
+# Multiplexers                                         : 10
+ 1-bit 10-to-1 multiplexer                             : 1
+ 14-bit 2-to-1 multiplexer                             : 1
+ 16-bit 2-to-1 multiplexer                             : 5
+ 4-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+ 8-bit 27-to-1 multiplexer                             : 1
+# FSMs                                                 : 2
+# Xors                                                 : 5
+ 1-bit xor2                                            : 5
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1426 - The value init of the FF/Latch strEnd_3 hinder the constant cleaning in the block GPIO_demo.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch strEnd_4 hinder the constant cleaning in the block GPIO_demo.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1710 - FF/Latch <txData_0> (without init value) has a constant value of 0 in block <Inst_UART_TX_CTRL>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <txData_9> (without init value) has a constant value of 1 in block <Inst_UART_TX_CTRL>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_11_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_11_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_11_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_11_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_12_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_12_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_13_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_13_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_13_5> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_13_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_17_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_17_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_4> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_5> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_5> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_4> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_21_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_21_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_21_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_21_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_1> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_6> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_17_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_15_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_15_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_15_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_15_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_16_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_16_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_16_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_5> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_24> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_25> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_26> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_27> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_28> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_29> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_30> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_1> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_6> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_1> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_2> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_5> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_6> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_7> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_8> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_9> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_10> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_11> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_12> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_13> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_14> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_15> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_16> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_17> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_18> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_19> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_20> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_21> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_22> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_23> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_1_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_1_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_1_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_1_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_2_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_2_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_2_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_2_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_6_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_6_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_6_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_4_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_4_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_4_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_5_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_5_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_5_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_6> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_6> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_1> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+
+Synthesizing (advanced) Unit <GPIO_demo>.
+The following registers are absorbed into counter <tmrCntr>: 1 register on signal <tmrCntr>.
+The following registers are absorbed into counter <tmrVal>: 1 register on signal <tmrVal>.
+The following registers are absorbed into counter <strIndex>: 1 register on signal <strIndex>.
+INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_SSEG_CA> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 16-word x 8-bit                     |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <tmrVal>        |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to signal <SSEG_CA>       |          |
+    -----------------------------------------------------------------------
+Unit <GPIO_demo> synthesized (advanced).
+
+Synthesizing (advanced) Unit <UART_TX_CTRL>.
+The following registers are absorbed into counter <bitTmr>: 1 register on signal <bitTmr>.
+The following registers are absorbed into counter <bitIndex>: 1 register on signal <bitIndex>.
+Unit <UART_TX_CTRL> synthesized (advanced).
+
+Synthesizing (advanced) Unit <btn_debounce>.
+The following registers are absorbed into counter <btn1_cntr>: 1 register on signal <btn1_cntr>.
+The following registers are absorbed into counter <btn0_cntr>: 1 register on signal <btn0_cntr>.
+The following registers are absorbed into counter <btn2_cntr>: 1 register on signal <btn2_cntr>.
+The following registers are absorbed into counter <btn4_cntr>: 1 register on signal <btn4_cntr>.
+The following registers are absorbed into counter <btn3_cntr>: 1 register on signal <btn3_cntr>.
+Unit <btn_debounce> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 16x8-bit single-port distributed Read Only RAM        : 1
+# Counters                                             : 10
+ 14-bit up counter                                     : 1
+ 16-bit up counter                                     : 5
+ 27-bit up counter                                     : 1
+ 31-bit up counter                                     : 2
+ 4-bit up counter                                      : 1
+# Registers                                            : 276
+ Flip-Flops                                            : 276
+# Comparators                                          : 1
+ 31-bit comparator equal                               : 1
+# Multiplexers                                         : 11
+ 1-bit 10-to-1 multiplexer                             : 1
+ 1-bit 27-to-1 multiplexer                             : 8
+ 4-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+# FSMs                                                 : 2
+# Xors                                                 : 5
+ 1-bit xor2                                            : 5
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <txData_0> (without init value) has a constant value of 0 in block <UART_TX_CTRL>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <txData_9> (without init value) has a constant value of 1 in block <UART_TX_CTRL>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1426 - The value init of the FF/Latch strEnd_3 hinder the constant cleaning in the block GPIO_demo.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch strEnd_4 hinder the constant cleaning in the block GPIO_demo.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1710 - FF/Latch <sendStr_10_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_13_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_13_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_13_5> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_13_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_11_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_11_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_11_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_11_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_12_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_12_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_16_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_16_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_16_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_5> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_6_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_6_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_6_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_4> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_5> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_7_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_9_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_4> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_10_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_21_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_21_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_21_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_21_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_1> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_22_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_6> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_23_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_14_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_15_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_15_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_15_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_15_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_19_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_17_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_17_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_17_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_5> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_18_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_20_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_24> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_25> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_26> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_27> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_28> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_29> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_30> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_1> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_6> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_24_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_1> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_2> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_5> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_6> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_7> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_8> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_9> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_10> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_11> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_12> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_13> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_14> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_15> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_16> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_17> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_18> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_19> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_20> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_21> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_22> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <strEnd_23> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_1_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_1_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_1_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_1_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_2_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_2_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_2_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_2_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_4_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_4_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_4_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_5_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_5_6> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_5_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_8_3> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_6> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_25_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_0> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_3> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_6> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_26_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_0> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_1> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_2> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_4> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_5> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_0_7> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_1> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <sendStr_3_2> (without init value) has a constant value of 1 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <strEnd_0> in Unit <GPIO_demo> is equivalent to the following 39 FFs/Latches, which will be removed : <strEnd_1> <sendStr_0_3> <sendStr_3_0> <sendStr_1_3> <sendStr_2_1> <sendStr_2_3> <sendStr_4_4> <sendStr_5_0> <sendStr_5_4> <sendStr_6_0> <sendStr_6_1> <sendStr_6_4> <sendStr_6_6> <sendStr_7_0> <sendStr_7_1> <sendStr_9_1> <sendStr_13_0> <sendStr_13_1> <sendStr_13_3> <sendStr_11_3> <sendStr_12_0> <sendStr_12_1> <sendStr_12_2> <sendStr_12_3> <sendStr_12_6> <sendStr_16_1> <sendStr_16_4> <sendStr_14_4> <sendStr_15_0> <sendStr_17_2> <sendStr_17_4> <sendStr_20_0> <sendStr_21_2> <sendStr_21_3> <sendStr_21_6> <sendStr_22_0> <sendStr_22_2> <sendStr_22_6> <sendStr_23_5> 
+INFO:Xst:2261 - The FF/Latch <strEnd_3> in Unit <GPIO_demo> is equivalent to the following FF/Latch, which will be removed : <strEnd_4> 
+INFO:Xst:2261 - The FF/Latch <sendStr_0_6> in Unit <GPIO_demo> is equivalent to the following 47 FFs/Latches, which will be removed : <sendStr_3_4> <sendStr_3_5> <sendStr_1_4> <sendStr_1_5> <sendStr_1_6> <sendStr_2_4> <sendStr_2_5> <sendStr_4_0> <sendStr_4_1> <sendStr_4_2> <sendStr_4_5> <sendStr_5_1> <sendStr_5_2> <sendStr_5_5> <sendStr_8_1> <sendStr_8_4> <sendStr_8_6> <sendStr_6_5> <sendStr_7_6> <sendStr_9_5> <sendStr_10_0> <sendStr_10_1> <sendStr_10_5> <sendStr_13_6> <sendStr_11_1> <sendStr_11_4> <sendStr_11_5> <sendStr_12_5> <sendStr_16_0> <sendStr_16_2> <sendStr_16_5> <sendStr_14_5> <sendStr_15_2> <sendStr_15_4> <sendStr_15_5> <sendStr_19_0> <sendStr_19_5> <sendStr_17_0> <sendStr_17_1> <sendStr_17_5> <sendStr_18_2> <sendStr_18_4> <sendStr_18_6> <sendStr_20_5> <sendStr_21_5> <sendStr_23_2> <sendStr_23_3> 
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <FSM_0> on signal <uartState[1:7]> with one-hot encoding.
+-------------------------
+ State       | Encoding
+-------------------------
+ rst_reg     | 0000001
+ ld_init_str | 0000010
+ send_char   | 0000100
+ rdy_low     | 0001000
+ wait_rdy    | 0010000
+ wait_btn    | 0100000
+ ld_btn_str  | 1000000
+-------------------------
+Analyzing FSM <MFsm> for best encoding.
+Optimizing FSM <Inst_UART_TX_CTRL/FSM_1> on signal <txState[1:2]> with user encoding.
+----------------------
+ State    | Encoding
+----------------------
+ rdy      | 00
+ load_bit | 01
+ send_bit | 10
+----------------------
+WARNING:Xst:1293 - FF/Latch <uartData_7> has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+
+Optimizing unit <GPIO_demo> ...
+
+Optimizing unit <btn_debounce> ...
+
+Optimizing unit <UART_TX_CTRL> ...
+WARNING:Xst:1710 - FF/Latch <Inst_UART_TX_CTRL/txData_8> (without init value) has a constant value of 0 in block <GPIO_demo>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block GPIO_demo, actual ratio is 3.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 224
+ Flip-Flops                                            : 224
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : GPIO_demo.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 790
+#      GND                         : 1
+#      INV                         : 10
+#      LUT1                        : 174
+#      LUT2                        : 142
+#      LUT3                        : 11
+#      LUT4                        : 11
+#      LUT5                        : 7
+#      LUT6                        : 59
+#      MUXCY                       : 182
+#      MUXF7                       : 9
+#      VCC                         : 1
+#      XORCY                       : 183
+# FlipFlops/Latches                : 224
+#      FD                          : 141
+#      FDE                         : 14
+#      FDR                         : 5
+#      FDRE                        : 62
+#      FDS                         : 1
+#      FDSE                        : 1
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 34
+#      IBUF                        : 13
+#      OBUF                        : 21
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx16csg324-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             224  out of  18224     1%  
+ Number of Slice LUTs:                  414  out of   9112     4%  
+    Number used as Logic:               414  out of   9112     4%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    428
+   Number with an unused Flip Flop:     204  out of    428    47%  
+   Number with an unused LUT:            14  out of    428     3%  
+   Number of fully used LUT-FF pairs:   210  out of    428    49%  
+   Number of unique control sets:         6
+
+IO Utilization: 
+ Number of IOs:                          35
+ Number of bonded IOBs:                  35  out of    232    15%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 224   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 3.998ns (Maximum Frequency: 250.150MHz)
+   Minimum input arrival time before clock: 4.173ns
+   Maximum output required time after clock: 4.930ns
+   Maximum combinational path delay: 5.751ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 3.998ns (frequency: 250.150MHz)
+  Total number of paths / destination ports: 5181 / 369
+-------------------------------------------------------------------------
+Delay:               3.998ns (Levels of Logic = 3)
+  Source:            tmrCntr_6 (FF)
+  Destination:       tmrCntr_0 (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK rising
+
+  Data Path: tmrCntr_6 to tmrCntr_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               2   0.447   0.981  tmrCntr_6 (tmrCntr_6)
+     LUT6:I0->O            3   0.203   0.898  Mcount_tmrVal_val14 (Mcount_tmrVal_val14)
+     LUT6:I2->O           14   0.203   0.958  tmrCntr[26]_BTN[4]_OR_27_o1 (tmrCntr[26]_BTN[4]_OR_27_o)
+     LUT2:I1->O            1   0.205   0.000  tmrCntr_0_rstpot (tmrCntr_0_rstpot)
+     FD:D                      0.102          tmrCntr_0
+    ----------------------------------------
+    Total                      3.998ns (1.160ns logic, 2.838ns route)
+                                       (29.0% logic, 71.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+  Total number of paths / destination ports: 111 / 111
+-------------------------------------------------------------------------
+Offset:              4.173ns (Levels of Logic = 3)
+  Source:            BTN<4> (PAD)
+  Destination:       Inst_btn_debounce/btn4_cntr_0 (FF)
+  Destination Clock: CLK rising
+
+  Data Path: BTN<4> to Inst_btn_debounce/btn4_cntr_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            19   1.222   1.436  BTN_4_IBUF (BTN_4_IBUF)
+     LUT6:I0->O           16   0.203   1.005  Inst_btn_debounce/btn4_cntr[15]_PWR_6_o_equal_25_o_01 (Inst_btn_debounce/btn4_cntr[15]_PWR_6_o_equal_25_o_0)
+     LUT2:I1->O            1   0.205   0.000  Inst_btn_debounce/btn4_cntr_0_rstpot (Inst_btn_debounce/btn4_cntr_0_rstpot)
+     FD:D                      0.102          Inst_btn_debounce/btn4_cntr_0
+    ----------------------------------------
+    Total                      4.173ns (1.732ns logic, 2.441ns route)
+                                       (41.5% logic, 58.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+  Total number of paths / destination ports: 33 / 12
+-------------------------------------------------------------------------
+Offset:              4.930ns (Levels of Logic = 2)
+  Source:            tmrVal_0 (FF)
+  Destination:       SSEG_CA<4> (PAD)
+  Source Clock:      CLK rising
+
+  Data Path: tmrVal_0 to SSEG_CA<4>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q              11   0.447   1.130  tmrVal_0 (tmrVal_0)
+     LUT4:I0->O            1   0.203   0.579  Mram_SSEG_CA41 (SSEG_CA_4_OBUF)
+     OBUF:I->O                 2.571          SSEG_CA_4_OBUF (SSEG_CA<4>)
+    ----------------------------------------
+    Total                      4.930ns (3.221ns logic, 1.709ns route)
+                                       (65.3% logic, 34.7% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 20 / 12
+-------------------------------------------------------------------------
+Delay:               5.751ns (Levels of Logic = 3)
+  Source:            BTN<4> (PAD)
+  Destination:       LED<7> (PAD)
+
+  Data Path: BTN<4> to LED<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            19   1.222   1.176  BTN_4_IBUF (BTN_4_IBUF)
+     LUT2:I0->O            1   0.203   0.579  Mmux_LED81 (LED_7_OBUF)
+     OBUF:I->O                 2.571          LED_7_OBUF (LED<7>)
+    ----------------------------------------
+    Total                      5.751ns (3.996ns logic, 1.755ns route)
+                                       (69.5% logic, 30.5% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+CLK            |    3.998|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.37 secs
+ 
+--> 
+
+Total memory usage is 258836 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  324 (   0 filtered)
+Number of infos    :    5 (   0 filtered)
+
