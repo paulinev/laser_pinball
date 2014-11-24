@@ -1,5 +1,5 @@
 NUM_USER_FILES
-4
+6
 s
 user_file_1
 ../../nexys2/Nexys2_500General.ucf
@@ -12,4 +12,10 @@ user_file_3
 s
 user_file_4
 ../../nexys2/camera_test_nexys2.v
+s
+user_file_5
+../../camera_save.v
+s
+user_file_6
+../../frame_buffer.v
 s

@@ -33,34 +33,150 @@ Timing constraint: NET "clk_IBUFG" PERIOD = 20 ns HIGH 50%;
  0 timing errors detected.
 --------------------------------------------------------------------------------
 
+================================================================================
+Timing constraint: PERIOD analysis for net "clock_25mhz_unbuf" derived from  
+NET "clk_IBUFG" PERIOD = 20 ns HIGH 50%;  multiplied by 2.00 and duty cycle 
+corrected to 40 nS  HIGH 20 nS  
+
+ 676 paths analyzed, 92 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum period is   7.068ns.
+--------------------------------------------------------------------------------
+Slack:                  32.932ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               reset_sr/SRL16E (FF)
+  Destination:          sys_reset/count_19 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      7.068ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clock_25mhz rising at 0.000ns
+  Destination Clock:    clock_25mhz rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: reset_sr/SRL16E to sys_reset/count_19
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X50Y67.Y       Treg                  3.762   reset
+                                                       reset_sr/SRL16E.CE
+                                                       reset_sr/SRL16E
+    SLICE_X52Y70.F2      net (fanout=6)        0.658   reset
+    SLICE_X52Y70.X       Tilo                  0.759   sys_reset/clean
+                                                       sys_reset/count_or00001_1
+    SLICE_X53Y86.SR      net (fanout=10)       0.979   sys_reset/count_or00001
+    SLICE_X53Y86.CLK     Tsrck                 0.910   sys_reset/count<18>
+                                                       sys_reset/count_19
+    -------------------------------------------------  ---------------------------
+    Total                                      7.068ns (5.431ns logic, 1.637ns route)
+                                                       (76.8% logic, 23.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  32.932ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               reset_sr/SRL16E (FF)
+  Destination:          sys_reset/count_18 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      7.068ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clock_25mhz rising at 0.000ns
+  Destination Clock:    clock_25mhz rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: reset_sr/SRL16E to sys_reset/count_18
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X50Y67.Y       Treg                  3.762   reset
+                                                       reset_sr/SRL16E.CE
+                                                       reset_sr/SRL16E
+    SLICE_X52Y70.F2      net (fanout=6)        0.658   reset
+    SLICE_X52Y70.X       Tilo                  0.759   sys_reset/clean
+                                                       sys_reset/count_or00001_1
+    SLICE_X53Y86.SR      net (fanout=10)       0.979   sys_reset/count_or00001
+    SLICE_X53Y86.CLK     Tsrck                 0.910   sys_reset/count<18>
+                                                       sys_reset/count_18
+    -------------------------------------------------  ---------------------------
+    Total                                      7.068ns (5.431ns logic, 1.637ns route)
+                                                       (76.8% logic, 23.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  32.933ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               reset_sr/SRL16E (FF)
+  Destination:          sys_reset/count_17 (FF)
+  Requirement:          40.000ns
+  Data Path Delay:      7.067ns (Levels of Logic = 1)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clock_25mhz rising at 0.000ns
+  Destination Clock:    clock_25mhz rising at 40.000ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: reset_sr/SRL16E to sys_reset/count_17
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X50Y67.Y       Treg                  3.762   reset
+                                                       reset_sr/SRL16E.CE
+                                                       reset_sr/SRL16E
+    SLICE_X52Y70.F2      net (fanout=6)        0.658   reset
+    SLICE_X52Y70.X       Tilo                  0.759   sys_reset/clean
+                                                       sys_reset/count_or00001_1
+    SLICE_X53Y85.SR      net (fanout=10)       0.978   sys_reset/count_or00001
+    SLICE_X53Y85.CLK     Tsrck                 0.910   sys_reset/count<16>
+                                                       sys_reset/count_17
+    -------------------------------------------------  ---------------------------
+    Total                                      7.067ns (5.431ns logic, 1.636ns route)
+                                                       (76.9% logic, 23.1% route)
+
+--------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Derived Constraints for clk_IBUFG
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|clk_IBUFG                      |     20.000ns|          N/A|      3.534ns|            0|            0|            0|          676|
+| clock_25mhz_unbuf             |     40.000ns|      7.068ns|          N/A|            0|            0|          676|            0|
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
 
 
 Data Sheet report:
 -----------------
-No constraints were found to generate data for the Data Sheet Report section.
-Use the Advanced Analysis (-a) option or generate global constraints for each
-clock, its pad to setup and clock to pad paths, and a pad to pad constraint.
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    7.068|         |         |         |
+---------------+---------+---------+---------+---------+
+
 
 Timing summary:
 ---------------
 
 Timing errors: 0  Score: 0
 
-Constraints cover 0 paths, 0 nets, and 0 connections
+Constraints cover 676 paths, 0 nets, and 97 connections
 
 Design statistics:
-No global statistics to report.
+   Minimum period:   7.068ns{1}   (Maximum frequency: 141.483MHz)
 
-Analysis completed Mon Nov 24 13:42:38 2014 
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Mon Nov 24 14:30:35 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 220 MB
+Peak Memory Usage: 222 MB
 
 
 

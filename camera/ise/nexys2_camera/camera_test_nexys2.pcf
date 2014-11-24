@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map K.39 on Mon Nov 24 13:42:27 2014
+// Written by: Map K.39 on Mon Nov 24 14:30:22 2014
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -41,6 +41,8 @@ COMP "JB<0>" LOCATE = SITE "M13" LEVEL 1;
 COMP "JA<4>" LOCATE = SITE "K13" LEVEL 1;
 COMP "JB<1>" LOCATE = SITE "R18" LEVEL 1;
 COMP "JA<5>" LOCATE = SITE "L16" LEVEL 1;
+PIN JA<5>_pin<0> = BEL "JA<5>" PINNAME PAD;
+PIN "JA<5>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
 COMP "JB<2>" LOCATE = SITE "R15" LEVEL 1;
 COMP "JA<6>" LOCATE = SITE "M14" LEVEL 1;
 COMP "Led<0>" LOCATE = SITE "J14" LEVEL 1;

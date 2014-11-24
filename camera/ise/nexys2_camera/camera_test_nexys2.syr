@@ -111,8 +111,13 @@ Slice Utilization Ratio Delta      : 5
 Compiling verilog file "../../../physics/beta/nexys3_beta/beta_testing/segdisplay.v" in library work
 Compiling verilog file "../../nexys2/debounce.v" in library work
 Module <segdisplay> compiled
-Compiling verilog file "../../nexys2/camera_test_nexys2.v" in library work
+Compiling verilog file "../../frame_buffer.v" in library work
 Module <debounce> compiled
+Compiling verilog file "../../camera_save.v" in library work
+Module <camera_read> compiled
+Compiling verilog file "../../nexys2/camera_test_nexys2.v" in library work
+Module <camera_save> compiled
+WARNING:HDLCompilers:301 - "../../nexys2/camera_test_nexys2.v" line 86 Too many digits specified in hex constant
 Module <camera_test_nexys2> compiled
 No errors in compilation
 Analysis of file <"camera_test_nexys2.prj"> succeeded.
@@ -128,15 +133,26 @@ Analyzing hierarchy for module <debounce> in library <work>.
 Analyzing hierarchy for module <segdisplay> in library <work> with parameters.
 	SIMULATE = "00000000000000000000000000000000"
 
+Analyzing hierarchy for module <camera_read> in library <work>.
+
+Analyzing hierarchy for module <camera_save> in library <work> with parameters.
+	LOGSIZE = "00000000000000000000000000010011"
+	SAVE_PIXEL_1 = "00000000000000000000000000000001"
+	SAVE_PIXEL_2 = "00000000000000000000000000000010"
+	VGA_DRIVE = "00000000000000000000000000000011"
+	WAIT_PIXEL = "00000000000000000000000000000000"
+	WIDTH = "00000000000000000000000000001000"
+
 WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 47: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 47: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 47: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 47: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
-WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <PHASE_SHIFT> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 55: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 55: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 55: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 55: attribute on instance <CLKOUT_PHASE_SHIFT> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 55: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 55: attribute on instance <PHASE_SHIFT> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -161,7 +177,7 @@ Module <camera_test_nexys2> is correct for synthesis.
     Set user-defined property "SIM_MODE =  SAFE" for instance <vgaclk> in unit <camera_test_nexys2>.
     Set user-defined property "STARTUP_WAIT =  FALSE" for instance <vgaclk> in unit <camera_test_nexys2>.
     Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <sccbclk> in unit <camera_test_nexys2>.
-    Set user-defined property "CLKFX_DIVIDE =  25" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKFX_DIVIDE =  10" for instance <sccbclk> in unit <camera_test_nexys2>.
     Set user-defined property "CLKFX_MULTIPLY =  2" for instance <sccbclk> in unit <camera_test_nexys2>.
     Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <sccbclk> in unit <camera_test_nexys2>.
     Set user-defined property "CLKIN_PERIOD =  20.0000000000000000" for instance <sccbclk> in unit <camera_test_nexys2>.
@@ -173,7 +189,7 @@ Module <camera_test_nexys2> is correct for synthesis.
     Set user-defined property "DSS_MODE =  NONE" for instance <sccbclk> in unit <camera_test_nexys2>.
     Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <sccbclk> in unit <camera_test_nexys2>.
     Set user-defined property "FACTORY_JF =  C080" for instance <sccbclk> in unit <camera_test_nexys2>.
-    Set user-defined property "PHASE_SHIFT =  90" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <sccbclk> in unit <camera_test_nexys2>.
     Set user-defined property "SIM_MODE =  SAFE" for instance <sccbclk> in unit <camera_test_nexys2>.
     Set user-defined property "STARTUP_WAIT =  FALSE" for instance <sccbclk> in unit <camera_test_nexys2>.
     Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <camera_test_nexys2>.
@@ -184,13 +200,24 @@ Analyzing module <segdisplay> in library <work>.
 	SIMULATE = 32'sb00000000000000000000000000000000
 Module <segdisplay> is correct for synthesis.
  
+Analyzing module <camera_read> in library <work>.
+Module <camera_read> is correct for synthesis.
+ 
+Analyzing module <camera_save> in library <work>.
+	LOGSIZE = 32'sb00000000000000000000000000010011
+	SAVE_PIXEL_1 = 32'sb00000000000000000000000000000001
+	SAVE_PIXEL_2 = 32'sb00000000000000000000000000000010
+	VGA_DRIVE = 32'sb00000000000000000000000000000011
+	WAIT_PIXEL = 32'sb00000000000000000000000000000000
+	WIDTH = 32'sb00000000000000000000000000001000
+Module <camera_save> is correct for synthesis.
+ 
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Performing bidirectional port resolution...
-INFO:Xst:2679 - Register <latched_value> in unit <segdisplay> has a constant value of 0111111111111111 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <digit> in unit <segdisplay> has a constant value of XXXX during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <debounce>.
@@ -208,36 +235,79 @@ Unit <debounce> synthesized.
 Synthesizing Unit <segdisplay>.
     Related source file is "../../../physics/beta/nexys3_beta/beta_testing/segdisplay.v".
     Found 2-bit up counter for signal <display>.
+    Found 16-bit register for signal <latched_value>.
     Found 17-bit register for signal <lfsr>.
     Found 1-bit xor2 for signal <lfsr$xor0000> created at line 30.
     Summary:
 	inferred   1 Counter(s).
-	inferred  17 D-type flip-flop(s).
+	inferred  33 D-type flip-flop(s).
 Unit <segdisplay> synthesized.
+
+
+Synthesizing Unit <camera_read>.
+    Related source file is "../../frame_buffer.v".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 1-bit register for signal <frame_done>.
+    Found 32-bit register for signal <data_out>.
+    Found 1-bit register for signal <pixel_done>.
+    Found 2-bit down counter for signal <count>.
+    Found 1-bit register for signal <running>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  35 D-type flip-flop(s).
+Unit <camera_read> synthesized.
+
+
+Synthesizing Unit <camera_save>.
+    Related source file is "../../camera_save.v".
+WARNING:Xst:647 - Input <data_in<31:24>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <data_in<15:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1780 - Signal <pixel_out_2> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 8-bit register for signal <pixel_out>.
+    Found 19-bit register for signal <addr>.
+    Found 1-bit register for signal <we>.
+    Found 19-bit comparator less for signal <addr$cmp_lt0000> created at line 69.
+    Found 19-bit adder for signal <addr$share0000> created at line 64.
+    Found 2-bit register for signal <state>.
+    Summary:
+	inferred  30 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+Unit <camera_save> synthesized.
 
 
 Synthesizing Unit <camera_test_nexys2>.
     Related source file is "../../nexys2/camera_test_nexys2.v".
 WARNING:Xst:647 - Input <btn<3:1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <JA> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <JB> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <JA<7:6>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <JA<2:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <sdioc> is never assigned.
 WARNING:Xst:2565 - Inout <sdiod> is never assigned.
 WARNING:Xst:646 - Signal <tick> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <sdoid> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <rst> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <save_pixel_out> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <addr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 Unit <camera_test_nexys2> synthesized.
 
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 1
+# Adders/Subtractors                                   : 1
+ 19-bit adder                                          : 1
+# Counters                                             : 3
+ 2-bit down counter                                    : 1
+ 2-bit up counter                                      : 1
  20-bit up counter                                     : 1
-# Registers                                            : 3
- 1-bit register                                        : 2
+# Registers                                            : 42
+ 1-bit register                                        : 38
  17-bit register                                       : 1
+ 19-bit register                                       : 1
+ 2-bit register                                        : 1
+ 8-bit register                                        : 1
+# Comparators                                          : 1
+ 19-bit comparator less                                : 1
 # Xors                                                 : 2
  1-bit xor2                                            : 2
 
@@ -248,7 +318,6 @@ Macro Statistics
 =========================================================================
 
 Loading device for application Rf_Device from file '3s500e.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
-WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <sys_reset>.
 WARNING:Xst:2677 - Node <lfsr_1> of sequential type is unconnected in block <hexdisp>.
 WARNING:Xst:2677 - Node <lfsr_2> of sequential type is unconnected in block <hexdisp>.
 WARNING:Xst:2677 - Node <lfsr_3> of sequential type is unconnected in block <hexdisp>.
@@ -266,15 +335,60 @@ WARNING:Xst:2677 - Node <lfsr_14> of sequential type is unconnected in block <he
 WARNING:Xst:2677 - Node <lfsr_15> of sequential type is unconnected in block <hexdisp>.
 WARNING:Xst:2677 - Node <lfsr_16> of sequential type is unconnected in block <hexdisp>.
 WARNING:Xst:2677 - Node <lfsr_17> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <data_out_29> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_31> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_30> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_28> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_27> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_26> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_25> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_24> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_23> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_20> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_22> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_21> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_19> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_18> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_17> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_16> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_15> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_14> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_11> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_13> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_12> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_10> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_9> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_8> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_7> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_6> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_5> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_2> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_4> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_3> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_1> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_0> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <pixel_out_0> of sequential type is unconnected in block <frame_buffer>.
+WARNING:Xst:2677 - Node <pixel_out_1> of sequential type is unconnected in block <frame_buffer>.
+WARNING:Xst:2677 - Node <pixel_out_2> of sequential type is unconnected in block <frame_buffer>.
+WARNING:Xst:2677 - Node <pixel_out_3> of sequential type is unconnected in block <frame_buffer>.
+WARNING:Xst:2677 - Node <pixel_out_4> of sequential type is unconnected in block <frame_buffer>.
+WARNING:Xst:2677 - Node <pixel_out_5> of sequential type is unconnected in block <frame_buffer>.
+WARNING:Xst:2677 - Node <pixel_out_6> of sequential type is unconnected in block <frame_buffer>.
+WARNING:Xst:2677 - Node <pixel_out_7> of sequential type is unconnected in block <frame_buffer>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Counters                                             : 1
+# Adders/Subtractors                                   : 1
+ 19-bit adder                                          : 1
+# Counters                                             : 2
+ 2-bit down counter                                    : 1
  20-bit up counter                                     : 1
-# Registers                                            : 19
- Flip-Flops                                            : 19
+# Registers                                            : 84
+ Flip-Flops                                            : 84
+# Comparators                                          : 1
+ 19-bit comparator less                                : 1
 # Xors                                                 : 2
  1-bit xor2                                            : 2
 
@@ -283,14 +397,16 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:2677 - Node <sys_reset/clean> of sequential type is unconnected in block <camera_test_nexys2>.
-WARNING:Xst:2677 - Node <sys_reset/new> of sequential type is unconnected in block <camera_test_nexys2>.
 INFO:Xst:1901 - Instance vgaclk in unit camera_test_nexys2 of type DCM has been replaced by DCM_SP
 INFO:Xst:1901 - Instance sccbclk in unit camera_test_nexys2 of type DCM has been replaced by DCM_SP
 
 Optimizing unit <camera_test_nexys2> ...
 
 Optimizing unit <segdisplay> ...
+
+Optimizing unit <camera_read> ...
+
+Optimizing unit <camera_save> ...
 WARNING:Xst:2677 - Node <hexdisp/lfsr_17> of sequential type is unconnected in block <camera_test_nexys2>.
 WARNING:Xst:2677 - Node <hexdisp/lfsr_16> of sequential type is unconnected in block <camera_test_nexys2>.
 WARNING:Xst:2677 - Node <hexdisp/lfsr_15> of sequential type is unconnected in block <camera_test_nexys2>.
@@ -308,6 +424,65 @@ WARNING:Xst:2677 - Node <hexdisp/lfsr_4> of sequential type is unconnected in bl
 WARNING:Xst:2677 - Node <hexdisp/lfsr_3> of sequential type is unconnected in block <camera_test_nexys2>.
 WARNING:Xst:2677 - Node <hexdisp/lfsr_2> of sequential type is unconnected in block <camera_test_nexys2>.
 WARNING:Xst:2677 - Node <hexdisp/lfsr_1> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_0> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_1> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_3> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_4> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_2> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_5> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_6> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_7> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_8> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_9> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_10> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_12> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_13> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_11> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_14> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_15> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_16> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_17> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_18> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_19> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_21> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_22> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_20> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_23> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_24> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_25> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_26> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_27> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_28> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_30> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_31> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <read/data_out_29> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/pixel_out_7> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/pixel_out_6> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/pixel_out_5> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/pixel_out_4> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/pixel_out_3> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/pixel_out_2> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/pixel_out_1> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/pixel_out_0> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_18> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_17> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_16> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_15> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_14> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_13> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_12> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_11> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_10> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_9> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_8> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_7> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_6> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_5> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_4> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_3> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_2> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_1> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <frame_buffer/addr_0> of sequential type is unconnected in block <camera_test_nexys2>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -318,7 +493,10 @@ Final Macro Processing ...
 =========================================================================
 Final Register Report
 
-Found no macro
+Macro Statistics
+# Registers                                            : 30
+ Flip-Flops                                            : 30
+
 =========================================================================
 
 =========================================================================
@@ -346,14 +524,29 @@ Design Statistics
 # IOs                              : 53
 
 Cell Usage :
-# BELS                             : 2
+# BELS                             : 92
 #      GND                         : 1
+#      INV                         : 5
+#      LUT1                        : 19
+#      LUT2                        : 4
+#      LUT3                        : 8
+#      LUT4                        : 9
+#      MUXCY                       : 24
+#      MUXF5                       : 1
 #      VCC                         : 1
+#      XORCY                       : 20
+# FlipFlops/Latches                : 30
+#      FDE                         : 4
+#      FDR                         : 1
+#      FDRE                        : 23
+#      FDRS                        : 1
+#      FDS                         : 1
 # Shift Registers                  : 1
 #      SRL16                       : 1
-# Clock Buffers                    : 2
-#      BUFG                        : 2
-# IO Buffers                       : 31
+# Clock Buffers                    : 4
+#      BUFG                        : 4
+# IO Buffers                       : 35
+#      IBUF                        : 4
 #      IBUFG                       : 1
 #      OBUF                        : 30
 # DCMs                             : 2
@@ -365,13 +558,14 @@ Device utilization summary:
 
 Selected Device : 3s500efg320-4 
 
- Number of Slices:                        1  out of   4656     0%  
- Number of 4 input LUTs:                  1  out of   9312     0%  
-    Number used as logic:                 0
+ Number of Slices:                       22  out of   4656     0%  
+ Number of Slice Flip Flops:             30  out of   9312     0%  
+ Number of 4 input LUTs:                 46  out of   9312     0%  
+    Number used as logic:                45
     Number used as Shift registers:       1
  Number of IOs:                          53
- Number of bonded IOBs:                  31  out of    232    13%  
- Number of GCLKs:                         2  out of     24     8%  
+ Number of bonded IOBs:                  35  out of    232    15%  
+ Number of GCLKs:                         4  out of     24    16%  
  Number of DCMs:                          2  out of      4    50%  
 
 ---------------------------
@@ -395,7 +589,8 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clock_25mhz_unbuf                  | BUFG                   | 1     |
+clock_25mhz_unbuf                  | BUFG                   | 23    |
+JA<5>                              | IBUF+BUFG              | 8     |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -406,46 +601,152 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: No path found
-   Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: No path found
-   Maximum combinational path delay: 5.596ns
+   Minimum period: 7.127ns (Maximum Frequency: 140.311MHz)
+   Minimum input arrival time before clock: 4.778ns
+   Maximum output required time after clock: 4.532ns
+   Maximum combinational path delay: 7.557ns
 
 Timing Detail:
 --------------
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default path analysis
-  Total number of paths / destination ports: 4 / 4
+Timing constraint: Default period analysis for Clock 'clock_25mhz_unbuf'
+  Clock period: 7.127ns (frequency: 140.311MHz)
+  Total number of paths / destination ports: 676 / 63
 -------------------------------------------------------------------------
-Delay:               5.596ns (Levels of Logic = 2)
-  Source:            vgaclk:CLKFX (PAD)
-  Destination:       xclk (PAD)
+Delay:               7.127ns (Levels of Logic = 1)
+  Source:            reset_sr (FF)
+  Destination:       sys_reset/count_0 (FF)
+  Source Clock:      clock_25mhz_unbuf rising
+  Destination Clock: clock_25mhz_unbuf rising
 
-  Data Path: vgaclk:CLKFX to xclk
+  Data Path: reset_sr to sys_reset/count_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-    DCM_SP:CLKFX           1   0.000   0.420  vgaclk (clock_25mhz_unbuf)
-     BUFG:I->O             2   1.457   0.447  vgaclk2 (xclk_OBUF)
-     OBUF:I->O                 3.272          xclk_OBUF (xclk)
+     SRL16:CLK->Q          6   3.706   0.704  reset_sr (reset)
+     LUT3:I2->O           20   0.704   1.102  sys_reset/count_or00001_1 (sys_reset/count_or00001)
+     FDRE:R                    0.911          sys_reset/count_0
     ----------------------------------------
-    Total                      5.596ns (4.729ns logic, 0.867ns route)
-                                       (84.5% logic, 15.5% route)
+    Total                      7.127ns (5.321ns logic, 1.806ns route)
+                                       (74.7% logic, 25.3% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'JA<5>'
+  Clock period: 5.256ns (frequency: 190.259MHz)
+  Total number of paths / destination ports: 30 / 12
+-------------------------------------------------------------------------
+Delay:               2.628ns (Levels of Logic = 2)
+  Source:            read/frame_done (FF)
+  Destination:       frame_buffer/we (FF)
+  Source Clock:      JA<5> rising
+  Destination Clock: JA<5> falling
+
+  Data Path: read/frame_done to frame_buffer/we
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             6   0.591   0.704  read/frame_done (read/frame_done)
+     LUT4:I2->O            1   0.704   0.000  frame_buffer/we_mux0000_G (N4)
+     MUXF5:I1->O           1   0.321   0.000  frame_buffer/we_mux0000 (frame_buffer/we_mux0000)
+     FDS:D                     0.308          frame_buffer/we
+    ----------------------------------------
+    Total                      2.628ns (1.924ns logic, 0.704ns route)
+                                       (73.2% logic, 26.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_25mhz_unbuf'
+  Total number of paths / destination ports: 24 / 24
+-------------------------------------------------------------------------
+Offset:              4.647ns (Levels of Logic = 2)
+  Source:            btn<0> (PAD)
+  Destination:       sys_reset/count_0 (FF)
+  Destination Clock: clock_25mhz_unbuf rising
+
+  Data Path: btn<0> to sys_reset/count_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             5   1.218   0.712  btn_0_IBUF (btn_0_IBUF)
+     LUT3:I1->O           20   0.704   1.102  sys_reset/count_or00001_1 (sys_reset/count_or00001)
+     FDRE:R                    0.911          sys_reset/count_0
+    ----------------------------------------
+    Total                      4.647ns (2.833ns logic, 1.814ns route)
+                                       (61.0% logic, 39.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'JA<5>'
+  Total number of paths / destination ports: 11 / 7
+-------------------------------------------------------------------------
+Offset:              4.778ns (Levels of Logic = 3)
+  Source:            JA<3> (PAD)
+  Destination:       read/count_1 (FF)
+  Destination Clock: JA<5> rising
+
+  Data Path: JA<3> to read/count_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             5   1.218   0.668  JA_3_IBUF (JA_3_IBUF)
+     LUT4:I2->O            2   0.704   0.482  read/data_out_15_not000111 (read/pixel_done_and0000)
+     LUT3:I2->O            2   0.704   0.447  read/count_not00011 (read/count_not0001)
+     FDE:CE                    0.555          read/count_0
+    ----------------------------------------
+    Total                      4.778ns (3.181ns logic, 1.597ns route)
+                                       (66.6% logic, 33.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'JA<5>'
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Offset:              4.532ns (Levels of Logic = 1)
+  Source:            read/frame_done (FF)
+  Destination:       Led<5> (PAD)
+  Source Clock:      JA<5> rising
+
+  Data Path: read/frame_done to Led<5>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             6   0.591   0.669  read/frame_done (read/frame_done)
+     OBUF:I->O                 3.272          Led_5_OBUF (Led<5>)
+    ----------------------------------------
+    Total                      4.532ns (3.863ns logic, 0.669ns route)
+                                       (85.2% logic, 14.8% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 6 / 6
+-------------------------------------------------------------------------
+Delay:               7.557ns (Levels of Logic = 3)
+  Source:            sccbclk:CLKFX (PAD)
+  Destination:       JC<7> (PAD)
+
+  Data Path: sccbclk:CLKFX to JC<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+    DCM_SP:CLKFX           1   0.000   0.420  sccbclk (clock_10mhz_unbuf)
+     BUFG:I->O             3   1.457   0.531  sccbclk2 (xclk_OBUF)
+     BUFG:I->O             1   1.457   0.420  clk_buf (JC_7_OBUF)
+     OBUF:I->O                 3.272          JC_7_OBUF (JC<7>)
+    ----------------------------------------
+    Total                      7.557ns (6.186ns logic, 1.371ns route)
+                                       (81.9% logic, 18.1% route)
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 3.16 secs
+Total CPU time to Xst completion: 3.97 secs
  
 --> 
 
 
-Total memory usage is 349296 kilobytes
+Total memory usage is 353776 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   55 (   0 filtered)
+Number of warnings :  158 (   0 filtered)
 Number of infos    :    4 (   0 filtered)
 

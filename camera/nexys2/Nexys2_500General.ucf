@@ -218,7 +218,7 @@ NET "JA<1>"       LOC = "K12" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 
 NET "JA<2>"       LOC = "L17" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 ;   # Bank = 1, Pin name = IO_L10N_1/VREF_1, Type = VREF,                Sch name = JA3
 NET "JA<3>"       LOC = "M15" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 ;   # Bank = 1, Pin name = IO_L07P_1, Type = I/O,                        Sch name = JA4
 NET "JA<4>"       LOC = "K13" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 ;   # Bank = 1, Pin name = IO_L11P_1/A10/RHCLK0, Type = RHCLK/DUAL,      Sch name = JA7
-NET "JA<5>"       LOC = "L16" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 ;   # Bank = 1, Pin name = IO_L09P_1/A12, Type = DUAL,                   Sch name = JA8
+NET "JA<5>"       LOC = "L16" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 | CLOCK_DEDICATED_ROUTE = FALSE ;   # Bank = 1, Pin name = IO_L09P_1/A12, Type = DUAL,                   Sch name = JA8
 NET "JA<6>"       LOC = "M14" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 ;   # Bank = 1, Pin name = IO_L05P_1, Type = I/O,                        Sch name = JA9
 NET "JA<7>"       LOC = "M16" | IOSTANDARD = LVCMOS33 | SLEW = FAST | DRIVE = 8 ;   # Bank = 1, Pin name = IO_L07N_1, Type = I/O,                        Sch name = JA10
 
