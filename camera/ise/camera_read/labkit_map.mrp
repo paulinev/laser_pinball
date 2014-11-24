@@ -11,7 +11,7 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sun Nov 23 20:29:32 2014
+Mapped Date    : Mon Nov 24 12:58:35 2014
 
 Design Summary
 --------------
@@ -19,23 +19,24 @@ Number of errors:      0
 Number of warnings:  325
 Logic Utilization:
   Number of Slice Flip Flops:            96 out of  67,584    1%
-  Number of 4 input LUTs:               196 out of  67,584    1%
+  Number of 4 input LUTs:               200 out of  67,584    1%
 Logic Distribution:
-  Number of occupied Slices:            147 out of  33,792    1%
-    Number of Slices containing only related logic:     147 out of     147 100%
-    Number of Slices containing unrelated logic:          0 out of     147   0%
+  Number of occupied Slices:            149 out of  33,792    1%
+    Number of Slices containing only related logic:     149 out of     149 100%
+    Number of Slices containing unrelated logic:          0 out of     149   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         250 out of  67,584    1%
-    Number used as logic:               195
+  Total Number of 4 input LUTs:         254 out of  67,584    1%
+    Number used as logic:               199
     Number used as a route-thru:         54
     Number used as Shift registers:       1
   Number of bonded IOBs:                576 out of     684   84%
   Number of RAMB16s:                    113 out of     144   78%
-  Number of BUFGMUXs:                     2 out of      16   12%
+  Number of BUFGMUXs:                     3 out of      16   18%
+  Number of DCMs:                         1 out of      12    8%
 
-Peak Memory Usage:  494 MB
-Total REAL time to MAP completion:  4 secs 
-Total CPU time to MAP completion:   3 secs 
+Peak Memory Usage:  490 MB
+Total REAL time to MAP completion:  5 secs 
+Total CPU time to MAP completion:   4 secs 
 
 NOTES:
 
@@ -86,7 +87,41 @@ WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 320
    user3<6>_IBUF,
    user3<7>_IBUF
    To see the details of these warning messages, please use the -detail switch.
-WARNING:MapLib:701 - Signal IO connected to top level port IO has been removed.
+WARNING:LIT:162 - Only DFS outputs (CLKFX/FX180/CONCUR) of DCM symbol "slowclk"
+   are routed, but CLKFB is not routed. Proper phase relationship of output
+   clocks to CLKIN cannot be guaranteed.
+WARNING:PhysDesignRules:367 - The signal <user3<24>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<16>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user2<2>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <flash_data<5>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<25>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<17>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user2<3>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <flash_data<6>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<26>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<0>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<18>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user2<4>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user4<10>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <flash_data<7>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<27>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<1>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user3<19>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user2<5>_IBUF> is incomplete. The
@@ -655,7 +690,7 @@ WARNING:PhysDesignRules:367 - The signal <user2<27>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user2<19>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user1_1_IBUF> is incomplete. The
+WARNING:PhysDesignRules:367 - The signal <user1<1>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <flash_data<0>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
@@ -699,38 +734,6 @@ WARNING:PhysDesignRules:367 - The signal <tv_in_aff_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <flash_data<4>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<24>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<16>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user2<2>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <flash_data<5>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<25>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<17>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user2<3>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <flash_data<6>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<26>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<0>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<18>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user2<4>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user4<10>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <flash_data<7>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<27>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<1>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
 
 Section 3 - Informational
 -------------------------
@@ -740,12 +743,15 @@ INFO:MapLib:159 - Net Timing constraints on signal user1<4> are pushed forward
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
    rate limited output drivers. The delay on speed critical single ended outputs
    can be dramatically reduced by designating them as fast outputs.
+INFO:PhysDesignRules:772 - To achieve optimal frequency synthesis performance
+   with the CLKFX and CLKFX180 outputs of the DCM comp slowclk, consult the
+   device Interactive Data Sheet.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   8 block(s) removed
+   3 block(s) removed
    5 block(s) optimized away
-   4 signal(s) removed
+   1 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -761,17 +767,9 @@ above the place where that logic is listed in the trimming report, then locate
 the lines that are least indented (begin at the leftmost edge).
 
 Loadless block "sioc_buf" (CKBUF) removed.
-The signal "IO" is sourceless and has been removed.
- Sourceless block "siod_buf/IBUF" (BUF) removed.
-  The signal "siod_buf/O" is sourceless and has been removed.
-The signal "siod_buf/T" is sourceless and has been removed.
- Sourceless block "siod_buf/OBUFT" (TRI) removed.
 The signal "fbuf/BU2/N1" is sourceless and has been removed.
-Sourceless block "siod_buf_i" (BUF) removed.
-Sourceless block "siod_buf_i1" (BUF) removed.
 Unused block "fbuf/GND" (ZERO) removed.
 Unused block "fbuf/VCC" (ONE) removed.
-Unused block "siod_buf/IO" (PAD) removed.
 
 Optimized Block(s):
 TYPE 		BLOCK

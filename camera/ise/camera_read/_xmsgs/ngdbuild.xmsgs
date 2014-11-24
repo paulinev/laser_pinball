@@ -5,9 +5,6 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="info" file="NgdBuild" num="889" delta="unknown" >Pad net &apos;<arg fmt="%s" index="1">siod_buf/IO</arg>&apos; is not connected to an external port in this design.  A new port &apos;<arg fmt="%s" index="2">IO</arg>&apos; has been added and is connected to this signal.
-</msg>
-
 <msg type="info" file="ConstraintSystem" num="59" delta="unknown" >Constraint <arg fmt="%s" index="1">&lt;NET &quot;flash_address&lt;24&gt;&quot; LOC=&quot;al7&quot;;&gt; [/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/labkit.ucf(335)]</arg>: <arg fmt="%s" index="2">NET</arg> &quot;<arg fmt="%s" index="3">flash_address&lt;24&gt;</arg>&quot; not found.  Please verify that:
 1. The specified design element actually exists in the original design.
 2. The specified object is spelled correctly in the constraint source file.
@@ -221,6 +218,9 @@
 </msg>
 
 <msg type="warning" file="NgdBuild" num="470" delta="unknown" ><arg fmt="%s" index="1">bidirect</arg> pad net &apos;<arg fmt="%s" index="2">flash_data&lt;9&gt;</arg>&apos; has no legal driver
+</msg>
+
+<msg type="warning" file="NgdBuild" num="470" delta="unknown" ><arg fmt="%s" index="1">bidirect</arg> pad net &apos;<arg fmt="%s" index="2">user1&lt;1&gt;</arg>&apos; has no legal driver
 </msg>
 
 <msg type="warning" file="NgdBuild" num="470" delta="unknown" ><arg fmt="%s" index="1">bidirect</arg> pad net &apos;<arg fmt="%s" index="2">user4&lt;4&gt;</arg>&apos; has no legal driver

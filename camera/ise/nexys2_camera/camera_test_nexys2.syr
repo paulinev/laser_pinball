@@ -1,0 +1,452 @@
+Release 10.1.03 - xst K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/nexys2_camera/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/nexys2_camera/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Reading design: camera_test_nexys2.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "camera_test_nexys2.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "camera_test_nexys2"
+Output Format                      : NGC
+Target Device                      : xc3s500e-4-fg320
+
+---- Source Options
+Top Module Name                    : camera_test_nexys2
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : camera_test_nexys2.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "../../../physics/beta/nexys3_beta/beta_testing/segdisplay.v" in library work
+Compiling verilog file "../../nexys2/debounce.v" in library work
+Module <segdisplay> compiled
+Compiling verilog file "../../nexys2/camera_test_nexys2.v" in library work
+Module <debounce> compiled
+WARNING:HDLCompilers:301 - "../../nexys2/camera_test_nexys2.v" line 172 Too many digits specified in hex constant
+Module <camera_test_nexys2> compiled
+No errors in compilation
+Analysis of file <"camera_test_nexys2.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <camera_test_nexys2> in library <work>.
+
+Analyzing hierarchy for module <debounce> in library <work>.
+
+Analyzing hierarchy for module <segdisplay> in library <work> with parameters.
+	SIMULATE = "00000000000000000000000000000000"
+
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 47: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 47: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 47: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 47: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../nexys2/camera_test_nexys2.v" line 57: attribute on instance <PHASE_SHIFT> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <camera_test_nexys2>.
+Module <camera_test_nexys2> is correct for synthesis.
+ 
+    Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKFX_DIVIDE =  10" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKFX_MULTIPLY =  2" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKIN_PERIOD =  20.0000000000000000" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLK_FEEDBACK =  NONE" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DSS_MODE =  NONE" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "FACTORY_JF =  C080" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "SIM_MODE =  SAFE" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKFX_DIVIDE =  25" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKFX_MULTIPLY =  2" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKIN_PERIOD =  20.0000000000000000" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLK_FEEDBACK =  NONE" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DSS_MODE =  NONE" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "FACTORY_JF =  C080" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "PHASE_SHIFT =  90" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "SIM_MODE =  SAFE" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <sccbclk> in unit <camera_test_nexys2>.
+    Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <camera_test_nexys2>.
+Analyzing module <debounce> in library <work>.
+Module <debounce> is correct for synthesis.
+ 
+Analyzing module <segdisplay> in library <work>.
+	SIMULATE = 32'sb00000000000000000000000000000000
+Module <segdisplay> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+INFO:Xst:2679 - Register <latched_value> in unit <segdisplay> has a constant value of 1010101111001101 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <digit> in unit <segdisplay> has a constant value of XXXX during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <debounce>.
+    Related source file is "../../nexys2/debounce.v".
+    Found 1-bit register for signal <clean>.
+    Found 20-bit up counter for signal <count>.
+    Found 1-bit xor2 for signal <count$xor0000> created at line 36.
+    Found 1-bit register for signal <new>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   2 D-type flip-flop(s).
+Unit <debounce> synthesized.
+
+
+Synthesizing Unit <segdisplay>.
+    Related source file is "../../../physics/beta/nexys3_beta/beta_testing/segdisplay.v".
+    Found 2-bit up counter for signal <display>.
+    Found 17-bit register for signal <lfsr>.
+    Found 1-bit xor2 for signal <lfsr$xor0000> created at line 30.
+    Summary:
+	inferred   1 Counter(s).
+	inferred  17 D-type flip-flop(s).
+Unit <segdisplay> synthesized.
+
+
+Synthesizing Unit <camera_test_nexys2>.
+    Related source file is "../../nexys2/camera_test_nexys2.v".
+WARNING:Xst:647 - Input <btn<3:1>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <JA> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <JB> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <sdioc> is never assigned.
+WARNING:Xst:2565 - Inout <sdiod> is never assigned.
+WARNING:Xst:646 - Signal <tick> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <sdoid> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <rst> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <camera_test_nexys2> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 1
+ 20-bit up counter                                     : 1
+# Registers                                            : 3
+ 1-bit register                                        : 2
+ 17-bit register                                       : 1
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Loading device for application Rf_Device from file '3s500e.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
+WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <sys_reset>.
+WARNING:Xst:2677 - Node <lfsr_1> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_2> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_3> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_4> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_5> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_6> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_7> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_8> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_9> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_10> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_11> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_12> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_13> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_14> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_15> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_16> of sequential type is unconnected in block <hexdisp>.
+WARNING:Xst:2677 - Node <lfsr_17> of sequential type is unconnected in block <hexdisp>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 1
+ 20-bit up counter                                     : 1
+# Registers                                            : 19
+ Flip-Flops                                            : 19
+# Xors                                                 : 2
+ 1-bit xor2                                            : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:2677 - Node <sys_reset/clean> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <sys_reset/new> of sequential type is unconnected in block <camera_test_nexys2>.
+INFO:Xst:1901 - Instance vgaclk in unit camera_test_nexys2 of type DCM has been replaced by DCM_SP
+INFO:Xst:1901 - Instance sccbclk in unit camera_test_nexys2 of type DCM has been replaced by DCM_SP
+
+Optimizing unit <camera_test_nexys2> ...
+
+Optimizing unit <segdisplay> ...
+WARNING:Xst:2677 - Node <hexdisp/lfsr_17> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_16> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_15> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_14> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_13> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_12> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_11> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_10> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_9> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_8> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_7> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_6> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_5> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_4> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_3> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_2> of sequential type is unconnected in block <camera_test_nexys2>.
+WARNING:Xst:2677 - Node <hexdisp/lfsr_1> of sequential type is unconnected in block <camera_test_nexys2>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block camera_test_nexys2, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : camera_test_nexys2.ngr
+Top Level Output File Name         : camera_test_nexys2
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 53
+
+Cell Usage :
+# BELS                             : 2
+#      GND                         : 1
+#      VCC                         : 1
+# Shift Registers                  : 1
+#      SRL16                       : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 2
+# IO Buffers                       : 31
+#      IBUFG                       : 1
+#      OBUF                        : 30
+# DCMs                             : 2
+#      DCM_SP                      : 2
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-4 
+
+ Number of Slices:                        1  out of   4656     0%  
+ Number of 4 input LUTs:                  1  out of   9312     0%  
+    Number used as logic:                 0
+    Number used as Shift registers:       1
+ Number of IOs:                          53
+ Number of bonded IOBs:                  31  out of    232    13%  
+ Number of GCLKs:                         2  out of     24     8%  
+ Number of DCMs:                          2  out of      4    50%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock_25mhz_unbuf                  | BUFG                   | 1     |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: 5.596ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Delay:               5.596ns (Levels of Logic = 2)
+  Source:            vgaclk:CLKFX (PAD)
+  Destination:       xclk (PAD)
+
+  Data Path: vgaclk:CLKFX to xclk
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+    DCM_SP:CLKFX           1   0.000   0.420  vgaclk (clock_25mhz_unbuf)
+     BUFG:I->O             2   1.457   0.447  vgaclk2 (xclk_OBUF)
+     OBUF:I->O                 3.272          xclk_OBUF (xclk)
+    ----------------------------------------
+    Total                      5.596ns (4.729ns logic, 0.867ns route)
+                                       (84.5% logic, 15.5% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.06 secs
+ 
+--> 
+
+
+Total memory usage is 349340 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   57 (   0 filtered)
+Number of infos    :    4 (   0 filtered)
+

@@ -1,0 +1,3 @@
+verilog work "../../../physics/beta/nexys3_beta/beta_testing/segdisplay.v"
+verilog work "../../nexys2/debounce.v"
+verilog work "../../nexys2/camera_test_nexys2.v"

@@ -4,15 +4,15 @@ Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 Parameter TMPDIR set to /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/camera_read/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/camera_read/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: labkit.prj
@@ -145,6 +145,10 @@ Analyzing hierarchy for module <camera_save> in library <work> with parameters.
 
 Analyzing hierarchy for module <xvga_640x480> in library <work>.
 
+WARNING:Xst:2591 - "../../labkit.v" line 364: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../labkit.v" line 364: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../labkit.v" line 364: attribute on instance <CLKIN_PERIOD> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
+WARNING:Xst:2591 - "../../labkit.v" line 364: attribute on instance <CLK_FEEDBACK> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 
 =========================================================================
 *                            HDL Analysis                               *
@@ -153,56 +157,26 @@ Analyzing top module <labkit>.
 Module <labkit> is correct for synthesis.
  
     Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <siod_buf> in unit <labkit>.
-    Set user-defined property "DRIVE =  12" for instance <siod_buf> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <siod_buf> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <siod_buf> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <siod_buf> in unit <labkit>.
-    Set user-defined property "SLEW =  SLOW" for instance <siod_buf> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <vsync_buf> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <vsync_buf> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <vsync_buf> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <vsync_buf> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <href_buf> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <href_buf> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <href_buf> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <href_buf> in unit <labkit>.
     Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <clk_buf> in unit <labkit>.
     Set user-defined property "DRIVE =  12" for instance <clk_buf> in unit <labkit>.
     Set user-defined property "IOSTANDARD =  DEFAULT" for instance <clk_buf> in unit <labkit>.
     Set user-defined property "SLEW =  SLOW" for instance <clk_buf> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <camera_buf0> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <camera_buf0> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <camera_buf0> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <camera_buf0> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <camera_buf1> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <camera_buf1> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <camera_buf1> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <camera_buf1> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <camera_buf2> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <camera_buf2> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <camera_buf2> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <camera_buf2> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <camera_buf3> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <camera_buf3> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <camera_buf3> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <camera_buf3> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <camera_buf4> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <camera_buf4> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <camera_buf4> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <camera_buf4> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <camera_buf5> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <camera_buf5> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <camera_buf5> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <camera_buf5> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <camera_buf6> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <camera_buf6> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <camera_buf6> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <camera_buf6> in unit <labkit>.
-    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <camera_buf7> in unit <labkit>.
-    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <camera_buf7> in unit <labkit>.
-    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <camera_buf7> in unit <labkit>.
-    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <camera_buf7> in unit <labkit>.
+    Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "CLKFX_DIVIDE =  27" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "CLKFX_MULTIPLY =  10" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "CLKIN_PERIOD =  37.0000000000000000" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "CLK_FEEDBACK =  NONE" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "DSS_MODE =  NONE" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "FACTORY_JF =  C080" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "SIM_MODE =  SAFE" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <slowclk> in unit <labkit>.
 Analyzing module <debounce> in library <work>.
 	DELAY = 32'sb00000000000001000001111010110000
 Module <debounce> is correct for synthesis.
@@ -772,16 +746,17 @@ Design Statistics
 # IOs                              : 576
 
 Cell Usage :
-# BELS                             : 252
+# BELS                             : 256
 #      GND                         : 1
 #      INV                         : 9
 #      LUT1                        : 54
-#      LUT2                        : 6
-#      LUT2_L                      : 1
+#      LUT2                        : 5
 #      LUT3                        : 19
 #      LUT3_D                      : 1
+#      LUT3_L                      : 1
 #      LUT4                        : 39
-#      LUT4_D                      : 3
+#      LUT4_D                      : 2
+#      LUT4_L                      : 6
 #      MUXCY                       : 59
 #      MUXF5                       : 1
 #      VCC                         : 1
@@ -795,13 +770,14 @@ Cell Usage :
 #      FDS                         : 2
 # Shift Registers                  : 1
 #      SRL16                       : 1
-# Clock Buffers                    : 3
-#      BUFG                        : 3
-# IO Buffers                       : 258
-#      IBUF                        : 14
-#      IBUFG                       : 2
-#      IOBUF                       : 1
+# Clock Buffers                    : 4
+#      BUFG                        : 4
+# IO Buffers                       : 255
+#      IBUF                        : 11
+#      IBUFG                       : 3
 #      OBUF                        : 241
+# DCMs                             : 1
+#      DCM                         : 1
 # Others                           : 1
 #      dual_port_bram              : 1
 =========================================================================
@@ -811,14 +787,15 @@ Device utilization summary:
 
 Selected Device : 2v6000bf957-4 
 
- Number of Slices:                       73  out of  33792     0%  
+ Number of Slices:                       75  out of  33792     0%  
  Number of Slice Flip Flops:             89  out of  67584     0%  
- Number of 4 input LUTs:                133  out of  67584     0%  
-    Number used as logic:               132
+ Number of 4 input LUTs:                137  out of  67584     0%  
+    Number used as logic:               136
     Number used as Shift registers:       1
  Number of IOs:                         576
- Number of bonded IOBs:                 256  out of    684    37%  
- Number of GCLKs:                         3  out of     16    18%  
+ Number of bonded IOBs:                 255  out of    684    37%  
+ Number of GCLKs:                         4  out of     16    25%  
+ Number of DCMs:                          1  out of     12     8%  
 
 ---------------------------
 Partition Resource Summary:
@@ -841,7 +818,8 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clock_27mhz                        | IBUF+BUFG              | 90    |
+clock_27mhz                        | IBUFG+BUFG             | 22    |
+user1<4>                           | IBUFG+BUFG             | 68    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -852,10 +830,10 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 11.440ns (Maximum Frequency: 87.416MHz)
+   Minimum period: 7.904ns (Maximum Frequency: 126.518MHz)
    Minimum input arrival time before clock: 4.847ns
-   Maximum output required time after clock: 9.496ns
-   Maximum combinational path delay: 7.504ns
+   Maximum output required time after clock: 9.795ns
+   Maximum combinational path delay: 9.514ns
 
 Timing Detail:
 --------------
@@ -863,40 +841,89 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clock_27mhz'
-  Clock period: 11.440ns (frequency: 87.416MHz)
-  Total number of paths / destination ports: 2020 / 206
+  Clock period: 5.808ns (frequency: 172.176MHz)
+  Total number of paths / destination ports: 614 / 60
 -------------------------------------------------------------------------
-Delay:               5.720ns (Levels of Logic = 1)
-  Source:            reset_sr (FF)
-  Destination:       frame_buffer/addr_18 (FF)
+Delay:               5.808ns (Levels of Logic = 7)
+  Source:            sys_reset/count_7 (FF)
+  Destination:       sys_reset/count_0 (FF)
   Source Clock:      clock_27mhz rising
-  Destination Clock: clock_27mhz falling
+  Destination Clock: clock_27mhz rising
 
-  Data Path: reset_sr to frame_buffer/addr_18
+  Data Path: sys_reset/count_7 to sys_reset/count_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     SRL16:CLK->Q          8   2.901   1.047  reset_sr (reset)
-     LUT2:I1->O           22   0.439   1.052  rst1_1 (rst1)
-     FDS:S                     0.280          frame_buffer/we
+     FDRE:C->Q             2   0.568   0.986  sys_reset/count_7 (sys_reset/count_7)
+     LUT3:I0->O            1   0.439   0.000  sys_reset/count_cmp_eq0000_wg_lut<0> (sys_reset/count_cmp_eq0000_wg_lut<0>)
+     MUXCY:S->O            1   0.298   0.000  sys_reset/count_cmp_eq0000_wg_cy<0> (sys_reset/count_cmp_eq0000_wg_cy<0>)
+     MUXCY:CI->O           1   0.053   0.000  sys_reset/count_cmp_eq0000_wg_cy<1> (sys_reset/count_cmp_eq0000_wg_cy<1>)
+     MUXCY:CI->O           1   0.053   0.000  sys_reset/count_cmp_eq0000_wg_cy<2> (sys_reset/count_cmp_eq0000_wg_cy<2>)
+     MUXCY:CI->O           1   0.053   0.000  sys_reset/count_cmp_eq0000_wg_cy<3> (sys_reset/count_cmp_eq0000_wg_cy<3>)
+     MUXCY:CI->O           2   0.942   0.701  sys_reset/count_cmp_eq0000_wg_cy<4> (sys_reset/count_cmp_eq0000)
+     INV:I->O             19   0.439   1.035  sys_reset/count_not00011_INV_0 (sys_reset/count_not0001)
+     FDRE:CE                   0.240          sys_reset/count_0
     ----------------------------------------
-    Total                      5.720ns (3.620ns logic, 2.100ns route)
-                                       (63.3% logic, 36.7% route)
+    Total                      5.808ns (3.085ns logic, 2.723ns route)
+                                       (53.1% logic, 46.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'user1<4>'
+  Clock period: 7.904ns (frequency: 126.518MHz)
+  Total number of paths / destination ports: 1461 / 113
+-------------------------------------------------------------------------
+Delay:               3.952ns (Levels of Logic = 2)
+  Source:            read/pixel_done (FF)
+  Destination:       frame_buffer/addr_18 (FF)
+  Source Clock:      user1<4> rising
+  Destination Clock: user1<4> falling
+
+  Data Path: read/pixel_done to frame_buffer/addr_18
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             6   0.568   1.079  read/pixel_done (read/pixel_done)
+     LUT4_D:I0->O         18   0.439   1.058  frame_buffer/addr_mux0000<0>345 (frame_buffer/N21)
+     LUT4:I2->O            1   0.439   0.000  frame_buffer/addr_mux0000<8>1 (frame_buffer/addr_mux0000<8>)
+     FDR:D                     0.370          frame_buffer/addr_10
+    ----------------------------------------
+    Total                      3.952ns (1.816ns logic, 2.136ns route)
+                                       (46.0% logic, 54.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 58 / 46
+  Total number of paths / destination ports: 23 / 23
+-------------------------------------------------------------------------
+Offset:              3.540ns (Levels of Logic = 2)
+  Source:            button_enter (PAD)
+  Destination:       sys_reset/count_0 (FF)
+  Destination Clock: clock_27mhz rising
+
+  Data Path: button_enter to sys_reset/count_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.825   0.955  button_enter_IBUF (button_enter_IBUF)
+     LUT3:I1->O           20   0.439   1.041  sys_reset/count_or00001 (sys_reset/count_or0000)
+     FDRE:R                    0.280          sys_reset/count_0
+    ----------------------------------------
+    Total                      3.540ns (1.544ns logic, 1.996ns route)
+                                       (43.6% logic, 56.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'user1<4>'
+  Total number of paths / destination ports: 35 / 23
 -------------------------------------------------------------------------
 Offset:              4.847ns (Levels of Logic = 3)
   Source:            user1<2> (PAD)
   Destination:       read/data_out_16 (FF)
-  Destination Clock: clock_27mhz rising
+  Destination Clock: user1<4> rising
 
   Data Path: user1<2> to read/data_out_16
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             5   0.825   1.056  vsync_buf (vsync_in)
+     IBUF:I->O             5   0.825   1.056  user1_2_IBUF (user1_2_IBUF)
      LUT4:I0->O            3   0.439   1.009  read/data_out_15_not000111 (read/pixel_done_and0000)
      LUT3:I0->O            8   0.439   0.839  read/data_out_23_not00011 (read/data_out_23_not0001)
      FDRE:CE                   0.240          read/data_out_23
@@ -905,10 +932,30 @@ Offset:              4.847ns (Levels of Logic = 3)
                                        (40.1% logic, 59.9% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
-  Total number of paths / destination ports: 65 / 64
+Timing constraint: Default OFFSET OUT AFTER for Clock 'user1<4>'
+  Total number of paths / destination ports: 63 / 63
 -------------------------------------------------------------------------
-Offset:              9.496ns (Levels of Logic = 2)
+Offset:              6.587ns (Levels of Logic = 2)
+  Source:            vga/blank (FF)
+  Destination:       vga_out_blank_b (PAD)
+  Source Clock:      user1<4> rising
+
+  Data Path: vga/blank to vga_out_blank_b
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              2   0.568   0.701  vga/blank (vga/blank)
+     INV:I->O              1   0.439   0.517  vga_out_blank_b1_INV_0 (vga_out_blank_b_OBUF)
+     OBUF:I->O                 4.361          vga_out_blank_b_OBUF (vga_out_blank_b)
+    ----------------------------------------
+    Total                      6.587ns (5.368ns logic, 1.219ns route)
+                                       (81.5% logic, 18.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 2 / 1
+-------------------------------------------------------------------------
+Offset:              9.795ns (Levels of Logic = 2)
   Source:            reset_sr (FF)
   Destination:       analyzer1_data<3> (PAD)
   Source Clock:      clock_27mhz rising
@@ -917,44 +964,45 @@ Offset:              9.496ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     SRL16:CLK->Q          8   2.901   1.048  reset_sr (reset)
-     LUT2:I1->O            4   0.439   0.747  rst1 (rst)
+     SRL16:CLK->Q          6   2.901   1.002  reset_sr (reset)
+     LUT2:I1->O           34   0.439   1.093  rst1 (rst)
      OBUF:I->O                 4.361          analyzer1_data_3_OBUF (analyzer1_data<3>)
     ----------------------------------------
-    Total                      9.496ns (7.701ns logic, 1.795ns route)
-                                       (81.1% logic, 18.9% route)
+    Total                      9.795ns (7.701ns logic, 2.094ns route)
+                                       (78.6% logic, 21.4% route)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 38 / 38
+  Total number of paths / destination ports: 36 / 36
 -------------------------------------------------------------------------
-Delay:               7.504ns (Levels of Logic = 3)
-  Source:            clock_27mhz (PAD)
+Delay:               9.514ns (Levels of Logic = 4)
+  Source:            user1<4> (PAD)
   Destination:       vga_out_pixel_clock (PAD)
 
-  Data Path: clock_27mhz to vga_out_pixel_clock
+  Data Path: user1<4> to vga_out_pixel_clock
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             6   0.825   0.793  clock_27mhz_IBUF (analyzer1_clock_OBUF1)
+     IBUFG:I->O            1   1.414   0.517  user1_4_IBUFG (user1_4_IBUFG)
+     BUFG:I->O            40   0.589   1.108  pclk_buf (pclk)
      INV:I->O             31   0.439   1.085  vga_out_pixel_clock1_INV_0 (vga_out_pixel_clock_OBUF)
      OBUF:I->O                 4.361          vga_out_pixel_clock_OBUF (vga_out_pixel_clock)
     ----------------------------------------
-    Total                      7.504ns (5.625ns logic, 1.879ns route)
-                                       (75.0% logic, 25.0% route)
+    Total                      9.514ns (6.803ns logic, 2.711ns route)
+                                       (71.5% logic, 28.5% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 5.25 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 6.34 secs
  
 --> 
 
 
-Total memory usage is 457320 kilobytes
+Total memory usage is 452836 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  373 (   0 filtered)
+Number of warnings :  377 (   0 filtered)
 Number of infos    :   11 (   0 filtered)
 

@@ -5,14 +5,14 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="NgdBuild" timeStamp="Sun Nov 23 20:29:30 2014">
+  <application stringID="NgdBuild" timeStamp="Mon Nov 24 12:58:32 2014">
     <task stringID="NGDBUILD_REPORT">
       <section stringID="NGDBUILD_DESIGN_SUMMARY">
         <item dataType="int" stringID="NGDBUILD_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="NGDBUILD_FILTERED_WARNINGS" value="0"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_WARNINGS" value="263"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_WARNINGS" value="264"/>
         <item dataType="int" stringID="NGDBUILD_FILTERED_INFOS" value="0"/>
-        <item dataType="int" stringID="NGDBUILD_NUM_INFOS" value="2"/>
+        <item dataType="int" stringID="NGDBUILD_NUM_INFOS" value="1"/>
       </section>
       <section stringID="NGDBUILD_CORE_SUMMARY">
         <item COUNT="1" stringID="NGDBUILD_CORE" value="blk_mem_gen_v2_8, Xilinx CORE Generator 10.1.03_ip3"/>

@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------
+Release 10.1.03 Trace  (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
+/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/nexys2_camera/nexys2_camera.ise
+-intstyle ise -v 3 -s 4 -xml camera_test_nexys2 camera_test_nexys2.ncd -o
+camera_test_nexys2.twr camera_test_nexys2.pcf -ucf
+/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/nexys2/Nexys2_500General.ucf
+
+Design file:              camera_test_nexys2.ncd
+Physical constraint file: camera_test_nexys2.pcf
+Device,package,speed:     xc3s500e,fg320,-4 (PRODUCTION 1.27 2008-01-09)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: NET "clk_IBUFG" PERIOD = 20 ns HIGH 50%;
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+No constraints were found to generate data for the Data Sheet Report section.
+Use the Advanced Analysis (-a) option or generate global constraints for each
+clock, its pad to setup and clock to pad paths, and a pad to pad constraint.
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0
+
+Constraints cover 0 paths, 0 nets, and 0 connections
+
+Design statistics:
+No global statistics to report.
+
+Analysis completed Mon Nov 24 13:24:31 2014 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 220 MB
+
+
+
