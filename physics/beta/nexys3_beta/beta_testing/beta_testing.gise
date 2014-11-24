@@ -88,6 +88,7 @@
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
     <transform xil_pn:end_ts="1416783378" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1416783378">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
     <transform xil_pn:end_ts="1416786485" xil_pn:in_ck="-1490471425070548037" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1416786485">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -169,6 +170,7 @@
     </transform>
     <transform xil_pn:end_ts="1416773529" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1416773529">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
     <transform xil_pn:end_ts="1416773529" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-3462260050298187608" xil_pn:start_ts="1416773529">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -216,10 +218,15 @@
     <transform xil_pn:end_ts="1416782578" xil_pn:in_ck="873402279883868012" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-8119212731789373291" xil_pn:start_ts="1416782578">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
     </transform>
     <transform xil_pn:end_ts="1416788426" xil_pn:in_ck="757771744707086917" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="5357080152765999000" xil_pn:start_ts="1416788420">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="beta2demo.bld"/>
@@ -229,6 +236,9 @@
     <transform xil_pn:end_ts="1416788456" xil_pn:in_ck="757771744707086918" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="1463976855095865663" xil_pn:start_ts="1416788426">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
       <outfile xil_pn:name="beta2demo.pcf"/>
       <outfile xil_pn:name="beta2demo_map.map"/>
@@ -243,6 +253,9 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
       <outfile xil_pn:name="beta2demo.ncd"/>
       <outfile xil_pn:name="beta2demo.pad"/>
@@ -258,6 +271,8 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="beta2demo.bgn"/>
       <outfile xil_pn:name="beta2demo.bit"/>
@@ -271,6 +286,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="InputRemoved"/>
@@ -279,6 +295,7 @@
       <status xil_pn:value="AbortedRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="InputRemoved"/>
@@ -286,6 +303,9 @@
     <transform xil_pn:end_ts="1416788473" xil_pn:in_ck="757771744707086786" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416185" xil_pn:start_ts="1416788467">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
       <outfile xil_pn:name="beta2demo.twr"/>
       <outfile xil_pn:name="beta2demo.twx"/>
