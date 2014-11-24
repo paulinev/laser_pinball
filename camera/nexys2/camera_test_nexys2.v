@@ -45,7 +45,7 @@ module camera_test_nexys2(
 	wire clock_25mhz_unbuf, clock_25mhz; // actually 10mhz because i am a terrible persion
 	
 		DCM vgaclk(.CLKIN(clk),.CLKFX(clock_25mhz_unbuf));
-		// synthesis attribute CLKFX_DIVIDE of vgaclk is 10
+		// synthesis attribute CLKFX_DIVIDE of vgaclk is 4
 		// synthesis attribute CLKFX_MULTIPLY of vgaclk is 2
 		// synthesis attribute CLK_FEEDBACK of vgaclk is NONE
 		// synthesis attribute CLKIN_PERIOD of vgaclk is 20
@@ -83,7 +83,7 @@ module camera_test_nexys2(
 	segdisplay hexdisp(
 		.clk(clock_25mhz),
 		.enable(0),
-		.value('hABCD),
+		.value(16'b111111111111111),
 		.anodes(an),
 		.segments({dp, seg[6:0]}),
 		.tick(tick)
@@ -169,7 +169,7 @@ module camera_test_nexys2(
 	assign vgaGreen = bram_out[7:5];
 	assign vgaBlue = bram_out[7:6]; */
 	
-	assign Led = 2'hAA;
+	assign Led = 8'b01010101;
 	
 
 endmodule

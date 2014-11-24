@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Mon Nov 24 13:24:21 2014">
+  <application stringID="Map" timeStamp="Mon Nov 24 13:42:28 2014">
     <task stringID="MAP_PACK_REPORT">
       <section stringID="MAP_DESIGN_INFORMATION">
         <item stringID="MAP_PART" value="3s500efg320-4"/>
@@ -18,7 +18,7 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="23"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="412764"/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="411684"/>
         <item stringID="MAP_TOTAL_REAL_TIME" value="2 secs "/>
         <item stringID="MAP_TOTAL_CPU_TIME" value="1 secs "/>
       </section>
@@ -495,7 +495,7 @@
         <item stringID="MAP_DFS_FREQUENCY_MODE" value="LOW"/>
         <item stringID="MAP_DLL_FREQUENCY_MODE" value="LOW"/>
         <item stringID="MAP_DUTY_CYCLE_CORRECTION" value="TRUE"/>
-        <item stringID="MAP_CLKFX_DIVIDE" value="10"/>
+        <item stringID="MAP_CLKFX_DIVIDE" value="4"/>
         <item stringID="MAP_CLKFX_MULTIPLY" value="2"/>
         <item stringID="MAP_PHASE_SHIFT" value="0"/>
       </section>

@@ -12,7 +12,7 @@ Target Device  : xc3s500e
 Target Package : fg320
 Target Speed   : -4
 Mapper Version : spartan3e -- $Revision: 1.46.12.2 $
-Mapped Date    : Mon Nov 24 13:24:19 2014
+Mapped Date    : Mon Nov 24 13:42:26 2014
 
 Mapping design into LUTs...
 Running directed packing...
@@ -34,7 +34,7 @@ Logic Distribution:
   Number of BUFGMUXs:                     2 out of      24    8%
   Number of DCMs:                         2 out of       4   50%
 
-Peak Memory Usage:  403 MB
+Peak Memory Usage:  402 MB
 Total REAL time to MAP completion:  2 secs 
 Total CPU time to MAP completion:   1 secs 
 

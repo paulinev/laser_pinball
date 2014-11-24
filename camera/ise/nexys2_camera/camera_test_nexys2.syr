@@ -113,7 +113,6 @@ Compiling verilog file "../../nexys2/debounce.v" in library work
 Module <segdisplay> compiled
 Compiling verilog file "../../nexys2/camera_test_nexys2.v" in library work
 Module <debounce> compiled
-WARNING:HDLCompilers:301 - "../../nexys2/camera_test_nexys2.v" line 172 Too many digits specified in hex constant
 Module <camera_test_nexys2> compiled
 No errors in compilation
 Analysis of file <"camera_test_nexys2.prj"> succeeded.
@@ -146,7 +145,7 @@ Analyzing top module <camera_test_nexys2>.
 Module <camera_test_nexys2> is correct for synthesis.
  
     Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <vgaclk> in unit <camera_test_nexys2>.
-    Set user-defined property "CLKFX_DIVIDE =  10" for instance <vgaclk> in unit <camera_test_nexys2>.
+    Set user-defined property "CLKFX_DIVIDE =  4" for instance <vgaclk> in unit <camera_test_nexys2>.
     Set user-defined property "CLKFX_MULTIPLY =  2" for instance <vgaclk> in unit <camera_test_nexys2>.
     Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <vgaclk> in unit <camera_test_nexys2>.
     Set user-defined property "CLKIN_PERIOD =  20.0000000000000000" for instance <vgaclk> in unit <camera_test_nexys2>.
@@ -191,7 +190,7 @@ Module <segdisplay> is correct for synthesis.
 =========================================================================
 
 Performing bidirectional port resolution...
-INFO:Xst:2679 - Register <latched_value> in unit <segdisplay> has a constant value of 1010101111001101 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <latched_value> in unit <segdisplay> has a constant value of 0111111111111111 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <digit> in unit <segdisplay> has a constant value of XXXX during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <debounce>.
@@ -439,14 +438,14 @@ Delay:               5.596ns (Levels of Logic = 2)
 
 
 Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 3.06 secs
+Total CPU time to Xst completion: 3.16 secs
  
 --> 
 
 
-Total memory usage is 349340 kilobytes
+Total memory usage is 349296 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   57 (   0 filtered)
+Number of warnings :   55 (   0 filtered)
 Number of infos    :    4 (   0 filtered)
 
