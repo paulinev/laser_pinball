@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/Jake/laser_pinball/physics/nexys3/beta_testing/simulate_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="simulate" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/simulate/seg" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">seg[7:0]</obj_property>
+      <obj_property name="ObjectShortName">seg[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/an" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">an[3:0]</obj_property>
+      <obj_property name="ObjectShortName">an[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/led" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">led[7:0]</obj_property>
+      <obj_property name="ObjectShortName">led[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/red" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">red[2:0]</obj_property>
+      <obj_property name="ObjectShortName">red[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/green" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">green[2:0]</obj_property>
+      <obj_property name="ObjectShortName">green[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/blue" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">blue[1:0]</obj_property>
+      <obj_property name="ObjectShortName">blue[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/hsync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">hsync</obj_property>
+      <obj_property name="ObjectShortName">hsync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/vsync" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">vsync</obj_property>
+      <obj_property name="ObjectShortName">vsync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/gclk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">gclk</obj_property>
+      <obj_property name="ObjectShortName">gclk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/sw" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">sw[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sw[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/btn" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">btn[4:0]</obj_property>
+      <obj_property name="ObjectShortName">btn[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/uut/beta_clk2/O" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">O</obj_property>
+      <obj_property name="ObjectShortName">O</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/uut/irq_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">irq_addr[30:0]</obj_property>
+      <obj_property name="ObjectShortName">irq_addr[30:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simulate/uut/cpu/pc_inc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_inc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_inc[31:0]</obj_property>
+   </wvobject>
+</wave_config>

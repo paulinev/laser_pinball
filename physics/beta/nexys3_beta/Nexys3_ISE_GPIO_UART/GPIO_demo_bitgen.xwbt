@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\GPIO_demo.ncd
+OUTFILE=C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART\GPIO_demo.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=C:\Users\Jake\laser_pinball\physics\nexys3\Nexys3_ISE_GPIO_UART
+LICENSE=WebPack
+USER_INFO=210973949_0_0_559

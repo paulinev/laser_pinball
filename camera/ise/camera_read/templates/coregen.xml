@@ -10,12 +10,12 @@
  
 dual_port_bram YourInstanceName (
     .clka(clka),
-    .dina(dina), // Bus [7 : 0] 
+    .dina(dina), // Bus [5 : 0] 
     .addra(addra), // Bus [18 : 0] 
     .wea(wea), // Bus [0 : 0] 
     .clkb(clkb),
     .addrb(addrb), // Bus [18 : 0] 
-    .doutb(doutb)); // Bus [7 : 0] 
+    .doutb(doutb)); // Bus [5 : 0] 
 
  
 		</Template>
@@ -29,12 +29,12 @@ dual_port_bram YourInstanceName (
 component dual_port_bram
     port (
     clka: IN std_logic;
-    dina: IN std_logic_VECTOR(7 downto 0);
+    dina: IN std_logic_VECTOR(5 downto 0);
     addra: IN std_logic_VECTOR(18 downto 0);
     wea: IN std_logic_VECTOR(0 downto 0);
     clkb: IN std_logic;
     addrb: IN std_logic_VECTOR(18 downto 0);
-    doutb: OUT std_logic_VECTOR(7 downto 0));
+    doutb: OUT std_logic_VECTOR(5 downto 0));
 end component;
 
 

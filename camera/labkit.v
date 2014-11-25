@@ -286,7 +286,8 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // button_left, button_down, button_up, and switches are inputs
 
    // User I/Os
-   assign user1 = 32'hZ;
+   //assign user1 = 32'hZ;
+	assign user1[31:14] = 18'hZ;
    assign user2 = 32'hZ;
    assign user3 = 32'hZ;
    assign user4 = 32'hZ;
@@ -303,12 +304,12 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
    // systemace_irq and systemace_mpbrdy are inputs
 
    // Logic Analyzer
-   assign analyzer1_data = 16'h0;
-   assign analyzer1_clock = 1'b1;
+   //assign analyzer1_data = 16'h0;
+   //assign analyzer1_clock = 1'b1;
    assign analyzer2_data = 16'h0;
    assign analyzer2_clock = 1'b1;
-   assign analyzer3_data = 16'h0;
-   assign analyzer3_clock = 1'b1;
+   //assign analyzer3_data = 16'h0;
+   //assign analyzer3_clock = 1'b1;
    assign analyzer4_data = 16'h0;
    assign analyzer4_clock = 1'b1;
 			    
@@ -332,46 +333,67 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	debounce sys_reset(.reset(reset), .clock(clock_27mhz), .noisy(~button_enter),
 								       .clean(global_reset));
 	assign rst = global_reset | reset;
-										 
+	
+	wire clock_10mhz_ubuf, clock_10mhz;
+	DCM slowclk(.CLKIN(clock_27mhz), .CLKFX(clock_10mhz_ubuf));
+	// synthesis attribute CLKFX_DIVIDE of slowclk is 27
+	// synthesis attribute CLKFX_MULTIPLY of slowclk is 10
+	// synthesis attribute CLK_FEEDBACK of slowclk is NONE
+	// synthesis attribute CLKIN_PERIOD of slowclk is 37
+	BUFG slowclkbuf (.I(clock_10mhz_ubuf), .O(clock_10mhz));
+	
 // Wire up camera inputs
 	wire sioc;
-	assign sioc = user1[0];
+	BUFG sioc_buf (.O(sioc), .I(user1[0]));
 	wire siod;
 	assign siod = user1[1];
 	wire vsync_in;
+	//IBUF vsync_buf (.O(vsync_in), .I(user1[2]));
 	assign vsync_in = user1[2];
 	wire href_in;
+	//IBUF href_buf (.O(href_in), .I(user1[3]));
 	assign href_in = user1[3];
 	wire pclk;
+	//assign pclk = user1[4];
 	BUFG pclk_buf (.O(pclk), .I(user1[4]));
 	wire xclk;
-	assign user1[5] = clock_27mhz;
+	OBUF clk_buf (.O(user1[5]), .I(clock_27mhz));
 	wire [7:0] camera_in;
 	assign camera_in = user1[13:6];
+	/*IBUF camera_buf0 (.O(camera_in[0]), .I(user1[6]));
+	IBUF camera_buf1 (.O(camera_in[1]), .I(user1[7]));
+	IBUF camera_buf2 (.O(camera_in[2]), .I(user1[8]));
+	IBUF camera_buf3 (.O(camera_in[3]), .I(user1[9]));
+	IBUF camera_buf4 (.O(camera_in[4]), .I(user1[10]));
+	IBUF camera_buf5 (.O(camera_in[5]), .I(user1[11]));
+	IBUF camera_buf6 (.O(camera_in[6]), .I(user1[12]));
+	IBUF camera_buf7 (.O(camera_in[7]), .I(user1[13]));*/
+	
+	
+	
 	
 // Instantiate camera reader
 	wire [31:0] pixel_out;
 	wire pixel_done, frame_done;
-	camera_read reader (
-    .reset(rst), 
-    .clk(pclk), 
-    .vsync(vsync_in), 
-    .href(href_in), 
-    .pclk(pclk), 
-    .data_in(camera_in), 
-    .xclk(xclk), 
-    .data_out(pixel_out), 
-    .pixel_done(pixel_done), 
-    .frame_done(frame_done)
-    );
+	camera_read read (
+		.reset(rst), 
+		.clk(clock_10mhz), 
+		.vsync(vsync_in), 
+		.href(href_in), 
+		.pclk(pclk), 
+		.data_in(camera_in), 
+		.data_out(pixel_out), 
+		.pixel_done(pixel_done), 
+		.frame_done(frame_done)
+	);
 
 // Instantiate camera save
 	wire we;
 	wire [18:0] addr;
 	wire [7:0] save_pixel_out;
-	assign led = {we, 7'b1};
+	
 	camera_save frame_buffer(
-		.clk(pclk),
+		.clk(~pclk),
 		.reset(rst),
 		.pixel_done(pixel_done),
 		.data_in(pixel_out),
@@ -380,15 +402,15 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 		.addr(addr),
 		.we(we)
 	);
-	
-	wire [7:0] bram_out;
+	wire [18:0] addr_read = 0;
+	wire [5:0] bram_out;
 	dual_port_bram fbuf(
-		.clka(pclk),
-		.dina(save_pixel_out),
+		.clka(~pclk),
+		.dina(save_pixel_out[7:2]),
 		.addra(addr),
-		.wea(we),
+		.wea(~we),
 		.clkb(pclk),
-		.addrb(addr),
+		.addrb(addr_read),
 		.doutb(bram_out)
 	);
 	
@@ -398,7 +420,7 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 	xvga_640x480 vga (
 		.vclock(pclk),
 		.hcount(hcount),    // pixel number on current line
-		.vcount(vcount),	 // line number
+		.vcount(vcount),	   // line number
 		.vsync(vsync_out),
 		.hsync(hsync_out),
 		.blank(blank_out)
@@ -406,13 +428,19 @@ module labkit (beep, audio_reset_b, ac97_sdata_out, ac97_sdata_in, ac97_synch,
 
 	// VGA Output.  In order to meet the setup and hold times of the
    // AD7125, we send it ~clock_65mhz.
-   assign vga_out_red = bram_out[7:0];
-   assign vga_out_green = bram_out[7:0];
-   assign vga_out_blue = bram_out[7:0];
+   assign vga_out_red[7:0] = {bram_out[5:0], 2'b00};
+   assign vga_out_green[7:0] = {bram_out[5:0], 2'b00};
+   assign vga_out_blue[7:0] = {bram_out[5:0], 2'b00};
    assign vga_out_sync_b = 1'b1;    // not used
    assign vga_out_blank_b = ~blank_out;
    assign vga_out_pixel_clock = ~pclk;
    assign vga_out_hsync = hsync_out;
-   assign vga_out_vsync = vsync_out;					 
-												
+   assign vga_out_vsync = vsync_out;
+	
+	assign analyzer3_data[15:0] = {href_in, vsync_in, bram_out, camera_in};
+	assign analyzer3_clock = clock_10mhz;
+	assign analyzer1_data[15:0] = {save_pixel_out, vga_out_red};
+	assign analyzer1_clock = clock_10mhz;
+	assign led = {frame_done, pclk, bram_out};
+	
 endmodule

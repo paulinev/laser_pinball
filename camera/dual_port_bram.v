@@ -48,12 +48,12 @@ module dual_port_bram(
 
 
 input clka;
-input [7 : 0] dina;
+input [5 : 0] dina;
 input [18 : 0] addra;
 input [0 : 0] wea;
 input clkb;
 input [18 : 0] addrb;
-output [7 : 0] doutb;
+output [5 : 0] doutb;
 
 // synthesis translate_off
 
@@ -84,8 +84,8 @@ output [7 : 0] doutb;
 		.C_PRIM_TYPE(1),
 		.C_READ_DEPTH_A(307200),
 		.C_READ_DEPTH_B(307200),
-		.C_READ_WIDTH_A(8),
-		.C_READ_WIDTH_B(8),
+		.C_READ_WIDTH_A(6),
+		.C_READ_WIDTH_B(6),
 		.C_SIM_COLLISION_CHECK("ALL"),
 		.C_SINITA_VAL("0"),
 		.C_SINITB_VAL("0"),
@@ -100,8 +100,8 @@ output [7 : 0] doutb;
 		.C_WRITE_DEPTH_B(307200),
 		.C_WRITE_MODE_A("READ_FIRST"),
 		.C_WRITE_MODE_B("READ_FIRST"),
-		.C_WRITE_WIDTH_A(8),
-		.C_WRITE_WIDTH_B(8),
+		.C_WRITE_WIDTH_A(6),
+		.C_WRITE_WIDTH_B(6),
 		.C_XDEVICEFAMILY("virtex2"))
 	inst (
 		.CLKA(clka),

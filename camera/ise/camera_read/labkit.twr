@@ -28,101 +28,80 @@ INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on
 ================================================================================
 Timing constraint: NET "user1_4_IBUFG" PERIOD = 37 ns HIGH 50%;
 
- 694 paths analyzed, 58 endpoints analyzed, 0 failing endpoints
+ 5993 paths analyzed, 3733 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is   5.854ns.
+ Minimum period is  31.478ns.
 --------------------------------------------------------------------------------
-Slack:                  31.146ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/vcount_2 (FF)
-  Destination:          vga/vcount_9 (FF)
-  Requirement:          37.000ns
-  Data Path Delay:      5.854ns (Levels of Logic = 2)
+Slack:                  2.761ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               frame_buffer/addr_6 (FF)
+  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[51].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B (RAM)
+  Requirement:          18.500ns
+  Data Path Delay:      15.739ns (Levels of Logic = 0)
   Clock Path Skew:      0.000ns
-  Source Clock:         pclk rising at 0.000ns
+  Source Clock:         pclk falling at 18.500ns
   Destination Clock:    pclk rising at 37.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: vga/vcount_2 to vga/vcount_9
+  Maximum Data Path: frame_buffer/addr_6 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[51].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X119Y93.XQ     Tcko                  0.568   vga/vcount<2>
-                                                       vga/vcount_2
-    SLICE_X116Y93.F1     net (fanout=5)        1.454   vga/vcount<2>
-    SLICE_X116Y93.X      Tilo                  0.439   vga/vreset9
-                                                       vga/vreset9
-    SLICE_X114Y95.F2     net (fanout=2)        1.148   vga/vreset9
-    SLICE_X114Y95.X      Tilo                  0.439   vga/vcount_and0000
-                                                       vga/vcount_and00001
-    SLICE_X119Y96.SR     net (fanout=5)        1.526   vga/vcount_and0000
-    SLICE_X119Y96.CLK    Tsrck                 0.280   vga/vcount<8>
-                                                       vga/vcount_9
+    SLICE_X100Y87.YQ     Tcko                  0.568   frame_buffer/addr<7>
+                                                       frame_buffer/addr_6
+    RAMB16_X4Y21.ADDRB6  net (fanout=228)     14.812   frame_buffer/addr<6>
+    RAMB16_X4Y21.CLKB    Tback                 0.359   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[51].ram.r/v2_noinit.ram/dpram.dp1x1.ram
+                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[51].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     -------------------------------------------------  ---------------------------
-    Total                                      5.854ns (1.726ns logic, 4.128ns route)
-                                                       (29.5% logic, 70.5% route)
+    Total                                     15.739ns (0.927ns logic, 14.812ns route)
+                                                       (5.9% logic, 94.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  31.146ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/vcount_2 (FF)
-  Destination:          vga/vcount_8 (FF)
-  Requirement:          37.000ns
-  Data Path Delay:      5.854ns (Levels of Logic = 2)
+Slack:                  2.805ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               frame_buffer/addr_12 (FF)
+  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[74].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B (RAM)
+  Requirement:          18.500ns
+  Data Path Delay:      15.695ns (Levels of Logic = 0)
   Clock Path Skew:      0.000ns
-  Source Clock:         pclk rising at 0.000ns
+  Source Clock:         pclk falling at 18.500ns
   Destination Clock:    pclk rising at 37.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: vga/vcount_2 to vga/vcount_8
+  Maximum Data Path: frame_buffer/addr_12 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[74].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X119Y93.XQ     Tcko                  0.568   vga/vcount<2>
-                                                       vga/vcount_2
-    SLICE_X116Y93.F1     net (fanout=5)        1.454   vga/vcount<2>
-    SLICE_X116Y93.X      Tilo                  0.439   vga/vreset9
-                                                       vga/vreset9
-    SLICE_X114Y95.F2     net (fanout=2)        1.148   vga/vreset9
-    SLICE_X114Y95.X      Tilo                  0.439   vga/vcount_and0000
-                                                       vga/vcount_and00001
-    SLICE_X119Y96.SR     net (fanout=5)        1.526   vga/vcount_and0000
-    SLICE_X119Y96.CLK    Tsrck                 0.280   vga/vcount<8>
-                                                       vga/vcount_8
+    SLICE_X100Y91.YQ     Tcko                  0.568   frame_buffer/addr<13>
+                                                       frame_buffer/addr_12
+    RAMB16_X0Y6.ADDRB12  net (fanout=230)     14.768   frame_buffer/addr<12>
+    RAMB16_X0Y6.CLKB     Tback                 0.359   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[74].ram.r/v2_noinit.ram/dpram.dp1x1.ram
+                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[74].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     -------------------------------------------------  ---------------------------
-    Total                                      5.854ns (1.726ns logic, 4.128ns route)
-                                                       (29.5% logic, 70.5% route)
+    Total                                     15.695ns (0.927ns logic, 14.768ns route)
+                                                       (5.9% logic, 94.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  31.375ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               vga/hcount_6 (FF)
-  Destination:          vga/blank (FF)
-  Requirement:          37.000ns
-  Data Path Delay:      5.625ns (Levels of Logic = 3)
+Slack:                  2.882ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               frame_buffer/addr_8 (FF)
+  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[53].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B (RAM)
+  Requirement:          18.500ns
+  Data Path Delay:      15.618ns (Levels of Logic = 0)
   Clock Path Skew:      0.000ns
-  Source Clock:         pclk rising at 0.000ns
+  Source Clock:         pclk falling at 18.500ns
   Destination Clock:    pclk rising at 37.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: vga/hcount_6 to vga/blank
+  Maximum Data Path: frame_buffer/addr_8 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[53].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X114Y91.XQ     Tcko                  0.568   vga/hcount<6>
-                                                       vga/hcount_6
-    SLICE_X115Y94.G2     net (fanout=6)        1.058   vga/hcount<6>
-    SLICE_X115Y94.Y      Tilo                  0.439   vga/hreset1
-                                                       vga/hblankon21_SW1
-    SLICE_X115Y93.F1     net (fanout=3)        0.499   N26
-    SLICE_X115Y93.X      Tilo                  0.439   vga/hreset
-                                                       vga/hreset1
-    SLICE_X116Y94.G2     net (fanout=4)        0.500   vga/hreset
-    SLICE_X116Y94.Y      Tilo                  0.439   vga/hblank
-                                                       vga/next_hblank
-    SLICE_X116Y95.BY     net (fanout=2)        1.313   vga/blank_or00001
-    SLICE_X116Y95.CLK    Tdick                 0.370   vga/blank
-                                                       vga/blank
+    SLICE_X100Y89.YQ     Tcko                  0.568   frame_buffer/addr<18>
+                                                       frame_buffer/addr_8
+    RAMB16_X5Y15.ADDRB8  net (fanout=228)     14.691   frame_buffer/addr<8>
+    RAMB16_X5Y15.CLKB    Tback                 0.359   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[53].ram.r/v2_noinit.ram/dpram.dp1x1.ram
+                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[53].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     -------------------------------------------------  ---------------------------
-    Total                                      5.625ns (2.255ns logic, 3.370ns route)
-                                                       (40.1% logic, 59.9% route)
+    Total                                     15.618ns (0.927ns logic, 14.691ns route)
+                                                       (5.9% logic, 94.1% route)
 
 --------------------------------------------------------------------------------
 
@@ -139,7 +118,7 @@ Clock to Setup on destination clock user1<4>
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-user1<4>       |    5.854|         |         |         |
+user1<4>       |    8.377|   15.739|    7.421|   17.170|
 ---------------+---------+---------+---------+---------+
 
 
@@ -148,23 +127,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0
 
-Constraints cover 694 paths, 0 nets, and 191 connections
+Constraints cover 5993 paths, 0 nets, and 4416 connections
 
 Design statistics:
-   Minimum period:   5.854ns{1}   (Maximum frequency: 170.823MHz)
+   Minimum period:  31.478ns{1}   (Maximum frequency:  31.768MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Thu Nov 20 17:57:35 2014 
+Analysis completed Mon Nov 24 19:18:59 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 333 MB
+Peak Memory Usage: 359 MB
 
 
 

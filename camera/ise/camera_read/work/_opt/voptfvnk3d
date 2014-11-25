@@ -1,0 +1,130 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/camera_read
+T_opt
+Z1 V<PETWUg]n;^hQ@MkOFdJD0
+Z2 04 14 4 work camera_save_tb fast 0
+Z3 04 4 4 work glbl fast 0
+Z4 =1-005056893942-546f8f2c-c0511-9d8
+Z5 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver
+Z6 OE;O;6.4a;39
+T_opt1
+Z7 V3SZzTDBC?e[NU^8TIhMN<0
+R2
+R3
+Z8 =1-005056893942-546f8983-a1b3e-ee20
+R5
+R6
+T_opt2
+Z9 VMakCldTAC=_3`^4bkco`k3
+Z10 04 11 4 work camera_save fast 0
+R3
+Z11 =1-005056893942-546f881c-6994-e5e9
+R5
+R6
+vcamera_read
+Z12 I3I>g_5QJfbbPOS=AjAV:B0
+Z13 Vb4c]b>YY9R6]?QOh>Ai]c3
+Z14 w1416594014
+Z15 8../../frame_buffer.v
+Z16 F../../frame_buffer.v
+L0 25
+Z17 OE;L;6.4a;39
+r1
+31
+Z18 o+acc -L mtiAvm -L mtiOvm -L mtiUPF
+Z19 !s100 Eec1m;S]:I4i:R<CG[LmG0
+!s85 0
+vcamera_read_tb
+Z20 I?]P^@8a`C68GSaP<lQ`I<1
+Z21 V10CZ<I_[D>c4PbbC^lgS50
+Z22 w1416594435
+Z23 8../../testbenches/camera_read_tb.v
+Z24 F../../testbenches/camera_read_tb.v
+L0 25
+R17
+r1
+31
+R18
+Z25 !s100 FeMfzPZ^TnIEU82U5XiKa0
+!s85 0
+vcamera_save
+Z26 ISS`BHmT5>>lKaF;HoXLoT3
+Z27 V99_h?a`Y60:`zo=71G<U]0
+Z28 w1416597277
+Z29 8../../camera_save.v
+Z30 F../../camera_save.v
+L0 22
+R17
+r1
+31
+R18
+Z31 !s100 g=eKm9YCZGn[We22A:[AF0
+!s85 0
+vcamera_save_tb
+Z32 I2NEWh<j5j]Fn_g82jRBj73
+Z33 Vz=J1Mn1[z_lVeQA@k]TIJ2
+Z34 w1416595821
+Z35 8../../testbenches/camera_save_tb.v
+Z36 F../../testbenches/camera_save_tb.v
+L0 25
+R17
+r1
+31
+R18
+Z37 !s100 JkldN6nYX[L4OoMfISl702
+!s85 0
+vdebounce
+Z38 IddSbeL3JVQea^Wazc]JLE3
+Z39 V@On=XSj^giU=kEZIGflc12
+Z40 w1412535744
+Z41 8debounce.v
+Z42 Fdebounce.v
+L0 4
+R17
+r1
+31
+R18
+Z43 !s100 [MTFE0USYGMSG1bJoQ[bm0
+!s85 0
+vglbl
+Z44 IB;@1jEXmEfQXL`;Kf0IBZ3
+Z45 VnN]4Gon>inod6>M^M2[SV1
+Z46 w1202685744
+Z47 8/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+Z48 F/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/verilog/src/glbl.v
+L0 5
+R17
+r1
+31
+R18
+Z49 !s100 T?5S;>bN`@zG_25]R_4A33
+!s85 0
+vlabkit
+Z50 IW4Nzj?^b5P[Jm5oFa6[l13
+Z51 V>n^fIP3Uc9<5=^]bF[^T71
+Z52 w1416524232
+Z53 8../../labkit.v
+Z54 F../../labkit.v
+L0 67
+R17
+r1
+31
+R18
+Z55 !s100 DmZ74jTH=I^]AL3jY2eED1
+!s85 0
+vxvga_640x480
+Z56 IZLVocEkiPIRYigh>MD<9`0
+Z57 Vf0ZC<XXJmzoHK:`gcAlj:3
+Z58 w1416425601
+Z59 8../../vga_display.v
+Z60 F../../vga_display.v
+L0 28
+R17
+r1
+31
+R18
+Z61 !s100 nVHR2fXchE81_h;;RMiZN3
+!s85 0

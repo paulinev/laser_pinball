@@ -1,0 +1,40 @@
+# //  ModelSim SE 6.4a Aug 28 2008 Linux 3.2.0-72-generic
+# //
+# //  Copyright 1991-2008 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# do {camera_save_with_read_tb.fdo} 
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module camera_read
+# 
+# Top level modules:
+# 	camera_read
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module camera_save
+# 
+# Top level modules:
+# 	camera_save
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module camera_save_with_read_tb
+# 
+# Top level modules:
+# 	camera_save_with_read_tb
+# Model Technology ModelSim SE vlog 6.4a Compiler 2008.08 Aug 28 2008
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps camera_save_with_read_tb glbl 
+# Loading work.camera_save_with_read_tb(fast)
+# Loading work.camera_read(fast)
+# Loading work.camera_save(fast)
+# Loading work.glbl(fast)
+# .main_pane.mdi.interior.cs.vm.paneset.cli_0.wf.clip.cs.pw.wf
+# .main_pane.workspace.interior.cs.nb.canvas.notebook.cs.page2.cs
+# .main_pane.signals.interior.cs
