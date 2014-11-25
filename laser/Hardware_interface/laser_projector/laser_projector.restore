@@ -836,7 +836,7 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring project settings."
 
   set user_files { 
-      "../ml50x_U1_fpga.ucf" 
+      "../../../../../../afs/athena.mit.edu/user/w/b/wbraun/Private/6_111/FinalProject/Hardware_interface/ml50x_U1_fpga.ucf" 
       "DAC_FSM.v" 
       "DAC_drive_tb.v" 
       "ILDA_rom.xco" 

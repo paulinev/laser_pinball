@@ -5,7 +5,7 @@ user_file_1
 DAC_drive_tb.v
 s
 user_file_10
-../ml50x_U1_fpga.ucf
+../../../../../../afs/athena.mit.edu/user/w/b/wbraun/Private/6_111/FinalProject/Hardware_interface/ml50x_U1_fpga.ucf
 s
 user_file_11
 hardware_interface.v
