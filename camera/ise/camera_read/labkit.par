@@ -1,7 +1,7 @@
 Release 10.1.03 par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-buzzword-bingo::  Mon Nov 24 12:58:53 2014
+eecs-digital-52::  Mon Nov 24 19:18:19 2014
 
 par -w -intstyle ise -ol std -t 1 labkit_map.ncd labkit.ncd labkit.pcf 
 
@@ -39,19 +39,9 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    Standard 
 
-Starting initial Timing Analysis.  REAL time: 3 secs 
-Finished initial Timing Analysis.  REAL time: 3 secs 
+Starting initial Timing Analysis.  REAL time: 2 secs 
+Finished initial Timing Analysis.  REAL time: 2 secs 
 
-WARNING:Par:288 - The signal user3<24>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<16>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user2<2>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal flash_data<5>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<25>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<17>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user2<3>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal flash_data<6>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<26>_IBUF has no load.  PAR will not attempt to route this signal.
-WARNING:Par:288 - The signal user3<0>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user3<18>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user2<4>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal user4<10>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -364,85 +354,95 @@ WARNING:Par:288 - The signal user3<15>_IBUF has no load.  PAR will not attempt t
 WARNING:Par:288 - The signal user2<1>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal tv_in_aff_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal flash_data<4>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<24>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<16>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user2<2>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal flash_data<5>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<25>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<17>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user2<3>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal flash_data<6>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<26>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal user3<0>_IBUF has no load.  PAR will not attempt to route this signal.
 
 Starting Placer
 
 Phase 1.1
-Phase 1.1 (Checksum:147b3de) REAL time: 4 secs 
+Phase 1.1 (Checksum:147b3de) REAL time: 3 secs 
 
 Phase 2.7
-Phase 2.7 (Checksum:147b3de) REAL time: 4 secs 
+Phase 2.7 (Checksum:147b3de) REAL time: 3 secs 
 
 Phase 3.31
-Phase 3.31 (Checksum:147b3de) REAL time: 4 secs 
+Phase 3.31 (Checksum:147b3de) REAL time: 3 secs 
 
 Phase 4.2
 
 ......
 .....................
-Phase 4.2 (Checksum:149edfc) REAL time: 7 secs 
+Phase 4.2 (Checksum:149edfc) REAL time: 6 secs 
 
 Phase 5.30
-Phase 5.30 (Checksum:149edfc) REAL time: 7 secs 
+Phase 5.30 (Checksum:149edfc) REAL time: 6 secs 
 
 Phase 6.3
-Phase 6.3 (Checksum:149edfc) REAL time: 7 secs 
+Phase 6.3 (Checksum:149edfc) REAL time: 6 secs 
 
 Phase 7.5
-Phase 7.5 (Checksum:149edfc) REAL time: 8 secs 
+Phase 7.5 (Checksum:149edfc) REAL time: 6 secs 
 
 Phase 8.8
-.....................................
+............................
 .
 .
-Phase 8.8 (Checksum:1e448f4) REAL time: 15 secs 
+Phase 8.8 (Checksum:1ecaf49) REAL time: 11 secs 
 
 Phase 9.5
-Phase 9.5 (Checksum:1e448f4) REAL time: 15 secs 
+Phase 9.5 (Checksum:1ecaf49) REAL time: 12 secs 
 
 Phase 10.18
-Phase 10.18 (Checksum:1e51961) REAL time: 16 secs 
+Phase 10.18 (Checksum:1ed2981) REAL time: 12 secs 
 
 Phase 11.5
-Phase 11.5 (Checksum:1e51961) REAL time: 16 secs 
+Phase 11.5 (Checksum:1ed2981) REAL time: 12 secs 
 
 Phase 12.27
-Phase 12.27 (Checksum:1e51961) REAL time: 16 secs 
+Phase 12.27 (Checksum:1ed2981) REAL time: 13 secs 
 
 Phase 13.24
-Phase 13.24 (Checksum:1e51961) REAL time: 16 secs 
+Phase 13.24 (Checksum:1ed2981) REAL time: 13 secs 
 
-REAL time consumed by placer: 16 secs 
-CPU  time consumed by placer: 15 secs 
+REAL time consumed by placer: 13 secs 
+CPU  time consumed by placer: 13 secs 
 Writing design to file labkit.ncd
 
 
-Total REAL time to Placer completion: 16 secs 
-Total CPU time to Placer completion: 15 secs 
+Total REAL time to Placer completion: 13 secs 
+Total CPU time to Placer completion: 13 secs 
 
 Starting Router
 
-Phase 1: 5385 unrouted;       REAL time: 27 secs 
+Phase 1: 5385 unrouted;       REAL time: 23 secs 
 
-Phase 2: 4891 unrouted;       REAL time: 28 secs 
+Phase 2: 4899 unrouted;       REAL time: 24 secs 
 
-Phase 3: 321 unrouted;       REAL time: 30 secs 
+Phase 3: 375 unrouted;       REAL time: 25 secs 
 
-Phase 4: 321 unrouted; (0)      REAL time: 30 secs 
+Phase 4: 375 unrouted; (0)      REAL time: 25 secs 
 
-Phase 5: 321 unrouted; (0)      REAL time: 30 secs 
+Phase 5: 375 unrouted; (0)      REAL time: 25 secs 
 
-Phase 6: 321 unrouted; (0)      REAL time: 30 secs 
+Phase 6: 375 unrouted; (0)      REAL time: 25 secs 
 
-Phase 7: 0 unrouted; (0)      REAL time: 31 secs 
+Phase 7: 0 unrouted; (0)      REAL time: 25 secs 
 
-Phase 8: 0 unrouted; (0)      REAL time: 32 secs 
+Phase 8: 0 unrouted; (0)      REAL time: 26 secs 
 
-Phase 9: 0 unrouted; (0)      REAL time: 33 secs 
+Phase 9: 0 unrouted; (0)      REAL time: 27 secs 
 
 
-Total REAL time to Router completion: 33 secs 
-Total CPU time to Router completion: 32 secs 
+Total REAL time to Router completion: 27 secs 
+Total CPU time to Router completion: 27 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -460,9 +460,9 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|                pclk |     BUFGMUX0S| No   |  273 |  0.570     |  2.449      |
+|                pclk |     BUFGMUX0S| No   |  273 |  0.656     |  2.535      |
 +---------------------+--------------+------+------+------------+-------------+
-|   clock_27mhz_IBUFG |     BUFGMUX3P| No   |   13 |  0.023     |  2.225      |
+|   clock_27mhz_IBUFG |     BUFGMUX3P| No   |   13 |  0.029     |  2.251      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -479,8 +479,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
                                             |         |    Slack   | Achievable | Errors |    Score   
 ------------------------------------------------------------------------------------------------------
-  NET "user1_4_IBUFG" PERIOD = 37 ns HIGH 5 | SETUP   |     0.887ns|    35.226ns|       0|           0
-  0%                                        | HOLD    |     1.394ns|            |       0|           0
+  NET "user1_4_IBUFG" PERIOD = 37 ns HIGH 5 | SETUP   |     2.761ns|    31.478ns|       0|           0
+  0%                                        | HOLD    |     1.252ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
 
 
@@ -493,10 +493,10 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 322 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 42 secs 
-Total CPU time to PAR completion: 38 secs 
+Total REAL time to PAR completion: 35 secs 
+Total CPU time to PAR completion: 32 secs 
 
-Peak Memory Usage:  601 MB
+Peak Memory Usage:  605 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.

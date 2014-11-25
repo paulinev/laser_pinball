@@ -30,84 +30,78 @@ Timing constraint: NET "user1_4_IBUFG" PERIOD = 37 ns HIGH 50%;
 
  5993 paths analyzed, 3733 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is  35.226ns.
+ Minimum period is  31.478ns.
 --------------------------------------------------------------------------------
-Slack:                  0.887ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               frame_buffer/addr_1 (FF)
-  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[59].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B (RAM)
+Slack:                  2.761ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               frame_buffer/addr_6 (FF)
+  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[51].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B (RAM)
   Requirement:          18.500ns
-  Data Path Delay:      17.613ns (Levels of Logic = 0)
+  Data Path Delay:      15.739ns (Levels of Logic = 0)
   Clock Path Skew:      0.000ns
   Source Clock:         pclk falling at 18.500ns
   Destination Clock:    pclk rising at 37.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: frame_buffer/addr_1 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[59].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
+  Maximum Data Path: frame_buffer/addr_6 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[51].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X101Y95.XQ     Tcko                  0.568   frame_buffer/addr<1>
-                                                       frame_buffer/addr_1
-    RAMB16_X4Y4.ADDRB1   net (fanout=228)     16.686   frame_buffer/addr<1>
-    RAMB16_X4Y4.CLKB     Tback                 0.359   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[59].ram.r/v2_noinit.ram/dpram.dp1x1.ram
-                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[59].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
+    SLICE_X100Y87.YQ     Tcko                  0.568   frame_buffer/addr<7>
+                                                       frame_buffer/addr_6
+    RAMB16_X4Y21.ADDRB6  net (fanout=228)     14.812   frame_buffer/addr<6>
+    RAMB16_X4Y21.CLKB    Tback                 0.359   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[51].ram.r/v2_noinit.ram/dpram.dp1x1.ram
+                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[51].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     -------------------------------------------------  ---------------------------
-    Total                                     17.613ns (0.927ns logic, 16.686ns route)
-                                                       (5.3% logic, 94.7% route)
+    Total                                     15.739ns (0.927ns logic, 14.812ns route)
+                                                       (5.9% logic, 94.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.887ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               frame_buffer/addr_1 (FF)
-  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[59].ram.r/v2_noinit.ram/dpram.dp1x1.ram.A (RAM)
+Slack:                  2.805ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               frame_buffer/addr_12 (FF)
+  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[74].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B (RAM)
   Requirement:          18.500ns
-  Data Path Delay:      17.613ns (Levels of Logic = 0)
+  Data Path Delay:      15.695ns (Levels of Logic = 0)
   Clock Path Skew:      0.000ns
   Source Clock:         pclk falling at 18.500ns
   Destination Clock:    pclk rising at 37.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: frame_buffer/addr_1 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[59].ram.r/v2_noinit.ram/dpram.dp1x1.ram.A
+  Maximum Data Path: frame_buffer/addr_12 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[74].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X101Y95.XQ     Tcko                  0.568   frame_buffer/addr<1>
-                                                       frame_buffer/addr_1
-    RAMB16_X4Y4.ADDRA1   net (fanout=228)     16.686   frame_buffer/addr<1>
-    RAMB16_X4Y4.CLKA     Tback                 0.359   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[59].ram.r/v2_noinit.ram/dpram.dp1x1.ram
-                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[59].ram.r/v2_noinit.ram/dpram.dp1x1.ram.A
+    SLICE_X100Y91.YQ     Tcko                  0.568   frame_buffer/addr<13>
+                                                       frame_buffer/addr_12
+    RAMB16_X0Y6.ADDRB12  net (fanout=230)     14.768   frame_buffer/addr<12>
+    RAMB16_X0Y6.CLKB     Tback                 0.359   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[74].ram.r/v2_noinit.ram/dpram.dp1x1.ram
+                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[74].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     -------------------------------------------------  ---------------------------
-    Total                                     17.613ns (0.927ns logic, 16.686ns route)
-                                                       (5.3% logic, 94.7% route)
+    Total                                     15.695ns (0.927ns logic, 14.768ns route)
+                                                       (5.9% logic, 94.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  0.949ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               frame_buffer/addr_17 (FF)
-  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[73].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B (RAM)
+Slack:                  2.882ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               frame_buffer/addr_8 (FF)
+  Destination:          fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[53].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B (RAM)
   Requirement:          18.500ns
-  Data Path Delay:      17.551ns (Levels of Logic = 2)
+  Data Path Delay:      15.618ns (Levels of Logic = 0)
   Clock Path Skew:      0.000ns
   Source Clock:         pclk falling at 18.500ns
   Destination Clock:    pclk rising at 37.000ns
   Clock Uncertainty:    0.000ns
 
-  Maximum Data Path: frame_buffer/addr_17 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[73].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
+  Maximum Data Path: frame_buffer/addr_8 to fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[53].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X101Y103.XQ    Tcko                  0.568   frame_buffer/addr<17>
-                                                       frame_buffer/addr_17
-    SLICE_X80Y107.G2     net (fanout=14)       2.459   frame_buffer/addr<17>
-    SLICE_X80Y107.Y      Tilo                  0.439   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ram_enb109
-                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ram_enb10611
-    SLICE_X80Y107.F3     net (fanout=4)        0.059   fbuf/BU2/U0/blk_mem_generator/valid.cstr/N7
-    SLICE_X80Y107.X      Tilo                  0.439   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ram_enb109
-                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ram_enb1091
-    RAMB16_X4Y0.ENB      net (fanout=6)       12.391   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ram_enb109
-    RAMB16_X4Y0.CLKB     Tbeck                 1.196   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[73].ram.r/v2_noinit.ram/dpram.dp1x1.ram
-                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[73].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
+    SLICE_X100Y89.YQ     Tcko                  0.568   frame_buffer/addr<18>
+                                                       frame_buffer/addr_8
+    RAMB16_X5Y15.ADDRB8  net (fanout=228)     14.691   frame_buffer/addr<8>
+    RAMB16_X5Y15.CLKB    Tback                 0.359   fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[53].ram.r/v2_noinit.ram/dpram.dp1x1.ram
+                                                       fbuf/BU2/U0/blk_mem_generator/valid.cstr/ramloop[53].ram.r/v2_noinit.ram/dpram.dp1x1.ram.B
     -------------------------------------------------  ---------------------------
-    Total                                     17.551ns (2.642ns logic, 14.909ns route)
-                                                       (15.1% logic, 84.9% route)
+    Total                                     15.618ns (0.927ns logic, 14.691ns route)
+                                                       (5.9% logic, 94.1% route)
 
 --------------------------------------------------------------------------------
 
@@ -124,7 +118,7 @@ Clock to Setup on destination clock user1<4>
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-user1<4>       |    7.391|   17.613|    8.376|    7.330|
+user1<4>       |    8.377|   15.739|    7.421|   17.170|
 ---------------+---------+---------+---------+---------+
 
 
@@ -136,13 +130,13 @@ Timing errors: 0  Score: 0
 Constraints cover 5993 paths, 0 nets, and 4416 connections
 
 Design statistics:
-   Minimum period:  35.226ns{1}   (Maximum frequency:  28.388MHz)
+   Minimum period:  31.478ns{1}   (Maximum frequency:  31.768MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Mon Nov 24 12:59:40 2014 
+Analysis completed Mon Nov 24 19:18:59 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:

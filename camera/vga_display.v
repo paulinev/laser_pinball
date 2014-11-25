@@ -28,7 +28,8 @@
 module xvga_640x480(input vclock,
 						  output reg [9:0] hcount,    // pixel number on current line
 						  output reg [9:0] vcount,	 // line number
-						  output reg vsync,hsync,blank);
+						  output reg vsync,hsync,blank
+						  );
 
    // horizontal: 800 pixels total
    // display 640 pixels per line

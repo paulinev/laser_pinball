@@ -1,4 +1,4 @@
-# //  ModelSim SE 6.4a Aug 28 2008 Linux 3.2.0-70-generic
+# //  ModelSim SE 6.4a Aug 28 2008 Linux 3.2.0-72-generic
 # //
 # //  Copyright 1991-2008 Mentor Graphics Corporation
 # //              All Rights Reserved.
@@ -31,7 +31,6 @@
 # Top level modules:
 # 	glbl
 # vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -lib work -t 1ps camera_save_with_read_tb glbl 
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
 # Loading work.camera_save_with_read_tb(fast)
 # Loading work.camera_read(fast)
 # Loading work.camera_save(fast)

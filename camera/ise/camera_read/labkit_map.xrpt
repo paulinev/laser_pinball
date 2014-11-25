@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Mon Nov 24 12:58:40 2014">
+  <application stringID="Map" timeStamp="Mon Nov 24 19:18:07 2014">
     <task stringID="MAP_PACK_REPORT">
       <section stringID="MAP_DESIGN_INFORMATION">
         <item stringID="MAP_PART" value="2v6000bf957-4"/>
@@ -18,9 +18,9 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="325"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="501416"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="5 secs "/>
-        <item stringID="MAP_TOTAL_CPU_TIME" value="4 secs "/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="505520"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="4 secs "/>
+        <item stringID="MAP_TOTAL_CPU_TIME" value="3 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING"/>
       <section stringID="MAP_LOGIC_UTILIZATION">
@@ -2813,37 +2813,37 @@
             <item stringID="IOB_Name" value="user1&lt;0>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="421">
             <item stringID="IOB_Name" value="user1&lt;1>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="422">
             <item stringID="IOB_Name" value="user1&lt;2>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="423">
             <item stringID="IOB_Name" value="user1&lt;3>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="424">
             <item stringID="IOB_Name" value="user1&lt;4>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="425">
             <item stringID="IOB_Name" value="user1&lt;5>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="OUTPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
             <item stringID="DRIVE_STRENGTH" value="12"/>
             <item stringID="SLEW_RATE" value="SLOW"/>
           </row>
@@ -2851,157 +2851,157 @@
             <item stringID="IOB_Name" value="user1&lt;6>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="427">
             <item stringID="IOB_Name" value="user1&lt;7>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="428">
             <item stringID="IOB_Name" value="user1&lt;8>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="429">
             <item stringID="IOB_Name" value="user1&lt;9>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="430">
             <item stringID="IOB_Name" value="user1&lt;10>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="431">
             <item stringID="IOB_Name" value="user1&lt;11>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="432">
             <item stringID="IOB_Name" value="user1&lt;12>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="433">
             <item stringID="IOB_Name" value="user1&lt;13>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="434">
             <item stringID="IOB_Name" value="user1&lt;14>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="435">
             <item stringID="IOB_Name" value="user1&lt;15>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="436">
             <item stringID="IOB_Name" value="user1&lt;16>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="437">
             <item stringID="IOB_Name" value="user1&lt;17>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="438">
             <item stringID="IOB_Name" value="user1&lt;18>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="439">
             <item stringID="IOB_Name" value="user1&lt;19>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="440">
             <item stringID="IOB_Name" value="user1&lt;20>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="441">
             <item stringID="IOB_Name" value="user1&lt;21>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="442">
             <item stringID="IOB_Name" value="user1&lt;22>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="443">
             <item stringID="IOB_Name" value="user1&lt;23>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="444">
             <item stringID="IOB_Name" value="user1&lt;24>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="445">
             <item stringID="IOB_Name" value="user1&lt;25>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="446">
             <item stringID="IOB_Name" value="user1&lt;26>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="447">
             <item stringID="IOB_Name" value="user1&lt;27>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="448">
             <item stringID="IOB_Name" value="user1&lt;28>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="449">
             <item stringID="IOB_Name" value="user1&lt;29>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="450">
             <item stringID="IOB_Name" value="user1&lt;30>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="451">
             <item stringID="IOB_Name" value="user1&lt;31>"/>
             <item stringID="TYPE" value="IOB"/>
             <item stringID="DIRECTION" value="INPUT"/>
-            <item stringID="IO_STANDARD" value="LVTTL"/>
+            <item stringID="IO_STANDARD" value="LVCMOS33"/>
           </row>
           <row stringID="row" value="452">
             <item stringID="IOB_Name" value="user2&lt;0>"/>

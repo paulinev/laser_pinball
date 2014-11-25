@@ -11,7 +11,7 @@ Target Device  : xc2v6000
 Target Package : bf957
 Target Speed   : -4
 Mapper Version : virtex2 -- $Revision: 1.46.12.2 $
-Mapped Date    : Mon Nov 24 12:58:35 2014
+Mapped Date    : Mon Nov 24 19:18:03 2014
 
 Design Summary
 --------------
@@ -34,9 +34,9 @@ Logic Distribution:
   Number of BUFGMUXs:                     3 out of      16   18%
   Number of DCMs:                         1 out of      12    8%
 
-Peak Memory Usage:  490 MB
-Total REAL time to MAP completion:  5 secs 
-Total CPU time to MAP completion:   4 secs 
+Peak Memory Usage:  494 MB
+Total REAL time to MAP completion:  4 secs 
+Total CPU time to MAP completion:   3 secs 
 
 NOTES:
 
@@ -90,26 +90,6 @@ WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 320
 WARNING:LIT:162 - Only DFS outputs (CLKFX/FX180/CONCUR) of DCM symbol "slowclk"
    are routed, but CLKFB is not routed. Proper phase relationship of output
    clocks to CLKIN cannot be guaranteed.
-WARNING:PhysDesignRules:367 - The signal <user3<24>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<16>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user2<2>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <flash_data<5>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<25>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<17>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user2<3>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <flash_data<6>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<26>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <user3<0>_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user3<18>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <user2<4>_IBUF> is incomplete. The
@@ -734,6 +714,26 @@ WARNING:PhysDesignRules:367 - The signal <tv_in_aff_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <flash_data<4>_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<24>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<16>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user2<2>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <flash_data<5>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<25>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<17>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user2<3>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <flash_data<6>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<26>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <user3<0>_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 
 Section 3 - Informational
 -------------------------
@@ -1207,38 +1207,38 @@ Section 6 - IOB Properties
 | tv_out_ycrcb<7>                    | IOB              | OUTPUT    | LVDCI_33             |          |      |              |          |          |
 | tv_out_ycrcb<8>                    | IOB              | OUTPUT    | LVDCI_33             |          |      |              |          |          |
 | tv_out_ycrcb<9>                    | IOB              | OUTPUT    | LVDCI_33             |          |      |              |          |          |
-| user1<0>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<1>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<2>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<3>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<4>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<5>                           | IOB              | OUTPUT    | LVTTL                | 12       | SLOW |              |          |          |
-| user1<6>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<7>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<8>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<9>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<10>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<11>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<12>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<13>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<14>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<15>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<16>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<17>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<18>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<19>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<20>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<21>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<22>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<23>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<24>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<25>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<26>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<27>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<28>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<29>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<30>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
-| user1<31>                          | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
+| user1<0>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<1>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<2>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<3>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<4>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<5>                           | IOB              | OUTPUT    | LVCMOS33             | 12       | SLOW |              |          |          |
+| user1<6>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<7>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<8>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<9>                           | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<10>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<11>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<12>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<13>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<14>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<15>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<16>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<17>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<18>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<19>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<20>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<21>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<22>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<23>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<24>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<25>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<26>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<27>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<28>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<29>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<30>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
+| user1<31>                          | IOB              | INPUT     | LVCMOS33             |          |      |              |          |          |
 | user2<0>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
 | user2<1>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |
 | user2<2>                           | IOB              | INPUT     | LVTTL                |          |      |              |          |          |

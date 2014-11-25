@@ -16,8 +16,7 @@ Program -p 2
 Program -p 2 
 Program -p 2 
 Program -p 2 
-Program -p 2 
-Program -p 2 
+ReadIdcode -p 2 
 Program -p 2 
 Program -p 2 
 saveProjectFile -file "/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/camera_read/camera_read.ipf"

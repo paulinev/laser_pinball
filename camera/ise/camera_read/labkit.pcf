@@ -1,24 +1,8 @@
 //! **************************************************************************
-// Written by: Map K.39 on Mon Nov 24 12:58:39 2014
+// Written by: Map K.39 on Mon Nov 24 19:18:06 2014
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "flash_address<4>" LOCATE = SITE "AH19" LEVEL 1;
-COMP "user3<24>" LOCATE = SITE "H10" LEVEL 1;
-COMP "user3<16>" LOCATE = SITE "G8" LEVEL 1;
-COMP "user2<2>" LOCATE = SITE "H19" LEVEL 1;
-COMP "user1<6>" LOCATE = SITE "A10" LEVEL 1;
-COMP "flash_data<5>" LOCATE = SITE "AL12" LEVEL 1;
-COMP "tv_out_reset_b" LOCATE = SITE "G27" LEVEL 1;
-COMP "flash_address<5>" LOCATE = SITE "AJ19" LEVEL 1;
-COMP "user3<25>" LOCATE = SITE "G10" LEVEL 1;
-COMP "user3<17>" LOCATE = SITE "F9" LEVEL 1;
-COMP "user2<3>" LOCATE = SITE "F17" LEVEL 1;
-COMP "user1<7>" LOCATE = SITE "A11" LEVEL 1;
-COMP "flash_data<6>" LOCATE = SITE "AL11" LEVEL 1;
-COMP "flash_address<6>" LOCATE = SITE "AH20" LEVEL 1;
-COMP "user3<26>" LOCATE = SITE "F11" LEVEL 1;
-COMP "user3<0>" LOCATE = SITE "A4" LEVEL 1;
 COMP "user3<18>" LOCATE = SITE "E10" LEVEL 1;
 COMP "user2<4>" LOCATE = SITE "F19" LEVEL 1;
 COMP "user4<10>" LOCATE = SITE "E17" LEVEL 1;
@@ -581,6 +565,22 @@ COMP "user2<1>" LOCATE = SITE "G20" LEVEL 1;
 COMP "user1<5>" LOCATE = SITE "A9" LEVEL 1;
 COMP "tv_in_aff" LOCATE = SITE "AJ22" LEVEL 1;
 COMP "flash_data<4>" LOCATE = SITE "AL13" LEVEL 1;
+COMP "flash_address<4>" LOCATE = SITE "AH19" LEVEL 1;
+COMP "user3<24>" LOCATE = SITE "H10" LEVEL 1;
+COMP "user3<16>" LOCATE = SITE "G8" LEVEL 1;
+COMP "user2<2>" LOCATE = SITE "H19" LEVEL 1;
+COMP "user1<6>" LOCATE = SITE "A10" LEVEL 1;
+COMP "flash_data<5>" LOCATE = SITE "AL12" LEVEL 1;
+COMP "tv_out_reset_b" LOCATE = SITE "G27" LEVEL 1;
+COMP "flash_address<5>" LOCATE = SITE "AJ19" LEVEL 1;
+COMP "user3<25>" LOCATE = SITE "G10" LEVEL 1;
+COMP "user3<17>" LOCATE = SITE "F9" LEVEL 1;
+COMP "user2<3>" LOCATE = SITE "F17" LEVEL 1;
+COMP "user1<7>" LOCATE = SITE "A11" LEVEL 1;
+COMP "flash_data<6>" LOCATE = SITE "AL11" LEVEL 1;
+COMP "flash_address<6>" LOCATE = SITE "AH20" LEVEL 1;
+COMP "user3<26>" LOCATE = SITE "F11" LEVEL 1;
+COMP "user3<0>" LOCATE = SITE "A4" LEVEL 1;
 NET "user1_4_IBUFG" PERIOD = 37 ns HIGH 50%;
 SCHEMATIC END;
 
