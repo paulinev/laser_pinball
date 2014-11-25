@@ -1,5 +1,5 @@
 NUM_USER_FILES
-11
+12
 s
 user_file_1
 ../../mybram.v
@@ -9,6 +9,9 @@ user_file_10
 s
 user_file_11
 ../../labkit.ucf
+s
+user_file_12
+../../deglitch.v
 s
 user_file_2
 ../../frame_buffer.v

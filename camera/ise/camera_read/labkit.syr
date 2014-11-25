@@ -5,14 +5,14 @@ Parameter TMPDIR set to /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/la
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/camera/ise/camera_read/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: labkit.prj
@@ -116,10 +116,8 @@ Compiling verilog file "../../frame_buffer.v" in library work
 Module <debounce> compiled
 Compiling verilog file "../../dual_port_bram.v" in library work
 Module <camera_read> compiled
-Compiling verilog file "../../camera_save.v" in library work
-Module <dual_port_bram> compiled
 Compiling verilog file "../../labkit.v" in library work
-Module <camera_save> compiled
+Module <dual_port_bram> compiled
 Module <labkit> compiled
 No errors in compilation
 Analysis of file <"labkit.prj"> succeeded.
@@ -133,17 +131,9 @@ Analyzing hierarchy for module <labkit> in library <work>.
 Analyzing hierarchy for module <debounce> in library <work> with parameters.
 	DELAY = "00000000000001000001111010110000"
 
-Analyzing hierarchy for module <camera_read> in library <work>.
-
-Analyzing hierarchy for module <camera_save> in library <work> with parameters.
-	LOGSIZE = "00000000000000000000000000010011"
-	SAVE_PIXEL_1 = "00000000000000000000000000000001"
-	SAVE_PIXEL_2 = "00000000000000000000000000000010"
-	VGA_DRIVE = "00000000000000000000000000000011"
-	WAIT_PIXEL = "00000000000000000000000000000000"
-	WIDTH = "00000000000000000000000000001000"
-
 Analyzing hierarchy for module <xvga_640x480> in library <work>.
+
+Analyzing hierarchy for module <camera_read> in library <work>.
 
 WARNING:Xst:2591 - "../../labkit.v" line 338: attribute on instance <CLKFX_DIVIDE> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
 WARNING:Xst:2591 - "../../labkit.v" line 338: attribute on instance <CLKFX_MULTIPLY> overrides generic/parameter on entity. It is possible that simulator will not take this attribute into account.
@@ -158,7 +148,7 @@ Module <labkit> is correct for synthesis.
  
     Set user-defined property "INIT =  FFFF" for instance <reset_sr> in unit <labkit>.
     Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <slowclk> in unit <labkit>.
-    Set user-defined property "CLKFX_DIVIDE =  27" for instance <slowclk> in unit <labkit>.
+    Set user-defined property "CLKFX_DIVIDE =  10" for instance <slowclk> in unit <labkit>.
     Set user-defined property "CLKFX_MULTIPLY =  10" for instance <slowclk> in unit <labkit>.
     Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <slowclk> in unit <labkit>.
     Set user-defined property "CLKIN_PERIOD =  37.0000000000000000" for instance <slowclk> in unit <labkit>.
@@ -181,20 +171,11 @@ Analyzing module <debounce> in library <work>.
 	DELAY = 32'sb00000000000001000001111010110000
 Module <debounce> is correct for synthesis.
  
-Analyzing module <camera_read> in library <work>.
-Module <camera_read> is correct for synthesis.
- 
-Analyzing module <camera_save> in library <work>.
-	LOGSIZE = 32'sb00000000000000000000000000010011
-	SAVE_PIXEL_1 = 32'sb00000000000000000000000000000001
-	SAVE_PIXEL_2 = 32'sb00000000000000000000000000000010
-	VGA_DRIVE = 32'sb00000000000000000000000000000011
-	WAIT_PIXEL = 32'sb00000000000000000000000000000000
-	WIDTH = 32'sb00000000000000000000000000001000
-Module <camera_save> is correct for synthesis.
- 
 Analyzing module <xvga_640x480> in library <work>.
 Module <xvga_640x480> is correct for synthesis.
+ 
+Analyzing module <camera_read> in library <work>.
+Module <camera_read> is correct for synthesis.
  
 
 =========================================================================
@@ -242,38 +223,6 @@ Synthesizing Unit <debounce>.
 Unit <debounce> synthesized.
 
 
-Synthesizing Unit <camera_read>.
-    Related source file is "../../frame_buffer.v".
-WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 1-bit register for signal <frame_done>.
-    Found 32-bit register for signal <data_out>.
-    Found 1-bit register for signal <pixel_done>.
-    Found 2-bit down counter for signal <count>.
-    Found 1-bit register for signal <running>.
-    Summary:
-	inferred   1 Counter(s).
-	inferred  35 D-type flip-flop(s).
-Unit <camera_read> synthesized.
-
-
-Synthesizing Unit <camera_save>.
-    Related source file is "../../camera_save.v".
-WARNING:Xst:647 - Input <data_in<31:24>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <data_in<15:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:1780 - Signal <pixel_out_2> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-    Found 8-bit register for signal <pixel_out>.
-    Found 19-bit register for signal <addr>.
-    Found 1-bit register for signal <we>.
-    Found 19-bit comparator less for signal <addr$cmp_lt0000> created at line 69.
-    Found 19-bit adder for signal <addr$share0000> created at line 64.
-    Found 2-bit register for signal <state>.
-    Summary:
-	inferred  30 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
-	inferred   1 Comparator(s).
-Unit <camera_save> synthesized.
-
-
 Synthesizing Unit <xvga_640x480>.
     Related source file is "../../vga_display.v".
     Found 10-bit up counter for signal <vcount>.
@@ -287,6 +236,30 @@ Synthesizing Unit <xvga_640x480>.
 	inferred   2 Counter(s).
 	inferred   5 D-type flip-flop(s).
 Unit <xvga_640x480> synthesized.
+
+
+Synthesizing Unit <camera_read>.
+    Related source file is "../../frame_buffer.v".
+    Found 4x2-bit ROM for signal <count$mux0000>.
+    Found 19-bit register for signal <addr_read>.
+    Found 1-bit register for signal <frame_done>.
+    Found 32-bit register for signal <data_out>.
+    Found 19-bit up counter for signal <addr_write>.
+    Found 2-bit register for signal <count>.
+    Found 1-bit register for signal <pixel_done>.
+    Found 1-bit register for signal <running>.
+    Found 19-bit adder for signal <addr_read$addsub0000> created at line 105.
+    Found 19-bit comparator less for signal <addr_read$cmp_lt0000> created at line 106.
+    Found 32-bit register for signal <data_out_tmp>.
+    Found 1-bit register for signal <even>.
+    Found 1-bit register for signal <prev_vsync>.
+    Summary:
+	inferred   1 ROM(s).
+	inferred   1 Counter(s).
+	inferred  90 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+Unit <camera_read> synthesized.
 
 
 Synthesizing Unit <labkit>.
@@ -589,33 +562,29 @@ WARNING:Xst:1780 - Signal <xclk> is never used or assigned. This unconnected sig
 WARNING:Xst:646 - Signal <vcount> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <siod> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <sioc> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <pixel_out<25:6>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <hcount> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 19-bit up counter for signal <addr_read_temp>.
-    Found 19-bit comparator less for signal <addr_read_temp$cmp_lt0000> created at line 442.
-    Summary:
-	inferred   1 Counter(s).
-	inferred   1 Comparator(s).
 Unit <labkit> synthesized.
 
-INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
+# ROMs                                                 : 1
+ 4x2-bit ROM                                           : 1
 # Adders/Subtractors                                   : 1
  19-bit adder                                          : 1
-# Counters                                             : 5
+# Counters                                             : 4
  10-bit up counter                                     : 2
  19-bit up counter                                     : 2
- 2-bit down counter                                    : 1
-# Registers                                            : 46
- 1-bit register                                        : 43
+# Registers                                            : 47
+ 1-bit register                                        : 44
  19-bit register                                       : 1
  2-bit register                                        : 1
- 8-bit register                                        : 1
-# Comparators                                          : 2
- 19-bit comparator less                                : 2
+ 32-bit register                                       : 1
+# Comparators                                          : 1
+ 19-bit comparator less                                : 1
 # Xors                                                 : 1
  1-bit xor2                                            : 1
 
@@ -626,45 +595,66 @@ Macro Statistics
 =========================================================================
 
 Loading device for application Rf_Device from file '2v6000.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
-WARNING:Xst:2677 - Node <data_out_29> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_31> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_30> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_28> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_27> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_26> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_25> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_24> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_15> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_14> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_11> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_13> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_12> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_10> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_9> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_8> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_7> of sequential type is unconnected in block <read>.
+
+Synthesizing (advanced) Unit <camera_read>.
+INFO:Xst - In order to maximize performance and save block RAM resources, the small ROM <Mrom_count_mux0000> will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
+Unit <camera_read> synthesized (advanced).
+WARNING:Xst:2677 - Node <data_out_tmp_23> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_25> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_24> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_20> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_22> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_21> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_19> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_18> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_15> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_17> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_16> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_12> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_14> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_13> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_9> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_11> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_10> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_8> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_7> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_tmp_6> of sequential type is unconnected in block <read>.
 WARNING:Xst:2677 - Node <data_out_6> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_5> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_2> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_4> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_3> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_1> of sequential type is unconnected in block <read>.
-WARNING:Xst:2677 - Node <data_out_0> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_7> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_8> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_9> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_10> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_11> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_12> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_13> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_14> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_15> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_16> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_17> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_18> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_19> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_20> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_21> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_22> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_23> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_24> of sequential type is unconnected in block <read>.
+WARNING:Xst:2677 - Node <data_out_25> of sequential type is unconnected in block <read>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# ROMs                                                 : 1
+ 4x2-bit ROM                                           : 1
 # Adders/Subtractors                                   : 1
  19-bit adder                                          : 1
-# Counters                                             : 5
+# Counters                                             : 4
  10-bit up counter                                     : 2
  19-bit up counter                                     : 2
- 2-bit down counter                                    : 1
-# Registers                                            : 72
- Flip-Flops                                            : 72
-# Comparators                                          : 2
- 19-bit comparator less                                : 2
+# Registers                                            : 97
+ Flip-Flops                                            : 97
+# Comparators                                          : 1
+ 19-bit comparator less                                : 1
 # Xors                                                 : 1
  1-bit xor2                                            : 1
 
@@ -674,111 +664,381 @@ Macro Statistics
 *                         Low Level Synthesis                           *
 =========================================================================
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp_cy<0>>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_0>
-   Signal <addr_read_temp<0>> in Unit <labkit> is assigned to GND
+Optimizing unit <labkit> ...
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp2>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_1>
-   Signal <addr_read_temp<1>> in Unit <labkit> is assigned to GND
+Optimizing unit <xvga_640x480> ...
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp4>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_2>
-   Signal <addr_read_temp<2>> in Unit <labkit> is assigned to GND
+Optimizing unit <camera_read> ...
+WARNING:Xst:2677 - Node <read/data_out_25> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_24> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_23> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_22> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_21> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_20> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_19> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_18> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_17> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_16> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_15> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_14> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_13> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_12> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_11> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_10> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_9> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_8> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_6> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_7> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_8> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_10> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_11> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_9> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_13> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_14> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_12> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_16> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_17> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_15> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_18> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_19> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_21> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_22> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_20> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_24> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_25> of sequential type is unconnected in block <labkit>.
+WARNING:Xst:2677 - Node <read/data_out_tmp_23> of sequential type is unconnected in block <labkit>.
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp6>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_3>
-   Signal <addr_read_temp<3>> in Unit <labkit> is assigned to GND
+Mapping all equations...
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_red<7>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_red<6>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_red<5>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_red<4>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_red<3>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_red<2>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_blue<7>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_blue<6>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_blue<5>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_blue<4>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_blue<3>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_blue<2>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <analyzer1_data<5>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <analyzer1_data<4>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <analyzer1_data<3>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <analyzer1_data<2>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <analyzer1_data<1>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <analyzer1_data<0>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_green<7>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_green<6>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_green<5>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_green<4>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_green<3>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <vga_out_green<2>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <led<5>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <led<4>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <led<3>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <led<2>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <led<1>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+WARNING:Xst:2036 - Inserting OBUF on port <led<0>> driven by black box <dual_port_bram>. Possible simulation mismatch.
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block labkit, actual ratio is 0.
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp8>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_4>
-   Signal <addr_read_temp<4>> in Unit <labkit> is assigned to GND
+Final Macro Processing ...
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp10>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_5>
-   Signal <addr_read_temp<5>> in Unit <labkit> is assigned to GND
+=========================================================================
+Final Register Report
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp12>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_6>
-   Signal <addr_read_temp<6>> in Unit <labkit> is assigned to GND
+Macro Statistics
+# Registers                                            : 115
+ Flip-Flops                                            : 115
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp14>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_7>
-   Signal <addr_read_temp<7>> in Unit <labkit> is assigned to GND
+=========================================================================
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp16>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_8>
-   Signal <addr_read_temp<8>> in Unit <labkit> is assigned to GND
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp18>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_9>
-   Signal <addr_read_temp<9>> in Unit <labkit> is assigned to GND
+Partition Implementation Status
+-------------------------------
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp20>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_10>
-   Signal <addr_read_temp<10>> in Unit <labkit> is assigned to GND
+  No Partitions were found in this design.
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp22>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_11>
-   Signal <addr_read_temp<11>> in Unit <labkit> is assigned to GND
+-------------------------------
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp24>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_12>
-   Signal <addr_read_temp<12>> in Unit <labkit> is assigned to GND
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : labkit.ngr
+Top Level Output File Name         : labkit
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp26>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_13>
-   Signal <addr_read_temp<13>> in Unit <labkit> is assigned to GND
+Design Statistics
+# IOs                              : 576
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp28>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_14>
-   Signal <addr_read_temp<14>> in Unit <labkit> is assigned to GND
+Cell Usage :
+# BELS                             : 309
+#      GND                         : 1
+#      INV                         : 11
+#      LUT1                        : 72
+#      LUT2                        : 23
+#      LUT3                        : 13
+#      LUT3_D                      : 1
+#      LUT3_L                      : 1
+#      LUT4                        : 24
+#      LUT4_D                      : 2
+#      LUT4_L                      : 6
+#      MUXCY                       : 77
+#      VCC                         : 1
+#      XORCY                       : 77
+# FlipFlops/Latches                : 115
+#      FD                          : 2
+#      FDE                         : 16
+#      FDR                         : 10
+#      FDRE                        : 83
+#      FDRSE                       : 1
+#      FDS                         : 1
+#      FDSE                        : 2
+# Shift Registers                  : 1
+#      SRL16                       : 1
+# Clock Buffers                    : 3
+#      BUFG                        : 3
+# IO Buffers                       : 255
+#      IBUF                        : 12
+#      IBUFG                       : 2
+#      OBUF                        : 241
+# DCMs                             : 1
+#      DCM                         : 1
+# Others                           : 1
+#      dual_port_bram              : 1
+=========================================================================
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp30>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_15>
-   Signal <addr_read_temp<15>> in Unit <labkit> is assigned to GND
+Device utilization summary:
+---------------------------
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp32>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_16>
-   Signal <addr_read_temp<16>> in Unit <labkit> is assigned to GND
+Selected Device : 2v6000bf957-4 
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp34>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_17>
-   Signal <addr_read_temp<17>> in Unit <labkit> is assigned to GND
+ Number of Slices:                       87  out of  33792     0%  
+ Number of Slice Flip Flops:            115  out of  67584     0%  
+ Number of 4 input LUTs:                154  out of  67584     0%  
+    Number used as logic:               153
+    Number used as Shift registers:       1
+ Number of IOs:                         576
+ Number of bonded IOBs:                 255  out of    684    37%  
+ Number of GCLKs:                         3  out of     16    18%  
+ Number of DCMs:                          1  out of     12     8%  
 
-ERROR:Xst:528 - Multi-source in Unit <labkit> on signal <Mcount_addr_read_temp36>; this signal is connected to multiple drivers.
-Drivers are: 
-   Output signal of FDR instance <addr_read_temp_18>
-   Signal <addr_read_temp<18>> in Unit <labkit> is assigned to GND
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
 
 
-Total REAL time to Xst completion: 4.00 secs
-Total CPU time to Xst completion: 3.86 secs
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock_27mhz                        | IBUF+BUFG              | 22    |
+user1<4>                           | slowclk:CLKFX          | 94    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 6.775ns (Maximum Frequency: 147.601MHz)
+   Minimum input arrival time before clock: 4.670ns
+   Maximum output required time after clock: 9.837ns
+   Maximum combinational path delay: 6.867ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_27mhz'
+  Clock period: 5.808ns (frequency: 172.176MHz)
+  Total number of paths / destination ports: 614 / 60
+-------------------------------------------------------------------------
+Delay:               5.808ns (Levels of Logic = 7)
+  Source:            sys_reset/count_7 (FF)
+  Destination:       sys_reset/count_0 (FF)
+  Source Clock:      clock_27mhz rising
+  Destination Clock: clock_27mhz rising
+
+  Data Path: sys_reset/count_7 to sys_reset/count_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.568   0.986  sys_reset/count_7 (sys_reset/count_7)
+     LUT3:I0->O            1   0.439   0.000  sys_reset/count_cmp_eq0000_wg_lut<0> (sys_reset/count_cmp_eq0000_wg_lut<0>)
+     MUXCY:S->O            1   0.298   0.000  sys_reset/count_cmp_eq0000_wg_cy<0> (sys_reset/count_cmp_eq0000_wg_cy<0>)
+     MUXCY:CI->O           1   0.053   0.000  sys_reset/count_cmp_eq0000_wg_cy<1> (sys_reset/count_cmp_eq0000_wg_cy<1>)
+     MUXCY:CI->O           1   0.053   0.000  sys_reset/count_cmp_eq0000_wg_cy<2> (sys_reset/count_cmp_eq0000_wg_cy<2>)
+     MUXCY:CI->O           1   0.053   0.000  sys_reset/count_cmp_eq0000_wg_cy<3> (sys_reset/count_cmp_eq0000_wg_cy<3>)
+     MUXCY:CI->O           2   0.942   0.701  sys_reset/count_cmp_eq0000_wg_cy<4> (sys_reset/count_cmp_eq0000)
+     INV:I->O             19   0.439   1.035  sys_reset/count_not00011_INV_0 (sys_reset/count_not0001)
+     FDRE:CE                   0.240          sys_reset/count_0
+    ----------------------------------------
+    Total                      5.808ns (3.085ns logic, 2.723ns route)
+                                       (53.1% logic, 46.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'user1<4>'
+  Clock period: 6.775ns (frequency: 147.601MHz)
+  Total number of paths / destination ports: 1745 / 183
+-------------------------------------------------------------------------
+Delay:               6.775ns (Levels of Logic = 5)
+  Source:            vga/hcount_1 (FF)
+  Destination:       vga/blank (FF)
+  Source Clock:      user1<4> rising
+  Destination Clock: user1<4> rising
+
+  Data Path: vga/hcount_1 to vga/blank
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.568   1.010  vga/hcount_1 (vga/hcount_1)
+     LUT4_L:I0->LO         1   0.439   0.140  vga/hblankon21_SW0 (N34)
+     LUT4:I3->O            5   0.439   0.804  vga/hblankon21 (vga/N7)
+     LUT4_L:I2->LO         1   0.439   0.134  vga/hreset1_1 (vga/hreset1)
+     LUT3:I2->O           11   0.439   0.942  vga/vreset33 (vga/vcount_and0000)
+     LUT4:I2->O            2   0.439   0.702  vga/next_vblank (vga/next_vblank)
+     FDS:S                     0.280          vga/blank
+    ----------------------------------------
+    Total                      6.775ns (3.043ns logic, 3.732ns route)
+                                       (44.9% logic, 55.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 23 / 23
+-------------------------------------------------------------------------
+Offset:              3.540ns (Levels of Logic = 2)
+  Source:            button_enter (PAD)
+  Destination:       sys_reset/count_0 (FF)
+  Destination Clock: clock_27mhz rising
+
+  Data Path: button_enter to sys_reset/count_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.825   0.955  button_enter_IBUF (button_enter_IBUF)
+     LUT3:I1->O           20   0.439   1.041  sys_reset/count_or00001 (sys_reset/count_or0000)
+     FDRE:R                    0.280          sys_reset/count_0
+    ----------------------------------------
+    Total                      3.540ns (1.544ns logic, 1.996ns route)
+                                       (43.6% logic, 56.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'user1<4>'
+  Total number of paths / destination ports: 112 / 64
+-------------------------------------------------------------------------
+Offset:              4.670ns (Levels of Logic = 3)
+  Source:            user1<2> (PAD)
+  Destination:       read/data_out_tmp_27 (FF)
+  Destination Clock: user1<4> rising
+
+  Data Path: user1<2> to read/data_out_tmp_27
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             6   0.825   1.002  user1_2_IBUF (user1_2_IBUF)
+     LUT4_D:I1->O          3   0.439   0.933  read/count_or00001 (read/count_or0000)
+     LUT4:I1->O            6   0.439   0.793  read/data_out_tmp_31_not00011 (read/data_out_tmp_31_not0001)
+     FDE:CE                    0.240          read/data_out_tmp_31
+    ----------------------------------------
+    Total                      4.670ns (1.943ns logic, 2.727ns route)
+                                       (41.6% logic, 58.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'user1<4>'
+  Total number of paths / destination ports: 60 / 60
+-------------------------------------------------------------------------
+Offset:              6.633ns (Levels of Logic = 2)
+  Source:            vga/blank (FF)
+  Destination:       vga_out_blank_b (PAD)
+  Source Clock:      user1<4> rising
+
+  Data Path: vga/blank to vga_out_blank_b
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              4   0.568   0.747  vga/blank (vga/blank)
+     INV:I->O              1   0.439   0.517  vga_out_blank_b1_INV_0 (vga_out_blank_b_OBUF)
+     OBUF:I->O                 4.361          vga_out_blank_b_OBUF (vga_out_blank_b)
+    ----------------------------------------
+    Total                      6.633ns (5.368ns logic, 1.265ns route)
+                                       (80.9% logic, 19.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_27mhz'
+  Total number of paths / destination ports: 2 / 1
+-------------------------------------------------------------------------
+Offset:              9.837ns (Levels of Logic = 2)
+  Source:            reset_sr (FF)
+  Destination:       analyzer3_data<0> (PAD)
+  Source Clock:      clock_27mhz rising
+
+  Data Path: reset_sr to analyzer3_data<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     SRL16:CLK->Q          5   2.901   0.978  reset_sr (reset)
+     LUT2:I1->O           59   0.439   1.158  rst1 (rst)
+     OBUF:I->O                 4.361          analyzer3_data_0_OBUF (analyzer3_data<0>)
+    ----------------------------------------
+    Total                      9.837ns (7.701ns logic, 2.136ns route)
+                                       (78.3% logic, 21.7% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 42 / 42
+-------------------------------------------------------------------------
+Delay:               6.867ns (Levels of Logic = 3)
+  Source:            clock_27mhz (PAD)
+  Destination:       vga_out_pixel_clock (PAD)
+
+  Data Path: clock_27mhz to vga_out_pixel_clock
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   0.825   0.725  clock_27mhz_IBUF (clock_27mhz_IBUF1)
+     INV:I->O              1   0.439   0.517  vga_out_pixel_clock1_INV_0 (vga_out_pixel_clock_OBUF)
+     OBUF:I->O                 4.361          vga_out_pixel_clock_OBUF (vga_out_pixel_clock)
+    ----------------------------------------
+    Total                      6.867ns (5.625ns logic, 1.242ns route)
+                                       (81.9% logic, 18.1% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.62 secs
  
 --> 
 
 
-Total memory usage is 450400 kilobytes
+Total memory usage is 457700 kilobytes
 
-Number of errors   :   19 (   0 filtered)
-Number of warnings :  331 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  414 (   0 filtered)
 Number of infos    :   28 (   0 filtered)
 
