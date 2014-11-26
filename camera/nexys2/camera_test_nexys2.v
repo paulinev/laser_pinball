@@ -51,6 +51,8 @@ module camera_test_nexys2(
 		// synthesis attribute CLKIN_PERIOD of vgaclk is 20
 	   BUFG vgaclk2(.O(clock_25mhz),.I(clock_25mhz_unbuf));
 	   
+	// This needs to be 100kHz but I can't get it that slow in one shot;
+	// also SCCB is not my priority right now.
 	wire clock_10mhz_unbuf, clock_10mhz;
 	DCM sccbclk(.CLKIN(clk),.CLKFX(clock_10mhz_unbuf));
 		// synthesis attribute CLKFX_DIVIDE of sccbclk is 10
@@ -62,7 +64,7 @@ module camera_test_nexys2(
 	   BUFG sccbclk2(.O(clock_10mhz),.I(clock_10mhz_unbuf));
 	   
 	assign sccb_clk = clock_10mhz;
-	assign xclk = clock_10mhz;
+	assign xclk = clock_25mhz;
 	   
 	// Reset generation
 	wire reset;
@@ -78,7 +80,7 @@ module camera_test_nexys2(
 		assign rst = global_reset | reset;
 		
 	
-	// 7-segment display driver
+	// 7-segment display driver, not working, not sure why.
 	wire tick;
 	segdisplay hexdisp(
 		.clk(clock_25mhz),
@@ -111,36 +113,11 @@ module camera_test_nexys2(
 	assign camera_in = JB[7:0];
 	
 	
-// Instantiate camera reader
-	wire [31:0] pixel_out;
-	wire pixel_done, frame_done;
-	camera_read read (
-		.reset(rst), 
-		.clk(clock_10mhz), 
-		.vsync(vsync_in), 
-		.href(href_in), 
-		.pclk(pclk), 
-		.data_in(camera_in), 
-		.data_out(pixel_out), 
-		.pixel_done(pixel_done), 
-		.frame_done(frame_done)
-	);
-
-// Instantiate camera save
-	wire we;
-	wire [18:0] addr;
-	wire [7:0] save_pixel_out;
-	camera_save frame_buffer(
-		.clk(~pclk),
-		.reset(rst),
-		.pixel_done(pixel_done),
-		.data_in(pixel_out),
-		.frame_done(frame_done),
-		.pixel_out(save_pixel_out),
-		.addr(addr),
-		.we(we)
-	);
+// Generate VGA display signals
+	wire [9:0] vcount, hcount;
+	wire vsync_out, hsync_out, blank_out;	
 	
+		// Something about this is unhappy. Unclear.
 /*// Generate VGA signals
 	VgaRefComp vgadrive(
 		.CLK_25MHz(clock_25mhz),
@@ -149,9 +126,9 @@ module camera_test_nexys2(
 		.RST(rst),
 		.BLANK(blank),
 		.HCOUNT(hcount),
-		.HS(hs),
+		.HS(hsync_out),
 		.VCOUNT(vcount),
-		.VS(vs)
+		.VS(vsync_out)
 	);
 	
 	assign Hsync = hs;
@@ -160,6 +137,43 @@ module camera_test_nexys2(
 	assign vgaRed = bram_out[7:5];
 	assign vgaGreen = bram_out[7:5];
 	assign vgaBlue = bram_out[7:6]; */
+	
+// Instantiate camera reader
+	wire [31:0] pixel_out;
+	wire [18:0] addr_write, addr_read;
+	wire [1:0] count;
+	wire pixel_done, running, frame_done;
+	camera_read read (
+		.reset(rst), 
+		.vsync(vsync_in),
+		.vsync_vga(vsync_out),
+		.blank_vga(blank_out),
+		.href(href_in), 
+		.pclk(pclk), 
+		.data_in(camera_in), 
+		.data_out(pixel_out), 
+		.pixel_done(pixel_done), 
+		.frame_done(frame_done),
+		.addr_write(addr_write),
+		.addr_read(addr_read),
+		.count(count),
+		.running(running)
+	);
+
+	// You're going to have to instantiate this with the Xilinx memory tool
+	wire [5:0] bram_out;
+	dual_port_bram fbuf(
+		.clka(pclk),
+		.dina(pixel_out[5:0]),
+		.addra(addr_write),
+		.wea(pixel_done),
+		.clkb(pclk),
+		.addrb(addr_read),
+		.doutb(bram_out)
+	);
+
+	
+
 	
 	assign Led = {we, pixel_done, frame_done, pclk, 4'b0};
 	
