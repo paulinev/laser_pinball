@@ -937,6 +937,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROP_Top_Level_Module_Type" "HDL" 
       "A" "" "" "" "PROP_UseDataGate" "true" 
       "A" "" "" "" "PROP_UseSmartGuide" "false" 
+      "A" "" "" "" "PROP_UserBrowsedStrategyFiles" "" 
       "A" "" "" "" "PROP_UserConstraintEditorPreference" "Constraints Editor" 
       "A" "" "" "" "PROP_UserEditorCustomSetting" "" 
       "A" "" "" "" "PROP_UserEditorPreference" "ISE Text Editor" 

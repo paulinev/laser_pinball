@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RootFolder label="COREGEN" treetype="folder" language="COREGEN">
+	<Folder label="VERILOG Component Instantiation" treetype="folder">
+		<Template label="ILDA_rom" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+ILDA_rom YourInstanceName (
+    .clka(clka),
+    .addra(addra), // Bus [10 : 0] 
+    .douta(douta)); // Bus [31 : 0] 
+
+ 
+		</Template>
+		<Template label="physics_beta_mem" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+physics_beta_mem YourInstanceName (
+    .clka(clka),
+    .dina(dina), // Bus [31 : 0] 
+    .addra(addra), // Bus [14 : 0] 
+    .wea(wea), // Bus [0 : 0] 
+    .douta(douta)); // Bus [31 : 0] 
+
+ 
+		</Template>
+		<Template label="hardware_beta_mem" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+hardware_beta_mem YourInstanceName (
+    .clka(clka),
+    .dina(dina), // Bus [31 : 0] 
+    .addra(addra), // Bus [14 : 0] 
+    .wea(wea), // Bus [0 : 0] 
+    .douta(douta)); // Bus [31 : 0] 
+
+ 
+		</Template>
+		<Template label="beta_shared_mem" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+beta_shared_mem YourInstanceName (
+    .clka(clka),
+    .dina(dina), // Bus [31 : 0] 
+    .addra(addra), // Bus [7 : 0] 
+    .wea(wea), // Bus [0 : 0] 
+    .clkb(clkb),
+    .addrb(addrb), // Bus [7 : 0] 
+    .doutb(doutb)); // Bus [31 : 0] 
+
+ 
+		</Template>
+	</Folder>
+	<Folder label="VHDL Component Instantiation" treetype="folder">
+		<Template label="ILDA_rom" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component ILDA_rom
+    port (
+    clka: IN std_logic;
+    addra: IN std_logic_VECTOR(10 downto 0);
+    douta: OUT std_logic_VECTOR(31 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : ILDA_rom
+        port map (
+            clka =&gt; clka,
+            addra =&gt; addra,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="physics_beta_mem" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component physics_beta_mem
+    port (
+    clka: IN std_logic;
+    dina: IN std_logic_VECTOR(31 downto 0);
+    addra: IN std_logic_VECTOR(14 downto 0);
+    wea: IN std_logic_VECTOR(0 downto 0);
+    douta: OUT std_logic_VECTOR(31 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : physics_beta_mem
+        port map (
+            clka =&gt; clka,
+            dina =&gt; dina,
+            addra =&gt; addra,
+            wea =&gt; wea,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="hardware_beta_mem" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component hardware_beta_mem
+    port (
+    clka: IN std_logic;
+    dina: IN std_logic_VECTOR(31 downto 0);
+    addra: IN std_logic_VECTOR(14 downto 0);
+    wea: IN std_logic_VECTOR(0 downto 0);
+    douta: OUT std_logic_VECTOR(31 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : hardware_beta_mem
+        port map (
+            clka =&gt; clka,
+            dina =&gt; dina,
+            addra =&gt; addra,
+            wea =&gt; wea,
+            douta =&gt; douta);
+ 
+		</Template>
+		<Template label="beta_shared_mem" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component beta_shared_mem
+    port (
+    clka: IN std_logic;
+    dina: IN std_logic_VECTOR(31 downto 0);
+    addra: IN std_logic_VECTOR(7 downto 0);
+    wea: IN std_logic_VECTOR(0 downto 0);
+    clkb: IN std_logic;
+    addrb: IN std_logic_VECTOR(7 downto 0);
+    doutb: OUT std_logic_VECTOR(31 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : beta_shared_mem
+        port map (
+            clka =&gt; clka,
+            dina =&gt; dina,
+            addra =&gt; addra,
+            wea =&gt; wea,
+            clkb =&gt; clkb,
+            addrb =&gt; addrb,
+            doutb =&gt; doutb);
+ 
+		</Template>
+	</Folder>
+</RootFolder>

@@ -1,0 +1,12 @@
+# Output products list for <physics_beta_mem>
+physics_beta_mem.asy
+physics_beta_mem.ngc
+physics_beta_mem.sym
+physics_beta_mem.v
+physics_beta_mem.veo
+physics_beta_mem.vhd
+physics_beta_mem.vho
+physics_beta_mem.xco
+physics_beta_mem_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+physics_beta_mem_flist.txt
+physics_beta_mem_xmdf.tcl
