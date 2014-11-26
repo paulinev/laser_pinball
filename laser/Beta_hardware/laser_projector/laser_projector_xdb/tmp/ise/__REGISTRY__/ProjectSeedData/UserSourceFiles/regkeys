@@ -1,8 +1,11 @@
 NUM_USER_FILES
-7
+10
 s
 user_file_1
 ../../../../../../afs/athena.mit.edu/user/w/b/wbraun/Private/6_111/FinalProject/Hardware_interface/ml50x_U1_fpga.ucf
+s
+user_file_10
+mapped_IO.v
 s
 user_file_2
 hardware_interface.v
@@ -21,4 +24,10 @@ beta_shared_mem.xco
 s
 user_file_7
 laser_projector_full.v
+s
+user_file_8
+beta_addr_decode.v
+s
+user_file_9
+beta_read_decode.v
 s

@@ -4,7 +4,7 @@ TEXT 32 32 LEFT 4 physics_beta_mem
 RECTANGLE Normal 32 32 544 576
 LINE Wide 0 80 32 80
 PIN 0 80 LEFT 36
-PINATTR PinName addra[14:0]
+PINATTR PinName addra[13:0]
 PINATTR Polarity IN
 LINE Wide 0 112 32 112
 PIN 0 112 LEFT 36

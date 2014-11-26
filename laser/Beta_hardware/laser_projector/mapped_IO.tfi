@@ -1,0 +1,12 @@
+
+
+
+// Instantiate the module
+mapped_IO instance_name (
+    .clk(clk), 
+    .addr(addr), 
+    .din(din), 
+    .mwe(mwe)
+    );
+
+

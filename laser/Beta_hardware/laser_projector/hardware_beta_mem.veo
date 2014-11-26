@@ -34,7 +34,7 @@
 hardware_beta_mem YourInstanceName (
 	.clka(clka),
 	.dina(dina), // Bus [31 : 0] 
-	.addra(addra), // Bus [14 : 0] 
+	.addra(addra), // Bus [13 : 0] 
 	.wea(wea), // Bus [0 : 0] 
 	.douta(douta)); // Bus [31 : 0] 
 

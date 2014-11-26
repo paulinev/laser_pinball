@@ -25,7 +25,7 @@ ILDA_rom YourInstanceName (
 physics_beta_mem YourInstanceName (
     .clka(clka),
     .dina(dina), // Bus [31 : 0] 
-    .addra(addra), // Bus [14 : 0] 
+    .addra(addra), // Bus [13 : 0] 
     .wea(wea), // Bus [0 : 0] 
     .douta(douta)); // Bus [31 : 0] 
 
@@ -41,7 +41,7 @@ physics_beta_mem YourInstanceName (
 hardware_beta_mem YourInstanceName (
     .clka(clka),
     .dina(dina), // Bus [31 : 0] 
-    .addra(addra), // Bus [14 : 0] 
+    .addra(addra), // Bus [13 : 0] 
     .wea(wea), // Bus [0 : 0] 
     .douta(douta)); // Bus [31 : 0] 
 
@@ -102,7 +102,7 @@ component physics_beta_mem
     port (
     clka: IN std_logic;
     dina: IN std_logic_VECTOR(31 downto 0);
-    addra: IN std_logic_VECTOR(14 downto 0);
+    addra: IN std_logic_VECTOR(13 downto 0);
     wea: IN std_logic_VECTOR(0 downto 0);
     douta: OUT std_logic_VECTOR(31 downto 0));
 end component;
@@ -132,7 +132,7 @@ component hardware_beta_mem
     port (
     clka: IN std_logic;
     dina: IN std_logic_VECTOR(31 downto 0);
-    addra: IN std_logic_VECTOR(14 downto 0);
+    addra: IN std_logic_VECTOR(13 downto 0);
     wea: IN std_logic_VECTOR(0 downto 0);
     douta: OUT std_logic_VECTOR(31 downto 0));
 end component;
