@@ -25,11 +25,11 @@ module laser_projector_full(
 	input wire paddle_l,
 	input wire paddle_r, //in case no accelerometers
 	output wire [2:0] laser_rgb,
-	output wire dac_miso,
+	output wire dac_mosi,
 	output wire dac_csn,
 	output wire dac_latchn,
-	output wire dac_sclk 
-	//going to add camera stuff later
+	output wire dac_sclk,
+	output wire [7:0] debug_led
     );
 	
 	//wires for physics beta
@@ -74,51 +74,104 @@ module laser_projector_full(
 	//memory mdin is data into beta
 	//memory mdout is data from beta to be written
 		//jakes beta
+		
+	assign xadr_physics = 31'b0;
+	assign irq_physics = 1'b0;
+	
 	beta2 cpu_physics(
-	.clk(clk), .reset(reset), .irq(irq_physics), .xadr(xadr_physics),
-	.ma(ma_physics), .mdin(mdin_physics), .mdout(mdout_physics), .mwe(mwe_physics));
+	.clk(clk),
+	.reset(reset), 
+	.irq(irq_physics), 
+	.xadr(xadr_physics),
+	.ma(ma_physics), 
+	.mdin(mdin_physics), 
+	.mdout(mdout_physics), 
+	.mwe(mwe_physics));
 								
 	//16k mem
 	//14 bits wide, takes beta [15:2] because memory is byte aligned
 	physics_beta_mem physics_beta_ram (
-	.clka(clk), .dina(mdout_physics), .addra(ma_physics[15:2]),
-	.wea(mwe_physics && sel_ram_physics),	.douta(ram_dout_physics) ); 
+	.clka(clk), 
+	.dina(mdout_physics), 
+	.addra(ma_physics[15:2]),
+	.wea(mwe_physics && sel_ram_physics),	
+	.douta(ram_dout_physics) ); 
 	
 	//decode data adress for reads
 	beta_addr_decode physics_decode (
-	.addr(ma_physics), .sel_ram(sel_ram_physics), .sel_IO(sel_IO_physics),
-	.sel_read_shared(sel_read_shared_physics), .sel_write_shared(sel_write_shared_physics),
+	.addr(ma_physics), 
+	.sel_ram(sel_ram_physics), 
+	.sel_IO(sel_IO_physics),
+	.sel_read_shared(sel_read_shared_physics), 
+	.sel_write_shared(sel_write_shared_physics),
 	.read_select(read_select_physics));
 	
 	//select mdin for beta
 	beta_read_decode physics_read_decode (
-	.clk(clk), .read_select(read_select_physics), .ram_dout(ram_dout_physics),
-	.IO_dout(IO_dout_physics), .shared_read_dout(shared_read_dout_physics), 
-	.shared_write_dout(shared_write_dout_physics), .beta_mdin(mdin_physics));
+	.clk(clk), 
+	.read_select(read_select_physics), 
+	.ram_dout(ram_dout_physics),
+	.IO_dout(IO_dout_physics), 
+	.shared_read_dout(shared_read_dout_physics), 
+	.shared_write_dout(shared_write_dout_physics),
+	.beta_mdin(mdin_physics));
 	
 	
 	//westons beta					
 	beta2 cpu_laser(
-	.clk(clk), .reset(reset), .irq(0), .xadr(0), .ma(ma_laser), .mdin(mdin_laser),
-	.mdout(mdout_laser), .mwe(mwe_laser));
+	.clk(clk), 
+	.reset(reset), 
+	.irq(1'b0), 
+	.xadr(31'b0), 
+	.ma(ma_laser), 
+	.mdin(mdin_laser),
+	.mdout(mdout_laser),
+	.mwe(mwe_laser));
 	
 	//16k mem
 	//14 bits wide, takes beta [15:2] because memory is byte aligned
 	hardware_beta_mem laser_beta_ram	(
-	.clka(clk), .dina(mdout_laser), .addra(ma_laser[15:2]), .wea(mwe_laser&&sel_ram),
+	.clka(clk),
+	.dina(mdout_laser), 
+	.addra(ma_laser[15:2]), 
+	.wea(mwe_laser&&sel_ram),
 	.douta(ram_dout_laser) );
 	
 	//decode memory addresses
 	beta_addr_decode laser_decode (
-	.addr(ma_laser), .sel_ram(sel_ram_laser), .sel_IO(sel_IO_laser),
-	.sel_read_shared(sel_read_shared_laser), .sel_write_shared(sel_write_shared_laser),
+	.addr(ma_laser),
+	.sel_ram(sel_ram_laser), 
+	.sel_IO(sel_IO_laser),
+	.sel_read_shared(sel_read_shared_laser), 
+	.sel_write_shared(sel_write_shared_laser),
 	.read_select(read_select_laser));
 											
 	
 	//write data back
 	beta_read_decode laser_read_decode (
-	.clk(clk), .read_select(read_select_laser), .ram_dout(ram_dout_laser),
-	.IO_dout(IO_dout_laser), .shared_read_dout(shared_read_dout_laser), 
-	.shared_write_dout(shared_write_dout_laser), .beta_mdin(mdin_laser));
+	.clk(clk),
+	.read_select(read_select_laser),
+	.ram_dout(ram_dout_laser),
+	.IO_dout(IO_dout_laser),
+	.shared_read_dout(shared_read_dout_laser), 
+	.shared_write_dout(shared_write_dout_laser),
+	.beta_mdin(mdin_laser));
+	
+	//memory mapped IO for laser beta
+	mapped_IO laser_beta_IO (
+    .clk(clk), 
+    .addr(ma_laser), 
+    .din(mdout_laser), 
+    .mwe(mwe_laser & sel_IO_laser), 
+    .in_port_a(dip_sw), 
+    .in_port_b(32'b0), 
+    .dout(IO_dout_laser), 
+    .out_port_a({dac_latchn, laser_rgb}), 
+    .out_port_b(debug_led), 
+    .spi_miso(1'b0), 
+    .spi_csn(dac_csn), 
+    .spi_sclk(dac_sclk), 
+    .spi_mosi(dac_mosi)
+    );
 
 endmodule

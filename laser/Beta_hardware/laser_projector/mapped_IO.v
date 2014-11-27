@@ -23,15 +23,17 @@ module mapped_IO(
 	input wire clk,
 	input wire [31:0] addr,//from beta
 	input wire [31:0] din, //from beta
-	input wire mwe //memory write enable from beta
+	input wire mwe, //memory write enable from beta
 	input wire [31:0] in_port_a, in_port_b, // general use input port
-	output wire [31:0] dout, //data to beta
-	output reg [31:0] out_port_a, out_port_b, // general output ports
-	output wire spi_miso, //spi stuff
+	output reg [31:0] dout =0, //data to beta
+	output reg [31:0] out_port_a = 0,
+	output reg [31:0] out_port_b = 0, // general output ports
+	input wire spi_miso, //spi stuff
 	output wire spi_csn, 
 	output wire spi_sclk,
-	output wire spi_mosi,
+	output wire spi_mosi
     );
+	//this is on word offset
 	//registers: 
 	//	0000 - 0001 : in_port_a - in_port b
 	//	0002 - 0003 : out_port_a - out_port_b
@@ -42,25 +44,25 @@ module mapped_IO(
 	//decode address
 	always @(posedge clk)
 	begin 
-	case(addr[15:0])
+	case(addr[15:2])
 	
-	16'h0000: begin //in_port_a
+	14'h0000: begin //in_port_a
 	//no write
 	dout <= in_port_a;
 	end
 	
 	
-	16'h0001: begin //in_port_b
+	14'h0001: begin //in_port_b
 	//no write
 	dout <= in_port_b;
 	end
 	
-	16'h0002: begin //out_port_a
+	14'h0002: begin //out_port_a
 	dout <= out_port_a;
 	out_port_a <= mwe ? din : out_port_a;
 	end
 	
-	16'h0003: begin //out_port_b
+	14'h0003: begin //out_port_b
 	dout <= out_port_b;
 	out_port_b <= mwe ? din : out_port_b;
 	end

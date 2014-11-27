@@ -20,11 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 module beta_addr_decode(
 	input wire [31:0] addr,
-	output reg sel_ram,
-	output reg sel_IO,
-	output reg sel_read_shared,
-	output reg sel_write_shared,
-	output reg [2:0] read_select
+	output reg sel_ram = 0,
+	output reg sel_IO =0,
+	output reg sel_read_shared =0,
+	output reg sel_write_shared =0,
+	output reg [2:0] read_select =0
     );
 
 	always@(*)

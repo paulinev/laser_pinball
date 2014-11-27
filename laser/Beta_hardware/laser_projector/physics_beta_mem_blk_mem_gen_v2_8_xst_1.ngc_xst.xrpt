@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Xst" timeStamp="Wed Nov 26 16:23:35 2014">
+  <application stringID="Xst" timeStamp="Wed Nov 26 22:28:26 2014">
     <section stringID="XST_HDL_SYNTHESIS_REPORT">
       <item dataType="int" stringID="XST_REGISTERS" value="2">
         <item dataType="int" stringID="XST_2BIT_REGISTER" value="2"/>
@@ -67,8 +67,8 @@
     </section>
     <section stringID="XST_ERRORS_STATISTICS">
       <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_ERRORS" value="0"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="1139"/>
-      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="94"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_WARNINGS" value="1193"/>
+      <item dataType="int" filtered="0" stringID="XST_NUMBER_OF_INFOS" value="148"/>
     </section>
   </application>
 

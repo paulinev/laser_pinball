@@ -1,0 +1,22 @@
+.include beta.uasm		| Define Beta instructions, etc.
+.options clock tty
+
+. = 0
+start:
+ADDC(R0,1,R0)
+LD(R31,0xFF0,R1)
+ST(R0, 8, R1)
+ST(R0, 12, R1)
+BR(start)
+
+. = 0xFF0 
+LONG(0x10000)
+
+
+.=0x10008
+LONG(0x1)
+
+
+
+.=0x20000
+LONG(0)

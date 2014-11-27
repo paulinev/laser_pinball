@@ -1,5 +1,6 @@
 # Output products list for <physics_beta_mem>
 physics_beta_mem.asy
+physics_beta_mem.mif
 physics_beta_mem.ngc
 physics_beta_mem.sym
 physics_beta_mem.v

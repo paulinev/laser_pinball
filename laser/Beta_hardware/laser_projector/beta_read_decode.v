@@ -25,10 +25,10 @@ module beta_read_decode(
 	input wire [31:0] IO_dout,
 	input wire [31:0] shared_read_dout,
 	input wire [31:0] shared_write_dout,
-	output reg [31:0] beta_mdin
+	output reg [31:0] beta_mdin = 0
     );
 
-	reg [2:0] old_read_select;
+	reg [2:0] old_read_select = 0;
 	
 	always@(posedge clk)
 	begin
