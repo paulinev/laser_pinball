@@ -13,6 +13,9 @@ s
 user_file_12
 ../labkit_beta2demo/labkit.ucf
 s
+user_file_13
+simulate.v
+s
 user_file_2
 ../labkit_beta2demo/beta2.v
 s

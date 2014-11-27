@@ -67,6 +67,10 @@ module laser_projector_beta_tb;
       reset = 1;
 		#20;
 		reset = 0;
+		#1000;
+		reset = 1;
+		#20
+		reset = 0;
 		// Add stimulus here
 
 	end

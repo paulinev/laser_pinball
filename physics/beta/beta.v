@@ -12,9 +12,10 @@ module beta2(clk,reset,irq,xadr,ma,mdin,mdout,mwe);
   output mwe;
 
   // beta2 registers
-  reg [31:0] npc,pc_inc;
-  reg [31:0] inst;
-  reg [4:0] rc_save;  // needed for second cycle on LD,LDR
+  reg [31:0] npc = 0;
+  reg [31:0] pc_inc = 0;
+  reg [31:0] inst = 0;
+  reg [4:0] rc_save = 0;  // needed for second cycle on LD,LDR
 
   // internal buses
   wire [31:0] rd1,rd2,wd;
@@ -121,6 +122,8 @@ module regfile(ra1,rd1,ra2,rd2,ra3,rd3,wa,wd,clk,werf);
 
   (* ram_style = "distributed" *)
   reg [31:0] regfile[31:0];
+  //this may be required for simulation?
+  integer i; initial for (i = 0; i < 32; i = i + 1) regfile[i] = 32'h0;
 
   assign rd1 = regfile[ra1];
   assign rd2 = regfile[ra2];

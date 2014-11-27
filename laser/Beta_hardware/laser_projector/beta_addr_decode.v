@@ -29,7 +29,8 @@ module beta_addr_decode(
 
 	always@(*)
 	begin
-	case(addr[31:16])
+	//remove the supervisor bit dummy
+	case(addr[30:16])
 	
 	0: begin //RAM select
 		sel_ram <=1; 

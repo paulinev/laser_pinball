@@ -2,7 +2,9 @@
 .options clock tty
 
 . = 0
+
 start:
+|ADDC(R2, 0, R2) |it appears that 0h00000 is not a valid address
 ADDC(R0,1,R0)
 LD(R31,0xFF0,R1)
 ST(R0, 8, R1)
@@ -19,4 +21,4 @@ LONG(0x1)
 
 
 .=0x20000
-LONG(0)
+LONG(0x1)
