@@ -5,14 +5,14 @@ Parameter TMPDIR set to /home/wbraun/laser_pinball/laser/Beta_hardware/laser_pro
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: hardware_interface.prj
@@ -197,6 +197,7 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <beta_addr_decode>.
     Related source file is "beta_addr_decode.v".
+WARNING:Xst:647 - Input <addr<31>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <addr<15:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 Unit <beta_addr_decode> synthesized.
 
@@ -291,6 +292,8 @@ WARNING:Xst:646 - Signal <sel_ram_laser> is assigned but never used. This unconn
 WARNING:Xst:653 - Signal <sel_ram> is used but never assigned. This sourceless signal will be automatically connected to value 0.
 WARNING:Xst:646 - Signal <sel_IO_physics> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <irq_laser> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <IO_port<31:24>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <IO_port<15:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <IO_dout_physics> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000000000000000.
 Unit <laser_projector_full> synthesized.
 
@@ -339,22 +342,13 @@ WARNING:Xst:1306 - Output <HDR1_62> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_58> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_64> is never assigned.
 WARNING:Xst:1306 - Output <AUDIO_BIT_CLK> is never assigned.
-WARNING:Xst:1305 - Output <GPIO_LED_0> is never assigned. Tied to value 0.
-WARNING:Xst:1305 - Output <GPIO_LED_1> is never assigned. Tied to value 0.
-WARNING:Xst:1305 - Output <GPIO_LED_2> is never assigned. Tied to value 0.
-WARNING:Xst:1305 - Output <GPIO_LED_3> is never assigned. Tied to value 0.
-WARNING:Xst:1305 - Output <GPIO_LED_4> is never assigned. Tied to value 0.
-WARNING:Xst:1305 - Output <GPIO_LED_5> is never assigned. Tied to value 0.
-WARNING:Xst:1305 - Output <GPIO_LED_6> is never assigned. Tied to value 0.
 WARNING:Xst:1306 - Output <DVI_GPIO1> is never assigned.
-WARNING:Xst:1305 - Output <GPIO_LED_7> is never assigned. Tied to value 0.
 WARNING:Xst:1306 - Output <DVI_RESET_B> is never assigned.
 WARNING:Xst:647 - Input <AUDIO_SDATA_IN> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <AUDIO_SYNC> is never assigned.
 WARNING:Xst:647 - Input <CLK_27MHZ_FPGA> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <DVI_D10> is never assigned.
 WARNING:Xst:1306 - Output <DVI_D11> is never assigned.
-WARNING:Xst:646 - Signal <debug_led> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <dac_latchn> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <dac_latch> is used but never assigned. This sourceless signal will be automatically connected to value 0.
     Found 1-bit register for signal <clk_50>.
@@ -533,24 +527,25 @@ Design Statistics
 # IOs                              : 76
 
 Cell Usage :
-# BELS                             : 1780
+# BELS                             : 1787
 #      GND                         : 3
 #      INV                         : 7
 #      LUT1                        : 56
-#      LUT2                        : 80
-#      LUT3                        : 193
-#      LUT4                        : 115
-#      LUT5                        : 328
-#      LUT6                        : 667
+#      LUT2                        : 79
+#      LUT3                        : 214
+#      LUT4                        : 121
+#      LUT5                        : 288
+#      LUT6                        : 717
 #      MUXCY                       : 118
-#      MUXF7                       : 88
+#      MUXF7                       : 59
 #      VCC                         : 3
 #      XORCY                       : 122
 # FlipFlops/Latches                : 305
-#      FD                          : 164
+#      FD                          : 162
 #      FDE                         : 138
 #      FDR                         : 1
 #      FDRS                        : 2
+#      FDS                         : 2
 # RAMS                             : 72
 #      RAM32M                      : 30
 #      RAM32X1D                    : 12
@@ -572,17 +567,17 @@ Selected Device : 5vlx50tff1136-3
 
 Slice Logic Utilization: 
  Number of Slice Registers:             305  out of  28800     1%  
- Number of Slice LUTs:                 1590  out of  28800     5%  
-    Number used as Logic:              1446  out of  28800     5%  
+ Number of Slice LUTs:                 1626  out of  28800     5%  
+    Number used as Logic:              1482  out of  28800     5%  
     Number used as Memory:              144  out of   7680     1%  
        Number used as RAM:              144
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   1635
-   Number with an unused Flip Flop:    1330  out of   1635    81%  
-   Number with an unused LUT:            45  out of   1635     2%  
-   Number of fully used LUT-FF pairs:   260  out of   1635    15%  
-   Number of unique control sets:         8
+ Number of LUT Flip Flop pairs used:   1669
+   Number with an unused Flip Flop:    1364  out of   1669    81%  
+   Number with an unused LUT:            43  out of   1669     2%  
+   Number of fully used LUT-FF pairs:   262  out of   1669    15%  
+   Number of unique control sets:         9
 
 IO Utilization: 
  Number of IOs:                          76
@@ -623,19 +618,19 @@ INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered
 
 Asynchronous Control Signals Information:
 ----------------------------------------
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-Control Signal                                                                    | Buffer(FF name)                                                                                                       | Load  |
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 112   |
-best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                    | Buffer(FF name)                                                                                                        | Load  |
+----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
+best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)   | 112   |
+best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
+----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 6.539ns (Maximum Frequency: 152.936MHz)
-   Minimum input arrival time before clock: 4.826ns
+   Minimum period: 6.594ns (Maximum Frequency: 151.642MHz)
+   Minimum input arrival time before clock: 5.821ns
    Maximum output required time after clock: 3.230ns
    Maximum combinational path delay: No path found
 
@@ -645,32 +640,50 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_501'
-  Clock period: 6.539ns (frequency: 152.936MHz)
-  Total number of paths / destination ports: 11163637 / 2048
+  Clock period: 6.594ns (frequency: 151.642MHz)
+  Total number of paths / destination ports: 10299785 / 2048
 -------------------------------------------------------------------------
-Delay:               6.539ns (Levels of Logic = 8)
-  Source:            best_hazor/cpu_laser/rf/Mram_regfile5 (RAM)
-  Destination:       best_hazor/laser_beta_IO/out_port_a_31 (FF)
+Delay:               6.594ns (Levels of Logic = 25)
+  Source:            best_hazor/cpu_physics/inst_29 (FF)
+  Destination:       best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP (RAM)
   Source Clock:      clk_501 rising
   Destination Clock: clk_501 rising
 
-  Data Path: best_hazor/cpu_laser/rf/Mram_regfile5 to best_hazor/laser_beta_IO/out_port_a_31
+  Data Path: best_hazor/cpu_physics/inst_29 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     RAM32M:WCLK->DOA1     4   1.345   0.861  best_hazor/cpu_laser/rf/Mram_regfile5 (best_hazor/cpu_laser/rd1<25>)
-     LUT6:I0->O            1   0.086   0.611  best_hazor/cpu_laser/z128 (best_hazor/cpu_laser/z128)
-     LUT6:I2->O            1   0.086   0.361  best_hazor/cpu_laser/z262 (best_hazor/cpu_laser/z)
-     LUT6:I5->O           28   0.086   0.450  best_hazor/cpu_laser/ctl/branch (best_hazor/cpu_laser/branch)
-     LUT6:I5->O            4   0.086   0.372  best_hazor/cpu_laser/npc_next<2> (best_hazor/cpu_laser/npc_next<2>)
-     LUT4:I3->O            1   0.086   0.850  best_hazor/_and00021_SW0 (N145)
-     LUT6:I0->O            1   0.086   0.549  best_hazor/laser_beta_IO/out_port_a_not0001172_SW0 (N169)
-     LUT6:I3->O           32   0.086   0.450  best_hazor/laser_beta_IO/out_port_b_not00011 (best_hazor/laser_beta_IO/out_port_b_not0001)
-     LUT3:I2->O            1   0.086   0.000  best_hazor/laser_beta_IO/out_port_b_31_rstpot (best_hazor/laser_beta_IO/out_port_b_31_rstpot)
-     FD:D                     -0.022          best_hazor/laser_beta_IO/out_port_b_31
+     FDE:C->Q             25   0.396   0.856  best_hazor/cpu_physics/inst_29 (best_hazor/cpu_physics/inst_29)
+     LUT5:I0->O           37   0.086   0.639  best_hazor/cpu_physics/ctl/addsub_op1 (best_hazor/cpu_physics/addsub_op)
+     LUT6:I3->O            1   0.086   0.611  best_hazor/cpu_physics/b<2>1_SW2 (N224)
+     LUT6:I2->O            1   0.086   0.000  best_hazor/cpu_physics/Madd_addsub_lut<2> (best_hazor/cpu_physics/Madd_addsub_lut<2>)
+     MUXCY:S->O            1   0.305   0.000  best_hazor/cpu_physics/Madd_addsub_cy<2> (best_hazor/cpu_physics/Madd_addsub_cy<2>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<3> (best_hazor/cpu_physics/Madd_addsub_cy<3>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<4> (best_hazor/cpu_physics/Madd_addsub_cy<4>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<5> (best_hazor/cpu_physics/Madd_addsub_cy<5>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<6> (best_hazor/cpu_physics/Madd_addsub_cy<6>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<7> (best_hazor/cpu_physics/Madd_addsub_cy<7>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<8> (best_hazor/cpu_physics/Madd_addsub_cy<8>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<9> (best_hazor/cpu_physics/Madd_addsub_cy<9>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<10> (best_hazor/cpu_physics/Madd_addsub_cy<10>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<11> (best_hazor/cpu_physics/Madd_addsub_cy<11>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<12> (best_hazor/cpu_physics/Madd_addsub_cy<12>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<13> (best_hazor/cpu_physics/Madd_addsub_cy<13>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<14> (best_hazor/cpu_physics/Madd_addsub_cy<14>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<15> (best_hazor/cpu_physics/Madd_addsub_cy<15>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<16> (best_hazor/cpu_physics/Madd_addsub_cy<16>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<17> (best_hazor/cpu_physics/Madd_addsub_cy<17>)
+     MUXCY:CI->O           1   0.023   0.000  best_hazor/cpu_physics/Madd_addsub_cy<18> (best_hazor/cpu_physics/Madd_addsub_cy<18>)
+     XORCY:CI->O           4   0.300   0.372  best_hazor/cpu_physics/Madd_addsub_xor<19> (best_hazor/cpu_physics/addsub<19>)
+     LUT6:I5->O            2   0.086   0.772  best_hazor/cpu_physics/npc_next<19> (best_hazor/cpu_physics/npc_next<19>)
+     LUT6:I1->O            3   0.086   0.619  best_hazor/physics_decode/sel_ram_and0000132 (best_hazor/physics_decode/sel_ram_and0000132)
+     LUT5:I1->O          114   0.086   0.335  best_hazor/_and00001 (best_hazor/_and0000)
+     begin scope: 'best_hazor/physics_beta_ram'
+     begin scope: 'BU2'
+     RAMB18:WEA1               0.509          U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP
     ----------------------------------------
-    Total                      6.539ns (2.033ns logic, 4.506ns route)
-                                       (31.1% logic, 68.9% route)
+    Total                      6.594ns (2.390ns logic, 4.204ns route)
+                                       (36.2% logic, 63.8% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'USER_CLK'
@@ -695,44 +708,45 @@ Delay:               1.099ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_501'
-  Total number of paths / destination ports: 16636 / 1048
+  Total number of paths / destination ports: 21143 / 1048
 -------------------------------------------------------------------------
-Offset:              4.826ns (Levels of Logic = 7)
+Offset:              5.821ns (Levels of Logic = 9)
   Source:            GPIO_SW_C (PAD)
-  Destination:       best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP (RAM)
+  Destination:       best_hazor/laser_beta_IO/out_port_a_31 (FF)
   Destination Clock: clk_501 rising
 
-  Data Path: GPIO_SW_C to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP
+  Data Path: GPIO_SW_C to best_hazor/laser_beta_IO/out_port_a_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           105   0.694   0.460  GPIO_SW_C_IBUF (GPIO_SW_C_IBUF)
-     LUT2:I1->O            1   0.086   0.549  best_hazor/cpu_physics/ctl/branch_SW2 (N183)
-     LUT6:I3->O           28   0.086   0.525  best_hazor/cpu_physics/npc_next<10>31 (best_hazor/cpu_physics/N77)
-     LUT6:I4->O            2   0.086   0.772  best_hazor/cpu_physics/npc_next<18> (best_hazor/cpu_physics/npc_next<18>)
-     LUT6:I1->O            2   0.086   0.553  best_hazor/physics_decode/sel_ram_and0000347 (best_hazor/physics_decode/sel_ram_and0000347)
-     LUT5:I2->O          114   0.086   0.335  best_hazor/_and00001 (best_hazor/_and0000)
-     begin scope: 'best_hazor/physics_beta_ram'
-     begin scope: 'BU2'
-     RAMB18:WEA1               0.509          U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP
+     IBUF:I->O           105   0.694   0.535  GPIO_SW_C_IBUF (GPIO_SW_C_IBUF)
+     LUT2:I0->O            2   0.086   0.772  best_hazor/cpu_laser/ctl/branch_SW2 (N185)
+     LUT6:I1->O            3   0.086   0.369  best_hazor/cpu_laser/ctl/branch_SW1 (N183)
+     LUT5:I4->O            1   0.086   0.549  best_hazor/cpu_laser/npc_next<10>21_SW0 (N253)
+     LUT6:I3->O            1   0.086   0.549  best_hazor/laser_beta_IO/out_port_a_not0001172_SW0_SW1 (N217)
+     LUT6:I3->O            2   0.086   0.365  best_hazor/laser_beta_IO/out_port_a_not0001172_SW0 (N179)
+     LUT6:I5->O            1   0.086   0.850  best_hazor/laser_decode/sel_ram_and0000341_SW1_SW0_SW0 (N244)
+     LUT6:I0->O           32   0.086   0.450  best_hazor/laser_beta_IO/out_port_a_not00012 (best_hazor/laser_beta_IO/out_port_a_not0001)
+     LUT3:I2->O            1   0.086   0.000  best_hazor/laser_beta_IO/out_port_a_31_rstpot (best_hazor/laser_beta_IO/out_port_a_31_rstpot)
+     FD:D                     -0.022          best_hazor/laser_beta_IO/out_port_a_31
     ----------------------------------------
-    Total                      4.826ns (1.633ns logic, 3.193ns route)
-                                       (33.8% logic, 66.2% route)
+    Total                      5.821ns (1.382ns logic, 4.439ns route)
+                                       (23.7% logic, 76.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_501'
-  Total number of paths / destination ports: 3 / 3
+  Total number of paths / destination ports: 11 / 11
 -------------------------------------------------------------------------
 Offset:              3.230ns (Levels of Logic = 2)
-  Source:            best_hazor/laser_beta_IO/out_port_a_2 (FF)
+  Source:            best_hazor/laser_beta_IO/out_port_b_2 (FF)
   Destination:       HDR1_10 (PAD)
   Source Clock:      clk_501 rising
 
-  Data Path: best_hazor/laser_beta_IO/out_port_a_2 to HDR1_10
+  Data Path: best_hazor/laser_beta_IO/out_port_b_2 to HDR1_10
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               3   0.396   0.243  best_hazor/laser_beta_IO/out_port_a_2 (best_hazor/laser_beta_IO/out_port_a_2)
+     FD:C->Q               3   0.396   0.243  best_hazor/laser_beta_IO/out_port_b_2 (best_hazor/laser_beta_IO/out_port_b_2)
      INV:I->O              1   0.212   0.235  _AUX_1<2>1_INV_0 (HDR1_10_OBUF)
      OBUF:I->O                 2.144          HDR1_10_OBUF (HDR1_10)
     ----------------------------------------
@@ -742,15 +756,15 @@ Offset:              3.230ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 57.00 secs
-Total CPU time to Xst completion: 57.02 secs
+Total REAL time to Xst completion: 80.00 secs
+Total CPU time to Xst completion: 79.71 secs
  
 --> 
 
 
-Total memory usage is 600908 kilobytes
+Total memory usage is 600848 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  105 (   0 filtered)
+Number of warnings :   98 (   0 filtered)
 Number of infos    :    4 (   0 filtered)
 

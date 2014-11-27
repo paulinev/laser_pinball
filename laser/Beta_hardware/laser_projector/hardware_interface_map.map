@@ -4,15 +4,15 @@ Xilinx Map Application Log File for Design 'hardware_interface'
 Design Information
 ------------------
 Command Line   : map -ise
-/afs/athena.mit.edu/user/w/b/wbraun/Private/6_111/FinalProject/Hardware_interfac
-e/laser_projector/laser_projector.ise -intstyle ise -p xc5vlx50t-ff1136-3 -w
--logic_opt off -ol high -t 1 -cm area -pr off -k 6 -lc off -power off -o
-hardware_interface_map.ncd hardware_interface.ngd hardware_interface.pcf 
+/home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/laser_projector.i
+se -intstyle ise -p xc5vlx50t-ff1136-3 -w -logic_opt off -ol high -t 1 -cm area
+-pr off -k 6 -lc off -power off -o hardware_interface_map.ncd
+hardware_interface.ngd hardware_interface.pcf 
 Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sun Nov 16 23:27:56 2014
+Mapped Date    : Thu Nov 27 03:26:50 2014
 
 Mapping design into LUTs...
 Running directed packing...
@@ -22,86 +22,94 @@ INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
 Running timing-driven packing...
 
 Phase 1.1
-Phase 1.1 (Checksum:1d0ccd) REAL time: 9 secs 
+Phase 1.1 (Checksum:44743d) REAL time: 5 secs 
 
 Phase 2.7
-Phase 2.7 (Checksum:1d0ccd) REAL time: 10 secs 
+Phase 2.7 (Checksum:44743d) REAL time: 5 secs 
 
 Phase 3.31
-Phase 3.31 (Checksum:1d0ccd) REAL time: 10 secs 
+Phase 3.31 (Checksum:44743d) REAL time: 5 secs 
 
 Phase 4.33
-Phase 4.33 (Checksum:1d0ccd) REAL time: 10 secs 
+Phase 4.33 (Checksum:44743d) REAL time: 5 secs 
 
 Phase 5.32
-Phase 5.32 (Checksum:1d0ccd) REAL time: 10 secs 
+Phase 5.32 (Checksum:44743d) REAL time: 5 secs 
 
 Phase 6.2
 
 
-Phase 6.2 (Checksum:1e64ea) REAL time: 10 secs 
+Phase 6.2 (Checksum:45cc5a) REAL time: 5 secs 
 
 Phase 7.30
-Phase 7.30 (Checksum:1e64ea) REAL time: 10 secs 
+Phase 7.30 (Checksum:45cc5a) REAL time: 5 secs 
 
 Phase 8.3
-Phase 8.3 (Checksum:1e64ea) REAL time: 10 secs 
+Phase 8.3 (Checksum:45cc5a) REAL time: 5 secs 
 
 Phase 9.5
-Phase 9.5 (Checksum:1e64ea) REAL time: 10 secs 
+Phase 9.5 (Checksum:45cc5a) REAL time: 5 secs 
 
 Phase 10.8
 ........................................
-...............
-........................
 ......................
-Phase 10.8 (Checksum:80af9e) REAL time: 12 secs 
+.....
+.....
+.................
+.................
+.................
+Phase 10.8 (Checksum:96c8973) REAL time: 11 secs 
 
 Phase 11.29
-Phase 11.29 (Checksum:80af9e) REAL time: 12 secs 
+Phase 11.29 (Checksum:96c8973) REAL time: 11 secs 
 
 Phase 12.5
-Phase 12.5 (Checksum:80af9e) REAL time: 12 secs 
+Phase 12.5 (Checksum:96c8973) REAL time: 11 secs 
 
 Phase 13.18
-Phase 13.18 (Checksum:7ebf27) REAL time: 20 secs 
+Phase 13.18 (Checksum:981b58a) REAL time: 36 secs 
 
 Phase 14.5
-Phase 14.5 (Checksum:7ebf27) REAL time: 20 secs 
+Phase 14.5 (Checksum:981b58a) REAL time: 36 secs 
 
 Phase 15.34
-Phase 15.34 (Checksum:7ebf27) REAL time: 20 secs 
+Phase 15.34 (Checksum:981b58a) REAL time: 36 secs 
 
-REAL time consumed by placer: 20 secs 
-CPU  time consumed by placer: 13 secs 
+REAL time consumed by placer: 36 secs 
+CPU  time consumed by placer: 36 secs 
 
 Design Summary
 --------------
 
 Design Summary:
 Number of errors:      0
-Number of warnings:   56
+Number of warnings:   54
 Slice Logic Utilization:
-  Number of Slice Registers:                   176 out of  28,800    1%
-    Number used as Flip Flops:                 176
-  Number of Slice LUTs:                        168 out of  28,800    1%
-    Number used as logic:                      167 out of  28,800    1%
-      Number using O6 output only:             156
-      Number using O5 output only:              10
+  Number of Slice Registers:                   201 out of  28,800    1%
+    Number used as Flip Flops:                 201
+  Number of Slice LUTs:                        880 out of  28,800    3%
+    Number used as logic:                      795 out of  28,800    2%
+      Number using O6 output only:             767
+      Number using O5 output only:              27
       Number using O5 and O6:                    1
-    Number used as exclusive route-thru:         1
-  Number of route-thrus:                        11 out of  57,600    1%
-    Number using O6 output only:                11
+    Number used as Memory:                      83 out of   7,680    1%
+      Number used as Dual Port RAM:             83
+        Number using O5 output only:             4
+        Number using O5 and O6:                 79
+    Number used as exclusive route-thru:         2
+  Number of route-thrus:                        29 out of  57,600    1%
+    Number using O6 output only:                28
+    Number using O5 and O6:                      1
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    80 out of   7,200    1%
-  Number of LUT Flip Flop pairs used:          241
-    Number with an unused Flip Flop:            65 out of     241   26%
-    Number with an unused LUT:                  73 out of     241   30%
-    Number of fully used LUT-FF pairs:         103 out of     241   42%
-    Number of unique control sets:              12
+  Number of occupied Slices:                   322 out of   7,200    4%
+  Number of LUT Flip Flop pairs used:          886
+    Number with an unused Flip Flop:           685 out of     886   77%
+    Number with an unused LUT:                   6 out of     886    1%
+    Number of fully used LUT-FF pairs:         195 out of     886   22%
+    Number of unique control sets:               7
     Number of slice register sites lost
-      to control set restrictions:              24 out of  28,800    1%
+      to control set restrictions:              13 out of  28,800    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -110,20 +118,21 @@ Slice Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        65 out of     480   13%
+  Number of bonded IOBs:                        76 out of     480   15%
 
 Specific Feature Utilization:
-  Number of BlockRAM/FIFO:                       2 out of      60    3%
-    Number using BlockRAM only:                  2
+  Number of BlockRAM/FIFO:                      15 out of      60   25%
+    Number using BlockRAM only:                 15
     Total primitives used:
-      Number of 36k BlockRAM used:               2
-    Total Memory used (KB):                     72 out of   2,160    3%
+      Number of 36k BlockRAM used:              14
+      Number of 18k BlockRAM used:               1
+    Total Memory used (KB):                    522 out of   2,160   24%
   Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
     Number used as BUFGs:                        2
 
-Peak Memory Usage:  708 MB
-Total REAL time to MAP completion:  30 secs 
-Total CPU time to MAP completion:   19 secs 
+Peak Memory Usage:  736 MB
+Total REAL time to MAP completion:  43 secs 
+Total CPU time to MAP completion:   43 secs 
 
 Mapping completed.
 See MAP report file "hardware_interface_map.mrp" for details.

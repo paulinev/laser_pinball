@@ -1,0 +1,66 @@
+Release 10.1.03 - par K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+Thu Nov 27 03:27:55 2014
+
+All signals are completely routed.
+
+WARNING:ParHelpers:362 - There are 47 sourceless signals in this design. This design will not pass the DRC check run by
+   Bitgen.
+
+   AUDIO_BIT_CLK_OBUF
+   AUDIO_SDATA_OUT_OBUF
+   AUDIO_SYNC_OBUF
+   DVI_D0_OBUF
+   DVI_D10_OBUF
+   DVI_D11_OBUF
+   DVI_D1_OBUF
+   DVI_D2_OBUF
+   DVI_D3_OBUF
+   DVI_D4_OBUF
+   DVI_D5_OBUF
+   DVI_D6_OBUF
+   DVI_D7_OBUF
+   DVI_D8_OBUF
+   DVI_D9_OBUF
+   DVI_DE_OBUF
+   DVI_GPIO1_OBUF
+   DVI_H_OBUF
+   DVI_RESET_B_OBUF
+   DVI_V_OBUF
+   DVI_XCLK_N_OBUF
+   DVI_XCLK_P_OBUF
+   HDR1_16_OBUF
+   HDR1_18_OBUF
+   HDR1_20_OBUF
+   HDR1_22_OBUF
+   HDR1_24_OBUF
+   HDR1_26_OBUF
+   HDR1_28_OBUF
+   HDR1_30_OBUF
+   HDR1_32_OBUF
+   HDR1_34_OBUF
+   HDR1_36_OBUF
+   HDR1_38_OBUF
+   HDR1_40_OBUF
+   HDR1_42_OBUF
+   HDR1_44_OBUF
+   HDR1_46_OBUF
+   HDR1_48_OBUF
+   HDR1_50_OBUF
+   HDR1_52_OBUF
+   HDR1_54_OBUF
+   HDR1_56_OBUF
+   HDR1_58_OBUF
+   HDR1_60_OBUF
+   HDR1_62_OBUF
+   HDR1_64_OBUF
+WARNING:ParHelpers:361 - There are 4 loadless signals in this design. This design will cause Bitgen to issue DRC
+   warnings.
+
+   AUDIO_SDATA_IN_IBUF
+   CLK_27MHZ_FPGA_IBUF
+   GPIO_SW_E_IBUF
+   GPIO_SW_W_IBUF
+
+

@@ -2189,7 +2189,7 @@ prop_6_name
 PROP_BehavioralSimTop
 s
 prop_6_val
-"Module|laser_projector_beta_tb"
+"Module|hardware_interface_tb"
 s
 prop_70_name
 PROP_XPowerOptOutputFile

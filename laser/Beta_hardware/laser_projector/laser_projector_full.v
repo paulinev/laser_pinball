@@ -71,6 +71,9 @@ module laser_projector_full(
 	wire sel_read_shared_laser;
 	wire sel_write_shared_laser;	
 	
+	wire [31:0] IO_port;
+	assign debug_led = IO_port[23:16];
+	
 	//memory mdin is data into beta
 	//memory mdout is data from beta to be written
 		//jakes beta
@@ -166,8 +169,8 @@ module laser_projector_full(
     .in_port_a(dip_sw), 
     .in_port_b(32'b0), 
     .dout(IO_dout_laser), 
-    .out_port_a({dac_latchn, laser_rgb}), 
-    .out_port_b(debug_led), 
+    .out_port_a(IO_port), 
+    .out_port_b({dac_latchn, laser_rgb}), 
     .spi_miso(1'b0), 
     .spi_csn(dac_csn), 
     .spi_sclk(dac_sclk), 

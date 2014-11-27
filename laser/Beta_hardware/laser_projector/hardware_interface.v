@@ -80,13 +80,13 @@ module hardware_interface(
 	 
 	 assign dip_sw = 	{GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
 							GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1};	 
-	 assign debug_led = {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, 
-								GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0  };
+	 assign {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, 
+							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = debug_led;
 	 
 	 
 	 always @(posedge USER_CLK) //this is soooo wrong I need to figure out how to DCM
 	 begin
-		clk_50 = ~clk_50;
+		clk_50 <= ~clk_50;
 		
 	 end
 	 
