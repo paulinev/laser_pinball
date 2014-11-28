@@ -12,7 +12,7 @@ Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Thu Nov 27 03:26:50 2014
+Mapped Date    : Thu Nov 27 19:37:19 2014
 
 Mapping design into LUTs...
 Running directed packing...
@@ -39,16 +39,16 @@ Phase 5.32 (Checksum:44743d) REAL time: 5 secs
 Phase 6.2
 
 
-Phase 6.2 (Checksum:45cc5a) REAL time: 5 secs 
+Phase 6.2 (Checksum:45cc5a) REAL time: 6 secs 
 
 Phase 7.30
-Phase 7.30 (Checksum:45cc5a) REAL time: 5 secs 
+Phase 7.30 (Checksum:45cc5a) REAL time: 6 secs 
 
 Phase 8.3
-Phase 8.3 (Checksum:45cc5a) REAL time: 5 secs 
+Phase 8.3 (Checksum:45cc5a) REAL time: 6 secs 
 
 Phase 9.5
-Phase 9.5 (Checksum:45cc5a) REAL time: 5 secs 
+Phase 9.5 (Checksum:45cc5a) REAL time: 6 secs 
 
 Phase 10.8
 ........................................
@@ -67,16 +67,16 @@ Phase 12.5
 Phase 12.5 (Checksum:96c8973) REAL time: 11 secs 
 
 Phase 13.18
-Phase 13.18 (Checksum:981b58a) REAL time: 36 secs 
+Phase 13.18 (Checksum:981b58a) REAL time: 35 secs 
 
 Phase 14.5
-Phase 14.5 (Checksum:981b58a) REAL time: 36 secs 
+Phase 14.5 (Checksum:981b58a) REAL time: 35 secs 
 
 Phase 15.34
-Phase 15.34 (Checksum:981b58a) REAL time: 36 secs 
+Phase 15.34 (Checksum:981b58a) REAL time: 35 secs 
 
 REAL time consumed by placer: 36 secs 
-CPU  time consumed by placer: 36 secs 
+CPU  time consumed by placer: 35 secs 
 
 Design Summary
 --------------
@@ -131,7 +131,7 @@ Specific Feature Utilization:
     Number used as BUFGs:                        2
 
 Peak Memory Usage:  736 MB
-Total REAL time to MAP completion:  43 secs 
+Total REAL time to MAP completion:  44 secs 
 Total CPU time to MAP completion:   43 secs 
 
 Mapping completed.

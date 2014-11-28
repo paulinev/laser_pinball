@@ -1,0 +1,21 @@
+
+
+
+// Instantiate the module
+mapped_IO instance_name (
+    .clk(clk), 
+    .addr(addr), 
+    .din(din), 
+    .mwe(mwe), 
+    .in_port_a(in_port_a), 
+    .in_port_b(in_port_b), 
+    .dout(dout), 
+    .out_port_a(out_port_a), 
+    .out_port_b(out_port_b), 
+    .spi_miso(spi_miso), 
+    .spi_csn(spi_csn), 
+    .spi_sclk(spi_sclk), 
+    .spi_mosi(spi_mosi)
+    );
+
+

@@ -35,43 +35,87 @@ module mapped_IO(
     );
 	//this is on word offset
 	//registers: 
-	//	0000 - 0001 : in_port_a - in_port b
-	//	0002 - 0003 : out_port_a - out_port_b
-	//	0004 - 0007 : spi_config, spi_start, spi_tx, spi_rx
-	//	0008 - 000b : reserved for audio stuff
+	//	0000 - 0004 : in_port_a - in_port b
+	//	0008 - 000c : out_port_a - out_port_b
+	//	0010 - 001c : spi_config, spi_start, spi_tx, spi_rx
+	//	0020 - 002c : reserved for audio stuff
 
+	wire [31:0] spi_rx_data;
+	reg [31:0] spi_tx_data =0;
+	reg [31:0] spi_config = 32'h00_00_02_0a; //default to nice value
 
+	reg spi_start;
+	wire [31:0]spi_status;
+	
+	spi_io instance_name (
+    .clk(clk), 
+    .start(spi_start), 
+    .ctrl_reg(ctrl_reg), 
+    .din(spi_tx_data), 
+    .dout(spi_rx_data), 
+    .status_reg(spi_status), 
+    .sclk(spi_sclk), 
+    .miso(spi_miso), 
+    .mosi(spi_mosi)
+    );
+	 
+	 //handle addresses with no readback
+	 always @(*)
+	 begin
+		spi_start <= (mwe&&(addr[15:0]==16'h0014)&&din[0]);
+	 end
+	 
 	//decode address
 	always @(posedge clk)
 	begin 
-	case(addr[15:2])
-	
-	14'h0000: begin //in_port_a
-	//no write
-	dout <= in_port_a;
-	end
-	
-	
-	14'h0001: begin //in_port_b
-	//no write
-	dout <= in_port_b;
-	end
-	
-	14'h0002: begin //out_port_a
-	dout <= out_port_a;
-	out_port_a <= mwe ? din : out_port_a;
-	end
-	
-	14'h0003: begin //out_port_b
-	dout <= out_port_b;
-	out_port_b <= mwe ? din : out_port_b;
-	end
-	
-	default: begin 
-	dout <= 0;
-	end
-	
-	endcase
+		case(addr[15:0])
+		16'h0000: begin //in_port_a
+		//no write
+		dout <= in_port_a;
+		end
+
+		16'h0004: begin //in_port_b
+		//no write
+		dout <= in_port_b;
+		end
+
+		16'h0008: begin //out_port_a
+		dout <= out_port_a;
+		out_port_a <= mwe ? din : out_port_a;
+		end
+
+		16'h000c: begin //out_port_b
+		dout <= out_port_b;
+		out_port_b <= mwe ? din : out_port_b;
+		end
+		
+		16'h0010: begin //spi_config reg
+		dout <= spi_config;
+		spi_config <= mwe ? din : spi_config;
+		end
+		
+		16'h0014: begin //spi_start/status
+		//when wrote to, starts SPI
+		//does not retain data value
+		//spi start assignment occurs outside clocked logic
+		//when read, gives status
+		dout <= spi_status;
+		end
+		
+		16'h0018: begin //spi_tx_data
+		dout <= spi_tx_data;
+		spi_tx_data <= mwe ? din : spi_tx_data;
+		end
+		
+		16'h001c: begin //spi_rx_data
+		//read only
+		dout <= spi_rx_data;
+		end
+
+		default: begin 
+		dout <= 0;
+		end
+		endcase
 	end
 	
 	

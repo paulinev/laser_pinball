@@ -112,12 +112,7 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling verilog file "../../../physics/beta/beta.v" in library work
-Module <beta2> compiled
-Module <regfile> compiled
-Module <decode> compiled
 Compiling verilog file "physics_beta_mem.v" in library work
-Module <shift_right> compiled
 Compiling verilog file "mapped_IO.v" in library work
 Module <physics_beta_mem> compiled
 Compiling verilog file "hardware_beta_mem.v" in library work
@@ -126,8 +121,13 @@ Compiling verilog file "beta_read_decode.v" in library work
 Module <hardware_beta_mem> compiled
 Compiling verilog file "beta_addr_decode.v" in library work
 Module <beta_read_decode> compiled
-Compiling verilog file "laser_projector_full.v" in library work
+Compiling verilog file "beta2.v" in library work
 Module <beta_addr_decode> compiled
+Module <beta2> compiled
+Module <regfile> compiled
+Module <decode> compiled
+Compiling verilog file "laser_projector_full.v" in library work
+Module <shift_right> compiled
 Compiling verilog file "hardware_interface.v" in library work
 Module <laser_projector_full> compiled
 Module <hardware_interface> compiled
@@ -227,7 +227,7 @@ Unit <mapped_IO> synthesized.
 
 
 Synthesizing Unit <decode>.
-    Related source file is "../../../physics/beta/beta.v".
+    Related source file is "beta2.v".
     Found 1-bit register for signal <msel>.
     Found 1-bit register for signal <annul>.
     Found 1-bit register for signal <mwrite>.
@@ -237,7 +237,7 @@ Unit <decode> synthesized.
 
 
 Synthesizing Unit <regfile>.
-    Related source file is "../../../physics/beta/beta.v".
+    Related source file is "beta2.v".
     Found 32x32-bit dual-port RAM <Mram_regfile> for signal <regfile>.
     Found 32x32-bit dual-port RAM <Mram_regfile_ren> for signal <regfile>.
     Found 32x32-bit dual-port RAM <Mram_regfile_ren_1> for signal <regfile>.
@@ -247,12 +247,12 @@ Unit <regfile> synthesized.
 
 
 Synthesizing Unit <shift_right>.
-    Related source file is "../../../physics/beta/beta.v".
+    Related source file is "beta2.v".
 Unit <shift_right> synthesized.
 
 
 Synthesizing Unit <beta2>.
-    Related source file is "../../../physics/beta/beta.v".
+    Related source file is "beta2.v".
 WARNING:Xst:646 - Signal <wd_mult> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <npc_inc<31>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <mult> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -618,12 +618,12 @@ INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered
 
 Asynchronous Control Signals Information:
 ----------------------------------------
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
-Control Signal                                                                    | Buffer(FF name)                                                                                                        | Load  |
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
-best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)   | 112   |
-best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                    | Buffer(FF name)                                                                                                       | Load  |
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 112   |
+best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
@@ -756,13 +756,13 @@ Offset:              3.230ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 80.00 secs
-Total CPU time to Xst completion: 79.71 secs
+Total REAL time to Xst completion: 77.00 secs
+Total CPU time to Xst completion: 76.71 secs
  
 --> 
 
 
-Total memory usage is 600848 kilobytes
+Total memory usage is 600816 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :   98 (   0 filtered)

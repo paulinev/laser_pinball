@@ -1,7 +1,7 @@
 Release 10.1.03 par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-wbraun-W520::  Thu Nov 27 03:27:35 2014
+wbraun-W520::  Thu Nov 27 19:38:04 2014
 
 par -w -intstyle ise -ol std -t 1 hardware_interface_map.ncd
 hardware_interface.ncd hardware_interface.pcf 
@@ -99,7 +99,7 @@ WARNING:Par:289 - The signal HDR1_58_OBUF has no driver.  PAR will not attempt t
 WARNING:Par:289 - The signal AUDIO_SDATA_OUT_OBUF has no driver.  PAR will not attempt to route this signal.
 Starting Router
 
-Phase 1: 6356 unrouted;       REAL time: 6 secs 
+Phase 1: 6356 unrouted;       REAL time: 7 secs 
 
 Phase 2: 4902 unrouted;       REAL time: 7 secs 
 
@@ -182,8 +182,8 @@ WARNING:Par:283 - There are 4 loadless signals in this design. This design will 
 
 WARNING:Par:284 - There are 47 sourceless signals in this design. This design will not pass the DRC check run by Bitgen.
 
-Total REAL time to PAR completion: 20 secs 
-Total CPU time to PAR completion: 20 secs 
+Total REAL time to PAR completion: 19 secs 
+Total CPU time to PAR completion: 19 secs 
 
 Peak Memory Usage:  538 MB
 

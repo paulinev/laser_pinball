@@ -83,7 +83,8 @@ module beta2(clk,reset,irq,xadr,ma,mdin,mdout,mwe);
   assign cmp[31:1] = 0;
   assign cmp[0] = (cmp_lt & (addsub_n ^ addsub_v)) | (cmp_eq & addsub_z);
 
-  //mul32 mpy(a,b,mult);
+  //commented in to add multiply to beta
+  mul32 mpy(a,b,mult);
 
   wire [31:0] shift_right;
   // Verilog >>> operator not synthesized correctly, so do it by hand
@@ -96,7 +97,7 @@ module beta2(clk,reset,irq,xadr,ma,mdin,mdout,mwe);
   assign wd = msel ? mdin :
               wd_cmp ? cmp :
               wd_addsub ? addsub :
-              //wd_mult ? mult :
+              wd_mult ? mult :
               wd_shift ? shift :
               wd_boole ? boole :
               pc_inc;
@@ -140,6 +141,7 @@ endmodule
 //
 ///////////////////////////////////////////////////////////////////////////////
 
+//added multiply to beta! 
 module decode(clk,reset,irq,z,opcode,
               asel,bsel,csel,wasel,werf,msel,msel_next,mwe,
               addsub_op,cmp_lt,cmp_eq,
@@ -232,10 +234,11 @@ module decode(clk,reset,irq,z,opcode,
                    addsub_op = 1;
                    wd_addsub = 1;
                  end
-      //6'b1?0010: begin   // MUL, MULC
-      //             asel = 0; bsel = opcode[4]; csel = 0;
-      //             wd_mult = 1;
-      //           end
+	  //commented in to enable multiply
+      6'b1?0010: begin   // MUL, MULC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                  wd_mult = 1;
+                end
       6'b1?0100: begin   // CMPEQ, CMPEQC
                    asel = 0; bsel = opcode[4]; csel = 0;
                    addsub_op = 1;
@@ -318,7 +321,7 @@ module shift_right(sxt,a,b,shift_right);
   output [31:0] shift_right;
 
   wire [31:0] w,x,y,z;
-  wire sin;
+  wire sin;7FFF
 
   assign sin = sxt & a[31];
   assign w = b[0] ? {sin,a[31:1]} : a;
@@ -327,3 +330,21 @@ module shift_right(sxt,a,b,shift_right);
   assign z = b[3] ? {{8{sin}},y[31:8]} : y;
   assign shift_right = b[4] ? {{16{sin}},z[31:16]} : z;
 endmodule
+
+
+//modification to beta: add 32 bit multiply
+//mul32 mpy(a,b,mult);
+
+module mul32(a,b, mult);
+	input  wire [31:0] a;
+	input  wire [31:0] b;
+	output wire [31:0] mult;
+	assign mult = {multi_out[31:0]};
+	
+	//
+	wire [64:0] mult_out;
+	assign mult_out = a*b;
+	
+endmodule
+	
+	

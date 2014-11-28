@@ -1,0 +1,17 @@
+
+
+
+// Instantiate the module
+spi_io instance_name (
+    .clk(clk), 
+    .start(start), 
+    .ctrl_reg(ctrl_reg), 
+    .din(din), 
+    .dout(dout), 
+    .status_reg(status_reg), 
+    .sclk(sclk), 
+    .miso(miso), 
+    .mosi(mosi)
+    );
+
+

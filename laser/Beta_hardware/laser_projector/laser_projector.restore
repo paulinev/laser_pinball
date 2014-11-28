@@ -836,7 +836,7 @@ proc restore { { project_dir "" } } {
   } "A problem occured while restoring project settings."
 
   set user_files { 
-      "../../../physics/beta/beta.v" 
+      "beta2.v" 
       "beta_addr_decode.v" 
       "beta_read_decode.v" 
       "beta_shared_mem.xco" 
@@ -847,7 +847,10 @@ proc restore { { project_dir "" } } {
       "laser_projector_full.v" 
       "mapped_IO.v" 
       "ml50x_U1_fpga.ucf" 
-      "physics_beta_mem.xco"}
+      "multi_32_tb.v" 
+      "physics_beta_mem.xco" 
+      "spi_io.v" 
+      "spi_io_tb.v"}
 
   HandleException {
     AddUserFiles $iProjHelper $user_files
@@ -893,7 +896,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROPEXT_xstUseSyncReset_virtex5" "Auto" 
       "A" "" "" "" "PROPEXT_xstUseSyncSet_virtex5" "Auto" 
       "A" "" "" "" "PROP_AutoGenFile" "false" 
-      "A" "" "" "" "PROP_BehavioralSimTop" "Module|hardware_interface_tb" 
+      "A" "" "" "" "PROP_BehavioralSimTop" "Module|spi_io_tb" 
       "A" "" "" "" "PROP_CPLDFitkeepio" "false" 
       "A" "" "" "" "PROP_CompxlibAbelLib" "true" 
       "A" "" "" "" "PROP_CompxlibCPLDDetLib" "true" 

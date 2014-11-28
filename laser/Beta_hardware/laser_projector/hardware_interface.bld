@@ -2526,7 +2526,7 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:  30
 
-Total memory usage is 251156 kilobytes
+Total memory usage is 251284 kilobytes
 
 Writing NGD file "hardware_interface.ngd" ...
 
