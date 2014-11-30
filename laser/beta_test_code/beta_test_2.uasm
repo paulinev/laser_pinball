@@ -20,8 +20,9 @@ ST(R0, 0x0014, R1) |start SPI
 loop:
 LD(R1, 0x0014, R0) 
 ST(R0, 8, R1)
+ADDC(R31, 0, R31) | add nop before branch, because branch errors?
 BR(loop)
-
+ADDC(R31, 0, R31) | add nop after branch, because branch errors?
 
 
 

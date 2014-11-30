@@ -50,6 +50,7 @@ module laser_projector_beta_tb;
 		.dac_mosi(dac_mosi), 
 		.dac_csn(dac_csn), 
 		.dac_latchn(dac_latchn),
+		.dac_sclk(dac_sclk),
 		.debug_led(debug_led)
 	);
 
@@ -67,10 +68,7 @@ module laser_projector_beta_tb;
       reset = 1;
 		#20;
 		reset = 0;
-		#1000;
-		reset = 1;
-		#20
-		reset = 0;
+		
 		// Add stimulus here
 
 	end

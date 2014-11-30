@@ -207,12 +207,12 @@ module decode(clk,reset,irq,z,opcode,
                    addsub_op = 0;
                    branch = !annul && !msel;
                  end
-      6'b011101: begin   // BEQ
+      6'b011100: begin   // BEQ //incorrect was 011101
                    asel = 1; bsel = 1; csel = 1;
                    addsub_op = 0;
                    branch = !annul && !msel && z;
                  end
-      6'b011110: begin   // BNE
+      6'b011101: begin   // BNE //incorrect was 0111100
                    asel = 1; bsel = 1; csel = 1;
                    addsub_op = 0;
                    branch = !annul && !msel && ~z;

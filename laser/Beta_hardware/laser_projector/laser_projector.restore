@@ -902,7 +902,7 @@ proc restore { { project_dir "" } } {
       "A" "" "" "" "PROPEXT_xstUseSyncReset_virtex5" "Auto" 
       "A" "" "" "" "PROPEXT_xstUseSyncSet_virtex5" "Auto" 
       "A" "" "" "" "PROP_AutoGenFile" "false" 
-      "A" "" "" "" "PROP_BehavioralSimTop" "Module|hardware_interface_tb" 
+      "A" "" "" "" "PROP_BehavioralSimTop" "Module|laser_projector_beta_tb" 
       "A" "" "" "" "PROP_CPLDFitkeepio" "false" 
       "A" "" "" "" "PROP_CompxlibAbelLib" "true" 
       "A" "" "" "" "PROP_CompxlibCPLDDetLib" "true" 

@@ -110,6 +110,7 @@ module spi_io(
 		FSM_state <= 0;
 		sclk <= 0; 
 		status_reg <= 1; //spi is done!
+		mosi <= 0; 
 	end
 	endcase	
 	end
