@@ -1,5 +1,6 @@
 # Output products list for <beta_shared_mem>
 beta_shared_mem.asy
+beta_shared_mem.mif
 beta_shared_mem.ngc
 beta_shared_mem.sym
 beta_shared_mem.v

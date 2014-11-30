@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`default_nettype none
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -62,8 +63,8 @@ module laser_projector_full(
 	//memory mapped devices for laser beta
 	wire [31:0] ram_dout_laser;
 	wire [31:0] IO_dout_laser;
-	wire [31:0] shared_read_laser_dout;
-	wire [31:0] shared_write_laser_dout;
+	wire [31:0] shared_read_dout_laser;
+	wire [31:0] shared_write_dout_laser;
 	//selects for multiplexing the buss for laser beta
 	wire [2:0] read_select_laser;
 	wire sel_ram_laser;
@@ -79,7 +80,8 @@ module laser_projector_full(
 		//jakes beta
 		
 	assign xadr_physics = 31'b0;
-	assign irq_physics = 1'b0;
+	//assign irq_physics = 1'b0;
+	//irq is now from timer!
 	
 	beta2 cpu_physics(
 	.clk(clk),
@@ -89,7 +91,8 @@ module laser_projector_full(
 	.ma(ma_physics), 
 	.mdin(mdin_physics), 
 	.mdout(mdout_physics), 
-	.mwe(mwe_physics));
+	.mwe(mwe_physics)
+	);
 								
 	//16k mem
 	//14 bits wide, takes beta [15:2] because memory is byte aligned
@@ -98,7 +101,8 @@ module laser_projector_full(
 	.dina(mdout_physics), 
 	.addra(ma_physics[15:2]),
 	.wea(mwe_physics && sel_ram_physics),	
-	.douta(ram_dout_physics) ); 
+	.douta(ram_dout_physics) 
+	); 
 	
 	//decode data adress for reads
 	beta_addr_decode physics_decode (
@@ -107,7 +111,8 @@ module laser_projector_full(
 	.sel_IO(sel_IO_physics),
 	.sel_read_shared(sel_read_shared_physics), 
 	.sel_write_shared(sel_write_shared_physics),
-	.read_select(read_select_physics));
+	.read_select(read_select_physics)
+	);
 	
 	//select mdin for beta
 	beta_read_decode physics_read_decode (
@@ -117,7 +122,39 @@ module laser_projector_full(
 	.IO_dout(IO_dout_physics), 
 	.shared_read_dout(shared_read_dout_physics), 
 	.shared_write_dout(shared_write_dout_physics),
-	.beta_mdin(mdin_physics));
+	.beta_mdin(mdin_physics)
+	);
+	
+	//memory mapped IO for physics beta
+	mapped_IO physics_beta_IO (
+    .clk(clk), 
+    .addr(ma_physics), 
+    .din(mdout_physics), 
+    .mwe(mwe_physics & sel_IO_physics), 
+    .in_port_a({24'b0,dip_sw}), 
+    .in_port_b({30'b0,paddle_l,paddle_r}), 
+    .dout(IO_dout_physics), 
+    .out_port_a(), 
+    .out_port_b(), 
+    .spi_miso(1'b0), 
+    .spi_csn(), 
+    .spi_sclk(), 
+    .spi_mosi(),
+	 .irq(irq_physics)
+    );
+	
+	//interface between camera fsm(host) and physics_beta (client)
+	memory_share physics_shared_memory (
+    .clk(clk), 
+    .mwe_host(0), //need to add camera interface
+    .mwe_client(mwe_physics&&sel_read_shared_physics), 
+    .host_addr(32'b0), //no camera yet
+    .client_addr(ma_physics), 
+    .host_din(32'b0), //no camera yet
+    .client_din(mdout_physics), //input to memory, output of beta
+    .host_dout(), //no camera yet
+    .client_dout(shared_read_dout_physics)
+    );
 	
 	
 	//westons beta					
@@ -129,7 +166,8 @@ module laser_projector_full(
 	.ma(ma_laser), 
 	.mdin(mdin_laser),
 	.mdout(mdout_laser),
-	.mwe(mwe_laser));
+	.mwe(mwe_laser)
+	);
 	
 	//16k mem
 	//14 bits wide, takes beta [15:2] because memory is byte aligned
@@ -137,8 +175,9 @@ module laser_projector_full(
 	.clka(clk),
 	.dina(mdout_laser), 
 	.addra(ma_laser[15:2]), 
-	.wea(mwe_laser&&sel_ram),
-	.douta(ram_dout_laser) );
+	.wea(mwe_laser&&sel_ram_laser),
+	.douta(ram_dout_laser) 
+	);
 	
 	//decode memory addresses
 	beta_addr_decode laser_decode (
@@ -147,7 +186,8 @@ module laser_projector_full(
 	.sel_IO(sel_IO_laser),
 	.sel_read_shared(sel_read_shared_laser), 
 	.sel_write_shared(sel_write_shared_laser),
-	.read_select(read_select_laser));
+	.read_select(read_select_laser)
+	);
 											
 	
 	//write data back
@@ -158,7 +198,8 @@ module laser_projector_full(
 	.IO_dout(IO_dout_laser),
 	.shared_read_dout(shared_read_dout_laser), 
 	.shared_write_dout(shared_write_dout_laser),
-	.beta_mdin(mdin_laser));
+	.beta_mdin(mdin_laser)
+	);
 	
 	//memory mapped IO for laser beta
 	mapped_IO laser_beta_IO (
@@ -166,7 +207,7 @@ module laser_projector_full(
     .addr(ma_laser), 
     .din(mdout_laser), 
     .mwe(mwe_laser & sel_IO_laser), 
-    .in_port_a(dip_sw), 
+    .in_port_a({24'b0,dip_sw}), 
     .in_port_b(32'b0), 
     .dout(IO_dout_laser), 
     .out_port_a(IO_port), 
@@ -174,7 +215,21 @@ module laser_projector_full(
     .spi_miso(1'b0), 
     .spi_csn(dac_csn), 
     .spi_sclk(dac_sclk), 
-    .spi_mosi(dac_mosi)
+    .spi_mosi(dac_mosi),
+	 .irq()
     );
 
+	//laser_beta is client, physics_beta is host
+	memory_share laser_shared_memory (
+    .clk(clk), 
+    .mwe_host(mwe_physics&&sel_write_shared_physics), 
+    .mwe_client(mwe_laser&&sel_read_shared_laser), 
+    .host_addr(ma_physics), 
+    .client_addr(ma_laser), 
+    .host_din(mdout_physics), //input to memory out of beta
+    .client_din(mdout_laser), 
+    .host_dout(shared_write_dout_laser), 
+    .client_dout(shared_read_dout_physics)
+    );
+	 
 endmodule
