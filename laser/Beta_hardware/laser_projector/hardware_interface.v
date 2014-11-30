@@ -67,14 +67,14 @@ module hardware_interface(
 	 wire dac_sclk;
 	 wire dac_mosi;
 	 wire dac_csn;
-	 wire dac_latch;
+	 wire dac_latchn;
 	 wire [7:0] dip_sw;
 	 wire [7:0] debug_led;
 	 
 	 assign HDR1_2 = dac_csn;
 	 assign HDR1_4 = dac_sclk;
 	 assign HDR1_6 = dac_mosi;
-	 assign HDR1_8 = dac_latch;
+	 assign HDR1_8 = dac_latchn;
 	 
 	 assign {HDR1_10, HDR1_12, HDR1_14} = ~laser_rgb;
 	 

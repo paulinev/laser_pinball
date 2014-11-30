@@ -1,0 +1,39 @@
+Beta address space:
+Any subfields are byte spaced
+
+0'h00000000 - 0'h0000FFFF : RAM/program memory (16k)
+
+0'h00010000 - 0'h0001xxxx: memory mapped I/O
+
+0000: input port A
+0004: input port B
+0008: output port A
+000C: output port B
+0010: SPI Config {res,res,clk_div,data_width}
+0014: spi_start/status, reads 1 if done, write 1 to start spi
+0018: SPI TX data
+001C: SPI RX data, read only
+0020: timer 1 current count, (read only)
+0024: timer 1 set count, upon write resets counter
+0028: timer 1 IRQ enable, write 1 to start
+002C: timer 1 timer overflow, reads 1 when overflowed, write 1 to clear
+
+
+0'h00020000 - 0'h0002xxxx: data transfer read block
+this block is used by another source to transfer data into the beta.
+It is 256 words of memory that can be written but not read by another source. 
+There is a single status register that can be written by the data source and read by both
+There is a single status register that can be written by the beta and read by both
+
+0000 - 00FF : memory block (read only)
+0100: data source register (read only)
+0101: beta status register
+
+0'h00030000 ' 0'h0003xxxx: data transfer write block
+this block is used to transfer data to another source.
+There are 256 words of write only memory 
+There is a single status register that can be written and read by the beta, and read by another source
+There is a single status register that can be written by external source and read by the beta
+
+
+

@@ -1,5 +1,5 @@
 CommandLine
-/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/laser_projector.ise -intstyle ise -ifn laser_projector_full.xst -ofn laser_projector_full.stx -finalclean 1
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/xst -ise /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/laser_projector.ise -intstyle ise -ifn /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/hardware_interface.xst -ofn /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/hardware_interface.syr -finalclean 1
 s
 FormatString
 xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]

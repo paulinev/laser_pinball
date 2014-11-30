@@ -78,7 +78,7 @@ module spi_io(
 	1: begin //setup 
 		FSM_state <= 2;
 		status_reg <= 0; //spi is in progress
-		data_index <= data_width==0 ? 0 : data_width-1; //set data_index
+		data_index <= data_width-1; //set data_index
 		dout <= 0; //clear old dout
 		clk_counter <= 0; //clear old clk_counter
 	end

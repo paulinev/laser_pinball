@@ -228,8 +228,8 @@ module laser_projector_full(
     .client_addr(ma_laser), 
     .host_din(mdout_physics), //input to memory out of beta
     .client_din(mdout_laser), 
-    .host_dout(shared_write_dout_laser), 
-    .client_dout(shared_read_dout_physics)
+    .host_dout(shared_write_dout_physics), 
+    .client_dout(shared_read_dout_laser)
     );
 	 
 endmodule
