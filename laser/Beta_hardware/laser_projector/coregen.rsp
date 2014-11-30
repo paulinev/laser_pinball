@@ -1,0 +1,9 @@
+SETPROJECT "/home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/"
+SET BusFormat = BusFormatAngleBracketNotRipped
+SET devicefamily = virtex5
+SET device = xc5vlx50t
+SET package = ff1136
+SET speedgrade = -3
+SET FlowVendor = Foundation_iSE
+SET VerilogSim = True
+SET VHDLSim = True

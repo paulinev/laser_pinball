@@ -1,0 +1,42 @@
+.include beta.uasm		| Define Beta instructions, etc.
+.options clock tty
+
+. = 0
+
+start:
+ADDC(R31, 0, R31) |it appears that 0h00000 is not a valid address, insert nop
+ADDC(R1,1,R1) 
+SHLC(R1, 16, R1) |R1 now contains base address of memory mapped IO
+ADDC(R0, 0x75, R0) |load number into R0
+ST(R0, 8, R1) |store R0 in output port A
+MULC(R0,5,R0) |test multiply
+ST(R0, 8, R1) | store in output port
+LD(data, R0) |load spi config data
+ST(R0, 0x0010, R1) |store SPI config data in config register
+ADDC(R31, 0b101110100101, R0) |new val in R0
+ST(R0, 0x0018, R1 ) |store SPI tx data
+ADDC(R31, 1, R0) |load 1 into R0,
+ST(R0, 0x0014, R1) |start SPI
+loop:
+LD(R1, 0x0014, R0) 
+ST(R0, 8, R1)
+BR(loop)
+
+
+
+
+
+data:
+LONG(0x020C) |SPI config, clk/2, 12 bits data
+
+
+.=0x10000
+LONG(0x1)
+
+
+
+.=0x20000
+LONG(0x1)
+
+.=0x30101
+LONG(0x1) | stupid hack for jsim address space

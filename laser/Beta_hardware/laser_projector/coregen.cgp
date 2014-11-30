@@ -1,0 +1,20 @@
+# Date: Sun Nov 30 09:16:20 2014
+SET addpads = False
+SET asysymbol = False
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = False
+SET designentry = VHDL
+SET device = xc5vlx50t
+SET devicefamily = virtex5
+SET flowvendor = Foundation_iSE
+SET formalverification = False
+SET foundationsym = False
+SET implementationfiletype = Ngc
+SET package = ff1136
+SET removerpms = False
+SET simulationfiles = Behavioral
+SET speedgrade = -3
+SET verilogsim = True
+SET vhdlsim = True
+SET workingdirectory = /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/tmp
+

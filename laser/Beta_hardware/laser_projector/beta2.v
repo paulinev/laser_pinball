@@ -83,7 +83,7 @@ module beta2(clk,reset,irq,xadr,ma,mdin,mdout,mwe);
   assign cmp[31:1] = 0;
   assign cmp[0] = (cmp_lt & (addsub_n ^ addsub_v)) | (cmp_eq & addsub_z);
 
-  //mul32 mpy(a,b,mult);
+  mul32 mpy(a,b,mult);
 
   wire [31:0] shift_right;
   // Verilog >>> operator not synthesized correctly, so do it by hand
@@ -96,7 +96,7 @@ module beta2(clk,reset,irq,xadr,ma,mdin,mdout,mwe);
   assign wd = msel ? mdin :
               wd_cmp ? cmp :
               wd_addsub ? addsub :
-              //wd_mult ? mult :
+              wd_mult ? mult :
               wd_shift ? shift :
               wd_boole ? boole :
               pc_inc;
@@ -232,10 +232,10 @@ module decode(clk,reset,irq,z,opcode,
                    addsub_op = 1;
                    wd_addsub = 1;
                  end
-      //6'b1?0010: begin   // MUL, MULC
-      //             asel = 0; bsel = opcode[4]; csel = 0;
-      //             wd_mult = 1;
-      //           end
+      6'b1?0010: begin   // MUL, MULC
+                  asel = 0; bsel = opcode[4]; csel = 0;
+                  wd_mult = 1;
+                 end
       6'b1?0100: begin   // CMPEQ, CMPEQC
                    asel = 0; bsel = opcode[4]; csel = 0;
                    addsub_op = 1;

@@ -1,0 +1,11 @@
+# Output products list for <hardware_beta_ram>
+hardware_beta_ram.mif
+hardware_beta_ram.ngc
+hardware_beta_ram.v
+hardware_beta_ram.veo
+hardware_beta_ram.vhd
+hardware_beta_ram.vho
+hardware_beta_ram.xco
+hardware_beta_ram_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+hardware_beta_ram_flist.txt
+hardware_beta_ram_xmdf.tcl

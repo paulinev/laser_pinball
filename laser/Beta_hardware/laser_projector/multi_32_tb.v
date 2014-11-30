@@ -25,11 +25,11 @@
 module multi_32_tb;
 
 	// Inputs
-	reg a;
-	reg b;
+	reg [31:0] a;
+	reg [31:0] b;
 	
 	//outputs
-	wire mult;
+	wire [31:0] mult;
 
 	// Instantiate the Unit Under Test (UUT)
 	mul32 uut (
