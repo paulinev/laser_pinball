@@ -1,0 +1,14 @@
+
+
+
+// Instantiate the module
+vga_drive instance_name (
+    .vclock(vclock), 
+    .hcount(hcount), 
+    .vcount(vcount), 
+    .vsync(vsync), 
+    .hsync(hsync), 
+    .blank(blank)
+    );
+
+

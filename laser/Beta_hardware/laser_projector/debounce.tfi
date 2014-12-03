@@ -1,0 +1,12 @@
+
+
+
+// Instantiate the module
+debounce instance_name (
+    .reset(reset), 
+    .clock(clock), 
+    .noisy(noisy), 
+    .clean(clean)
+    );
+
+

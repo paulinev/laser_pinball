@@ -1,0 +1,24 @@
+CommandLine-Map
+
+s
+CommandLine-Ngdbuild
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise /home/wbraun/laser_pinball/laser/camera/new_camera/camera_v2/camera_v2.ise -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 nexys2_top.ngc nexys2_top.ngd
+s
+CommandLine-Par
+
+s
+CommandLine-Xst
+
+s
+Previous-NGD
+nexys2_top_prev_built.ngd
+s
+Previous-NGM
+
+s
+Previous-Packed-NCD
+
+s
+Previous-Routed-NCD
+
+s

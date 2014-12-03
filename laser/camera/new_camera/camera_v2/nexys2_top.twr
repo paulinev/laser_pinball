@@ -1,0 +1,77 @@
+--------------------------------------------------------------------------------
+Release 10.1.03 Trace  (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
+/home/wbraun/laser_pinball/laser/camera/new_camera/camera_v2/camera_v2.ise
+-intstyle ise -v 3 -s 5 -xml nexys2_top nexys2_top.ncd -o nexys2_top.twr
+nexys2_top.pcf -ucf Nexys2_500General.ucf
+
+Design file:              nexys2_top.ncd
+Physical constraint file: nexys2_top.pcf
+Device,package,speed:     xc3s500e,fg320,-5 (PRODUCTION 1.27 2008-01-09)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock clk to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+Led<0>      |    7.691(R)|clk_BUFGP         |   0.000|
+Led<1>      |    7.246(R)|clk_BUFGP         |   0.000|
+Led<2>      |    7.191(R)|clk_BUFGP         |   0.000|
+Led<3>      |    7.228(R)|clk_BUFGP         |   0.000|
+Led<4>      |    7.495(R)|clk_BUFGP         |   0.000|
+Led<5>      |    7.201(R)|clk_BUFGP         |   0.000|
+Led<6>      |    7.457(R)|clk_BUFGP         |   0.000|
+Led<7>      |    7.157(R)|clk_BUFGP         |   0.000|
+vgaBlue<0>  |    7.764(R)|clk_BUFGP         |   0.000|
+vgaBlue<1>  |    7.678(R)|clk_BUFGP         |   0.000|
+vgaGreen<0> |    7.653(R)|clk_BUFGP         |   0.000|
+vgaGreen<1> |    7.855(R)|clk_BUFGP         |   0.000|
+vgaGreen<2> |    7.720(R)|clk_BUFGP         |   0.000|
+vgaRed<0>   |    8.006(R)|clk_BUFGP         |   0.000|
+vgaRed<1>   |    7.972(R)|clk_BUFGP         |   0.000|
+vgaRed<2>   |    7.616(R)|clk_BUFGP         |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    3.860|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Tue Dec  2 22:34:15 2014 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 223 MB
+
+
+

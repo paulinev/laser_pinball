@@ -1,0 +1,2 @@
+verilog work "vga_drive.v"
+verilog work "nexys2_top.v"

@@ -1,0 +1,190 @@
+Release 10.1.03 par K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+wbraun-W520::  Wed Dec 03 07:17:29 2014
+
+par -w -intstyle ise -ol std -t 1 hardware_interface_map.ncd
+hardware_interface.ncd hardware_interface.pcf 
+
+
+Constraints file: hardware_interface.pcf.
+Loading device for application Rf_Device from file '5vlx50t.nph' in environment
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
+   "hardware_interface" is an NCD, version 3.2, device xc5vlx50t, package ff1136, speed -3
+
+Initializing temperature to 85.000 Celsius. (default - Range: 0.000 to 85.000 Celsius)
+Initializing voltage to 0.950 Volts. (default - Range: 0.950 to 1.050 Volts)
+
+INFO:Par:282 - No user timing constraints were detected or you have set the option to ignore timing constraints ("par
+   -x"). Place and Route will run in "Performance Evaluation Mode" to automatically improve the performance of all
+   internal clocks in this design. The PAR timing summary will list the performance achieved for each clock. Note: For
+   the fastest runtime, set the effort level to "std".  For best performance, set the effort level to "high". For a
+   balance between the fastest runtime and best performance, set the effort level to "med".
+
+Device speed data version:  "PRODUCTION 1.64 2008-12-19".
+
+
+
+Device Utilization Summary:
+
+   Number of BUFGs                           3 out of 32      9%
+   Number of DSP48Es                         2 out of 48      4%
+   Number of External IOBs                  80 out of 480    16%
+      Number of LOCed IOBs                  80 out of 80    100%
+
+   Number of OLOGICs                        13 out of 560     2%
+   Number of RAMB18X2s                       1 out of 60      1%
+   Number of RAMB18X2SDPs                    1 out of 60      1%
+   Number of RAMB36_EXPs                    28 out of 60     46%
+   Number of Slice Registers              1287 out of 28800   4%
+      Number used as Flip Flops           1287
+      Number used as Latches                 0
+      Number used as LatchThrus              0
+
+   Number of Slice LUTS                   3025 out of 28800  10%
+   Number of Slice LUT-Flip Flop pairs    3286 out of 28800  11%
+
+
+Overall effort level (-ol):   Standard 
+Router effort level (-rl):    Standard 
+
+WARNING:Par:289 - The signal AUDIO_SYNC_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal AUDIO_SDATA_OUT_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal AUDIO_SDATA_IN_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal DVI_GPIO1_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal AUDIO_BIT_CLK_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_20_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_30_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_22_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_40_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_32_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_24_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_16_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_50_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_42_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_34_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_26_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_18_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_60_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_52_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_44_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_36_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_28_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_62_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_54_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_46_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_38_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_64_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_56_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_48_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal HDR1_58_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal CLK_27MHZ_FPGA_IBUF has no load.  PAR will not attempt to route this signal.
+Starting Router
+
+Phase 1: 19505 unrouted;       REAL time: 8 secs 
+
+Phase 2: 16294 unrouted;       REAL time: 9 secs 
+
+Phase 3: 7618 unrouted;       REAL time: 13 secs 
+
+Phase 4: 7618 unrouted; (12208)      REAL time: 14 secs 
+
+Phase 5: 7615 unrouted; (1)      REAL time: 15 secs 
+
+Phase 6: 0 unrouted; (1)      REAL time: 24 secs 
+
+Updating file: hardware_interface.ncd with current fully routed design.
+
+Phase 7: 0 unrouted; (1)      REAL time: 26 secs 
+
+Phase 8: 0 unrouted; (1)      REAL time: 26 secs 
+
+Phase 9: 0 unrouted; (1)      REAL time: 27 secs 
+
+Phase 10: 0 unrouted; (1)      REAL time: 28 secs 
+
+Phase 11: 0 unrouted; (0)      REAL time: 33 secs 
+
+Total REAL time to Router completion: 33 secs 
+Total CPU time to Router completion: 33 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|              clk_50 | BUFGCTRL_X0Y2| No   |  555 |  0.342     |  1.610      |
++---------------------+--------------+------+------+------------+-------------+
+|              clk_25 | BUFGCTRL_X0Y1| No   |   11 |  0.025     |  1.476      |
++---------------------+--------------+------+------+------------+-------------+
+|      USER_CLK_BUFGP | BUFGCTRL_X0Y0| No   |    1 |  0.000     |  1.371      |
++---------------------+--------------+------+------+------------+-------------+
+
+* Net Skew is the difference between the minimum and maximum routing
+only delays for the net. Note this is different from Clock Skew which
+is reported in TRCE timing report. Clock Skew is the difference between
+the minimum and maximum path delays which includes logic delays.
+
+Timing Score: 0
+
+INFO:Timing:2761 - N/A entries in the Constraints list may indicate that the constraint does not cover any paths or that it has no
+   requested value.
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+------------------------------------------------------------------------------------------------------
+  Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
+                                            |         |    Slack   | Achievable | Errors |    Score   
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net clk | SETUP   |         N/A|     9.576ns|     N/A|           0
+  _50                                       | HOLD    |     0.271ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net clk | SETUP   |         N/A|     3.395ns|     N/A|           0
+  _25                                       | HOLD    |     0.411ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net USE | SETUP   |         N/A|     0.665ns|     N/A|           0
+  R_CLK_BUFGP                               | HOLD    |     0.424ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+INFO:Timing:2761 - N/A entries in the Constraints list may indicate that the 
+   constraint does not cover any paths or that it has no requested value.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+WARNING:Par:283 - There are 2 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+
+WARNING:Par:284 - There are 29 sourceless signals in this design. This design will not pass the DRC check run by Bitgen.
+
+Total REAL time to PAR completion: 50 secs 
+Total CPU time to PAR completion: 50 secs 
+
+Peak Memory Usage:  634 MB
+
+Placer: Placement generated during map.
+Routing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 35
+Number of info messages: 2
+
+Writing design to file hardware_interface.ncd
+
+
+
+PAR done!

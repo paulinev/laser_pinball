@@ -1,0 +1,63 @@
+--------------------------------------------------------------------------------
+Release 10.1.03 Trace  (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
+/home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/laser_projector.ise
+-intstyle ise -v 3 -s 3 -xml hardware_interface hardware_interface.ncd -o
+hardware_interface.twr hardware_interface.pcf -ucf ml50x_U1_fpga.ucf
+
+Design file:              hardware_interface.ncd
+Physical constraint file: hardware_interface.pcf
+Device,package,speed:     xc5vlx50t,ff1136,-3 (PRODUCTION 1.64 2008-12-19, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock USER_CLK to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+DVI_XCLK_N  |    8.018(R)|USER_CLK_BUFGP    |   0.000|
+DVI_XCLK_P  |    8.005(R)|USER_CLK_BUFGP    |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock USER_CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+USER_CLK       |    0.665|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Wed Dec  3 07:18:29 2014 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 528 MB
+
+
+

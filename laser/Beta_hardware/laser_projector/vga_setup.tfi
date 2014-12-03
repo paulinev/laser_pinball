@@ -1,0 +1,13 @@
+
+
+
+// Instantiate the module
+vga_setup instance_name (
+    .clk(clk), 
+    .reset(reset), 
+    .start(start), 
+    .scl(scl), 
+    .sda(sda)
+    );
+
+

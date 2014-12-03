@@ -35,7 +35,9 @@ module hardware_interface(
 	GPIO_SW_C, //reset button
 	GPIO_SW_W, GPIO_SW_E, //paddle buttons
 	GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4,
-	GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0 //test LEDs
+	GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0, //test LEDs
+	IIC_SCL_VIDEO, IIC_SDA_VIDEO, //i2c for video
+	IIC_SDA_MAIN, IIC_SCL_MAIN
 	
     );
 	 
@@ -61,7 +63,12 @@ module hardware_interface(
 	 output wire GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4;
 	 output wire GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0;
 	 
+	 inout wire IIC_SDA_VIDEO;
+	 inout wire IIC_SCL_VIDEO;
+	 inout wire IIC_SDA_MAIN, IIC_SCL_MAIN;
+	 
 	 reg clk_50 = 0; //this is actually the worst solution
+	 reg clk_25 = 0;
 	 //wire clk;
 	 wire [2:0] laser_rgb;
 	 wire dac_sclk;
@@ -70,7 +77,15 @@ module hardware_interface(
 	 wire dac_latchn;
 	 wire [7:0] dip_sw;
 	 wire [7:0] debug_led;
+	 wire [11:0] DVI_data;
+	 wire reset;
+	 wire start; 
+	 reg startp =0;
+	 reg start_last = 0;
+	 wire blank;
 	 
+	 assign {DVI_D11, DVI_D10, DVI_D9, DVI_D8, DVI_D7, DVI_D6, DVI_D5,
+								DVI_D4, DVI_D3, DVI_D2, DVI_D1, DVI_D0} = DVI_data;
 	 assign HDR1_2 = dac_csn;
 	 assign HDR1_4 = dac_sclk;
 	 assign HDR1_6 = dac_mosi;
@@ -81,13 +96,33 @@ module hardware_interface(
 	 assign dip_sw = 	{GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
 							GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1};	 
 	 assign {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, 
-							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = debug_led;
+							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 8'hAA;
+							//debug_led;
 	 
+	 assign DVI_RESET_B = ~reset; //keep reset high
+	 assign DVI_DE = ~blank; //data enable
+	 assign DVI_XCLK_N = clk_50;
+	 assign DVI_XCLK_P = ~clk_50;
+	 
+	 wire [9:0] vcount, hcount;
+	 
+	 wire vsync;
+	 wire hsync;
+	 assign DVI_H = ~hsync;
+	 assign DVI_V = ~vsync;
+	 
+	 assign DVI_data = blank ? 0 : 12'b0101_0000_1101;
 	 
 	 always @(posedge USER_CLK) //this is soooo wrong I need to figure out how to DCM
 	 begin
 		clk_50 <= ~clk_50;
 		
+	 end
+	 always @(posedge clk_50)
+	 begin
+		start_last <= start;
+		startp <= (start_last==0)&&(start==1) ? 1 : 0;
+		clk_25 <= ~clk_25;
 	 end
 	 
 	 
@@ -99,13 +134,54 @@ module hardware_interface(
     .paddle_l(GPIO_SW_W),  
     .paddle_r(GPIO_SW_E), 
     .laser_rgb(laser_rgb), 
-    .dac_mosi(dac_mosi), 
+    .dac_mosi(dac_mosi),
     .dac_csn(dac_csn), 
     .dac_latchn(dac_latchn), 
     .dac_sclk(dac_sclk), 
     .debug_led(debug_led)
     );
 	 
-	
+	vga_setup vga_test (
+    .clk(clk_50), 
+    .reset(reset), 
+    .start(startp), 
+    .scl(IIC_SCL_VIDEO), 
+    .sda(IIC_SDA_VIDEO),
+	 .device_id(dip_sw)
+    );
+	 
+	 vga_setup i2c_test (
+    .clk(clk_50), 
+    .reset(reset), 
+    .start(startp), 
+    .scl(IIC_SCL_MAIN), 
+    .sda(IIC_SDA_MAIN),
+	 .device_id(8'hF0)
+    );
+	 
+	 vga_drive vga_gen (
+    .vclock(clk_25), 
+    .hcount(hcount), 
+    .vcount(vcount), 
+    .vsync(vsync), 
+    .hsync(hsync), 
+    .blank(blank)
+    );
+	 
+	 debounce db_1 (
+    .reset(0), 
+    .clock(clk_50), 
+    .noisy(GPIO_SW_C), 
+    .clean(reset)
+    );
+	 
+	 debounce db_2 (
+    .reset(reset), 
+    .clock(clk_50), 
+    .noisy(GPIO_SW_E), 
+    .clean(start)
+    );
+
+	 
 	 
 endmodule

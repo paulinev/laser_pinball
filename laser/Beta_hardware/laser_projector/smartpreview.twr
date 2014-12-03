@@ -5,11 +5,14 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
                                             |         |    Slack   | Achievable | Errors |    Score   
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clk | SETUP   |         N/A|     9.368ns|     N/A|           0
-  _50                                       | HOLD    |     0.252ns|            |       0|           0
+  Autotimespec constraint for clock net clk | SETUP   |         N/A|     9.597ns|     N/A|           0
+  _50                                       | HOLD    |     0.245ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net USE | SETUP   |         N/A|     0.968ns|     N/A|           0
-  R_CLK_BUFGP                               | HOLD    |     0.714ns|            |       0|           0
+  Autotimespec constraint for clock net clk | SETUP   |         N/A|     3.467ns|     N/A|           0
+  _25                                       | HOLD    |     0.343ns|            |       0|           0
+------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net USE | SETUP   |         N/A|     0.665ns|     N/A|           0
+  R_CLK_BUFGP                               | HOLD    |     0.424ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
 
 

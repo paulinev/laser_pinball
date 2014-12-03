@@ -1,0 +1,457 @@
+Release 10.1.03 - xst K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to /home/wbraun/laser_pinball/laser/camera/new_camera/camera_v2/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Parameter xsthdpdir set to /home/wbraun/laser_pinball/laser/camera/new_camera/camera_v2/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+Reading design: nexys2_top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+     9.1) Device utilization summary
+     9.2) Partition Resource Summary
+     9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "nexys2_top.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "nexys2_top"
+Output Format                      : NGC
+Target Device                      : xc3s500e-5-fg320
+
+---- Source Options
+Top Module Name                    : nexys2_top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Library Search Order               : nexys2_top.lso
+Keep Hierarchy                     : NO
+Netlist Hierarchy                  : as_optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "vga_drive.v" in library work
+Compiling verilog file "nexys2_top.v" in library work
+Module <vga_drive> compiled
+Module <nexys2_top> compiled
+No errors in compilation
+Analysis of file <"nexys2_top.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <nexys2_top> in library <work>.
+
+Analyzing hierarchy for module <vga_drive> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <nexys2_top>.
+Module <nexys2_top> is correct for synthesis.
+ 
+Analyzing module <vga_drive> in library <work>.
+Module <vga_drive> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <vga_drive>.
+    Related source file is "vga_drive.v".
+    Found 10-bit up counter for signal <vcount>.
+    Found 1-bit register for signal <vsync>.
+    Found 10-bit up counter for signal <hcount>.
+    Found 1-bit register for signal <blank>.
+    Found 1-bit register for signal <hsync>.
+    Found 1-bit register for signal <hblank>.
+    Found 1-bit register for signal <vblank>.
+    Summary:
+	inferred   2 Counter(s).
+	inferred   5 D-type flip-flop(s).
+Unit <vga_drive> synthesized.
+
+
+Synthesizing Unit <nexys2_top>.
+    Related source file is "nexys2_top.v".
+WARNING:Xst:647 - Input <sw> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <vcount<9:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <hcount> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 26-bit up counter for signal <counter>.
+    Found 8-bit register for signal <pixel>.
+    Found 1-bit register for signal <vclock>.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   9 D-type flip-flop(s).
+Unit <nexys2_top> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 3
+ 10-bit up counter                                     : 2
+ 26-bit up counter                                     : 1
+# Registers                                            : 7
+ 1-bit register                                        : 6
+ 8-bit register                                        : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Loading device for application Rf_Device from file '3s500e.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Counters                                             : 3
+ 10-bit up counter                                     : 2
+ 26-bit up counter                                     : 1
+# Registers                                            : 14
+ Flip-Flops                                            : 14
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <nexys2_top> ...
+
+Optimizing unit <vga_drive> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block nexys2_top, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 60
+ Flip-Flops                                            : 60
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                             *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : nexys2_top.ngr
+Top Level Output File Name         : nexys2_top
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 27
+
+Cell Usage :
+# BELS                             : 174
+#      GND                         : 1
+#      INV                         : 3
+#      LUT1                        : 43
+#      LUT2                        : 9
+#      LUT3                        : 7
+#      LUT3_D                      : 1
+#      LUT3_L                      : 1
+#      LUT4                        : 12
+#      LUT4_D                      : 4
+#      LUT4_L                      : 3
+#      MUXCY                       : 43
+#      VCC                         : 1
+#      XORCY                       : 46
+# FlipFlops/Latches                : 60
+#      FD                          : 36
+#      FDR                         : 11
+#      FDRE                        : 12
+#      FDS                         : 1
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 18
+#      OBUF                        : 18
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-5 
+
+ Number of Slices:                       45  out of   4656     0%  
+ Number of Slice Flip Flops:             60  out of   9312     0%  
+ Number of 4 input LUTs:                 83  out of   9312     0%  
+ Number of IOs:                          27
+ Number of bonded IOBs:                  19  out of    232     8%  
+ Number of GCLKs:                         2  out of     24     8%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 35    |
+vclock1                            | BUFG                   | 25    |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 5.705ns (Maximum Frequency: 175.277MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 5.364ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 4.191ns (frequency: 238.635MHz)
+  Total number of paths / destination ports: 352 / 27
+-------------------------------------------------------------------------
+Delay:               4.191ns (Levels of Logic = 26)
+  Source:            counter_1 (FF)
+  Destination:       counter_25 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: counter_1 to counter_25
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.514   0.509  counter_1 (counter_1)
+     LUT1:I0->O            1   0.612   0.000  Mcount_counter_cy<1>_rt (Mcount_counter_cy<1>_rt)
+     MUXCY:S->O            1   0.404   0.000  Mcount_counter_cy<1> (Mcount_counter_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  Mcount_counter_cy<2> (Mcount_counter_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  Mcount_counter_cy<3> (Mcount_counter_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  Mcount_counter_cy<4> (Mcount_counter_cy<4>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<5> (Mcount_counter_cy<5>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<6> (Mcount_counter_cy<6>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<7> (Mcount_counter_cy<7>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<8> (Mcount_counter_cy<8>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<9> (Mcount_counter_cy<9>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<10> (Mcount_counter_cy<10>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<11> (Mcount_counter_cy<11>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<12> (Mcount_counter_cy<12>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<13> (Mcount_counter_cy<13>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<14> (Mcount_counter_cy<14>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<15> (Mcount_counter_cy<15>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<16> (Mcount_counter_cy<16>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<17> (Mcount_counter_cy<17>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<18> (Mcount_counter_cy<18>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<19> (Mcount_counter_cy<19>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<20> (Mcount_counter_cy<20>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<21> (Mcount_counter_cy<21>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<22> (Mcount_counter_cy<22>)
+     MUXCY:CI->O           1   0.051   0.000  Mcount_counter_cy<23> (Mcount_counter_cy<23>)
+     MUXCY:CI->O           0   0.051   0.000  Mcount_counter_cy<24> (Mcount_counter_cy<24>)
+     XORCY:CI->O           1   0.699   0.000  Mcount_counter_xor<25> (Result<25>)
+     FD:D                      0.268          counter_25
+    ----------------------------------------
+    Total                      4.191ns (3.682ns logic, 0.509ns route)
+                                       (87.9% logic, 12.1% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'vclock1'
+  Clock period: 5.705ns (frequency: 175.277MHz)
+  Total number of paths / destination ports: 694 / 58
+-------------------------------------------------------------------------
+Delay:               5.705ns (Levels of Logic = 4)
+  Source:            vga_test/hcount_1 (FF)
+  Destination:       vga_test/blank (FF)
+  Source Clock:      vclock1 rising
+  Destination Clock: vclock1 rising
+
+  Data Path: vga_test/hcount_1 to vga_test/blank
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              3   0.514   0.603  vga_test/hcount_1 (vga_test/hcount_1)
+     LUT4_D:I0->O          4   0.612   0.502  vga_test/hblankon21_SW0 (N20)
+     LUT4:I3->O            1   0.612   0.360  vga_test/hreset1_1 (vga_test/hreset1)
+     LUT4_L:I3->LO         1   0.612   0.103  vga_test/vreset34 (vga_test/vreset)
+     LUT4:I3->O            2   0.612   0.380  vga_test/next_vblank (vga_test/next_vblank)
+     FDS:S                     0.795          vga_test/blank
+    ----------------------------------------
+    Total                      5.705ns (3.757ns logic, 1.948ns route)
+                                       (65.9% logic, 34.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'vclock1'
+  Total number of paths / destination ports: 10 / 10
+-------------------------------------------------------------------------
+Offset:              5.364ns (Levels of Logic = 2)
+  Source:            vga_test/blank (FF)
+  Destination:       vgaRed<2> (PAD)
+  Source Clock:      vclock1 rising
+
+  Data Path: vga_test/blank to vgaRed<2>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDS:C->Q              8   0.514   0.712  vga_test/blank (vga_test/blank)
+     LUT2:I1->O            1   0.612   0.357  _AUX_1<7>1 (vgaBlue_1_OBUF)
+     OBUF:I->O                 3.169          vgaBlue_1_OBUF (vgaBlue<1>)
+    ----------------------------------------
+    Total                      5.364ns (4.295ns logic, 1.069ns route)
+                                       (80.1% logic, 19.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 16 / 16
+-------------------------------------------------------------------------
+Offset:              5.161ns (Levels of Logic = 2)
+  Source:            pixel_2 (FF)
+  Destination:       vgaRed<2> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: pixel_2 to vgaRed<2>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               1   0.514   0.509  pixel_2 (pixel_2)
+     LUT2:I0->O            1   0.612   0.357  _AUX_1<2>1 (vgaRed_2_OBUF)
+     OBUF:I->O                 3.169          vgaRed_2_OBUF (vgaRed<2>)
+    ----------------------------------------
+    Total                      5.161ns (4.295ns logic, 0.866ns route)
+                                       (83.2% logic, 16.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 2.00 secs
+Total CPU time to Xst completion: 2.32 secs
+ 
+--> 
+
+
+Total memory usage is 354372 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    3 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
