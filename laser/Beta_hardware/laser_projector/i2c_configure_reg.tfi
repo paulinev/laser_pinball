@@ -1,0 +1,17 @@
+
+
+
+// Instantiate the module
+i2c_configure_reg instance_name (
+    .clk(clk), 
+    .reset(reset), 
+    .start(start), 
+    .write_reg(write_reg), 
+    .write_id(write_id), 
+    .write_data(write_data), 
+    .done(done), 
+    .scl(scl), 
+    .sda(sda)
+    );
+
+

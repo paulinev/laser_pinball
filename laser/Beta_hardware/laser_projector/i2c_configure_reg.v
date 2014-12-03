@@ -28,7 +28,7 @@ module i2c_configure_reg(
 	input wire [7:0] write_data,
 	output reg done = 0,
 	inout scl,
-	inout sda,
+	inout sda
     );
 
 	 reg [7:0] i2c_clock_div = 8'h55; //low for testing

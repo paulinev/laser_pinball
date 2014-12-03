@@ -1,5 +1,5 @@
 NUM_USER_FILES
-35
+36
 s
 user_file_1
 hardware_interface.v
@@ -87,6 +87,9 @@ debounce.v
 s
 user_file_35
 i2c_configure_reg.v
+s
+user_file_36
+vga_gen_tb.v
 s
 user_file_4
 beta_shared_mem.xco

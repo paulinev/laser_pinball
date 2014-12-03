@@ -211,9 +211,9 @@ module laser_projector_full(
     .in_port_b(32'b0), 
     .dout(IO_dout_laser), 
     .out_port_a(IO_port), 
-    .out_port_b({dac_latchn, laser_rgb}), 
+    .out_port_b({dac_csn,dac_latchn, laser_rgb}), 
     .spi_miso(1'b0), 
-    .spi_csn(dac_csn), 
+    .spi_csn(), 
     .spi_sclk(dac_sclk), 
     .spi_mosi(dac_mosi),
 	 .irq()

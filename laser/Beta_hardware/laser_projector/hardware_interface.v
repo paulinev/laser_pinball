@@ -100,9 +100,9 @@ module hardware_interface(
 							//debug_led;
 	 
 	 assign DVI_RESET_B = ~reset; //keep reset high
-	 assign DVI_DE = ~blank; //data enable
-	 assign DVI_XCLK_N = clk_50;
-	 assign DVI_XCLK_P = ~clk_50;
+	 assign DVI_DE = ~blank; //data enable is active high, blank is active high, invert it
+	 assign DVI_XCLK_N = clk_25;
+	 assign DVI_XCLK_P = ~clk_25; //clk is at pixel frequency
 	 
 	 wire [9:0] vcount, hcount;
 	 
@@ -111,7 +111,7 @@ module hardware_interface(
 	 assign DVI_H = ~hsync;
 	 assign DVI_V = ~vsync;
 	 
-	 assign DVI_data = blank ? 0 : 12'b0101_0000_1101;
+	 assign DVI_data = 12'b0101_0000_1101;
 	 
 	 always @(posedge USER_CLK) //this is soooo wrong I need to figure out how to DCM
 	 begin
@@ -146,8 +146,7 @@ module hardware_interface(
     .reset(reset), 
     .start(startp), 
     .scl(IIC_SCL_VIDEO), 
-    .sda(IIC_SDA_VIDEO),
-	 .device_id(dip_sw)
+    .sda(IIC_SDA_VIDEO)
     );
 	 
 	 vga_setup i2c_test (
@@ -155,10 +154,11 @@ module hardware_interface(
     .reset(reset), 
     .start(startp), 
     .scl(IIC_SCL_MAIN), 
-    .sda(IIC_SDA_MAIN),
-	 .device_id(8'hF0)
+    .sda(IIC_SDA_MAIN)
     );
 	 
+	 //sync is active low,
+	 //blank is active high
 	 vga_drive vga_gen (
     .vclock(clk_25), 
     .hcount(hcount), 

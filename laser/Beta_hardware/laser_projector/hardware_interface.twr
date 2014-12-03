@@ -32,25 +32,16 @@ Data Sheet report:
 -----------------
 All values displayed in nanoseconds (ns)
 
-Clock USER_CLK to Pad
-------------+------------+------------------+--------+
-            | clk (edge) |                  | Clock  |
-Destination |   to PAD   |Internal Clock(s) | Phase  |
-------------+------------+------------------+--------+
-DVI_XCLK_N  |    8.018(R)|USER_CLK_BUFGP    |   0.000|
-DVI_XCLK_P  |    8.005(R)|USER_CLK_BUFGP    |   0.000|
-------------+------------+------------------+--------+
-
 Clock to Setup on destination clock USER_CLK
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-USER_CLK       |    0.665|         |         |         |
+USER_CLK       |    0.990|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
-Analysis completed Wed Dec  3 07:18:29 2014 
+Analysis completed Wed Dec  3 17:42:23 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
