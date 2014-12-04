@@ -1,0 +1,35 @@
+.include beta.uasm
+
+SPRITE_ID_IN = 0
+RGB_IN = 8
+X_LOC_IN = 0xC
+Y_LOC_IN = 0x18
+STATUS = 0x100
+SPRITE_OFFSET = 4
+RGB_OFFSET = 4
+X_OFFSET = 4
+Y_OFFSET = 4
+
+. = 0
+CMOVE(2, r4)
+SHLC(r4, 16, r4)
+LD(r4, SPRITE_ID_IN, r2)
+BEQ(r2, done)
+LD(r4, RGB_IN, r3)
+LD(r4, X_LOC_IN, r0)
+LD(r4, Y_LOC_IN, r1)
+
+CMOVE(13, r3)
+ST(r3, 0xF, r4)
+
+done:
+HALT()
+
+. = 0x20000
+LONG(2)
+LONG(3)
+LONG(4)
+LONG(5)
+LONG(6)
+LONG(7)
+LONG(8)
