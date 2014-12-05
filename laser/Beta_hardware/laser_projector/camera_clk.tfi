@@ -1,0 +1,13 @@
+
+
+
+// Instantiate the module
+camera_clk instance_name (
+    .CLKIN_IN(CLKIN_IN), 
+    .RST_IN(RST_IN), 
+    .CLKDV_OUT(CLKDV_OUT), 
+    .CLK0_OUT(CLK0_OUT), 
+    .LOCKED_OUT(LOCKED_OUT)
+    );
+
+

@@ -1,0 +1,12 @@
+# Output products list for <camera_memory>
+camera_memory.asy
+camera_memory.ngc
+camera_memory.sym
+camera_memory.v
+camera_memory.veo
+camera_memory.vhd
+camera_memory.vho
+camera_memory.xco
+camera_memory_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+camera_memory_flist.txt
+camera_memory_xmdf.tcl

@@ -1,4 +1,4 @@
 set -tmpdir "./xst/projnav.tmp"
 elaborate
--ifn wb_i2c_controller.prj
+-ifn image_addr_gen.prj
 -ifmt mixed

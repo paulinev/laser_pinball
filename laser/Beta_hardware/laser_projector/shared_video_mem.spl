@@ -1,0 +1,14 @@
+[Inputs]
+clk_vga
+clk_camera
+camera_request
+mwe_camera
+=mem_addr_camera[18:0]=
+=mem_addr_vga[18:0]=
+=dout_camera[7:0]=
+[Outputs]
+=dout_vga[7:0]=
+[BiDir]
+[ATTRIBUTES]
+VeriModel shared_video_mem
+

@@ -65,7 +65,8 @@ module vga_setup(
 		FSM_state <= 2;
 		write_id <= device_id;
 		write_reg <= 8'h9C; //clk setup
-		write_data <= 8'h01; //clk is at pixel frequency
+		//write_data <= 8'h00; //clk is at pixel frequency
+		write_data <= 8'h01; //clk is at double pixel frequency
 		start_write <= 1;
 		end
 		
@@ -78,7 +79,7 @@ module vga_setup(
 		FSM_state <= 4;
 		write_id <= device_id;
 		write_reg <= 8'h9F; //input data format
-		write_data <= 8'b1000_0000; //Vsync, Hsync are active loq
+		write_data <= 8'b1000_0000; //Vsync, Hsync are active low
 		start_write <= 1;
 		end
 		

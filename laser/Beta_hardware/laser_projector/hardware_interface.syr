@@ -5,14 +5,14 @@ Parameter TMPDIR set to /home/wbraun/laser_pinball/laser/Beta_hardware/laser_pro
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 Parameter xsthdpdir set to /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.07 secs
  
 --> 
 Reading design: hardware_interface.prj
@@ -122,43 +122,32 @@ Compiling verilog include file "i2c_master_defines.v"
 Module <i2c_master_byte_ctrl> compiled
 Compiling verilog file "wb_controller.v" in library work
 Module <i2c_master_top> compiled
-Compiling verilog file "system_timer.v" in library work
+Compiling verilog file "image_addr_gen.v" in library work
 Module <wb_i2c_controller> compiled
-Compiling verilog file "spi_io.v" in library work
-Module <system_timer> compiled
-Compiling verilog file "mul32.v" in library work
-Module <spi_io> compiled
-Compiling verilog file "./beta_shared_mem.v" in library work
-Module <mul32> compiled
-Compiling verilog file "physics_beta_mem.v" in library work
-Module <beta_shared_mem> compiled
-Compiling verilog file "memory_share.v" in library work
-Module <physics_beta_mem> compiled
-Compiling verilog file "mapped_IO.v" in library work
-Module <memory_share> compiled
 Compiling verilog file "i2c_configure_reg.v" in library work
-Module <mapped_IO> compiled
-Compiling verilog file "hardware_beta_mem.v" in library work
+Module <image_addr_gen> compiled
+Compiling verilog file "camera_read.v" in library work
 Module <i2c_configure_reg> compiled
-Compiling verilog file "beta_read_decode.v" in library work
-Module <hardware_beta_mem> compiled
-Compiling verilog file "beta_addr_decode.v" in library work
-Module <beta_read_decode> compiled
-Compiling verilog file "beta2.v" in library work
-Module <beta_addr_decode> compiled
-Module <beta2> compiled
-Module <regfile> compiled
-Module <decode> compiled
+Compiling verilog file "./camera_memory.v" in library work
+Module <camera_read> compiled
 Compiling verilog file "vga_setup.v" in library work
-Module <shift_right> compiled
-Compiling verilog file "vga_drive.v" in library work
+Module <camera_memory> compiled
+Compiling verilog file "vga_pixel_drive.v" in library work
 Module <vga_setup> compiled
-Compiling verilog file "laser_projector_full.v" in library work
+Compiling verilog file "vga_drive.v" in library work
+Module <vga_pixel_drive> compiled
+Compiling verilog file "shared_video_mem.v" in library work
 Module <vga_drive> compiled
 Compiling verilog file "debounce.v" in library work
-Module <laser_projector_full> compiled
-Compiling verilog file "hardware_interface.v" in library work
+Module <shared_video_mem> compiled
+Compiling verilog file "clocking.v" in library work
 Module <debounce> compiled
+Compiling verilog file "camera_configure.v" in library work
+Module <clocking> compiled
+Compiling verilog file "camera_capture.v" in library work
+Module <camera_configure> compiled
+Compiling verilog file "hardware_interface.v" in library work
+Module <camera_capture> compiled
 Module <hardware_interface> compiled
 No errors in compilation
 Analysis of file <"hardware_interface.prj"> succeeded.
@@ -169,38 +158,30 @@ Analysis of file <"hardware_interface.prj"> succeeded.
 =========================================================================
 Analyzing hierarchy for module <hardware_interface> in library <work>.
 
-Analyzing hierarchy for module <laser_projector_full> in library <work>.
+Analyzing hierarchy for module <clocking> in library <work>.
 
 Analyzing hierarchy for module <vga_setup> in library <work> with parameters.
 	device_id = "11101100"
 
+Analyzing hierarchy for module <camera_configure> in library <work> with parameters.
+	device_id = "01000010"
+
 Analyzing hierarchy for module <vga_drive> in library <work>.
+
+Analyzing hierarchy for module <vga_pixel_drive> in library <work>.
+
+Analyzing hierarchy for module <camera_capture> in library <work>.
+
+Analyzing hierarchy for module <shared_video_mem> in library <work>.
 
 Analyzing hierarchy for module <debounce> in library <work>.
 
-Analyzing hierarchy for module <beta2> in library <work>.
-
-Analyzing hierarchy for module <beta_addr_decode> in library <work>.
-
-Analyzing hierarchy for module <beta_read_decode> in library <work>.
-
-Analyzing hierarchy for module <mapped_IO> in library <work>.
-
-Analyzing hierarchy for module <memory_share> in library <work>.
-
 Analyzing hierarchy for module <i2c_configure_reg> in library <work>.
 
-Analyzing hierarchy for module <decode> in library <work>.
+Analyzing hierarchy for module <camera_read> in library <work>.
 
-Analyzing hierarchy for module <regfile> in library <work>.
-
-Analyzing hierarchy for module <mul32> in library <work>.
-
-Analyzing hierarchy for module <shift_right> in library <work>.
-
-Analyzing hierarchy for module <spi_io> in library <work>.
-
-Analyzing hierarchy for module <system_timer> in library <work>.
+Analyzing hierarchy for module <image_addr_gen> in library <work> with parameters.
+	div_by = "00000000000000000000000000000001"
 
 Analyzing hierarchy for module <wb_i2c_controller> in library <work>.
 
@@ -242,43 +223,29 @@ Analyzing hierarchy for module <i2c_master_bit_ctrl> in library <work> with para
 Analyzing top module <hardware_interface>.
 Module <hardware_interface> is correct for synthesis.
  
-Analyzing module <laser_projector_full> in library <work>.
-Module <laser_projector_full> is correct for synthesis.
+Analyzing module <clocking> in library <work>.
+Module <clocking> is correct for synthesis.
  
-Analyzing module <beta2> in library <work>.
-Module <beta2> is correct for synthesis.
- 
-Analyzing module <decode> in library <work>.
-Module <decode> is correct for synthesis.
- 
-Analyzing module <regfile> in library <work>.
-Module <regfile> is correct for synthesis.
- 
-    Set property "ram_style = distributed" for unit <regfile>.
-Analyzing module <mul32> in library <work>.
-Module <mul32> is correct for synthesis.
- 
-Analyzing module <shift_right> in library <work>.
-Module <shift_right> is correct for synthesis.
- 
-Analyzing module <beta_addr_decode> in library <work>.
-Module <beta_addr_decode> is correct for synthesis.
- 
-Analyzing module <beta_read_decode> in library <work>.
-Module <beta_read_decode> is correct for synthesis.
- 
-Analyzing module <mapped_IO> in library <work>.
-Module <mapped_IO> is correct for synthesis.
- 
-Analyzing module <spi_io> in library <work>.
-Module <spi_io> is correct for synthesis.
- 
-Analyzing module <system_timer> in library <work>.
-Module <system_timer> is correct for synthesis.
- 
-Analyzing module <memory_share> in library <work>.
-Module <memory_share> is correct for synthesis.
- 
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <CLKIN_IBUFG_INST> in unit <clocking>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <CLKIN_IBUFG_INST> in unit <clocking>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <CLKIN_IBUFG_INST> in unit <clocking>.
+    Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "CLKFX_DIVIDE =  1" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "CLKFX_MULTIPLY =  4" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "CLKIN_PERIOD =  10.0000000000000000" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "CLK_FEEDBACK =  1X" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "DCM_AUTOCALIBRATION =  TRUE" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "DCM_PERFORMANCE_MODE =  MAX_SPEED" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "DESKEW_ADJUST =  SYSTEM_SYNCHRONOUS" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "DFS_FREQUENCY_MODE =  LOW" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "DLL_FREQUENCY_MODE =  LOW" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "DUTY_CYCLE_CORRECTION =  TRUE" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "FACTORY_JF =  F0F0" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "PHASE_SHIFT =  0" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "SIM_DEVICE =  VIRTEX5" for instance <DCM_ADV_INST> in unit <clocking>.
+    Set user-defined property "STARTUP_WAIT =  FALSE" for instance <DCM_ADV_INST> in unit <clocking>.
 Analyzing module <vga_setup> in library <work>.
 	device_id = 8'b11101100
 Module <vga_setup> is correct for synthesis.
@@ -346,8 +313,28 @@ WARNING:Xst:915 - Message (916) is reported only 5 times for each module.
 "i2c_master_bit_ctrl.v" line 406: Found FullParallel Case directive in module <i2c_master_bit_ctrl>.
 Module <i2c_master_bit_ctrl> is correct for synthesis.
  
+Analyzing module <camera_configure> in library <work>.
+	device_id = 8'b01000010
+Module <camera_configure> is correct for synthesis.
+ 
 Analyzing module <vga_drive> in library <work>.
 Module <vga_drive> is correct for synthesis.
+ 
+Analyzing module <vga_pixel_drive> in library <work>.
+Module <vga_pixel_drive> is correct for synthesis.
+ 
+Analyzing module <camera_capture> in library <work>.
+Module <camera_capture> is correct for synthesis.
+ 
+Analyzing module <camera_read> in library <work>.
+Module <camera_read> is correct for synthesis.
+ 
+Analyzing module <shared_video_mem> in library <work>.
+Module <shared_video_mem> is correct for synthesis.
+ 
+Analyzing module <image_addr_gen> in library <work>.
+	div_by = 32'sb00000000000000000000000000000001
+Module <image_addr_gen> is correct for synthesis.
  
 Analyzing module <debounce> in library <work>.
 Module <debounce> is correct for synthesis.
@@ -359,21 +346,34 @@ Module <debounce> is correct for synthesis.
 
 Performing bidirectional port resolution...
 INFO:Xst:2679 - Register <write_id> in unit <vga_setup> has a constant value of 11101100 during circuit operation. The register is replaced by logic.
-INFO:Xst:2679 - Register <device_id> in unit <i2c_configure_reg> has a constant value of 11101100 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <write_id> in unit <camera_configure> has a constant value of 01000010 during circuit operation. The register is replaced by logic.
 
 Synthesizing Unit <vga_drive>.
     Related source file is "vga_drive.v".
-    Found 10-bit up counter for signal <vcount>.
     Found 1-bit register for signal <vsync>.
-    Found 10-bit up counter for signal <hcount>.
     Found 1-bit register for signal <blank>.
     Found 1-bit register for signal <hsync>.
     Found 1-bit register for signal <hblank>.
+    Found 11-bit up counter for signal <hcount_d>.
     Found 1-bit register for signal <vblank>.
+    Found 11-bit up accumulator for signal <vcount_d>.
     Summary:
-	inferred   2 Counter(s).
+	inferred   1 Counter(s).
+	inferred   1 Accumulator(s).
 	inferred   5 D-type flip-flop(s).
 Unit <vga_drive> synthesized.
+
+
+Synthesizing Unit <vga_pixel_drive>.
+    Related source file is "vga_pixel_drive.v".
+WARNING:Xst:1780 - Signal <stored_pixel> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 12-bit register for signal <vga_out>.
+    Found 1-bit register for signal <hsync_last>.
+    Found 1-bit register for signal <pixel_ab>.
+    Found 12-bit register for signal <pixel_b>.
+    Summary:
+	inferred  26 D-type flip-flop(s).
+Unit <vga_pixel_drive> synthesized.
 
 
 Synthesizing Unit <debounce>.
@@ -388,107 +388,9 @@ Synthesizing Unit <debounce>.
 Unit <debounce> synthesized.
 
 
-Synthesizing Unit <beta_addr_decode>.
-    Related source file is "beta_addr_decode.v".
-WARNING:Xst:647 - Input <addr<31>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <addr<15:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-Unit <beta_addr_decode> synthesized.
-
-
-Synthesizing Unit <beta_read_decode>.
-    Related source file is "beta_read_decode.v".
-    Found 3-bit register for signal <old_read_select>.
-    Summary:
-	inferred   3 D-type flip-flop(s).
-Unit <beta_read_decode> synthesized.
-
-
-Synthesizing Unit <decode>.
-    Related source file is "beta2.v".
-    Found 1-bit register for signal <msel>.
-    Found 1-bit register for signal <annul>.
-    Found 1-bit register for signal <mwrite>.
-    Summary:
-	inferred   3 D-type flip-flop(s).
-Unit <decode> synthesized.
-
-
-Synthesizing Unit <regfile>.
-    Related source file is "beta2.v".
-    Found 32x32-bit dual-port RAM <Mram_regfile> for signal <regfile>.
-    Found 32x32-bit dual-port RAM <Mram_regfile_ren> for signal <regfile>.
-    Found 32x32-bit dual-port RAM <Mram_regfile_ren_1> for signal <regfile>.
-    Summary:
-	inferred   3 RAM(s).
-Unit <regfile> synthesized.
-
-
-Synthesizing Unit <mul32>.
-    Related source file is "mul32.v".
-WARNING:Xst:647 - Input <a<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <b<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 16x16-bit multiplier for signal <mult>.
-    Summary:
-	inferred   1 Multiplier(s).
-Unit <mul32> synthesized.
-
-
-Synthesizing Unit <shift_right>.
-    Related source file is "beta2.v".
-Unit <shift_right> synthesized.
-
-
-Synthesizing Unit <spi_io>.
-    Related source file is "spi_io.v".
-WARNING:Xst:647 - Input <ctrl_reg<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <ctrl_reg<7:5>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <spi_polarity> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <spi_phase> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found finite state machine <FSM_0> for signal <FSM_state>.
-    -----------------------------------------------------------------------
-    | States             | 5                                              |
-    | Transitions        | 10                                             |
-    | Inputs             | 3                                              |
-    | Outputs            | 4                                              |
-    | Clock              | clk (rising_edge)                              |
-    | Power Up State     | 0000                                           |
-    | Encoding           | automatic                                      |
-    | Implementation     | LUT                                            |
-    -----------------------------------------------------------------------
-    Found 32-bit register for signal <status_reg>.
-    Found 1-bit register for signal <mosi>.
-    Found 1-bit register for signal <sclk>.
-    Found 32-bit register for signal <dout>.
-    Found 8-bit register for signal <clk_counter>.
-    Found 8-bit adder for signal <clk_counter$addsub0000>.
-    Found 5-bit register for signal <data_index>.
-    Found 5-bit subtractor for signal <data_index$share0000> created at line 72.
-    Found 8-bit comparator greatequal for signal <FSM_state$cmp_ge0000> created at line 88.
-    Summary:
-	inferred   1 Finite State Machine(s).
-	inferred  79 D-type flip-flop(s).
-	inferred   2 Adder/Subtractor(s).
-	inferred   1 Comparator(s).
-	inferred   1 Multiplexer(s).
-Unit <spi_io> synthesized.
-
-
-Synthesizing Unit <system_timer>.
-    Related source file is "system_timer.v".
-    Found 1-bit register for signal <irq>.
-    Found 32-bit register for signal <count_out>.
-    Found 1-bit register for signal <overflow>.
-    Found 32-bit subtractor for signal <count_out$addsub0000> created at line 60.
-    Found 1-bit register for signal <mwe_>.
-    Summary:
-	inferred  35 D-type flip-flop(s).
-	inferred   1 Adder/Subtractor(s).
-Unit <system_timer> synthesized.
-
-
 Synthesizing Unit <i2c_master_bit_ctrl>.
     Related source file is "i2c_master_bit_ctrl.v".
-    Found finite state machine <FSM_1> for signal <c_state>.
+    Found finite state machine <FSM_0> for signal <c_state>.
     -----------------------------------------------------------------------
     | States             | 18                                             |
     | Transitions        | 22                                             |
@@ -532,63 +434,92 @@ Synthesizing Unit <i2c_master_bit_ctrl>.
 Unit <i2c_master_bit_ctrl> synthesized.
 
 
-Synthesizing Unit <beta2>.
-    Related source file is "beta2.v".
-WARNING:Xst:646 - Signal <npc_inc<31>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 32-bit adder carry in for signal <addsub>.
-    Found 32-bit xor2 for signal <boole$xor0000> created at line 93.
-    Found 1-bit xor2 for signal <cmp_0$xor0000> created at line 84.
-    Found 32-bit register for signal <inst>.
-    Found 32-bit register for signal <npc>.
-    Found 32-bit adder for signal <npc_inc>.
-    Found 32-bit register for signal <pc_inc>.
-    Found 5-bit register for signal <rc_save>.
-    Found 32-bit shifter logical left for signal <shift$shift0000> created at line 91.
-    Found 32-bit xor2 for signal <xb>.
+Synthesizing Unit <camera_read>.
+    Related source file is "camera_read.v".
+    Found finite state machine <FSM_1> for signal <FSM_state>.
+    -----------------------------------------------------------------------
+    | States             | 6                                              |
+    | Transitions        | 13                                             |
+    | Inputs             | 6                                              |
+    | Outputs            | 5                                              |
+    | Clock              | p_clock (rising_edge)                          |
+    | Power Up State     | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 10-bit register for signal <vcount>.
+    Found 10-bit register for signal <hcount>.
+    Found 1-bit register for signal <pixel_done>.
+    Found 1-bit register for signal <done>.
+    Found 16-bit register for signal <pixel_data>.
+    Found 10-bit adder for signal <hcount$addsub0000> created at line 81.
+    Found 1-bit register for signal <href_last>.
+    Found 10-bit adder for signal <vcount$addsub0000> created at line 76.
+    Found 1-bit register for signal <vsync_last>.
     Summary:
-	inferred 101 D-type flip-flop(s).
+	inferred   1 Finite State Machine(s).
+	inferred  40 D-type flip-flop(s).
 	inferred   2 Adder/Subtractor(s).
-	inferred   1 Combinational logic shifter(s).
-Unit <beta2> synthesized.
+Unit <camera_read> synthesized.
 
 
-Synthesizing Unit <mapped_IO>.
-    Related source file is "mapped_IO.v".
-WARNING:Xst:1305 - Output <spi_csn> is never assigned. Tied to value 0.
-WARNING:Xst:647 - Input <addr<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 32-bit register for signal <out_port_a>.
-    Found 32-bit register for signal <out_port_b>.
-    Found 32-bit register for signal <dout>.
-    Found 32-bit register for signal <spi_config>.
-    Found 32-bit register for signal <spi_tx_data>.
-    Found 32-bit register for signal <timer1_cin>.
-    Found 1-bit register for signal <timer1_irq_enable>.
+Synthesizing Unit <image_addr_gen>.
+    Related source file is "image_addr_gen.v".
+WARNING:Xst:646 - Signal <vcount_trun<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <hnumb<9:1>> is used but never assigned. This sourceless signal will be automatically connected to value 101000000.
+WARNING:Xst:1780 - Signal <hnumb<0>> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <hcount_trun<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 18-bit adder carry out for signal <addr$addsub0000>.
+    Found 9x9-bit multiplier for signal <addr$mult0000> created at line 36.
+    Found 10-bit comparator greatequal for signal <hcount_trun$cmp_ge0000> created at line 33.
+    Found 10-bit comparator greatequal for signal <vcount_trun$cmp_ge0000> created at line 34.
     Summary:
-	inferred 193 D-type flip-flop(s).
-Unit <mapped_IO> synthesized.
-
-
-Synthesizing Unit <memory_share>.
-    Related source file is "memory_share.v".
-WARNING:Xst:647 - Input <client_addr<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <client_addr<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <host_addr<31:16>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <host_addr<1:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 14-bit comparator lessequal for signal <client_mem_read>.
-    Found 32-bit register for signal <client_reg_data>.
-    Found 32-bit register for signal <client_status>.
-    Found 14-bit comparator lessequal for signal <host_mem_read>.
-    Found 32-bit register for signal <host_reg_data>.
-    Found 32-bit register for signal <host_status>.
-    Summary:
-	inferred 128 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Multiplier(s).
 	inferred   2 Comparator(s).
-Unit <memory_share> synthesized.
+Unit <image_addr_gen> synthesized.
+
+
+Synthesizing Unit <clocking>.
+    Related source file is "clocking.v".
+Unit <clocking> synthesized.
+
+
+Synthesizing Unit <camera_capture>.
+    Related source file is "camera_capture.v".
+    Found finite state machine <FSM_2> for signal <FSM_state>.
+    -----------------------------------------------------------------------
+    | States             | 4                                              |
+    | Transitions        | 6                                              |
+    | Inputs             | 2                                              |
+    | Outputs            | 4                                              |
+    | Clock              | camera_clk (rising_edge)                       |
+    | Power Up State     | 0000                                           |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 16-bit register for signal <mem_din>.
+    Found 10-bit register for signal <vcount>.
+    Found 10-bit register for signal <hcount>.
+    Found 1-bit register for signal <done>.
+    Found 1-bit register for signal <mem_request>.
+    Found 1-bit register for signal <mem_we>.
+    Found 1-bit register for signal <camera_start>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  40 D-type flip-flop(s).
+Unit <camera_capture> synthesized.
+
+
+Synthesizing Unit <shared_video_mem>.
+    Related source file is "shared_video_mem.v".
+WARNING:Xst:646 - Signal <memory_addr<18>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <shared_video_mem> synthesized.
 
 
 Synthesizing Unit <i2c_master_byte_ctrl>.
     Related source file is "i2c_master_byte_ctrl.v".
-    Found finite state machine <FSM_2> for signal <c_state>.
+    Found finite state machine <FSM_3> for signal <c_state>.
     -----------------------------------------------------------------------
     | States             | 6                                              |
     | Transitions        | 19                                             |
@@ -614,17 +545,6 @@ Synthesizing Unit <i2c_master_byte_ctrl>.
 	inferred   1 Counter(s).
 	inferred  17 D-type flip-flop(s).
 Unit <i2c_master_byte_ctrl> synthesized.
-
-
-Synthesizing Unit <laser_projector_full>.
-    Related source file is "laser_projector_full.v".
-WARNING:Xst:1780 - Signal <xadr_laser> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <shared_write_dout_laser> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000000000000000.
-WARNING:Xst:646 - Signal <sel_write_shared_laser> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <irq_laser> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <IO_port<31:24>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <IO_port<15:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-Unit <laser_projector_full> synthesized.
 
 
 Synthesizing Unit <i2c_master_top>.
@@ -653,7 +573,7 @@ WARNING:Xst:646 - Signal <i2c_addr<3>> is assigned but never used. This unconnec
 WARNING:Xst:646 - Signal <din_l<31:16>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <addr_l<31:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ack_o> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found finite state machine <FSM_3> for signal <FSM_state>.
+    Found finite state machine <FSM_4> for signal <FSM_state>.
     -----------------------------------------------------------------------
     | States             | 4                                              |
     | Transitions        | 5                                              |
@@ -687,7 +607,7 @@ Synthesizing Unit <i2c_configure_reg>.
 WARNING:Xst:646 - Signal <i2c_dout<7:2>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <i2c_dout<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <i2c_clock_div> is used but never assigned. This sourceless signal will be automatically connected to value 01010101.
-    Found finite state machine <FSM_4> for signal <FSM_state>.
+    Found finite state machine <FSM_5> for signal <FSM_state>.
     -----------------------------------------------------------------------
     | States             | 29                                             |
     | Transitions        | 45                                             |
@@ -700,6 +620,7 @@ WARNING:Xst:653 - Signal <i2c_clock_div> is used but never assigned. This source
     -----------------------------------------------------------------------
     Found 1-bit register for signal <done>.
     Found 8-bit register for signal <device_data>.
+    Found 8-bit register for signal <device_id>.
     Found 8-bit register for signal <device_reg>.
     Found 3-bit register for signal <i2c_addr>.
     Found 8-bit register for signal <i2c_din>.
@@ -707,13 +628,13 @@ WARNING:Xst:653 - Signal <i2c_clock_div> is used but never assigned. This source
     Found 1-bit register for signal <i2c_we>.
     Summary:
 	inferred   1 Finite State Machine(s).
-	inferred  30 D-type flip-flop(s).
+	inferred  38 D-type flip-flop(s).
 Unit <i2c_configure_reg> synthesized.
 
 
 Synthesizing Unit <vga_setup>.
     Related source file is "vga_setup.v".
-    Found finite state machine <FSM_5> for signal <FSM_state>.
+    Found finite state machine <FSM_6> for signal <FSM_state>.
     -----------------------------------------------------------------------
     | States             | 10                                             |
     | Transitions        | 15                                             |
@@ -733,93 +654,100 @@ Synthesizing Unit <vga_setup>.
 Unit <vga_setup> synthesized.
 
 
+Synthesizing Unit <camera_configure>.
+    Related source file is "camera_configure.v".
+INFO:Xst:1799 - State 01000 is never reached in FSM <FSM_state>.
+INFO:Xst:1799 - State 00111 is never reached in FSM <FSM_state>.
+INFO:Xst:1799 - State 01001 is never reached in FSM <FSM_state>.
+INFO:Xst:1799 - State 01010 is never reached in FSM <FSM_state>.
+    Found finite state machine <FSM_7> for signal <FSM_state>.
+    -----------------------------------------------------------------------
+    | States             | 8                                              |
+    | Transitions        | 12                                             |
+    | Inputs             | 2                                              |
+    | Outputs            | 7                                              |
+    | Clock              | clk (rising_edge)                              |
+    | Power Up State     | 00000                                          |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 1-bit register for signal <start_write>.
+    Found 8-bit register for signal <write_data>.
+    Found 8-bit register for signal <write_reg>.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred  17 D-type flip-flop(s).
+Unit <camera_configure> synthesized.
+
+
 Synthesizing Unit <hardware_interface>.
     Related source file is "hardware_interface.v".
 WARNING:Xst:1306 - Output <AUDIO_SDATA_OUT> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_20> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_16> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_22> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_18> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_24> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_30> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_26> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_32> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_28> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_34> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_40> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_36> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_42> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_38> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_44> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_50> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_46> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_52> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_48> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_54> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_60> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_56> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_62> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_58> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_64> is never assigned.
 WARNING:Xst:1306 - Output <AUDIO_BIT_CLK> is never assigned.
 WARNING:Xst:1306 - Output <DVI_GPIO1> is never assigned.
 WARNING:Xst:647 - Input <AUDIO_SDATA_IN> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:1306 - Output <AUDIO_SYNC> is never assigned.
 WARNING:Xst:647 - Input <CLK_27MHZ_FPGA> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:646 - Signal <vcount> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <hcount> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <debug_led> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 1-bit register for signal <clk_25>.
-    Found 1-bit register for signal <clk_50>.
+WARNING:Xst:653 - Signal <laser_rgb> is used but never assigned. This sourceless signal will be automatically connected to value 000.
+WARNING:Xst:646 - Signal <dout_vga<15>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <dip_sw> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <debug_led> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <dac_sclk> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:653 - Signal <dac_mosi> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:653 - Signal <dac_latchn> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:653 - Signal <dac_csn> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:646 - Signal <clk_100> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Found 3-bit up counter for signal <clk_div>.
+    Found 1-bit register for signal <start2_last>.
+    Found 1-bit register for signal <start2p>.
     Found 1-bit register for signal <start_last>.
     Found 1-bit register for signal <startp>.
     Summary:
+	inferred   1 Counter(s).
 	inferred   4 D-type flip-flop(s).
 Unit <hardware_interface> synthesized.
 
-INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 6
- 32x32-bit dual-port RAM                               : 6
 # Multipliers                                          : 2
- 16x16-bit multiplier                                  : 2
-# Adders/Subtractors                                   : 10
- 32-bit adder                                          : 2
- 32-bit adder carry in                                 : 2
- 32-bit subtractor                                     : 2
- 5-bit subtractor                                      : 2
- 8-bit adder                                           : 2
-# Counters                                             : 10
- 10-bit up counter                                     : 2
+ 9x9-bit multiplier                                    : 2
+# Adders/Subtractors                                   : 4
+ 10-bit adder                                          : 2
+ 18-bit adder carry out                                : 2
+# Counters                                             : 11
+ 11-bit up counter                                     : 1
  14-bit down counter                                   : 2
  16-bit down counter                                   : 2
- 20-bit up counter                                     : 2
+ 20-bit up counter                                     : 3
  3-bit down counter                                    : 2
-# Registers                                            : 293
- 1-bit register                                        : 215
+ 3-bit up counter                                      : 1
+# Accumulators                                         : 1
+ 11-bit up accumulator                                 : 1
+# Registers                                            : 210
+ 1-bit register                                        : 161
+ 10-bit register                                       : 4
+ 12-bit register                                       : 2
+ 16-bit register                                       : 1
  2-bit register                                        : 4
- 3-bit register                                        : 8
- 32-bit register                                       : 36
+ 3-bit register                                        : 6
+ 32-bit register                                       : 6
  4-bit register                                        : 4
- 5-bit register                                        : 4
  8-bit register                                        : 22
-# Comparators                                          : 6
- 14-bit comparator lessequal                           : 4
- 8-bit comparator greatequal                           : 2
-# Multiplexers                                         : 4
- 1-bit 32-to-1 multiplexer                             : 2
+# Comparators                                          : 4
+ 10-bit comparator greatequal                          : 4
+# Multiplexers                                         : 2
  8-bit 8-to-1 multiplexer                              : 2
-# Logic shifters                                       : 2
- 32-bit shifter logical left                           : 2
 # Tristates                                            : 4
  1-bit tristate buffer                                 : 4
-# Xors                                                 : 8
- 1-bit xor2                                            : 4
- 32-bit xor2                                           : 4
+# Xors                                                 : 3
+ 1-bit xor2                                            : 3
 
 =========================================================================
 
@@ -827,9 +755,9 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-Analyzing FSM <FSM_2> for best encoding.
+Analyzing FSM <FSM_3> for best encoding.
 Optimizing FSM <vga_test/instance_name/video_bus/i2c_plz/byte_controller/c_state/FSM> on signal <c_state[1:3]> with sequential encoding.
-Optimizing FSM <i2c_test/instance_name/video_bus/i2c_plz/byte_controller/c_state/FSM> on signal <c_state[1:3]> with sequential encoding.
+Optimizing FSM <main_camera/camera_i2c/video_bus/i2c_plz/byte_controller/c_state/FSM> on signal <c_state[1:3]> with sequential encoding.
 -------------------
  State | Encoding
 -------------------
@@ -840,9 +768,9 @@ Optimizing FSM <i2c_test/instance_name/video_bus/i2c_plz/byte_controller/c_state
  01000 | 101
  10000 | 100
 -------------------
-Analyzing FSM <FSM_1> for best encoding.
+Analyzing FSM <FSM_0> for best encoding.
 Optimizing FSM <vga_test/instance_name/video_bus/i2c_plz/byte_controller/bit_controller/c_state/FSM> on signal <c_state[1:5]> with sequential encoding.
-Optimizing FSM <i2c_test/instance_name/video_bus/i2c_plz/byte_controller/bit_controller/c_state/FSM> on signal <c_state[1:5]> with sequential encoding.
+Optimizing FSM <main_camera/camera_i2c/video_bus/i2c_plz/byte_controller/bit_controller/c_state/FSM> on signal <c_state[1:5]> with sequential encoding.
 --------------------------------
  State              | Encoding
 --------------------------------
@@ -865,21 +793,20 @@ Optimizing FSM <i2c_test/instance_name/video_bus/i2c_plz/byte_controller/bit_con
  001000000000000000 | 10000
  010000000000000000 | 10001
 --------------------------------
-Analyzing FSM <FSM_0> for best encoding.
-Optimizing FSM <best_hazor/physics_beta_IO/beta_spi/FSM_state> on signal <FSM_state[1:3]> with gray encoding.
-Optimizing FSM <best_hazor/laser_beta_IO/beta_spi/FSM_state> on signal <FSM_state[1:3]> with gray encoding.
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <get_image/camera_reader/FSM_state> on signal <FSM_state[1:3]> with sequential encoding.
 -------------------
  State | Encoding
 -------------------
- 0000  | 000
- 0001  | 001
- 0010  | 011
- 0011  | 010
- 0100  | 110
+ 000   | 000
+ 001   | 001
+ 010   | 010
+ 011   | 100
+ 100   | 101
+ 101   | 011
 -------------------
-Analyzing FSM <FSM_3> for best encoding.
-Optimizing FSM <vga_test/instance_name/video_bus/FSM_state> on signal <FSM_state[1:2]> with gray encoding.
-Optimizing FSM <i2c_test/instance_name/video_bus/FSM_state> on signal <FSM_state[1:2]> with gray encoding.
+Analyzing FSM <FSM_2> for best encoding.
+Optimizing FSM <get_image/FSM_state> on signal <FSM_state[1:2]> with gray encoding.
 -------------------
  State | Encoding
 -------------------
@@ -889,8 +816,19 @@ Optimizing FSM <i2c_test/instance_name/video_bus/FSM_state> on signal <FSM_state
  0011  | 10
 -------------------
 Analyzing FSM <FSM_4> for best encoding.
+Optimizing FSM <vga_test/instance_name/video_bus/FSM_state> on signal <FSM_state[1:2]> with gray encoding.
+Optimizing FSM <main_camera/camera_i2c/video_bus/FSM_state> on signal <FSM_state[1:2]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 0000  | 00
+ 0001  | 01
+ 0010  | 11
+ 0011  | 10
+-------------------
+Analyzing FSM <FSM_5> for best encoding.
 Optimizing FSM <vga_test/instance_name/FSM_state> on signal <FSM_state[1:5]> with gray encoding.
-Optimizing FSM <i2c_test/instance_name/FSM_state> on signal <FSM_state[1:5]> with gray encoding.
+Optimizing FSM <main_camera/camera_i2c/FSM_state> on signal <FSM_state[1:5]> with gray encoding.
 -------------------
  State | Encoding
 -------------------
@@ -924,9 +862,8 @@ Optimizing FSM <i2c_test/instance_name/FSM_state> on signal <FSM_state[1:5]> wit
  11011 | 10110
  11100 | 10010
 -------------------
-Analyzing FSM <FSM_5> for best encoding.
+Analyzing FSM <FSM_6> for best encoding.
 Optimizing FSM <vga_test/FSM_state> on signal <FSM_state[1:4]> with gray encoding.
-Optimizing FSM <i2c_test/FSM_state> on signal <FSM_state[1:4]> with gray encoding.
 -------------------
  State | Encoding
 -------------------
@@ -941,99 +878,32 @@ Optimizing FSM <i2c_test/FSM_state> on signal <FSM_state[1:4]> with gray encodin
  01000 | 1100
  01001 | 1101
 -------------------
+Analyzing FSM <FSM_7> for best encoding.
+Optimizing FSM <main_camera/FSM_state> on signal <FSM_state[1:3]> with gray encoding.
+-------------------
+ State | Encoding
+-------------------
+ 00000 | 000
+ 00001 | 001
+ 00010 | 011
+ 00011 | 010
+ 00100 | 110
+ 00101 | 111
+ 00110 | 101
+ 00111 | unreached
+ 01000 | unreached
+ 01001 | unreached
+ 01010 | unreached
+ 01011 | 100
+-------------------
 Loading device for application Rf_Device from file '5vlx50t.nph' in environment /afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
-Reading core <beta_shared_mem.ngc>.
-Reading core <physics_beta_mem.ngc>.
-Reading core <hardware_beta_mem.ngc>.
-Loading core <beta_shared_mem> for timing and area information for instance <shared_ram>.
-Loading core <physics_beta_mem> for timing and area information for instance <physics_beta_ram>.
-Loading core <hardware_beta_mem> for timing and area information for instance <laser_beta_ram>.
+Reading core <camera_memory.ngc>.
+Loading core <camera_memory> for timing and area information for instance <image_memory>.
 
-Synthesizing (advanced) Unit <mul32>.
-INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_mult by adding 2 register level(s).
-Unit <mul32> synthesized (advanced).
-
-Synthesizing (advanced) Unit <regfile>.
-INFO:Xst - HDL ADVISOR - LUT implementation is currently selected for the RAM <Mram_regfile_ren>. If you want the register to be removed and the RAM to be implemented as block RAM, please change the RAM implementation style accordingly.
-    -----------------------------------------------------------------------
-    | ram_type           | Distributed                         |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 32-word x 32-bit                    |          |
-    |     clkA           | connected to signal <clk>           | rise     |
-    |     weA            | connected to signal <_and0000>      | high     |
-    |     addrA          | connected to signal <wa>            |          |
-    |     diA            | connected to signal <wd>            |          |
-    -----------------------------------------------------------------------
-    | Port B                                                              |
-    |     aspect ratio   | 32-word x 32-bit                    |          |
-    |     addrB          | connected to signal <ra2>           |          |
-    |     doB            | connected to signal <rd2>           |          |
-    -----------------------------------------------------------------------
-INFO:Xst - HDL ADVISOR - LUT implementation is currently selected for the RAM <Mram_regfile>. If you want the register to be removed and the RAM to be implemented as block RAM, please change the RAM implementation style accordingly.
-    -----------------------------------------------------------------------
-    | ram_type           | Distributed                         |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 32-word x 32-bit                    |          |
-    |     clkA           | connected to signal <clk>           | rise     |
-    |     weA            | connected to signal <_and0000>      | high     |
-    |     addrA          | connected to signal <wa>            |          |
-    |     diA            | connected to signal <wd>            |          |
-    -----------------------------------------------------------------------
-    | Port B                                                              |
-    |     aspect ratio   | 32-word x 32-bit                    |          |
-    |     addrB          | connected to signal <ra1>           |          |
-    |     doB            | connected to signal <rd1>           |          |
-    -----------------------------------------------------------------------
-INFO:Xst - HDL ADVISOR - LUT implementation is currently selected for the RAM <Mram_regfile_ren_1>. If you want the register to be removed and the RAM to be implemented as block RAM, please change the RAM implementation style accordingly.
-    -----------------------------------------------------------------------
-    | ram_type           | Distributed                         |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 32-word x 32-bit                    |          |
-    |     clkA           | connected to signal <clk>           | rise     |
-    |     weA            | connected to signal <_and0000>      | high     |
-    |     addrA          | connected to signal <wa>            |          |
-    |     diA            | connected to signal <wd>            |          |
-    -----------------------------------------------------------------------
-    | Port B                                                              |
-    |     aspect ratio   | 32-word x 32-bit                    |          |
-    |     addrB          | connected to signal <ra3>           |          |
-    |     doB            | connected to signal <rd3>           |          |
-    -----------------------------------------------------------------------
-Unit <regfile> synthesized (advanced).
-WARNING:Xst:1293 - FF/Latch <status_reg_31> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_30> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_29> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_28> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_27> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_26> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_25> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_24> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_23> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_22> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_21> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_20> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_19> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_18> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_17> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_16> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_15> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_14> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_13> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_12> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_11> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_10> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_9> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_8> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_7> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_6> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_5> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_4> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_3> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_2> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_1> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
+Synthesizing (advanced) Unit <image_addr_gen>.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_addr_mult0000 by adding 2 register level(s).
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier Mmult_addr_mult0000 by adding 2 register level(s).
+Unit <image_addr_gen> synthesized (advanced).
 WARNING:Xst:1293 - FF/Latch <dout_31> has a constant value of 0 in block <wb_i2c_controller>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <dout_30> has a constant value of 0 in block <wb_i2c_controller>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <dout_29> has a constant value of 0 in block <wb_i2c_controller>. This FF/Latch will be trimmed during the optimization process.
@@ -1117,149 +987,56 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_2> (with
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_4> (without init value) has a constant value of 0 in block <vga_setup>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_5> (without init value) has a constant value of 0 in block <vga_setup>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_6> (without init value) has a constant value of 0 in block <vga_setup>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_18> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_16> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_19> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_20> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_22> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_23> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_21> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_24> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_25> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_27> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_28> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_26> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_30> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_31> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_29> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <old_read_select_2> has a constant value of 0 in block <laser_read_decode>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_31> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_30> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_29> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_28> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_27> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_26> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_25> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_24> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_23> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_22> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_21> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <write_reg_2> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_reg_3> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_reg_5> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_reg_7> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_0> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_1> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_3> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1426 - The value init of the FF/Latch device_id_1 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch device_id_7 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch device_reg_7 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch device_id_2 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch device_id_3 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch device_data_3 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch device_id_5 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch device_reg_5 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch device_data_0 hinder the constant cleaning in the block camera_i2c.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1710 - FF/Latch <pixel_b_10> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_b_9> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_b_8> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_b_2> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_b_1> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <pixel_b_0> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_data_1> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_reg_3> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_reg_2> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_6> has a constant value of 1 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_4> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_0> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <device_data_6> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <device_data_5> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <device_data_4> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <device_data_2> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <device_data_1> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <device_data_6> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <device_data_5> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <device_data_4> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <device_data_2> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <device_data_1> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_1> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_2> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_0> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_3> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_4> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_6> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_7> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_5> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_9> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_10> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_8> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_12> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_13> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_11> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_14> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_15> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_17> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_7> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_5> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_9> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_10> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_8> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_12> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_13> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_11> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_14> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_15> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_17> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_18> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_16> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_19> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_20> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_22> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_23> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_21> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_24> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_25> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_27> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_28> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_26> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_30> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_31> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_29> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <old_read_select_2> has a constant value of 0 in block <physics_read_decode>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_20> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_19> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_18> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_17> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_16> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_15> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_14> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_13> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_12> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_11> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_10> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_9> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_8> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_7> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_6> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_5> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_4> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_3> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_2> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_1> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <host_status_0> has a constant value of 0 in block <physics_shared_memory>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_1> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_2> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_0> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_3> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_4> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <dout_6> has a constant value of 0 in block <beta_spi>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <sclk> of sequential type is unconnected in block <beta_spi>.
-WARNING:Xst:2677 - Node <mosi> of sequential type is unconnected in block <beta_spi>.
-WARNING:Xst:2677 - Node <host_reg_data_0> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_1> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_2> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_3> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_4> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_5> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_6> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_7> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_8> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_9> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_10> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_11> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_12> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_13> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_14> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_15> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_16> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_17> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_18> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_19> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_20> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_21> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_22> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_23> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_24> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_25> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_26> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_27> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_28> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_29> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_30> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <host_reg_data_31> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <irq> of sequential type is unconnected in block <beta_timer1>.
+WARNING:Xst:1293 - FF/Latch <device_id_7> has a constant value of 1 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_6> has a constant value of 1 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_5> has a constant value of 1 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_4> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_3> has a constant value of 1 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_2> has a constant value of 1 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_1> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_id_0> has a constant value of 0 in block <instance_name>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <dout_0> of sequential type is unconnected in block <video_bus>.
 WARNING:Xst:2677 - Node <dout_2> of sequential type is unconnected in block <video_bus>.
 WARNING:Xst:2677 - Node <dout_3> of sequential type is unconnected in block <video_bus>.
@@ -1290,56 +1067,88 @@ WARNING:Xst:2677 - Node <wb_dat_o_4> of sequential type is unconnected in block 
 WARNING:Xst:2677 - Node <wb_dat_o_5> of sequential type is unconnected in block <i2c_plz>.
 WARNING:Xst:2677 - Node <wb_dat_o_6> of sequential type is unconnected in block <i2c_plz>.
 WARNING:Xst:2677 - Node <wb_dat_o_7> of sequential type is unconnected in block <i2c_plz>.
+WARNING:Xst:2677 - Node <done> of sequential type is unconnected in block <get_image>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 6
- 32x32-bit dual-port distributed RAM                   : 6
 # Multipliers                                          : 2
- 16x16-bit multiplier                                  : 2
-# Adders/Subtractors                                   : 10
- 31-bit adder                                          : 2
- 32-bit adder carry in                                 : 2
- 32-bit subtractor                                     : 2
- 5-bit subtractor                                      : 2
- 8-bit adder                                           : 2
-# Counters                                             : 10
- 10-bit up counter                                     : 2
+ 9x9-bit multiplier                                    : 2
+# Adders/Subtractors                                   : 4
+ 10-bit adder                                          : 2
+ 18-bit adder carry out                                : 2
+# Counters                                             : 11
+ 11-bit up counter                                     : 1
  14-bit down counter                                   : 2
  16-bit down counter                                   : 2
- 20-bit up counter                                     : 2
+ 20-bit up counter                                     : 3
  3-bit down counter                                    : 2
-# Registers                                            : 1427
- Flip-Flops                                            : 1427
-# Comparators                                          : 6
- 14-bit comparator lessequal                           : 4
- 8-bit comparator greatequal                           : 2
-# Multiplexers                                         : 18
- 1-bit 32-to-1 multiplexer                             : 2
+ 3-bit up counter                                      : 1
+# Accumulators                                         : 1
+ 11-bit up accumulator                                 : 1
+# Registers                                            : 525
+ Flip-Flops                                            : 525
+# Comparators                                          : 4
+ 10-bit comparator greatequal                          : 4
+# Multiplexers                                         : 16
  1-bit 8-to-1 multiplexer                              : 16
-# Logic shifters                                       : 2
- 32-bit shifter logical left                           : 2
-# Xors                                                 : 8
- 1-bit xor2                                            : 4
- 32-bit xor2                                           : 4
+# Xors                                                 : 3
+ 1-bit xor2                                            : 3
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_6> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_5> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_4> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <pixel_b_0> in Unit <vga_pixel_drive> is equivalent to the following 5 FFs/Latches, which will be removed : <pixel_b_1> <pixel_b_2> <pixel_b_8> <pixel_b_9> <pixel_b_10> 
+WARNING:Xst:1710 - FF/Latch <pixel_b_0> (without init value) has a constant value of 0 in block <vga_pixel_drive>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vcount_d_0> has a constant value of 0 in block <vga_drive>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <clk_div_2> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_7 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_reg_7 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_5 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_reg_5 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_3 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_data_3 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_2 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_1 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_data_0 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_2> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_3> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_4> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_5> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_6> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_7> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <i2c_test/instance_name/device_data_6> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <i2c_test/instance_name/device_data_5> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <i2c_test/instance_name/device_data_4> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <i2c_test/instance_name/device_data_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <i2c_test/instance_name/device_data_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_4> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_5> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_data_6> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_id_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_id_4> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_id_6> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_reg_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_reg_3> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_data_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_0> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_2> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_3> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_4> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_5> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_6> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_7> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_0> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_2> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_3> of sequential type is unconnected in block <hardware_interface>.
@@ -1347,204 +1156,34 @@ WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_4> of sequential 
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_5> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_6> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_7> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/dout_0> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/dout_2> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/dout_3> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/dout_4> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/dout_5> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/dout_6> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/dout_7> of sequential type is unconnected in block <hardware_interface>.
+INFO:Xst:2261 - The FF/Latch <main_camera/camera_i2c/device_data_3> in Unit <hardware_interface> is equivalent to the following 7 FFs/Latches, which will be removed : <main_camera/camera_i2c/device_data_0> <main_camera/camera_i2c/device_reg_7> <main_camera/camera_i2c/device_reg_5> <main_camera/camera_i2c/device_id_7> <main_camera/camera_i2c/device_id_5> <main_camera/camera_i2c/device_id_3> <main_camera/camera_i2c/device_id_2> 
 
 Optimizing unit <hardware_interface> ...
-WARNING:Xst:1710 - FF/Latch <i2c_test/write_reg_7> (without init value) has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <vga_test/write_reg_7> (without init value) has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vga_test/instance_name/device_reg_7> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i2c_test/instance_name/device_reg_7> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <i2c_test/write_reg_7> (without init value) has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <vga_test/write_reg_7> (without init value) has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <vga_test/instance_name/device_reg_7> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <i2c_test/instance_name/device_reg_7> has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-
-Optimizing unit <shift_right> ...
 
 Optimizing unit <vga_drive> ...
 
-Optimizing unit <beta_read_decode> ...
-
-Optimizing unit <decode> ...
-
-Optimizing unit <spi_io> ...
-
-Optimizing unit <system_timer> ...
+Optimizing unit <vga_pixel_drive> ...
 
 Optimizing unit <i2c_master_bit_ctrl> ...
 
-Optimizing unit <memory_share> ...
+Optimizing unit <camera_read> ...
 
-Optimizing unit <beta2> ...
+Optimizing unit <image_addr_gen> ...
 
-Optimizing unit <mapped_IO> ...
+Optimizing unit <camera_capture> ...
+
+Optimizing unit <shared_video_mem> ...
 
 Optimizing unit <i2c_master_byte_ctrl> ...
 
-Optimizing unit <laser_projector_full> ...
-
 Optimizing unit <i2c_master_top> ...
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_8> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_7> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_6> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_5> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_4> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_3> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_29> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_31> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_30> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_26> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_28> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_27> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_25> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_24> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_21> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_23> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_22> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_20> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_19> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_16> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_18> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_read_decode/old_read_select_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_read_decode/old_read_select_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_31> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_30> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_29> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_28> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_27> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_26> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_25> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_24> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_23> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_22> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_21> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_20> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_19> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_18> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_17> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_16> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_15> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_14> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_13> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_12> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_11> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_10> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_9> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_21> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_23> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_22> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_20> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_19> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_16> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_18> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_17> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_15> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_14> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_11> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_13> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_12> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_8> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_10> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_9> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_5> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_7> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_6> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_4> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_3> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_17> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_15> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_14> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_11> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_13> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_12> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_8> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_10> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_9> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_5> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_7> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_6> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_4> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_3> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_29> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_31> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_30> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_26> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_28> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_27> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_25> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_24> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <best_hazor/physics_beta_IO/beta_spi/mosi> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_beta_IO/beta_spi/sclk> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/laser_beta_IO/beta_timer1/irq> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_0> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_1> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_2> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_3> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_4> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_5> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_6> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_7> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_8> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_9> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_10> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_11> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_12> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_13> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_14> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_15> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_16> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_17> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_18> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_19> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_20> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_21> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_22> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_23> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_24> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_25> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_26> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_27> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_28> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_29> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_30> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_31> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/byte_controller/ack_out> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/byte_controller/bit_controller/busy> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/byte_controller/bit_controller/sta_condition> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/wb_dat_o_7> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/wb_dat_o_6> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/wb_dat_o_5> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/wb_dat_o_4> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/wb_dat_o_3> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/wb_dat_o_2> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/wb_dat_o_0> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/rxack> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/wb_inta_o> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/irq_flag> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/al> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/cr_0> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/cr_2> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/ctr_6> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/ctr_5> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/ctr_4> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/ctr_3> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/ctr_2> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <i2c_test/instance_name/video_bus/i2c_plz/ctr_0> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <get_image/vcount_0> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <get_image/hcount_0> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <get_image/done> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/i2c_plz/byte_controller/ack_out> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/i2c_plz/byte_controller/bit_controller/busy> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/i2c_plz/byte_controller/bit_controller/sta_condition> of sequential type is unconnected in block <hardware_interface>.
@@ -1567,18 +1206,32 @@ WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/i2c_plz/ctr_4> of sequ
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/i2c_plz/ctr_3> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/i2c_plz/ctr_2> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/i2c_plz/ctr_0> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_physics/npc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_physics/npc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_laser/npc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_laser/npc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_physics/pc_inc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_physics/pc_inc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_laser/pc_inc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_laser/pc_inc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/byte_controller/ack_out> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/byte_controller/bit_controller/busy> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/byte_controller/bit_controller/sta_condition> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/wb_dat_o_7> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/wb_dat_o_6> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/wb_dat_o_5> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/wb_dat_o_4> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/wb_dat_o_3> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/wb_dat_o_2> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/wb_dat_o_0> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/rxack> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/wb_inta_o> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/irq_flag> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/al> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/cr_0> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/cr_2> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/ctr_6> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/ctr_5> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/ctr_4> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/ctr_3> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/ctr_2> of sequential type is unconnected in block <hardware_interface>.
+WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/i2c_plz/ctr_0> of sequential type is unconnected in block <hardware_interface>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block hardware_interface, actual ratio is 12.
+Found area constraint ratio of 100 (+ 5) on block hardware_interface, actual ratio is 3.
 
 Final Macro Processing ...
 
@@ -1586,8 +1239,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1340
- Flip-Flops                                            : 1340
+# Registers                                            : 579
+ Flip-Flops                                            : 579
 
 =========================================================================
 
@@ -1616,43 +1269,40 @@ Design Statistics
 # IOs                              : 80
 
 Cell Usage :
-# BELS                             : 3418
-#      GND                         : 5
-#      INV                         : 138
-#      LUT1                        : 118
-#      LUT2                        : 109
-#      LUT3                        : 449
-#      LUT4                        : 265
-#      LUT5                        : 472
-#      LUT6                        : 1213
-#      MUXCY                       : 292
-#      MUXF7                       : 46
-#      VCC                         : 5
-#      XORCY                       : 306
-# FlipFlops/Latches                : 1344
-#      FD                          : 523
-#      FDE                         : 544
-#      FDR                         : 71
-#      FDRE                        : 114
-#      FDRS                        : 20
+# BELS                             : 1211
+#      GND                         : 2
+#      INV                         : 71
+#      LUT1                        : 85
+#      LUT2                        : 78
+#      LUT3                        : 111
+#      LUT4                        : 96
+#      LUT5                        : 109
+#      LUT6                        : 267
+#      MUXCY                       : 159
+#      MUXF7                       : 60
+#      VCC                         : 2
+#      XORCY                       : 171
+# FlipFlops/Latches                : 584
+#      FD                          : 144
+#      FDE                         : 141
+#      FDR                         : 76
+#      FDRE                        : 134
+#      FDRS                        : 19
 #      FDRSE                       : 6
-#      FDS                         : 14
-#      FDSE                        : 52
-# RAMS                             : 74
-#      RAM32M                      : 30
-#      RAM32X1D                    : 12
-#      RAMB18                      : 2
-#      RAMB18SDP                   : 2
-#      RAMB36_EXP                  : 28
-# Clock Buffers                    : 3
-#      BUFG                        : 2
-#      BUFGP                       : 1
-# IO Buffers                       : 48
-#      IBUF                        : 11
+#      FDS                         : 16
+#      FDSE                        : 48
+# RAMS                             : 38
+#      RAMB18                      : 4
+#      RAMB36_EXP                  : 34
+# Clock Buffers                    : 4
+#      BUFG                        : 4
+# IO Buffers                       : 62
+#      IBUF                        : 14
+#      IBUFG                       : 1
 #      IOBUF                       : 4
-#      OBUF                        : 33
-# DSPs                             : 2
-#      DSP48E                      : 2
+#      OBUF                        : 43
+# DCM_ADVs                         : 1
+#      DCM_ADV                     : 1
 =========================================================================
 
 Device utilization summary:
@@ -1662,28 +1312,26 @@ Selected Device : 5vlx50tff1136-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            1344  out of  28800     4%  
- Number of Slice LUTs:                 2908  out of  28800    10%  
-    Number used as Logic:              2764  out of  28800     9%  
-    Number used as Memory:              144  out of   7680     1%  
-       Number used as RAM:              144
+ Number of Slice Registers:             584  out of  28800     2%  
+ Number of Slice LUTs:                  817  out of  28800     2%  
+    Number used as Logic:               817  out of  28800     2%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   3378
-   Number with an unused Flip Flop:    2034  out of   3378    60%  
-   Number with an unused LUT:           470  out of   3378    13%  
-   Number of fully used LUT-FF pairs:   874  out of   3378    25%  
-   Number of unique control sets:       106
+ Number of LUT Flip Flop pairs used:    981
+   Number with an unused Flip Flop:     397  out of    981    40%  
+   Number with an unused LUT:           164  out of    981    16%  
+   Number of fully used LUT-FF pairs:   420  out of    981    42%  
+   Number of unique control sets:        91
 
 IO Utilization: 
  Number of IOs:                          80
- Number of bonded IOBs:                  49  out of    480    10%  
+ Number of bonded IOBs:                  62  out of    480    12%  
 
 Specific Feature Utilization:
- Number of Block RAM/FIFO:               30  out of     60    50%  
-    Number using Block RAM only:         30
- Number of BUFG/BUFGCTRLs:                3  out of     32     9%  
- Number of DSP48Es:                       2  out of     48     4%  
+ Number of Block RAM/FIFO:               36  out of     60    60%  
+    Number using Block RAM only:         36
+ Number of BUFG/BUFGCTRLs:                4  out of     32    12%  
+ Number of DCM_ADVs:                      1  out of     12     8%  
 
 ---------------------------
 Partition Resource Summary:
@@ -1703,33 +1351,62 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-Clock Signal                           | Clock buffer(FF name)                                                                                                 | Load  |
----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-clk_501                                | BUFG                                                                                                                  | 1392  |
-clk_251                                | BUFG                                                                                                                  | 25    |
-best_hazor/laser_beta_ram/BU2/dbiterr  | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 15    |
-best_hazor/physics_beta_ram/BU2/dbiterr| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 15    |
-USER_CLK                               | BUFGP                                                                                                                 | 1     |
----------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                                        | Clock buffer(FF name)                                                                                                    | Load  |
+----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-------+
+HDR1_48                                             | IBUF+BUFG                                                                                                                | 84    |
+USER_CLK                                            | clk_50_gen/DCM_ADV_INST:CLKDV                                                                                            | 495   |
+stored_image/memory_clk1(stored_image/memory_clk1:O)| BUFG(*)(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A/sel_pipe_0)                            | 43    |
+stored_image/image_memory/BU2/dbiterr               | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T)| 38    |
+----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-------+
+(*) This 1 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-Control Signal                                                                    | Buffer(FF name)                                                                                                       | Load  |
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 112   |
-best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                                                                                                                                                                                  | Buffer(FF name)                                                                                                           | Load  |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+
+stored_image/image_memory/BU2/dbiterr(stored_image/image_memory/BU2/XST_GND:G)                                                                                                                                                                  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[28].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)     | 216   |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/cascadelata_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/cascadelatb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/cascaderega_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/cascaderegb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/cascadelata_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)| NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/cascadelatb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)| NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/cascaderega_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)| NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/cascaderegb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)| NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T)| 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/cascadelata_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/cascadelatb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/cascaderega_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/cascaderegb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/cascadelata_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/cascadelatb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/cascaderega_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/cascaderegb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/cascadelata_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/cascadelatb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/cascaderega_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/cascaderegb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/cascadelata_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/cascadelatb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/cascaderega_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/cascaderegb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/cascadelata_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/cascadelatb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTLATB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/cascaderega_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGA)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/cascaderegb_tmp(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_B:CASCADEOUTREGB)  | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T) | 2     |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 7.235ns (Maximum Frequency: 138.218MHz)
-   Minimum input arrival time before clock: 7.774ns
-   Maximum output required time after clock: 3.325ns
+   Minimum period: 2.845ns (Maximum Frequency: 351.444MHz)
+   Minimum input arrival time before clock: 3.033ns
+   Maximum output required time after clock: 3.329ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -1737,158 +1414,150 @@ Timing Detail:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'clk_501'
-  Clock period: 7.235ns (frequency: 138.218MHz)
-  Total number of paths / destination ports: 46361047 / 4061
+Timing constraint: Default period analysis for Clock 'HDR1_48'
+  Clock period: 2.845ns (frequency: 351.444MHz)
+  Total number of paths / destination ports: 694 / 98
 -------------------------------------------------------------------------
-Delay:               7.235ns (Levels of Logic = 7)
-  Source:            best_hazor/physics_beta_IO/beta_timer1/irq (FF)
-  Destination:       best_hazor/cpu_physics/rf/Mram_regfile_ren_11 (RAM)
-  Source Clock:      clk_501 rising
-  Destination Clock: clk_501 rising
+Delay:               2.845ns (Levels of Logic = 4)
+  Source:            get_image/camera_reader/vcount_9 (FF)
+  Destination:       get_image/camera_reader/hcount_5 (FF)
+  Source Clock:      HDR1_48 rising
+  Destination Clock: HDR1_48 rising
 
-  Data Path: best_hazor/physics_beta_IO/beta_timer1/irq to best_hazor/cpu_physics/rf/Mram_regfile_ren_11
+  Data Path: get_image/camera_reader/vcount_9 to get_image/camera_reader/hcount_5
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              5   0.396   0.627  best_hazor/physics_beta_IO/beta_timer1/irq (best_hazor/physics_beta_IO/beta_timer1/irq)
-     LUT5:I1->O           22   0.086   0.440  best_hazor/cpu_physics/ctl/asel_and00001 (best_hazor/cpu_physics/interrupt)
-     LUT5:I4->O           83   0.086   0.532  best_hazor/cpu_physics/ctl/csel1 (best_hazor/cpu_physics/asel)
-     LUT5:I3->O           90   0.086   0.332  best_hazor/cpu_physics/b<3>1 (best_hazor/cpu_physics/b<3>)
-     DSP48E:B3->P0         1   2.645   0.361  best_hazor/cpu_physics/mpy/Mmult_mult (best_hazor/cpu_physics/mult<0>)
-     LUT6:I5->O            1   0.086   0.768  best_hazor/cpu_physics/wd<0>690 (best_hazor/cpu_physics/wd<0>690)
-     LUT5:I0->O            1   0.086   0.000  best_hazor/cpu_physics/wd<0>763_F (N1412)
-     MUXF7:I0->O           3   0.213   0.243  best_hazor/cpu_physics/wd<0>763 (best_hazor/cpu_physics/wd<0>)
-     RAM32M:DIA0               0.248          best_hazor/cpu_physics/rf/Mram_regfile_ren_11
+     FD:C->Q               4   0.396   0.779  get_image/camera_reader/vcount_9 (get_image/camera_reader/vcount_9)
+     LUT5:I0->O            2   0.086   0.365  get_image/camera_reader/FSM_state_cmp_eq0000_SW0 (N215)
+     LUT6:I5->O           18   0.086   0.833  get_image/camera_reader/FSM_state_cmp_eq0000 (get_image/camera_reader/FSM_state_cmp_eq0000)
+     LUT5:I0->O            1   0.086   0.000  get_image/camera_reader/hcount_mux0000<4>_G (N349)
+     MUXF7:I1->O           1   0.214   0.000  get_image/camera_reader/hcount_mux0000<4> (get_image/camera_reader/hcount_mux0000<4>)
+     FD:D                     -0.022          get_image/camera_reader/hcount_5
     ----------------------------------------
-    Total                      7.235ns (3.932ns logic, 3.303ns route)
-                                       (54.3% logic, 45.7% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'clk_251'
-  Clock period: 4.993ns (frequency: 200.272MHz)
-  Total number of paths / destination ports: 676 / 58
--------------------------------------------------------------------------
-Delay:               4.993ns (Levels of Logic = 5)
-  Source:            vga_gen/hcount_3 (FF)
-  Destination:       vga_gen/blank (FF)
-  Source Clock:      clk_251 rising
-  Destination Clock: clk_251 rising
-
-  Data Path: vga_gen/hcount_3 to vga_gen/blank
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDR:C->Q              2   0.396   0.772  vga_gen/hcount_3 (vga_gen/hcount_3)
-     LUT5:I0->O            4   0.086   0.779  vga_gen/hblankon11 (vga_gen/N0)
-     LUT6:I1->O           22   0.086   0.929  vga_gen/hreset1 (vga_gen/hreset)
-     LUT6:I0->O            3   0.086   0.369  vga_gen/vblankon11 (vga_gen/N11)
-     LUT3:I2->O            1   0.086   0.611  vga_gen/next_vblank_SW0 (N174)
-     LUT6:I2->O            2   0.086   0.239  vga_gen/next_vblank (vga_gen/next_vblank)
-     FDS:S                     0.468          vga_gen/blank
-    ----------------------------------------
-    Total                      4.993ns (1.294ns logic, 3.699ns route)
-                                       (25.9% logic, 74.1% route)
+    Total                      2.845ns (0.868ns logic, 1.977ns route)
+                                       (30.5% logic, 69.5% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'USER_CLK'
-  Clock period: 1.099ns (frequency: 909.753MHz)
-  Total number of paths / destination ports: 1 / 1
+  Clock period: 1.968ns (frequency: 508.195MHz)
+  Total number of paths / destination ports: 7459 / 1082
 -------------------------------------------------------------------------
-Delay:               1.099ns (Levels of Logic = 0)
-  Source:            clk_50 (FF)
-  Destination:       clk_50 (FF)
-  Source Clock:      USER_CLK rising
-  Destination Clock: USER_CLK rising
+Delay:               3.935ns (Levels of Logic = 5)
+  Source:            vga_gen/hcount_d_4 (FF)
+  Destination:       vga_gen/vsync (FF)
+  Source Clock:      USER_CLK rising 0.5X
+  Destination Clock: USER_CLK rising 0.5X
 
-  Data Path: clk_50 to clk_50
+  Data Path: vga_gen/hcount_d_4 to vga_gen/vsync
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              1   0.396   0.235  clk_50 (clk_501)
-     FDR:R                     0.468          clk_50
+     FDR:C->Q              3   0.396   0.858  vga_gen/hcount_d_4 (vga_gen/hcount_d_4)
+     LUT6:I0->O            4   0.086   0.372  vga_gen/blank_or0000211 (vga_gen/N5)
+     LUT6:I5->O           24   0.086   0.447  vga_gen/hreset1 (vga_gen/hreset)
+     LUT5:I4->O            2   0.086   0.365  vga_gen/vsyncoff111 (vga_gen/N51)
+     LUT6:I5->O            2   0.086   0.365  vga_gen/vsyncoff11 (vga_gen/N6)
+     LUT2:I1->O            1   0.086   0.235  vga_gen/vsyncon1 (vga_gen/vsyncon)
+     FDRE:R                    0.468          vga_gen/vsync
     ----------------------------------------
-    Total                      1.099ns (0.864ns logic, 0.235ns route)
-                                       (78.6% logic, 21.4% route)
+    Total                      3.935ns (1.294ns logic, 2.641ns route)
+                                       (32.9% logic, 67.1% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_501'
-  Total number of paths / destination ports: 1630234 / 2114
+Timing constraint: Default OFFSET IN BEFORE for Clock 'USER_CLK'
+  Total number of paths / destination ports: 75 / 75
 -------------------------------------------------------------------------
-Offset:              7.774ns (Levels of Logic = 8)
-  Source:            GPIO_SW_C (PAD)
-  Destination:       best_hazor/cpu_physics/rf/Mram_regfile_ren_11 (RAM)
-  Destination Clock: clk_501 rising
+Offset:              2.006ns (Levels of Logic = 2)
+  Source:            GPIO_SW_E (PAD)
+  Destination:       db_2/count_0 (FF)
+  Destination Clock: USER_CLK rising 0.5X
 
-  Data Path: GPIO_SW_C to best_hazor/cpu_physics/rf/Mram_regfile_ren_11
+  Data Path: GPIO_SW_E to db_2/count_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           114   0.694   0.868  GPIO_SW_C_IBUF (GPIO_SW_C_IBUF)
-     LUT5:I0->O           22   0.086   0.440  best_hazor/cpu_physics/ctl/asel_and00001 (best_hazor/cpu_physics/interrupt)
-     LUT5:I4->O           83   0.086   0.532  best_hazor/cpu_physics/ctl/csel1 (best_hazor/cpu_physics/asel)
-     LUT5:I3->O           90   0.086   0.332  best_hazor/cpu_physics/b<3>1 (best_hazor/cpu_physics/b<3>)
-     DSP48E:B3->P0         1   2.645   0.361  best_hazor/cpu_physics/mpy/Mmult_mult (best_hazor/cpu_physics/mult<0>)
-     LUT6:I5->O            1   0.086   0.768  best_hazor/cpu_physics/wd<0>690 (best_hazor/cpu_physics/wd<0>690)
-     LUT5:I0->O            1   0.086   0.000  best_hazor/cpu_physics/wd<0>763_F (N1412)
-     MUXF7:I0->O           3   0.213   0.243  best_hazor/cpu_physics/wd<0>763 (best_hazor/cpu_physics/wd<0>)
-     RAM32M:DIA0               0.248          best_hazor/cpu_physics/rf/Mram_regfile_ren_11
+     IBUF:I->O             4   0.694   0.447  GPIO_SW_E_IBUF (GPIO_SW_E_IBUF)
+     LUT3:I1->O           21   0.086   0.311  db_2/count_or00001 (db_2/count_or0000)
+     FDRE:R                    0.468          db_2/count_0
     ----------------------------------------
-    Total                      7.774ns (4.230ns logic, 3.544ns route)
-                                       (54.4% logic, 45.6% route)
+    Total                      2.006ns (1.248ns logic, 0.758ns route)
+                                       (62.2% logic, 37.8% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_501'
-  Total number of paths / destination ports: 14 / 14
+Timing constraint: Default OFFSET IN BEFORE for Clock 'HDR1_48'
+  Total number of paths / destination ports: 41 / 31
 -------------------------------------------------------------------------
-Offset:              3.325ns (Levels of Logic = 2)
+Offset:              3.033ns (Levels of Logic = 5)
+  Source:            HDR1_44 (PAD)
+  Destination:       get_image/camera_reader/vcount_9 (FF)
+  Destination Clock: HDR1_48 rising
+
+  Data Path: HDR1_44 to get_image/camera_reader/vcount_9
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            11   0.694   0.889  HDR1_44_IBUF (HDR1_44_IBUF)
+     LUT6:I0->O            6   0.086   0.380  get_image/camera_reader/vcount_mux0000<0>21 (get_image/camera_reader/N15)
+     LUT4:I3->O            2   0.086   0.365  get_image/camera_reader/vcount_mux0000<0>31 (get_image/camera_reader/N211)
+     LUT6:I5->O            1   0.086   0.361  get_image/camera_reader/vcount_mux0000<0>_SW1 (N220)
+     LUT5:I4->O            1   0.086   0.000  get_image/camera_reader/vcount_mux0000<0> (get_image/camera_reader/vcount_mux0000<0>)
+     FD:D                     -0.022          get_image/camera_reader/vcount_9
+    ----------------------------------------
+    Total                      3.033ns (1.038ns logic, 1.995ns route)
+                                       (34.2% logic, 65.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'USER_CLK'
+  Total number of paths / destination ports: 22 / 22
+-------------------------------------------------------------------------
+Offset:              3.329ns (Levels of Logic = 2)
   Source:            db_1/clean (FF)
-  Destination:       DVI_RESET_B (PAD)
-  Source Clock:      clk_501 rising
+  Destination:       HDR1_42 (PAD)
+  Source Clock:      USER_CLK rising 0.5X
 
-  Data Path: db_1/clean to DVI_RESET_B
+  Data Path: db_1/clean to HDR1_42
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q            134   0.396   0.338  db_1/clean (db_1/clean)
-     INV:I->O              1   0.212   0.235  DVI_RESET_B1_INV_0 (DVI_RESET_B_OBUF)
-     OBUF:I->O                 2.144          DVI_RESET_B_OBUF (DVI_RESET_B)
+     FDE:C->Q            137   0.396   0.338  db_1/clean (db_1/clean)
+     INV:I->O              2   0.212   0.239  HDR1_421_INV_0 (HDR1_42_OBUF)
+     OBUF:I->O                 2.144          HDR1_42_OBUF (HDR1_42)
     ----------------------------------------
-    Total                      3.325ns (2.752ns logic, 0.573ns route)
-                                       (82.8% logic, 17.2% route)
+    Total                      3.329ns (2.752ns logic, 0.577ns route)
+                                       (82.7% logic, 17.3% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_251'
-  Total number of paths / destination ports: 3 / 3
+Timing constraint: Default OFFSET OUT AFTER for Clock 'HDR1_48'
+  Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
-Offset:              3.222ns (Levels of Logic = 2)
-  Source:            vga_gen/hsync (FF)
-  Destination:       DVI_H (PAD)
-  Source Clock:      clk_251 rising
+Offset:              2.779ns (Levels of Logic = 1)
+  Source:            get_image/mem_din_5 (FF)
+  Destination:       HDR1_20 (PAD)
+  Source Clock:      HDR1_48 rising
 
-  Data Path: vga_gen/hsync to DVI_H
+  Data Path: get_image/mem_din_5 to HDR1_20
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             1   0.396   0.235  vga_gen/hsync (vga_gen/hsync)
-     INV:I->O              1   0.212   0.235  DVI_H1_INV_0 (DVI_H_OBUF)
-     OBUF:I->O                 2.144          DVI_H_OBUF (DVI_H)
+     FDE:C->Q              2   0.396   0.239  get_image/mem_din_5 (get_image/mem_din_5)
+     OBUF:I->O                 2.144          HDR1_20_OBUF (HDR1_20)
     ----------------------------------------
-    Total                      3.222ns (2.752ns logic, 0.470ns route)
-                                       (85.4% logic, 14.6% route)
+    Total                      2.779ns (2.540ns logic, 0.239ns route)
+                                       (91.4% logic, 8.6% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 121.00 secs
-Total CPU time to Xst completion: 121.09 secs
+Total REAL time to Xst completion: 31.00 secs
+Total CPU time to Xst completion: 29.19 secs
  
 --> 
 
 
-Total memory usage is 702280 kilobytes
+Total memory usage is 606000 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  591 (   0 filtered)
-Number of infos    :    8 (   0 filtered)
+Number of warnings :  310 (   0 filtered)
+Number of infos    :   11 (   0 filtered)
 
