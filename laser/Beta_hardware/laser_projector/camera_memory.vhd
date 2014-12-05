@@ -44,9 +44,11 @@ ENTITY camera_memory IS
 	port (
 	clka: IN std_logic;
 	dina: IN std_logic_VECTOR(15 downto 0);
-	addra: IN std_logic_VECTOR(16 downto 0);
+	addra: IN std_logic_VECTOR(15 downto 0);
 	wea: IN std_logic_VECTOR(0 downto 0);
-	douta: OUT std_logic_VECTOR(15 downto 0));
+	clkb: IN std_logic;
+	addrb: IN std_logic_VECTOR(15 downto 0);
+	doutb: OUT std_logic_VECTOR(15 downto 0));
 END camera_memory;
 
 ARCHITECTURE camera_memory_a OF camera_memory IS
@@ -55,9 +57,11 @@ component wrapped_camera_memory
 	port (
 	clka: IN std_logic;
 	dina: IN std_logic_VECTOR(15 downto 0);
-	addra: IN std_logic_VECTOR(16 downto 0);
+	addra: IN std_logic_VECTOR(15 downto 0);
 	wea: IN std_logic_VECTOR(0 downto 0);
-	douta: OUT std_logic_VECTOR(15 downto 0));
+	clkb: IN std_logic;
+	addrb: IN std_logic_VECTOR(15 downto 0);
+	doutb: OUT std_logic_VECTOR(15 downto 0));
 end component;
 
 -- Configuration specification 
@@ -65,14 +69,14 @@ end component;
 		generic map(
 			c_has_regceb => 0,
 			c_has_regcea => 0,
-			c_mem_type => 0,
+			c_mem_type => 1,
 			c_prim_type => 1,
 			c_sinita_val => "0",
 			c_read_width_b => 16,
 			c_family => "virtex5",
 			c_read_width_a => 16,
 			c_disable_warn_bhv_coll => 0,
-			c_write_mode_b => "WRITE_FIRST",
+			c_write_mode_b => "READ_FIRST",
 			c_init_file_name => "no_coe_file_loaded",
 			c_write_mode_a => "READ_FIRST",
 			c_mux_pipeline_stages => 0,
@@ -80,22 +84,22 @@ end component;
 			c_load_init_file => 0,
 			c_xdevicefamily => "virtex5",
 			c_has_mem_output_regs_a => 0,
-			c_write_depth_b => 76800,
-			c_write_depth_a => 76800,
+			c_write_depth_b => 65536,
+			c_write_depth_a => 65536,
 			c_has_ssrb => 0,
 			c_has_mux_output_regs_b => 0,
 			c_has_ssra => 0,
 			c_has_mux_output_regs_a => 0,
-			c_addra_width => 17,
-			c_addrb_width => 17,
-			c_default_data => "7C00",
+			c_addra_width => 16,
+			c_addrb_width => 16,
+			c_default_data => "FFFF",
 			c_use_ecc => 0,
 			c_algorithm => 1,
 			c_disable_warn_bhv_range => 0,
 			c_write_width_b => 16,
 			c_write_width_a => 16,
-			c_read_depth_b => 76800,
-			c_read_depth_a => 76800,
+			c_read_depth_b => 65536,
+			c_read_depth_a => 65536,
 			c_byte_size => 9,
 			c_sim_collision_check => "ALL",
 			c_use_ramb16bwer_rst_bhv => 0,
@@ -117,7 +121,9 @@ U0 : wrapped_camera_memory
 			dina => dina,
 			addra => addra,
 			wea => wea,
-			douta => douta);
+			clkb => clkb,
+			addrb => addrb,
+			doutb => doutb);
 -- synthesis translate_on
 
 END camera_memory_a;

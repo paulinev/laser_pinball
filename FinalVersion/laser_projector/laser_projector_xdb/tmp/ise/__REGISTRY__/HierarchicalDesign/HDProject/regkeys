@@ -1,0 +1,24 @@
+CommandLine-Map
+
+s
+CommandLine-Ngdbuild
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/ngdbuild -ise /home/wbraun/laser_pinball/FinalVersion/laser_projector/laser_projector.ise -intstyle ise -dd _ngo -aul -nt timestamp -i -p xc5vlx50t-ff1136-3 hardware_interface.ngc hardware_interface.ngd
+s
+CommandLine-Par
+
+s
+CommandLine-Xst
+
+s
+Previous-NGD
+hardware_interface_prev_built.ngd
+s
+Previous-NGM
+
+s
+Previous-Packed-NCD
+
+s
+Previous-Routed-NCD
+
+s

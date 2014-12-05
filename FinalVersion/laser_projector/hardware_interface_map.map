@@ -1,0 +1,140 @@
+Release 10.1.03 Map K.39 (lin64)
+Xilinx Map Application Log File for Design 'hardware_interface'
+
+Design Information
+------------------
+Command Line   : map -ise
+/home/wbraun/laser_pinball/FinalVersion/laser_projector/laser_projector.ise
+-intstyle ise -p xc5vlx50t-ff1136-3 -w -logic_opt off -ol high -t 1 -cm area -pr
+off -k 6 -lc off -power off -o hardware_interface_map.ncd hardware_interface.ngd
+hardware_interface.pcf 
+Target Device  : xc5vlx50t
+Target Package : ff1136
+Target Speed   : -3
+Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
+Mapped Date    : Fri Dec  5 15:56:53 2014
+
+Mapping design into LUTs...
+Running directed packing...
+Running delay-based LUT packing...
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+Running timing-driven packing...
+
+Phase 1.1
+Phase 1.1 (Checksum:1428aec) REAL time: 8 secs 
+
+Phase 2.7
+Phase 2.7 (Checksum:1428aec) REAL time: 8 secs 
+
+Phase 3.31
+Phase 3.31 (Checksum:1428aec) REAL time: 8 secs 
+
+Phase 4.33
+Phase 4.33 (Checksum:1428aec) REAL time: 8 secs 
+
+Phase 5.32
+Phase 5.32 (Checksum:1428aec) REAL time: 8 secs 
+
+Phase 6.2
+
+
+Phase 6.2 (Checksum:1469070) REAL time: 8 secs 
+
+Phase 7.30
+Phase 7.30 (Checksum:1469070) REAL time: 8 secs 
+
+Phase 8.3
+Phase 8.3 (Checksum:1469070) REAL time: 8 secs 
+
+Phase 9.5
+Phase 9.5 (Checksum:1469070) REAL time: 8 secs 
+
+Phase 10.8
+........................................
+..............
+.........
+....
+.......................
+................
+.....................................
+Phase 10.8 (Checksum:1059308e) REAL time: 22 secs 
+
+Phase 11.29
+Phase 11.29 (Checksum:1059308e) REAL time: 22 secs 
+
+Phase 12.5
+Phase 12.5 (Checksum:1059308e) REAL time: 22 secs 
+
+Phase 13.18
+Phase 13.18 (Checksum:1096d81e) REAL time: 1 mins 2 secs 
+
+Phase 14.5
+Phase 14.5 (Checksum:1096d81e) REAL time: 1 mins 2 secs 
+
+Phase 15.34
+Phase 15.34 (Checksum:1096d81e) REAL time: 1 mins 2 secs 
+
+REAL time consumed by placer: 1 mins 2 secs 
+CPU  time consumed by placer: 1 mins 2 secs 
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:   38
+Slice Logic Utilization:
+  Number of Slice Registers:                   959 out of  28,800    3%
+    Number used as Flip Flops:                 959
+  Number of Slice LUTs:                      2,424 out of  28,800    8%
+    Number used as logic:                    2,281 out of  28,800    7%
+      Number using O6 output only:           2,106
+      Number using O5 output only:             110
+      Number using O5 and O6:                   65
+    Number used as Memory:                     136 out of   7,680    1%
+      Number used as Dual Port RAM:            136
+        Number using O6 output only:             8
+        Number using O5 and O6:                128
+    Number used as exclusive route-thru:         7
+  Number of route-thrus:                       117 out of  57,600    1%
+    Number using O6 output only:               115
+    Number using O5 and O6:                      2
+
+Slice Logic Distribution:
+  Number of occupied Slices:                   941 out of   7,200   13%
+  Number of LUT Flip Flop pairs used:        2,629
+    Number with an unused Flip Flop:         1,670 out of   2,629   63%
+    Number with an unused LUT:                 205 out of   2,629    7%
+    Number of fully used LUT-FF pairs:         754 out of   2,629   28%
+    Number of unique control sets:              34
+    Number of slice register sites lost
+      to control set restrictions:              53 out of  28,800    1%
+
+  A LUT Flip Flop pair for this architecture represents one LUT paired with
+  one Flip Flop within a slice.  A control set is a unique combination of
+  clock, reset, set, and enable signals for a registered element.
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+
+IO Utilization:
+  Number of bonded IOBs:                        82 out of     480   17%
+
+Specific Feature Utilization:
+  Number of BlockRAM/FIFO:                      30 out of      60   50%
+    Number using BlockRAM only:                 30
+    Total primitives used:
+      Number of 36k BlockRAM used:              28
+      Number of 18k BlockRAM used:               4
+    Total Memory used (KB):                  1,080 out of   2,160   50%
+  Number of BUFG/BUFGCTRLs:                      4 out of      32   12%
+    Number used as BUFGs:                        4
+  Number of DCM_ADVs:                            2 out of      12   16%
+  Number of DSP48Es:                             2 out of      48    4%
+
+Peak Memory Usage:  807 MB
+Total REAL time to MAP completion:  1 mins 13 secs 
+Total CPU time to MAP completion:   1 mins 12 secs 
+
+Mapping completed.
+See MAP report file "hardware_interface_map.mrp" for details.
