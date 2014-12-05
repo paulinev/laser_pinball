@@ -9,7 +9,7 @@ Any subfields are byte spaced
 0004: input port B
 0008: output port A
 000C: output port B
-0010: SPI Config {res,res,clk_div,data_width}
+0010: SPI Config {res,res,clk_div*2,data_width}
 0014: spi_start/status, reads 1 if done, write 1 to start spi
 0018: SPI TX data
 001C: SPI RX data, read only
@@ -34,6 +34,14 @@ this block is used to transfer data to another source.
 There are 256 words of write only memory 
 There is a single status register that can be written and read by the beta, and read by another source
 There is a single status register that can be written by external source and read by the beta
+
+
+External Connections:
+Laser Beta output port A: {dac_csn,dac_latchn, laser_rgb[2:0]}
+
+Both Beta's: Input port A: lower 8 bits connect to DIP switch
+
+Both beta's output port B: LED[7:0]
 
 
 

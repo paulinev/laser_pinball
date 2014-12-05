@@ -47,14 +47,14 @@ go_to_point:
 	
 	CMOVE(0x01, r5)
 	
-	ADDC(r3, 0b01000, r4) 
-	CMOVE(0b0011, r3) 
+	ADDC(r3, 0b01000, r4) || CS , latch, and RGB data
+	CMOVE(0b0011, r3) || Configuration bits, DACA
 	SHLC(r3, 12, r3)
-	ADD(r3, r0, r3) 
+	ADD(r3, r0, r3) || TX data to SPI, DACA
 
-	CMOVE(0b1011, r2) 
+	CMOVE(0b1011, r2) || Configuration bits, DACB
 	SHLC(r2, 12, r2) 
-	ADD(r2, r1, r2) 
+	ADD(r2, r1, r2) || TX data to SPI, DACB
 	
 	ST(r4, 0x8, r6)
 	ST(r3, 0x18, r6) 
