@@ -1,18 +1,22 @@
-.include "beta.uasm"
+.include beta.uasm
 
-; REGISTER MAP
-;r0: x location
-;r1: y location
-;r2: current sprite ID (location of sprite table in memory if left-shifted by 3)
-;r3: rgb value for laser
-;r4: current offset into sprite lookup table
-;r5: counter
-;r6: length of sprite
+| REGISTER MAP
+|	r0: x location
+|	r1: y location
+|	r2: current sprite ID
+|	r3: rgb value for laser
+|	r4: current offset into shared memory
+|	r5: counter
+|	r6: length of sprite
+|	r7: scratch
+|	r8: scratch
+|	r9: current location in local sprite lookup table
+|	r10 and above: scratch
 
-;MAKE SURE TO PUSH/POP THESE REGISTERS WHEN NECESSARY
 
+. = 0 				| start at memory location 0
 
-. = 0 ; start at memory location 0
+| Define parameters
 
 SPRITE_ID_IN = 0
 RGB_IN = 8
@@ -23,62 +27,69 @@ SPRITE_OFFSET = 4
 RGB_OFFSET = 4
 X_OFFSET = 4
 Y_OFFSET = 4
-NEXT_SPRITE_OFFSET = 0x40
+NEXT_SPRITE_OFFSET = 0x04
 
-; Output port A (0008): {ADC_CSN, ADC_latch_n, R, G, B}
-;Draw a shape:
-;Set timer to new_point interval
-;When the timer overflows, update the outgoing data in SPI to the location of the first point
-;Reset the timer to 0x9c4 (20kHz with a 50MHz clock)
-;Draw the next point
+| Output port A (0008): {ADC_CSN, ADC_latch_n, R, G, B}
 
-;When all points in the shape are drawn, draw the next shape
+| Initialize timer
+CMOVE(1, r7) 			| store timer address in r7
+SHLC(r7, 16, r7)
+CMOVE(0x9c4, r8) 		| load for 20kHz interrupt
+ST(r8, 0x0024, r7)
 
-;When all shapes in the frame are drawn, get the next frame
+| Initialize sprite location in shared memory
+CMOVE(2, r4)
+SHLC(r4, 16, r4)
 
-
-; Draws every sprite in a frame
+| Draws every sprite in a frame
 draw_frame:
-	; Load sprite IDs until you find a null-terminated one; draw every 20khz
-	CMOVE(2, r4)
-	SHLC(r4, 16, r4)
-	LD(r4, SPRITE_ID_IN, r2) ; add the sprite offset and load
-	BEQ(r2, done) ; if sprite ID is null then we're done, otherwise continue loading
-	LD(r4, RGB_IN, r3)
-	LD(r4, X_LOC_IN, r0)
-	LD(r4, Y_LOC_IN, r1)
+	| Load sprite IDs until you find a null-terminated one| draw every 20khz
+	LD(r4, 0, r7) 		| load new sprite data into r7
+	SHRC(r7, 27, r2) 	| get just the sprite ID
+	BEQ(r2, frame_done) 	| if sprite ID is null then we're done, otherwise continue loading
+	
+	SUBC(r8, 1, r8) 	| store 0xFFFFFFFF in r8
+	SHRC(r8, 8, r8) 	| 0x00FFFFFF in r8
+	AND(r7, r8, r0) 	| mask off the sprite ID and RGB data
+	SHRC(r0, 12, r0) 	| store only x data in r0
+	SHRC(r8, 12, r8) 	| 0x00000FFF in r8
+	AND(r7, r8, r1) 	| store only y data in r1
+	SHRC(r7, 24, r3) 	| mask off x and y data
+	ANDC(r3, 0x1F, r3) 	| rgb data in r3
+	
 	
 	CALL(draw_sprite)
 	
-	; get next sprite location?
-	ADDC(r0, NEXT_SPRITE_OFFSET, r0)
-	ADDC(r1, NEXT_SPRITE_OFFSET, r1)
-	ADDC(r2, NEXT_SPRITE_OFFSET, r2)
-	ADDC(r3, NEXT_SPRITE_OFFSET, r3)
+	| get next sprite location
+	ADDC(r4, NEXT_SPRITE_OFFSET, r4)
 	
 	JMP(draw_frame)
 	
-done:
-	; frame finished: raise status flag, get the next one once "writing" flag is off
-	
+frame_done:
+	| frame finished: raise status flag, get the next one once "writing" flag is off
+	ADD(r31, r31, r4) 	| clear frame offset
+
+
+|| Start the timer, wait for it to finish, and clear the flag (currently not resetting every time--might have to, copy code from initialization at top)
 set_timer:
-	CMOVE(0x9c4, r8)
-	ST(r8, 0x0024, r6)
 	CMOVE(0x01, r8)
-	ST(r8, 0x0028, r6)
+	CMOVE(0x01, r7)
+	SHLC(r7, 16, r7)
+	ST(r8, 0x0028, r7) 	| start timer
 wait_timer:
-	LD(r6, 0x0028, r8)
-	BNE(r8, wait_timer)
-	CMOVE(0x01, r8)
-	ST(r8, 0x0028, r6)
+	LD(r7, 0x0028, r8)
+	BNE(r8, wait_timer) 	| flag should be set when timer is done
+	CMOVE(0x01, r8) 	| clear flag
+	ST(r8, 0x0028, r7)
 	RTN()
 
+
+|| Draw a single sprite
 draw_sprite:
-	PUSH(r2)
-	; Get length of sprite from lookup table, store in r6
-	SHL(r2, 3, r2)
-	LD(r2, 4, r6)
-	; Starting from first memory location:
+	| Get length of sprite from lookup table, store in r6
+	SHL(r2, 3, r9) 		| translate sprite ID into lookup table location
+	LD(r9, 0, r6) 		| first entry in lookup table is sprite length
+| Starting from first memory location:
 draw_loop:
 	CALL(get_next_point)
 	CALL(go_to_point)
@@ -86,88 +97,76 @@ draw_loop:
 	
 	SUBC(r6, 0x01, r6)
 	BNE(r6, draw_loop)
-	POP(r2)
 	RTN()
 
-; Go to a single point by writing its location over SPI
-; r4: output port A
+|| Go to a single point by writing its location over SPI
 go_to_point:
-	PUSH(r2) ; don't corrupt current sprite ID
-	PUSH(r3) ; don't corrupt RGB value
-	PUSH(r4)
-	PUSH(r5)
-	PUSH(r6)
+		
+	CMOVE(0x02, r8) 	| put SPI address in r8
+	SHLC(r8, 16, r8)
 	
-	CMOVE(0x01, r5) ; r5 contains 1 because I don't have constants
+	ORC(r3, 0b01000, r7) 	| Store CS & RGB data in r7
+	CMOVE(0b0011, r10) 	| Store config data (1) in r10
+	SHL(r10, 12, r10) 	| Shift left to bit 15
+	ADD(r10, r0, r10) 	| r10 now contains config data for write to DACA
 	
-	ADDC(r3, 0b01000, r4) ; Store CS & RGB data in r4
-	CMOVE(0b0011, r3) ; Store config data (1) in r3
-	SHL(r3, 12, r3) ; Shift left to bit 15
-	ADD(r3, r0, r3) ; r3 now contains config data for write to DACA
+	CMOVE(0b1011, r12) 	| Store config data (2) in r12
+	SHL(r11, 12, r11) 	| Shift left to bit 15
+	ADD(r11, r1, r11) 	| r11 now contains config data for write to DACB
 	
-	CMOVE(0b1011, r2) ; Store config data (1) in r2
-	SHL(r2, 12, r2) ; Shift left to bit 15
-	ADD(r2, r1, r2) ; r2 now contains config data for write to DACB
+	ST(r7, 0x8, r8) 	| Write to output port A (memory location 8)--lower CS
+	ST(r10, 0x18, r8) 	| Write configuration and X data to SPI TX (0018)
 	
-	ST(r4, 0x8, r6) ; Write to output port A (memory location 8)--lower CS
-	ST(r3, 0x18, r6) ; Write configuration and X data to SPI TX (0018)
-	ST(r5, 0x14, r6) ; Start SPI
+	CMOVE(1, r13) 		| Store 1 (start flag) in r13
+	ST(r13, 0x14, r8) 	| Start SPI
 
-spi_wait_x: ; Wait for SPI completion flag
-	LD(r31, 0x14, r5)
-	BF(r5, spi_wait_x)
+spi_wait_x: 			| Wait for SPI completion flag
+	LD(r8, 0x14, r13)
+	BF(r13, spi_wait_x)
 	
-	ADDC(r4, 0b10000, r4)
-	ST(r4, 0x8, r6) ; Write to output port A (memory location 8)--raise CS
-	SUBC(r4, 0b10000, r4)
-	ST(r4, 0x8, r6) ; Write to output port A--lower CS
+	ORC(r7, 0b10000, r7)
+	ST(r7, 0x8, r8) 	| Write to output port A (memory location 8)--raise CS
+	ANDC(r7, 0b01111, r7)
 	
-	ST(r2, 0x18, r6) ; Write configuration and Y data to SPI TX (0018)
-	ST(r5, 0x14, r6) ; Start SPI
+	ST(r7, 0x8, r8) 	| Write to output port A--lower CS
+	ST(r11, 0x18, r8) 	| Write configuration and Y data to SPI TX (0018)
+	ST(r13, 0x14, r8) 	| Start SPI
 	
-spi_wait_y: ; Wait for second SPI completion flag
-	LD(r31, 0x14, r5)
-	BF(r5, spi_wait_y)
+spi_wait_y: 			| Wait for second SPI completion flag
+	LD(r8, 0x14, r13)
+	BF(r13, spi_wait_y)
 	
-	ADDC(r4, 0b10000, r4)
-	ST(r4, 0x8, r6) ; Write to output port A (memory location 8)--raise CS
-	SUBC(r4, 0b01000, r4)
-	ST(r4, 0x8, r6) ; Lower ADC latch
-	ADDC(r4, 0b01000, r4)
-	ST(r4, 0x8, r6) ; Raise ADC latch
+	ORC(r7, 0b10000, r7)
+	ST(r7, 0x8, r8) 	| Write to output port A (memory location 8)--raise CS
+	ANDC(r7, 0b10111, r7)
+	ST(r7, 0x8, r8) 	| Lower ADC latch
+	ANDC(r7, 0b01111, r7)
+	ST(r7, 0x8, r8) 	| Raise ADC latch
 	
-	POP(r6)
-	POP(r5)
-	POP(r4)
-	POP(r3) ; restore registers
-	POP(r2)
 	RTN()
 
-; Get the location of the next point within a shape and store the updated location in registers 0 and 1 (x and y)	
+|| Get the location of the next point within a shape and store the updated location in registers 0 and 1 (x and y)	
 get_next_point:
-	; Find location of next point in memory, store in r7
-	PUSH(r2)
 	
-	ADD(r4, r2, r7) ; Store address of current point in r7 (location plus offset)
-	ADDC(r4, 4, r4) ; Increment offset
-	LD(r7, 0, r8) ; Write point to register 8
-	MOVE(r7, r8) ; Copy point
-	SRAC(r8, 16, r8) ; Get only x data
-	SHLC(r7, 16, r7) ; Get only y data, preserving sign bit
+	LD(r9, 0x8, r8) 	| load next point into r8
+	MOVE(r8, r7)		| copy point
+	ADDC(r9, 0x4, r9) 	| increment location in local table
+	
+	SRAC(r8, 16, r8) 	| Get only x data
+	SHLC(r7, 16, r7) 	| Get only y data, preserving sign bit
 	SRAC(r7, 16, r7)
-	ADD(r8, r0, r0) ; Add x offset
-	ADD(r7, r1, r1) ; Add y offset
+	ADD(r8, r0, r0) 	| Add x offset
+	ADD(r7, r1, r1) 	| Add y offset
 	
-	POP(r2)
-	RTN() ; Return to caller
+	RTN()
 
 
 
 
-; Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
+| Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
 . = 0x1000
-LONG(1) ; sprite ID 1
-LONG(4) ; has four points
-LONG(0x0100 0000) ; 16 bits of x offset, 16 bits of y offset (sign extended! so an add will do a subtract!)
-; MORE POINTS
-LONG(0xFFFF) ; null terminate
+LONG(1) | sprite ID 1
+LONG(4) | has four points
+LONG(0x0100 0000) | 16 bits of x offset, 16 bits of y offset (sign extended! so an add will do a subtract!)
+| MORE POINTS
+LONG(0xFFFF) | null terminate
