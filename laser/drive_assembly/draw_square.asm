@@ -5,6 +5,8 @@
 CMOVE(1, r6)
 SHLC(r6, 16, r6)
 CMOVE(0x3, r3)
+CMOVE(0x400C, r0)
+ST(r0, 0x10, r6)
 
 main:
 	CMOVE(0, r0) 
@@ -53,9 +55,6 @@ go_to_point:
 	CMOVE(0b1011, r2) 
 	SHLC(r2, 12, r2) 
 	ADD(r2, r1, r2) 
-	
-	CMOVE(1, r6)
-	SHLC(r6, 16, r6)
 	
 	ST(r4, 0x8, r6)
 	ST(r3, 0x18, r6) 
