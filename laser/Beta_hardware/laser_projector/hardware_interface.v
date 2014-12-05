@@ -159,11 +159,6 @@ module hardware_interface(
 	 //assign VGA_pixel = {{8{hcount[1]}}, {8{hcount[3]}},{8{hcount[5]}}}; //test pattern 
 	 //for debug
 	 assign VGA_pixel = {dout_vga[15:11],{3{dout_vga[11]}},dout_vga[10:5],{2{dout_vga[5]}},dout_vga[4:0],{3{dout_vga[0]}}};
-	 //assign VGA_pixel[23:16] =  {dout_vga[10:5],2'b0};//red
-	 //assign  VGA_pixel[15:8] = {dout_vga[15:11],3'b0};//green
-	 //assign VGA_pixel[7:0] = {dout_vga[4:0],3'b0};//blue
-	 //assign VGA_pixel= 24'b0000_0000_0000_0000_1111_1111;
-	 assign  {HDR1_16,HDR1_18, HDR1_20, HDR1_22, HDR1_24, HDR1_26, HDR1_28, HDR1_30}=camera_memory_dout;
 	 
 	 
 	 reg [2:0] clk_div = 0;
@@ -172,6 +167,8 @@ module hardware_interface(
 		clk_div <= clk_div+1;
 		start_last <= start;
 		startp <= (start_last==0)&&(start==1) ? 1 : 0;		
+		
+		
 	 end
 	 
 	 always @(posedge camera_clk)
@@ -181,7 +178,7 @@ module hardware_interface(
 	 
 	 end
 	 //assign camera_clk = camera_pclk; //fix this
-	 assign camera_clk = clk_div[1];
+	 assign camera_clk = camera_pclk;
 	 assign camera_xclk = clk_div[1];
 	 
 	 
@@ -206,7 +203,7 @@ module hardware_interface(
     .LOCKED_OUT()
     );*/
 
-	 /*
+	 
 	 laser_projector_full best_hazor (
     .clk(clk_50), 
     .reset(GPIO_SW_C), 
@@ -220,7 +217,7 @@ module hardware_interface(
     .dac_sclk(dac_sclk), 
     .debug_led(debug_led)
     );
-	 */
+	 
 	 
 	vga_setup vga_test (
     .clk(clk_50), 

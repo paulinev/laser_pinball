@@ -33,21 +33,11 @@ module shared_video_mem(
 	output wire [15:0] dout_vga
     );
 
-	wire memory_clk;
-	wire [15:0] memory_din;
-	wire [18:0] memory_addr;
-	wire memory_mwe;
-	wire [15:0] memory_dout;
+
 	wire [17:0] addr_vga;
 	wire [17:0] addr_camera;
 
 	
-	assign memory_din = camera_request ? dout_camera : 16'h00;
-	assign memory_clk = camera_request ? clk_camera : clk_vga;
-	assign memory_mwe = camera_request ? mwe_camera : 1'b0;
-	assign memory_addr = camera_request ? addr_camera : addr_vga;
-	
-	assign dout_vga = camera_request ? 16'hFF : memory_dout;
 	
 	
 	image_addr_gen vga_addr_gen (
@@ -63,11 +53,13 @@ module shared_video_mem(
     );
 
 	camera_memory image_memory(
-	.clka(memory_clk),
-	.dina(memory_din),
-	.addra(memory_addr[17:0]),
-	.wea(memory_mwe),
-	.douta(memory_dout))
+	.clka(clk_camera),
+	.dina(dout_camera),
+	.addra(addr_camera),
+	.wea(mwe_camera),
+	.clkb(clk_vga),
+	.addrb(addr_vga),
+	.doutb(dout_vga))
 	;
 
 

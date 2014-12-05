@@ -34,9 +34,11 @@
 camera_memory YourInstanceName (
 	.clka(clka),
 	.dina(dina), // Bus [15 : 0] 
-	.addra(addra), // Bus [16 : 0] 
+	.addra(addra), // Bus [15 : 0] 
 	.wea(wea), // Bus [0 : 0] 
-	.douta(douta)); // Bus [15 : 0] 
+	.clkb(clkb),
+	.addrb(addrb), // Bus [15 : 0] 
+	.doutb(doutb)); // Bus [15 : 0] 
 
 // INST_TAG_END ------ End INSTANTIATION Template ---------
 

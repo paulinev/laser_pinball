@@ -1,0 +1,13 @@
+# Output products list for <beta_shared_mem>
+beta_shared_mem.asy
+beta_shared_mem.mif
+beta_shared_mem.ngc
+beta_shared_mem.sym
+beta_shared_mem.v
+beta_shared_mem.veo
+beta_shared_mem.vhd
+beta_shared_mem.vho
+beta_shared_mem.xco
+beta_shared_mem_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+beta_shared_mem_flist.txt
+beta_shared_mem_xmdf.tcl

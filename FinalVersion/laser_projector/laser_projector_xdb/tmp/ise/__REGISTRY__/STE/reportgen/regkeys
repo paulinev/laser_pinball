@@ -1,0 +1,6 @@
+CommandLine
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/reportgen -ise /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/laser_projector.ise -intstyle ise -delay -o hardware_interface hardware_interface.ncd
+s
+FormatString
+reportgen [-intstyle ise|xflow|silent] [-delay] [-clock_regions] [-unrouted_nets] [--dirt] [-pad [-padfmt pad|csv|text|all] [-padcolsort <displaystr>]] [-o <outfile>] <infile[.ncd]> [<constraintsfile[.pcf]>]
+s

@@ -1,0 +1,13 @@
+# Output products list for <hardware_beta_mem>
+hardware_beta_mem.asy
+hardware_beta_mem.mif
+hardware_beta_mem.ngc
+hardware_beta_mem.sym
+hardware_beta_mem.v
+hardware_beta_mem.veo
+hardware_beta_mem.vhd
+hardware_beta_mem.vho
+hardware_beta_mem.xco
+hardware_beta_mem_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+hardware_beta_mem_flist.txt
+hardware_beta_mem_xmdf.tcl

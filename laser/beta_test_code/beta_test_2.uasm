@@ -4,7 +4,6 @@
 . = 0
 
 start:
-ADDC(R31, 0, R31) |it appears that 0h00000 is not a valid address, insert nop
 ADDC(R1,1,R1) 
 SHLC(R1, 16, R1) |R1 now contains base address of memory mapped IO
 ADDC(R0, 0x75, R0) |load number into R0
@@ -20,9 +19,7 @@ ST(R0, 0x0014, R1) |start SPI
 loop:
 LD(R1, 0x0014, R0) 
 ST(R0, 8, R1)
-ADDC(R31, 0, R31) | add nop before branch, because branch errors?
 BR(loop)
-ADDC(R31, 0, R31) | add nop after branch, because branch errors?
 
 
 
