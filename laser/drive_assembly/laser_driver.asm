@@ -23,6 +23,7 @@ SPRITE_OFFSET = 4
 RGB_OFFSET = 4
 X_OFFSET = 4
 Y_OFFSET = 4
+NEXT_SPRITE_OFFSET = 0x40
 
 ; Output port A (0008): {ADC_CSN, ADC_latch_n, R, G, B}
 ;Draw a shape:
@@ -50,11 +51,27 @@ draw_frame:
 	CALL(draw_sprite)
 	
 	; get next sprite location?
+	ADDC(r0, NEXT_SPRITE_OFFSET, r0)
+	ADDC(r1, NEXT_SPRITE_OFFSET, r1)
+	ADDC(r2, NEXT_SPRITE_OFFSET, r2)
+	ADDC(r3, NEXT_SPRITE_OFFSET, r3)
 	
 	JMP(draw_frame)
 	
 done:
 	; frame finished: raise status flag, get the next one once "writing" flag is off
+	
+set_timer:
+	CMOVE(0x9c4, r8)
+	ST(r8, 0x0024, r6)
+	CMOVE(0x01, r8)
+	ST(r8, 0x0028, r6)
+wait_timer:
+	LD(r6, 0x0028, r8)
+	BNE(r8, wait_timer)
+	CMOVE(0x01, r8)
+	ST(r8, 0x0028, r6)
+	RTN()
 
 draw_sprite:
 	PUSH(r2)
@@ -65,17 +82,8 @@ draw_sprite:
 draw_loop:
 	CALL(get_next_point)
 	CALL(go_to_point)
-	; Set up counter to overflow at 20kHz
-	CMOVE(0x9c4, r8)
-	ST(r8, 0x0024)
-	CMOVE(0x01, r8)
-	ST(r8, 0x0028) ; start timer
-wait_timer:
-	LD(0x0028, r8) ; check overflow flag
-	BNE(r8, wait_timer)
-	; clear overflow flag?
-	CMOVE(0x01, r8)
-	ST(r8, 0x0028)
+	CALL(set_timer)
+	
 	SUBC(r6, 0x01, r6)
 	BNE(r6, draw_loop)
 	POP(r2)
@@ -101,32 +109,32 @@ go_to_point:
 	SHL(r2, 12, r2) ; Shift left to bit 15
 	ADD(r2, r1, r2) ; r2 now contains config data for write to DACB
 	
-	ST(r4, 0x8, r31) ; Write to output port A (memory location 8)--lower CS
-	ST(r3, 0x18, r31) ; Write configuration and X data to SPI TX (0018)
-	ST(r5, 0x14, r31) ; Start SPI
+	ST(r4, 0x8, r6) ; Write to output port A (memory location 8)--lower CS
+	ST(r3, 0x18, r6) ; Write configuration and X data to SPI TX (0018)
+	ST(r5, 0x14, r6) ; Start SPI
 
 spi_wait_x: ; Wait for SPI completion flag
 	LD(r31, 0x14, r5)
-	BF(r5, spi_wait_x, r6)
+	BF(r5, spi_wait_x)
 	
-	ADDC(r4, 0b1000, r4)
-	ST(r4, 0x8, r31) ; Write to output port A (memory location 8)--raise CS
-	SUBC(r4, 0b1000, r4)
-	ST(r4, 0x8, r31) ; Write to output port A--lower CS
+	ADDC(r4, 0b10000, r4)
+	ST(r4, 0x8, r6) ; Write to output port A (memory location 8)--raise CS
+	SUBC(r4, 0b10000, r4)
+	ST(r4, 0x8, r6) ; Write to output port A--lower CS
 	
-	ST(r2, 0x18, r31) ; Write configuration and Y data to SPI TX (0018)
-	ST(r5, 0x14, r31) ; Start SPI
+	ST(r2, 0x18, r6) ; Write configuration and Y data to SPI TX (0018)
+	ST(r5, 0x14, r6) ; Start SPI
 	
 spi_wait_y: ; Wait for second SPI completion flag
 	LD(r31, 0x14, r5)
-	BF(r5, spi_wait_y, r6)
+	BF(r5, spi_wait_y)
 	
-	ADDC(r4, 0b1000, r4)
-	ST(r4, 0x8, r31) ; Write to output port A (memory location 8)--raise CS
-	SUBC(r4, 0b0100, r4)
-	ST(r4, 0x8, r31) ; Lower ADC latch
-	ADDC(r4, 0b0100, r4)
-	ST(r4, 0x8, r31) ; Raise ADC latch
+	ADDC(r4, 0b10000, r4)
+	ST(r4, 0x8, r6) ; Write to output port A (memory location 8)--raise CS
+	SUBC(r4, 0b01000, r4)
+	ST(r4, 0x8, r6) ; Lower ADC latch
+	ADDC(r4, 0b01000, r4)
+	ST(r4, 0x8, r6) ; Raise ADC latch
 	
 	POP(r6)
 	POP(r5)
@@ -144,8 +152,9 @@ get_next_point:
 	ADDC(r4, 4, r4) ; Increment offset
 	LD(r7, 0, r8) ; Write point to register 8
 	MOVE(r7, r8) ; Copy point
-	SHR(r8, 16, r8) ; Get only x data
-	ANDC(r7, 0x0011, r7) ; Get only y data
+	SRAC(r8, 16, r8) ; Get only x data
+	SHLC(r7, 16, r7) ; Get only y data, preserving sign bit
+	SRAC(r7, 16, r7)
 	ADD(r8, r0, r0) ; Add x offset
 	ADD(r7, r1, r1) ; Add y offset
 	
@@ -159,6 +168,6 @@ get_next_point:
 . = 0x1000
 LONG(1) ; sprite ID 1
 LONG(4) ; has four points
-LONG(0x01000000) ; 16 bits of x offset, 16 bits of y offset
+LONG(0x0100 0000) ; 16 bits of x offset, 16 bits of y offset (sign extended! so an add will do a subtract!)
 ; MORE POINTS
 LONG(0xFFFF) ; null terminate
