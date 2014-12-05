@@ -12,7 +12,7 @@ Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Thu Dec  4 20:29:45 2014
+Mapped Date    : Fri Dec  5 02:20:20 2014
 
 Mapping design into LUTs...
 Running directed packing...
@@ -22,67 +22,58 @@ INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
 Running timing-driven packing...
 
 Phase 1.1
-Phase 1.1 (Checksum:5091fa) REAL time: 8 secs 
+Phase 1.1 (Checksum:515b8b) REAL time: 6 secs 
 
 Phase 2.7
-Phase 2.7 (Checksum:5091fa) REAL time: 8 secs 
+Phase 2.7 (Checksum:515b8b) REAL time: 6 secs 
 
 Phase 3.31
-Phase 3.31 (Checksum:5091fa) REAL time: 8 secs 
+Phase 3.31 (Checksum:515b8b) REAL time: 6 secs 
 
 Phase 4.33
-Phase 4.33 (Checksum:5091fa) REAL time: 8 secs 
+Phase 4.33 (Checksum:515b8b) REAL time: 6 secs 
 
 Phase 5.32
-Phase 5.32 (Checksum:5091fa) REAL time: 8 secs 
+Phase 5.32 (Checksum:515b8b) REAL time: 6 secs 
 
 Phase 6.2
 
-.....
-WARNING:Place:644 - A clock IOB clock component is not placed at an optimal
-   clock IOB site. The clock IOB component <HDR1_48> is placed at site <AJ32>.
-   The clock IO site can use the fast path between the IO and the Clock
-   buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is
-   normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on
-   COMP.PIN <HDR1_48.PAD> allowing your design to continue. This constraint
-   disables all clock placer rules related to the specified COMP.PIN. The use of
-   this override is highly discouraged as it may lead to very poor timing
-   results. It is recommended that this error condition be corrected in the
-   design.
-Phase 6.2 (Checksum:53ecda) REAL time: 9 secs 
+
+Phase 6.2 (Checksum:54b66b) REAL time: 6 secs 
 
 Phase 7.30
-Phase 7.30 (Checksum:53ecda) REAL time: 9 secs 
+Phase 7.30 (Checksum:54b66b) REAL time: 6 secs 
 
 Phase 8.3
-Phase 8.3 (Checksum:53ecda) REAL time: 9 secs 
+Phase 8.3 (Checksum:54b66b) REAL time: 6 secs 
 
 Phase 9.5
-Phase 9.5 (Checksum:53ecda) REAL time: 9 secs 
+Phase 9.5 (Checksum:54b66b) REAL time: 6 secs 
 
 Phase 10.8
-....................................
-............
-...
-Phase 10.8 (Checksum:649df37) REAL time: 11 secs 
+........................................
+.....
+.........
+.....
+Phase 10.8 (Checksum:66edefb) REAL time: 9 secs 
 
 Phase 11.29
-Phase 11.29 (Checksum:649df37) REAL time: 11 secs 
+Phase 11.29 (Checksum:66edefb) REAL time: 9 secs 
 
 Phase 12.5
-Phase 12.5 (Checksum:649df37) REAL time: 11 secs 
+Phase 12.5 (Checksum:66edefb) REAL time: 9 secs 
 
 Phase 13.18
-Phase 13.18 (Checksum:663381a) REAL time: 29 secs 
+Phase 13.18 (Checksum:68a0ffc) REAL time: 37 secs 
 
 Phase 14.5
-Phase 14.5 (Checksum:663381a) REAL time: 29 secs 
+Phase 14.5 (Checksum:68a0ffc) REAL time: 37 secs 
 
 Phase 15.34
-Phase 15.34 (Checksum:663381a) REAL time: 29 secs 
+Phase 15.34 (Checksum:68a0ffc) REAL time: 37 secs 
 
-REAL time consumed by placer: 29 secs 
-CPU  time consumed by placer: 27 secs 
+REAL time consumed by placer: 37 secs 
+CPU  time consumed by placer: 37 secs 
 
 Design Summary
 --------------
@@ -91,26 +82,26 @@ Design Summary:
 Number of errors:      0
 Number of warnings:   22
 Slice Logic Utilization:
-  Number of Slice Registers:                   584 out of  28,800    2%
-    Number used as Flip Flops:                 584
-  Number of Slice LUTs:                        806 out of  28,800    2%
-    Number used as logic:                      796 out of  28,800    2%
-      Number using O6 output only:             647
+  Number of Slice Registers:                   585 out of  28,800    2%
+    Number used as Flip Flops:                 585
+  Number of Slice LUTs:                        816 out of  28,800    2%
+    Number used as logic:                      807 out of  28,800    2%
+      Number using O6 output only:             658
       Number using O5 output only:              81
       Number using O5 and O6:                   68
-    Number used as exclusive route-thru:        10
-  Number of route-thrus:                        91 out of  57,600    1%
-    Number using O6 output only:                91
+    Number used as exclusive route-thru:         9
+  Number of route-thrus:                        90 out of  57,600    1%
+    Number using O6 output only:                90
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   390 out of   7,200    5%
+  Number of occupied Slices:                   373 out of   7,200    5%
   Number of LUT Flip Flop pairs used:          977
-    Number with an unused Flip Flop:           393 out of     977   40%
-    Number with an unused LUT:                 171 out of     977   17%
-    Number of fully used LUT-FF pairs:         413 out of     977   42%
-    Number of unique control sets:              91
+    Number with an unused Flip Flop:           392 out of     977   40%
+    Number with an unused LUT:                 161 out of     977   16%
+    Number of fully used LUT-FF pairs:         424 out of     977   43%
+    Number of unique control sets:              89
     Number of slice register sites lost
-      to control set restrictions:             176 out of  28,800    1%
+      to control set restrictions:             171 out of  28,800    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -133,8 +124,8 @@ Specific Feature Utilization:
   Number of DCM_ADVs:                            1 out of      12    8%
 
 Peak Memory Usage:  747 MB
-Total REAL time to MAP completion:  38 secs 
-Total CPU time to MAP completion:   35 secs 
+Total REAL time to MAP completion:  44 secs 
+Total CPU time to MAP completion:   44 secs 
 
 Mapping completed.
 See MAP report file "hardware_interface_map.mrp" for details.

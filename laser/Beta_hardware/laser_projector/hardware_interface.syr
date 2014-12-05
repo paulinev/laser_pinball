@@ -5,14 +5,14 @@ Parameter TMPDIR set to /home/wbraun/laser_pinball/laser/Beta_hardware/laser_pro
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Parameter xsthdpdir set to /home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.04 secs
  
 --> 
 Reading design: hardware_interface.prj
@@ -693,7 +693,6 @@ WARNING:Xst:647 - Input <AUDIO_SDATA_IN> is never used. This port will be preser
 WARNING:Xst:1306 - Output <AUDIO_SYNC> is never assigned.
 WARNING:Xst:647 - Input <CLK_27MHZ_FPGA> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:653 - Signal <laser_rgb> is used but never assigned. This sourceless signal will be automatically connected to value 000.
-WARNING:Xst:646 - Signal <dout_vga<15>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <dip_sw> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <debug_led> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <dac_sclk> is used but never assigned. This sourceless signal will be automatically connected to value 0.
@@ -701,6 +700,7 @@ WARNING:Xst:653 - Signal <dac_mosi> is used but never assigned. This sourceless 
 WARNING:Xst:653 - Signal <dac_latchn> is used but never assigned. This sourceless signal will be automatically connected to value 0.
 WARNING:Xst:653 - Signal <dac_csn> is used but never assigned. This sourceless signal will be automatically connected to value 0.
 WARNING:Xst:646 - Signal <clk_100> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <camera_pclk> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
     Found 3-bit up counter for signal <clk_div>.
     Found 1-bit register for signal <start2_last>.
     Found 1-bit register for signal <start2p>.
@@ -987,18 +987,16 @@ WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_2> (with
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_4> (without init value) has a constant value of 0 in block <vga_setup>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_5> (without init value) has a constant value of 0 in block <vga_setup>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_6> (without init value) has a constant value of 0 in block <vga_setup>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <write_reg_2> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <write_reg_0> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_reg_2> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_reg_3> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_reg_5> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_reg_7> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_0> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_1> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_3> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <write_data_5> (without init value) has a constant value of 0 in block <camera_configure>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1426 - The value init of the FF/Latch device_id_1 hinder the constant cleaning in the block camera_i2c.
    You should achieve better results by setting this init to 1.
 WARNING:Xst:1426 - The value init of the FF/Latch device_id_7 hinder the constant cleaning in the block camera_i2c.
-   You should achieve better results by setting this init to 0.
-WARNING:Xst:1426 - The value init of the FF/Latch device_reg_7 hinder the constant cleaning in the block camera_i2c.
    You should achieve better results by setting this init to 0.
 WARNING:Xst:1426 - The value init of the FF/Latch device_id_2 hinder the constant cleaning in the block camera_i2c.
    You should achieve better results by setting this init to 0.
@@ -1008,16 +1006,11 @@ WARNING:Xst:1426 - The value init of the FF/Latch device_data_3 hinder the const
    You should achieve better results by setting this init to 0.
 WARNING:Xst:1426 - The value init of the FF/Latch device_id_5 hinder the constant cleaning in the block camera_i2c.
    You should achieve better results by setting this init to 0.
-WARNING:Xst:1426 - The value init of the FF/Latch device_reg_5 hinder the constant cleaning in the block camera_i2c.
+WARNING:Xst:1426 - The value init of the FF/Latch device_reg_0 hinder the constant cleaning in the block camera_i2c.
    You should achieve better results by setting this init to 0.
 WARNING:Xst:1426 - The value init of the FF/Latch device_data_0 hinder the constant cleaning in the block camera_i2c.
    You should achieve better results by setting this init to 0.
-WARNING:Xst:1710 - FF/Latch <pixel_b_10> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <pixel_b_9> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <pixel_b_8> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <pixel_b_2> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <pixel_b_1> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <pixel_b_0> (without init value) has a constant value of 0 in block <dvi_vga>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <device_data_5> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <device_data_1> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <device_reg_3> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <device_reg_2> has a constant value of 0 in block <camera_i2c>. This FF/Latch will be trimmed during the optimization process.
@@ -1101,17 +1094,13 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-INFO:Xst:2261 - The FF/Latch <pixel_b_0> in Unit <vga_pixel_drive> is equivalent to the following 5 FFs/Latches, which will be removed : <pixel_b_1> <pixel_b_2> <pixel_b_8> <pixel_b_9> <pixel_b_10> 
-WARNING:Xst:1710 - FF/Latch <pixel_b_0> (without init value) has a constant value of 0 in block <vga_pixel_drive>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <pixel_b_8> in Unit <vga_pixel_drive> is equivalent to the following 2 FFs/Latches, which will be removed : <pixel_b_9> <pixel_b_10> 
+INFO:Xst:2261 - The FF/Latch <pixel_b_0> in Unit <vga_pixel_drive> is equivalent to the following 3 FFs/Latches, which will be removed : <pixel_b_1> <pixel_b_2> <pixel_b_3> 
 WARNING:Xst:1293 - FF/Latch <vcount_d_0> has a constant value of 0 in block <vga_drive>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <clk_div_2> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_7 hinder the constant cleaning in the block hardware_interface.
    You should achieve better results by setting this init to 0.
-WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_reg_7 hinder the constant cleaning in the block hardware_interface.
-   You should achieve better results by setting this init to 0.
 WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_5 hinder the constant cleaning in the block hardware_interface.
-   You should achieve better results by setting this init to 0.
-WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_reg_5 hinder the constant cleaning in the block hardware_interface.
    You should achieve better results by setting this init to 0.
 WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_3 hinder the constant cleaning in the block hardware_interface.
    You should achieve better results by setting this init to 0.
@@ -1121,6 +1110,8 @@ WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_
    You should achieve better results by setting this init to 0.
 WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_id_1 hinder the constant cleaning in the block hardware_interface.
    You should achieve better results by setting this init to 1.
+WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_reg_0 hinder the constant cleaning in the block hardware_interface.
+   You should achieve better results by setting this init to 0.
 WARNING:Xst:1426 - The value init of the FF/Latch main_camera/camera_i2c/device_data_0 hinder the constant cleaning in the block hardware_interface.
    You should achieve better results by setting this init to 0.
 WARNING:Xst:1293 - FF/Latch <vga_test/instance_name/device_id_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
@@ -1142,6 +1133,7 @@ WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_id_6> has a constant 
 WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_reg_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_reg_3> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_data_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <main_camera/camera_i2c/device_data_5> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_0> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_2> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <main_camera/camera_i2c/video_bus/dout_3> of sequential type is unconnected in block <hardware_interface>.
@@ -1156,7 +1148,7 @@ WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_4> of sequential 
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_5> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_6> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <vga_test/instance_name/video_bus/dout_7> of sequential type is unconnected in block <hardware_interface>.
-INFO:Xst:2261 - The FF/Latch <main_camera/camera_i2c/device_data_3> in Unit <hardware_interface> is equivalent to the following 7 FFs/Latches, which will be removed : <main_camera/camera_i2c/device_data_0> <main_camera/camera_i2c/device_reg_7> <main_camera/camera_i2c/device_reg_5> <main_camera/camera_i2c/device_id_7> <main_camera/camera_i2c/device_id_5> <main_camera/camera_i2c/device_id_3> <main_camera/camera_i2c/device_id_2> 
+INFO:Xst:2261 - The FF/Latch <main_camera/camera_i2c/device_data_3> in Unit <hardware_interface> is equivalent to the following 6 FFs/Latches, which will be removed : <main_camera/camera_i2c/device_data_0> <main_camera/camera_i2c/device_reg_0> <main_camera/camera_i2c/device_id_7> <main_camera/camera_i2c/device_id_5> <main_camera/camera_i2c/device_id_3> <main_camera/camera_i2c/device_id_2> 
 
 Optimizing unit <hardware_interface> ...
 WARNING:Xst:1710 - FF/Latch <vga_test/write_reg_7> (without init value) has a constant value of 1 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
@@ -1239,8 +1231,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 579
- Flip-Flops                                            : 579
+# Registers                                            : 580
+ Flip-Flops                                            : 580
 
 =========================================================================
 
@@ -1269,35 +1261,35 @@ Design Statistics
 # IOs                              : 80
 
 Cell Usage :
-# BELS                             : 1211
+# BELS                             : 1214
 #      GND                         : 2
 #      INV                         : 71
 #      LUT1                        : 85
-#      LUT2                        : 78
+#      LUT2                        : 71
 #      LUT3                        : 111
-#      LUT4                        : 96
-#      LUT5                        : 109
+#      LUT4                        : 104
+#      LUT5                        : 112
 #      LUT6                        : 267
 #      MUXCY                       : 159
-#      MUXF7                       : 60
+#      MUXF7                       : 59
 #      VCC                         : 2
 #      XORCY                       : 171
-# FlipFlops/Latches                : 584
-#      FD                          : 144
+# FlipFlops/Latches                : 585
+#      FD                          : 150
 #      FDE                         : 141
-#      FDR                         : 76
+#      FDR                         : 72
 #      FDRE                        : 134
-#      FDRS                        : 19
+#      FDRS                        : 17
 #      FDRSE                       : 6
-#      FDS                         : 16
+#      FDS                         : 17
 #      FDSE                        : 48
 # RAMS                             : 38
 #      RAMB18                      : 4
 #      RAMB36_EXP                  : 34
 # Clock Buffers                    : 4
 #      BUFG                        : 4
-# IO Buffers                       : 62
-#      IBUF                        : 14
+# IO Buffers                       : 61
+#      IBUF                        : 13
 #      IBUFG                       : 1
 #      IOBUF                       : 4
 #      OBUF                        : 43
@@ -1312,20 +1304,20 @@ Selected Device : 5vlx50tff1136-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             584  out of  28800     2%  
- Number of Slice LUTs:                  817  out of  28800     2%  
-    Number used as Logic:               817  out of  28800     2%  
+ Number of Slice Registers:             585  out of  28800     2%  
+ Number of Slice LUTs:                  821  out of  28800     2%  
+    Number used as Logic:               821  out of  28800     2%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    981
-   Number with an unused Flip Flop:     397  out of    981    40%  
-   Number with an unused LUT:           164  out of    981    16%  
-   Number of fully used LUT-FF pairs:   420  out of    981    42%  
-   Number of unique control sets:        91
+ Number of LUT Flip Flop pairs used:    984
+   Number with an unused Flip Flop:     399  out of    984    40%  
+   Number with an unused LUT:           163  out of    984    16%  
+   Number of fully used LUT-FF pairs:   422  out of    984    42%  
+   Number of unique control sets:        89
 
 IO Utilization: 
  Number of IOs:                          80
- Number of bonded IOBs:                  62  out of    480    12%  
+ Number of bonded IOBs:                  61  out of    480    12%  
 
 Specific Feature Utilization:
  Number of Block RAM/FIFO:               36  out of     60    60%  
@@ -1354,8 +1346,8 @@ Clock Information:
 ----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                                        | Clock buffer(FF name)                                                                                                    | Load  |
 ----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-------+
-HDR1_48                                             | IBUF+BUFG                                                                                                                | 84    |
-USER_CLK                                            | clk_50_gen/DCM_ADV_INST:CLKDV                                                                                            | 495   |
+USER_CLK                                            | clk_50_gen/DCM_ADV_INST:CLKDV                                                                                            | 496   |
+clk_div_11                                          | BUFG                                                                                                                     | 84    |
 stored_image/memory_clk1(stored_image/memory_clk1:O)| BUFG(*)(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A/sel_pipe_0)                            | 43    |
 stored_image/image_memory/BU2/dbiterr               | NONE(stored_image/image_memory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.CASCADED_PRIM36.TDP_T)| 38    |
 ----------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------+-------+
@@ -1405,7 +1397,7 @@ Timing Summary:
 Speed Grade: -3
 
    Minimum period: 2.845ns (Maximum Frequency: 351.444MHz)
-   Minimum input arrival time before clock: 3.033ns
+   Minimum input arrival time before clock: 3.036ns
    Maximum output required time after clock: 3.329ns
    Maximum combinational path delay: No path found
 
@@ -1414,34 +1406,9 @@ Timing Detail:
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'HDR1_48'
-  Clock period: 2.845ns (frequency: 351.444MHz)
-  Total number of paths / destination ports: 694 / 98
--------------------------------------------------------------------------
-Delay:               2.845ns (Levels of Logic = 4)
-  Source:            get_image/camera_reader/vcount_9 (FF)
-  Destination:       get_image/camera_reader/hcount_5 (FF)
-  Source Clock:      HDR1_48 rising
-  Destination Clock: HDR1_48 rising
-
-  Data Path: get_image/camera_reader/vcount_9 to get_image/camera_reader/hcount_5
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FD:C->Q               4   0.396   0.779  get_image/camera_reader/vcount_9 (get_image/camera_reader/vcount_9)
-     LUT5:I0->O            2   0.086   0.365  get_image/camera_reader/FSM_state_cmp_eq0000_SW0 (N215)
-     LUT6:I5->O           18   0.086   0.833  get_image/camera_reader/FSM_state_cmp_eq0000 (get_image/camera_reader/FSM_state_cmp_eq0000)
-     LUT5:I0->O            1   0.086   0.000  get_image/camera_reader/hcount_mux0000<4>_G (N349)
-     MUXF7:I1->O           1   0.214   0.000  get_image/camera_reader/hcount_mux0000<4> (get_image/camera_reader/hcount_mux0000<4>)
-     FD:D                     -0.022          get_image/camera_reader/hcount_5
-    ----------------------------------------
-    Total                      2.845ns (0.868ns logic, 1.977ns route)
-                                       (30.5% logic, 69.5% route)
-
-=========================================================================
 Timing constraint: Default period analysis for Clock 'USER_CLK'
   Clock period: 1.968ns (frequency: 508.195MHz)
-  Total number of paths / destination ports: 7459 / 1082
+  Total number of paths / destination ports: 7471 / 1082
 -------------------------------------------------------------------------
 Delay:               3.935ns (Levels of Logic = 5)
   Source:            vga_gen/hcount_d_4 (FF)
@@ -1465,6 +1432,31 @@ Delay:               3.935ns (Levels of Logic = 5)
                                        (32.9% logic, 67.1% route)
 
 =========================================================================
+Timing constraint: Default period analysis for Clock 'clk_div_11'
+  Clock period: 2.845ns (frequency: 351.444MHz)
+  Total number of paths / destination ports: 694 / 98
+-------------------------------------------------------------------------
+Delay:               2.845ns (Levels of Logic = 4)
+  Source:            get_image/camera_reader/vcount_9 (FF)
+  Destination:       get_image/camera_reader/hcount_5 (FF)
+  Source Clock:      clk_div_11 rising
+  Destination Clock: clk_div_11 rising
+
+  Data Path: get_image/camera_reader/vcount_9 to get_image/camera_reader/hcount_5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               4   0.396   0.779  get_image/camera_reader/vcount_9 (get_image/camera_reader/vcount_9)
+     LUT5:I0->O            2   0.086   0.365  get_image/camera_reader/FSM_state_cmp_eq0000_SW0 (N215)
+     LUT6:I5->O           18   0.086   0.833  get_image/camera_reader/FSM_state_cmp_eq0000 (get_image/camera_reader/FSM_state_cmp_eq0000)
+     LUT5:I0->O            1   0.086   0.000  get_image/camera_reader/hcount_mux0000<4>_G (N346)
+     MUXF7:I1->O           1   0.214   0.000  get_image/camera_reader/hcount_mux0000<4> (get_image/camera_reader/hcount_mux0000<4>)
+     FD:D                     -0.022          get_image/camera_reader/hcount_5
+    ----------------------------------------
+    Total                      2.845ns (0.868ns logic, 1.977ns route)
+                                       (30.5% logic, 69.5% route)
+
+=========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'USER_CLK'
   Total number of paths / destination ports: 75 / 75
 -------------------------------------------------------------------------
@@ -1485,26 +1477,26 @@ Offset:              2.006ns (Levels of Logic = 2)
                                        (62.2% logic, 37.8% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'HDR1_48'
-  Total number of paths / destination ports: 41 / 31
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_div_11'
+  Total number of paths / destination ports: 42 / 32
 -------------------------------------------------------------------------
-Offset:              3.033ns (Levels of Logic = 5)
+Offset:              3.036ns (Levels of Logic = 5)
   Source:            HDR1_44 (PAD)
   Destination:       get_image/camera_reader/vcount_9 (FF)
-  Destination Clock: HDR1_48 rising
+  Destination Clock: clk_div_11 rising
 
   Data Path: HDR1_44 to get_image/camera_reader/vcount_9
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            11   0.694   0.889  HDR1_44_IBUF (HDR1_44_IBUF)
+     IBUF:I->O            12   0.694   0.892  HDR1_44_IBUF (HDR1_44_IBUF)
      LUT6:I0->O            6   0.086   0.380  get_image/camera_reader/vcount_mux0000<0>21 (get_image/camera_reader/N15)
      LUT4:I3->O            2   0.086   0.365  get_image/camera_reader/vcount_mux0000<0>31 (get_image/camera_reader/N211)
      LUT6:I5->O            1   0.086   0.361  get_image/camera_reader/vcount_mux0000<0>_SW1 (N220)
      LUT5:I4->O            1   0.086   0.000  get_image/camera_reader/vcount_mux0000<0> (get_image/camera_reader/vcount_mux0000<0>)
      FD:D                     -0.022          get_image/camera_reader/vcount_9
     ----------------------------------------
-    Total                      3.033ns (1.038ns logic, 1.995ns route)
+    Total                      3.036ns (1.038ns logic, 1.998ns route)
                                        (34.2% logic, 65.8% route)
 
 =========================================================================
@@ -1528,13 +1520,13 @@ Offset:              3.329ns (Levels of Logic = 2)
                                        (82.7% logic, 17.3% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'HDR1_48'
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_div_11'
   Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
 Offset:              2.779ns (Levels of Logic = 1)
   Source:            get_image/mem_din_5 (FF)
   Destination:       HDR1_20 (PAD)
-  Source Clock:      HDR1_48 rising
+  Source Clock:      clk_div_11 rising
 
   Data Path: get_image/mem_din_5 to HDR1_20
                                 Gate     Net
@@ -1549,15 +1541,15 @@ Offset:              2.779ns (Levels of Logic = 1)
 =========================================================================
 
 
-Total REAL time to Xst completion: 31.00 secs
-Total CPU time to Xst completion: 29.19 secs
+Total REAL time to Xst completion: 30.00 secs
+Total CPU time to Xst completion: 29.31 secs
  
 --> 
 
 
-Total memory usage is 606000 kilobytes
+Total memory usage is 605984 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  310 (   0 filtered)
-Number of infos    :   11 (   0 filtered)
+Number of warnings :  303 (   0 filtered)
+Number of infos    :   12 (   0 filtered)
 

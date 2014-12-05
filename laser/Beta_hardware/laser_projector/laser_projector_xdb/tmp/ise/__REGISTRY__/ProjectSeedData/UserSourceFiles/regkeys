@@ -1,5 +1,5 @@
 NUM_USER_FILES
-48
+50
 s
 user_file_1
 hardware_interface.v
@@ -130,8 +130,14 @@ s
 user_file_48
 image_addr_gen.v
 s
+user_file_49
+rgb_upconvert.v
+s
 user_file_5
 laser_projector_full.v
+s
+user_file_50
+rgb_upconvert_tb.v
 s
 user_file_6
 beta_addr_decode.v

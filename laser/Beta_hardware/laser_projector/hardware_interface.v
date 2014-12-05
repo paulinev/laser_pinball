@@ -99,6 +99,7 @@ module hardware_interface(
 	 wire camera_clk; //12.5Mhz
 	 
 	 //inputs from camera
+	 //assign camera_dout = 8'hFF;
 	 assign camera_dout = {HDR1_50, HDR1_52, HDR1_54, HDR1_56, HDR1_58, HDR1_60, HDR1_62, HDR1_64};
 	 assign camera_href = HDR1_44;
 	 assign camera_vsync = HDR1_46;
@@ -124,7 +125,7 @@ module hardware_interface(
 	 assign dip_sw = 	{GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
 							GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1};	 
 	 assign {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, 
-							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 8'hFF;
+							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 8'hF0;
 							//debug_led;
 	 
 	 assign DVI_RESET_B = ~reset; //keep reset high
@@ -154,9 +155,14 @@ module hardware_interface(
 	 reg start2p = 0;
 	
 	 //assign VGA_pixel = {dout_vga[7:5],{5{dout_vga[5]}},dout_vga[4:2],{5{dout_vga[2]}},dout_vga[1:0],{6{dout_vga[0]}}};
-	 assign VGA_pixel = {dout_vga[14:10],{3{1'b0}},dout_vga[9:5],{3{1'b0}},dout_vga[4:0],{3{1'b0}}};
+	 //assign VGA_pixel = {dout_vga[14:10],{3{dout_vga[10]}},dout_vga[9:5],{3{dout_vga[5]}},dout_vga[4:0],{3{dout_vga[0]}}};
 	 //assign VGA_pixel = {{8{hcount[1]}}, {8{hcount[3]}},{8{hcount[5]}}}; //test pattern 
 	 //for debug
+	 assign VGA_pixel = {dout_vga[15:11],{3{dout_vga[11]}},dout_vga[10:5],{2{dout_vga[5]}},dout_vga[4:0],{3{dout_vga[0]}}};
+	 //assign VGA_pixel[23:16] =  {dout_vga[10:5],2'b0};//red
+	 //assign  VGA_pixel[15:8] = {dout_vga[15:11],3'b0};//green
+	 //assign VGA_pixel[7:0] = {dout_vga[4:0],3'b0};//blue
+	 //assign VGA_pixel= 24'b0000_0000_0000_0000_1111_1111;
 	 assign  {HDR1_16,HDR1_18, HDR1_20, HDR1_22, HDR1_24, HDR1_26, HDR1_28, HDR1_30}=camera_memory_dout;
 	 
 	 
@@ -174,7 +180,8 @@ module hardware_interface(
 	 start2p <= (start2_last==0)&&(start2==1) ? 1: 0;
 	 
 	 end
-	 assign camera_clk = camera_pclk; //fix this
+	 //assign camera_clk = camera_pclk; //fix this
+	 assign camera_clk = clk_div[1];
 	 assign camera_xclk = clk_div[1];
 	 
 	 

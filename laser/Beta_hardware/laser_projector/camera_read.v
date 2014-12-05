@@ -76,8 +76,8 @@ module camera_read(
 	vcount <= (href==0) ? vcount+1 : vcount;
 	//pixel_data[7:0] <= p_data;
 	pixel_data[15:8] <= p_data; //try swapping?
-	//pixel_done <= (href==0) ? 0 : 1; 
-	pixel_done <= 0;
+	pixel_done <= (href==0) ? 0 : 1; 
+	//pixel_done <= 0;
 	hcount <= hcount+1;
 	end
 	
@@ -85,8 +85,8 @@ module camera_read(
 	FSM_state <= 3;
 	//pixel_data[15:8] <= p_data;  //it works when swapped
 	pixel_data[7:0] <= p_data; //try swapping?
-	//pixel_done <= 0; 
-	pixel_done<= 1;
+	pixel_done <= 0; 
+	//pixel_done<= 1;
 	end
 	
 	5: begin //done state 

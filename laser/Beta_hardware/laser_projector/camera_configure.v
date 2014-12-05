@@ -64,8 +64,10 @@ input wire clk,
 		1: begin //configure clkrc reg
 		FSM_state <= 2;
 		write_id <= device_id;
-		write_reg <= 8'h11; //clk setup
-		write_data <= 8'b1000_0000; //enable pll
+		//write_reg <= 8'h11; //clk setup
+		write_reg <= 8'hB0;
+		write_data <= 8'h84;
+		//write_data <= 8'b1000_0000; //enable pll
 		start_write <= 1;
 		end
 		
@@ -79,6 +81,7 @@ input wire clk,
 		write_id <= device_id;
 		write_reg <= 8'h12; //COM7
 		write_data <= 8'b0000_0100; //rgb output
+		//write_data <= 8'b0000_0110; //color bar
 		start_write <= 1;
 		end
 		
@@ -92,7 +95,8 @@ input wire clk,
 		FSM_state <= 6;
 		write_id <= device_id;
 		write_reg <= 8'h40; //COM15
-		write_data <= 8'b1111_0000; //RGB555 format
+		//write_data <= 8'b1111_0000; //RGB555 format
+		write_data <= 8'b1101_0000; //RGB565
 		start_write <= 1;
 		end
 		
