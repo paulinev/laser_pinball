@@ -1,6 +1,9 @@
 Beta address space:
 Any subfields are byte spaced
 
+reset vector: 0'h80000000
+iqr vector: 0'h80000004
+
 0'h00000000 - 0'h0000FFFF : RAM/program memory (16k)
 
 0'h00010000 - 0'h0001xxxx: memory mapped I/O
@@ -14,8 +17,8 @@ Any subfields are byte spaced
 0018: SPI TX data
 001C: SPI RX data, read only
 0020: timer 1 current count, (read only)
-0024: timer 1 set count, upon write resets counter
-0028: timer 1 IRQ enable, write 1 to start
+0024: timer 1 set count, upon write resets counter and overflow flag
+0028: timer 1 IRQ enable, write 1 enable
 002C: timer 1 timer overflow, reads 1 when overflowed, write 1 to clear
 
 
@@ -41,7 +44,7 @@ Laser Beta output port A: {dac_csn,dac_latchn, laser_rgb[2:0]}
 
 Both Beta's: Input port A: lower 8 bits connect to DIP switch
 
-Both beta's output port B: LED[7:0]
+hardware beta's output port B: LED[7:0]
 
 
 

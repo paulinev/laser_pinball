@@ -35,11 +35,14 @@ module laser_projector_full(
 	output wire dac_sclk,
 	output wire [7:0] debug_led
     );
+	 
+	 
+	 parameter xadr_physics = 31'h04;
+	 parameter xadr_laser = 31'h04;
 	
 	//wires for physics beta
 	wire mwe_physics;
 	wire irq_physics;
-	wire [30:0] xadr_physics;
 	wire [31:0] ma_physics;
 	wire [31:0] mdin_physics;
 	wire [31:0] mdout_physics;
@@ -59,7 +62,6 @@ module laser_projector_full(
 	//wires for laser beta
 	wire mwe_laser;
 	wire irq_laser;
-	wire [30:0] xadr_laser;
 	wire [31:0] ma_laser;
 	wire [31:0] mdin_laser;
 	wire [31:0] mdout_laser;
@@ -76,15 +78,10 @@ module laser_projector_full(
 	wire sel_write_shared_laser;	
 	
 	wire [31:0] IO_port;
-	assign debug_led = IO_port[23:16];
+	assign debug_led = IO_port[7:0];
 	
 	//memory mdin is data into beta
 	//memory mdout is data from beta to be written
-		//jakes beta
-		
-	assign xadr_physics = 31'b0;
-	//assign irq_physics = 1'b0;
-	//irq is now from timer!
 	
 	beta2 cpu_physics(
 	.clk(clk),
@@ -163,8 +160,8 @@ module laser_projector_full(
 	beta2 cpu_laser(
 	.clk(clk), 
 	.reset(reset), 
-	.irq(1'b0), 
-	.xadr(31'b0), 
+	.irq(irq_laser), 
+	.xadr(xadr_laser), 
 	.ma(ma_laser), 
 	.mdin(mdin_laser),
 	.mdout(mdout_laser),
@@ -212,12 +209,12 @@ module laser_projector_full(
     .in_port_a({24'b0,dip_sw}), 
     .in_port_b(32'b0), 
     .dout(IO_dout_laser), 
-    .out_port_a(IO_port), 
-    .out_port_b({dac_csn,dac_latchn, laser_rgb}), 
+    .out_port_a({dac_csn,dac_latchn, laser_rgb}), 
+    .out_port_b(IO_port), 
     .spi_miso(1'b0),  
     .spi_sclk(dac_sclk), 
     .spi_mosi(dac_mosi),
-	 .irq()
+	 .irq(irq_laser)
     );
 
 	//laser_beta is client, physics_beta is host
