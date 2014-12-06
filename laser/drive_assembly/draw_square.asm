@@ -5,7 +5,7 @@
 CMOVE(1, r6)
 SHLC(r6, 16, r6)
 CMOVE(0x3, r3)
-CMOVE(0x080C, r0)
+CMOVE(0x0810, r0)
 ST(r0, 0x10, r6)
 
 main:
