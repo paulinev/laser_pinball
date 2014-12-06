@@ -16,19 +16,16 @@
 
 
 | Define parameters
-SPRITE_OFFSET = 4
-RGB_OFFSET = 4
-X_OFFSET = 4
-Y_OFFSET = 4
 NEXT_SPRITE_OFFSET = 0x04
+TIMER_VALUE = 0x9C4
 
 | External address offsets
-TIMER_OVERFLOW = 0x2C
 SPI_CONFIG = 0x10
 SPI_STATUS = 0x14
 DAC_CTL_OUT = 0x08
 SPI_TX = 0x18
 TIMER_SET = 0x24
+TIMER_OVERFLOW = 0x2C
 SHARED_MEM_WRITE_STATUS = 0x100
 SHARED_MEM_READ_STATUS = 0x101
 
@@ -42,10 +39,15 @@ XRTN()
 
 | Output port B (0008): {ADC_CSN, ADC_latch_n, R, G, B}
 
-| Initialize sprite location in shared memory
+| Initialize sprite location in shared memory, initialize SPI
 init:
 	CMOVE(2, r4)
 	SHLC(r4, 16, r4)
+	
+	CMOVE(1, r7)
+	SHLC(r7, 16, r7)
+	CMOVE(0x0810, r8)
+	ST(r8, SPI_CONFIG, r7)
 
 | Draws every sprite in a frame
 check_data_available:
@@ -72,26 +74,26 @@ draw_frame:
 	
 	CALL(draw_sprite)
 	
-	| get next sprite location
+	| get next sprite location in shared memory
 	ADDC(r4, NEXT_SPRITE_OFFSET, r4)
 	
 	JMP(draw_frame)
 	
 frame_done:
-	ANDC(r4, 0x0000, r4) 			| clear frame offset
+	ANDC(r4, 0x0000, r4) 			| clear frame offset (shared memory)
 	CMOVE(0, r7)
 	ST(r7, SHARED_MEM_READ_STATUS, r4)	| clear busy flag
 	
 	JMP(check_data_available)
 
 
-|| Start the timer, wait for it to finish, and clear the flag (currently not resetting every time--might have to, copy code from initialization at top)
+|| Start the timer, wait for it to finish, and clear the flag (have to reload counter to reset)
 set_timer:
 	
 	| Initialize and reset timer
 	CMOVE(1, r7) 			| store timer address in r7
 	SHLC(r7, 16, r7)
-	CMOVE(0x9c4, r8) 		| load for 20kHz frequency
+	CMOVE(TIMER_VALUE, r8) 		| load for 20kHz frequency
 	ST(r8, TIMER_SET, r7)
 	
 wait_timer:
