@@ -13,7 +13,7 @@ XRTN()
 start:
 CMOVE(0x1,R0)
 CMOVE(0xABCD,R1)
-ST(R0,instance_list+4)
+ST(R0,instance_list+4)/
 ST(R1,instance_list+8)
 CMOVE(0x2,R0)
 CMOVE(0x1234,R1)
@@ -33,12 +33,12 @@ update:        | process next game object
 update_start:
   LD(instance_list,R8)      | load the current offset into the list
   LD(R8,0,R1)   | load SPRITE_ID of next object
-  CMOVE(0x08AB,R17)
+  CMOVE(0x08AB,R17)     ||| TEST WRITE BLOCK
   SHLC(R17,16,R17)
   CMOVE(0xCDEF,R18)
   SHLC(R18,16,R18)
   SHRC(R18,16,R18)
-  ADD(R17,R18,R17)
+  ADD(R17,R18,R17)      |||
   PUSH(LP)      | gotta push LP before you call a function within a function!
   CALL(write_external)
   POP(LP)       | restore LP
