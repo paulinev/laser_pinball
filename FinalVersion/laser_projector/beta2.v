@@ -161,7 +161,9 @@ module decode(clk,reset,irq,z,opcode,
   // a little bit of state...
   reg annul,msel,mwrite;
 
-  always @ (opcode or z or annul or msel or irq or reset)
+  
+  //always @ (opcode or z or annul or msel or irq or reset)
+  always@(*)
   begin
     // initial assignments for all control signals
     asel = 1'hx;

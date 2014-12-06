@@ -24,19 +24,21 @@ iqr vector: 0'h80000004
 
 0'h00020000 - 0'h0002xxxx: data transfer read block
 this block is used by another source to transfer data into the beta.
-It is 256 words of memory that can be written but not read by another source. 
+
+0000 - 00FF: 
 There is a single status register that can be written by the data source and read by both
 There is a single status register that can be written by the beta and read by both
 
-0000 - 00FF : memory block (read only)
-0100: data source register (read only)
-0101: beta status register
+0000 - 00FF : memory block written by source (read only)
+0100: source status register (read only)
+0101: beta status register (read and write)
 
 0'h00030000 ' 0'h0003xxxx: data transfer write block
 this block is used to transfer data to another source.
-There are 256 words of write only memory 
-There is a single status register that can be written and read by the beta, and read by another source
-There is a single status register that can be written by external source and read by the beta
+
+0000 - 00FF: write only memory to transfer to client
+0100: status register that can be read and written by the beta and read by the client device
+0101: status register that can be read by the beta and is written by the client
 
 
 External Connections:

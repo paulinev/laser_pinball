@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module beta_read_decode(
 	input wire clk,
+	input wire reset,
 	input wire [2:0] read_select, //need to pipeline
 	input wire [31:0] ram_dout,
 	input wire [31:0] IO_dout,
@@ -38,6 +39,13 @@ module beta_read_decode(
 	always@(*)
 	begin
 	
+	if(reset)
+	begin 
+	beta_mdin <= ram_dout;
+	end
+	
+	else
+	begin
 	case(old_read_select)
 	
 	0: begin //select ram
@@ -60,6 +68,7 @@ module beta_read_decode(
 	beta_mdin <= ram_dout;
 	end 
 	endcase 
+	end
 	end
 
 endmodule

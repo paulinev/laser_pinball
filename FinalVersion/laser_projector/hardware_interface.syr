@@ -136,8 +136,10 @@ Module <beta_addr_decode> compiled
 Module <beta2> compiled
 Module <regfile> compiled
 Module <decode> compiled
-Compiling verilog file "laser_projector_full.v" in library work
+Compiling verilog file "reset_controller.v" in library work
 Module <shift_right> compiled
+Compiling verilog file "laser_projector_full.v" in library work
+Module <reset_controller> compiled
 Compiling verilog file "debounce.v" in library work
 Module <laser_projector_full> compiled
 Compiling verilog file "clocking.v" in library work
@@ -163,6 +165,8 @@ Analyzing hierarchy for module <camera_clk> in library <work>.
 Analyzing hierarchy for module <laser_projector_full> in library <work> with parameters.
 	xadr_laser = "0000000000000000000000000000100"
 	xadr_physics = "0000000000000000000000000000100"
+
+Analyzing hierarchy for module <reset_controller> in library <work>.
 
 Analyzing hierarchy for module <debounce> in library <work>.
 
@@ -274,6 +278,9 @@ Module <system_timer> is correct for synthesis.
 Analyzing module <memory_share> in library <work>.
 Module <memory_share> is correct for synthesis.
  
+Analyzing module <reset_controller> in library <work>.
+Module <reset_controller> is correct for synthesis.
+ 
 Analyzing module <debounce> in library <work>.
 Module <debounce> is correct for synthesis.
  
@@ -283,6 +290,14 @@ Module <debounce> is correct for synthesis.
 =========================================================================
 
 Performing bidirectional port resolution...
+
+Synthesizing Unit <reset_controller>.
+    Related source file is "reset_controller.v".
+    Found 16-bit register for signal <reset_timer>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <reset_controller> synthesized.
+
 
 Synthesizing Unit <debounce>.
     Related source file is "debounce.v".
@@ -516,10 +531,11 @@ Macro Statistics
  32-bit subtractor                                     : 2
  5-bit subtractor                                      : 2
  8-bit adder                                           : 2
-# Counters                                             : 4
- 20-bit up counter                                     : 4
-# Registers                                            : 128
- 1-bit register                                        : 90
+# Counters                                             : 5
+ 20-bit up counter                                     : 5
+# Registers                                            : 131
+ 1-bit register                                        : 92
+ 16-bit register                                       : 1
  3-bit register                                        : 2
  32-bit register                                       : 30
  5-bit register                                        : 4
@@ -531,8 +547,8 @@ Macro Statistics
  1-bit 32-to-1 multiplexer                             : 2
 # Logic shifters                                       : 2
  32-bit shifter logical left                           : 2
-# Xors                                                 : 10
- 1-bit xor2                                            : 6
+# Xors                                                 : 11
+ 1-bit xor2                                            : 7
  32-bit xor2                                           : 4
 
 =========================================================================
@@ -615,6 +631,8 @@ INFO:Xst - HDL ADVISOR - LUT implementation is currently selected for the RAM <M
     |     doB            | connected to signal <rd3>           |          |
     -----------------------------------------------------------------------
 Unit <regfile> synthesized (advanced).
+WARNING:Xst:1426 - The value init of the FF/Latch reset_timer_0 hinder the constant cleaning in the block reset_controller.
+   You should achieve better results by setting this init to 0.
 WARNING:Xst:1293 - FF/Latch <status_reg_31> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_30> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <status_reg_29> has a constant value of 0 in block <spi_io>. This FF/Latch will be trimmed during the optimization process.
@@ -795,10 +813,10 @@ Macro Statistics
  32-bit subtractor                                     : 2
  5-bit subtractor                                      : 2
  8-bit adder                                           : 2
-# Counters                                             : 4
- 20-bit up counter                                     : 4
-# Registers                                            : 1036
- Flip-Flops                                            : 1036
+# Counters                                             : 5
+ 20-bit up counter                                     : 5
+# Registers                                            : 1054
+ Flip-Flops                                            : 1054
 # Comparators                                          : 6
  14-bit comparator lessequal                           : 4
  8-bit comparator greatequal                           : 2
@@ -806,8 +824,8 @@ Macro Statistics
  1-bit 32-to-1 multiplexer                             : 2
 # Logic shifters                                       : 2
  32-bit shifter logical left                           : 2
-# Xors                                                 : 10
- 1-bit xor2                                            : 6
+# Xors                                                 : 11
+ 1-bit xor2                                            : 7
  32-bit xor2                                           : 4
 
 =========================================================================
@@ -839,7 +857,6 @@ Optimizing unit <beta2> ...
 Optimizing unit <mapped_IO> ...
 
 Optimizing unit <laser_projector_full> ...
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_8> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_7> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_6> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_5> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
@@ -848,6 +865,10 @@ WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_3> has
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_laser/npc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_laser/npc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_physics/npc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_physics/npc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_29> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_31> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_30> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
@@ -861,8 +882,6 @@ WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_23> has a co
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_22> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_20> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_19> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_16> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_18> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_read_decode/old_read_select_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_read_decode/old_read_select_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_31> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
@@ -888,6 +907,10 @@ WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_12> ha
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_11> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_10> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_9> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/physics_shared_memory/host_status_8> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_27> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_25> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_24> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_21> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_23> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_22> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
@@ -912,6 +935,8 @@ WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_3> has a c
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_2> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_16> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_18> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_17> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_15> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/laser_beta_IO/beta_spi/dout_14> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
@@ -934,9 +959,10 @@ WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_31> has a 
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_30> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_26> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_28> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_27> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_25> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_24> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_physics/pc_inc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_physics/pc_inc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_laser/pc_inc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_laser/pc_inc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <best_hazor/physics_beta_IO/beta_spi/mosi> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <best_hazor/physics_beta_IO/beta_spi/sclk> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_0> of sequential type is unconnected in block <hardware_interface>.
@@ -971,29 +997,27 @@ WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_28> of s
 WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_29> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_30> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_31> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_physics/npc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_physics/npc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_laser/npc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <best_hazor/cpu_laser/npc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_physics/pc_inc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_physics/pc_inc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_laser/pc_inc_0> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_laser/pc_inc_1> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block hardware_interface, actual ratio is 9.
+Found area constraint ratio of 100 (+ 5) on block hardware_interface, actual ratio is 10.
 FlipFlop best_hazor/cpu_laser/ctl/msel has been replicated 1 time(s)
-FlipFlop best_hazor/cpu_physics/ctl/msel has been replicated 1 time(s)
+FlipFlop db_1/clean has been replicated 1 time(s)
 
 Final Macro Processing ...
+
+Processing Unit <hardware_interface> :
+	Found 16-bit shift register for signal <instance_name/reset_timer_15>.
+Unit <hardware_interface> processed.
 
 =========================================================================
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 934
- Flip-Flops                                            : 934
+# Registers                                            : 956
+ Flip-Flops                                            : 956
+# Shift Registers                                      : 1
+ 16-bit shift register                                 : 1
 
 =========================================================================
 
@@ -1022,24 +1046,24 @@ Design Statistics
 # IOs                              : 82
 
 Cell Usage :
-# BELS                             : 2873
+# BELS                             : 2944
 #      GND                         : 5
 #      INV                         : 73
-#      LUT1                        : 96
-#      LUT2                        : 83
-#      LUT3                        : 338
-#      LUT4                        : 160
-#      LUT5                        : 429
-#      LUT6                        : 1164
-#      MUXCY                       : 218
-#      MUXF7                       : 76
+#      LUT1                        : 115
+#      LUT2                        : 65
+#      LUT3                        : 219
+#      LUT4                        : 207
+#      LUT5                        : 390
+#      LUT6                        : 1327
+#      MUXCY                       : 237
+#      MUXF7                       : 55
 #      VCC                         : 5
-#      XORCY                       : 226
-# FlipFlops/Latches                : 938
-#      FD                          : 456
-#      FDE                         : 429
+#      XORCY                       : 246
+# FlipFlops/Latches                : 961
+#      FD                          : 421
+#      FDE                         : 467
 #      FDR                         : 2
-#      FDRE                        : 40
+#      FDRE                        : 60
 #      FDRS                        : 2
 #      FDS                         : 5
 #      FDSE                        : 4
@@ -1049,6 +1073,8 @@ Cell Usage :
 #      RAMB18                      : 2
 #      RAMB18SDP                   : 2
 #      RAMB36_EXP                  : 28
+# Shift Registers                  : 1
+#      SRLC16E                     : 1
 # Clock Buffers                    : 4
 #      BUFG                        : 4
 # IO Buffers                       : 49
@@ -1068,18 +1094,19 @@ Selected Device : 5vlx50tff1136-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             938  out of  28800     3%  
- Number of Slice LUTs:                 2487  out of  28800     8%  
-    Number used as Logic:              2343  out of  28800     8%  
-    Number used as Memory:              144  out of   7680     1%  
+ Number of Slice Registers:             961  out of  28800     3%  
+ Number of Slice LUTs:                 2541  out of  28800     8%  
+    Number used as Logic:              2396  out of  28800     8%  
+    Number used as Memory:              145  out of   7680     1%  
        Number used as RAM:              144
+       Number used as SRL:                1
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   2762
-   Number with an unused Flip Flop:    1824  out of   2762    66%  
-   Number with an unused LUT:           275  out of   2762     9%  
-   Number of fully used LUT-FF pairs:   663  out of   2762    24%  
-   Number of unique control sets:        32
+ Number of LUT Flip Flop pairs used:   2852
+   Number with an unused Flip Flop:    1891  out of   2852    66%  
+   Number with an unused LUT:           311  out of   2852    10%  
+   Number of fully used LUT-FF pairs:   650  out of   2852    22%  
+   Number of unique control sets:        38
 
 IO Utilization: 
  Number of IOs:                          82
@@ -1113,7 +1140,7 @@ Clock Information:
 ---------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                           | Clock buffer(FF name)                                                                                                 | Load  |
 ---------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-USER_CLK                               | clk_50_gen/DCM_ADV_INST:CLKDV                                                                                         | 1012  |
+USER_CLK                               | clk_50_gen/DCM_ADV_INST:CLKDV                                                                                         | 1036  |
 best_hazor/laser_beta_ram/BU2/dbiterr  | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 15    |
 best_hazor/physics_beta_ram/BU2/dbiterr| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 15    |
 ---------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
@@ -1121,21 +1148,21 @@ INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered
 
 Asynchronous Control Signals Information:
 ----------------------------------------
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-Control Signal                                                                    | Buffer(FF name)                                                                                                       | Load  |
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP) | 112   |
-best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
-----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                    | Buffer(FF name)                                                                                                        | Load  |
+----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
+best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 112   |
+best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
+----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 3.548ns (Maximum Frequency: 281.851MHz)
-   Minimum input arrival time before clock: 7.402ns
-   Maximum output required time after clock: 3.226ns
-   Maximum combinational path delay: 3.629ns
+   Minimum period: 3.536ns (Maximum Frequency: 282.811MHz)
+   Minimum input arrival time before clock: 3.103ns
+   Maximum output required time after clock: 3.507ns
+   Maximum combinational path delay: No path found
 
 Timing Detail:
 --------------
@@ -1143,111 +1170,88 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'USER_CLK'
-  Clock period: 3.548ns (frequency: 281.851MHz)
-  Total number of paths / destination ports: 52013547 / 3232
+  Clock period: 3.536ns (frequency: 282.811MHz)
+  Total number of paths / destination ports: 59233519 / 3335
 -------------------------------------------------------------------------
-Delay:               7.096ns (Levels of Logic = 9)
-  Source:            best_hazor/cpu_physics/rf/Mram_regfile3 (RAM)
-  Destination:       best_hazor/physics_beta_IO/out_port_a_0 (FF)
+Delay:               7.072ns (Levels of Logic = 8)
+  Source:            best_hazor/cpu_physics/rf/Mram_regfile5 (RAM)
+  Destination:       best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP (RAM)
   Source Clock:      USER_CLK rising 0.5X
   Destination Clock: USER_CLK rising 0.5X
 
-  Data Path: best_hazor/cpu_physics/rf/Mram_regfile3 to best_hazor/physics_beta_IO/out_port_a_0
+  Data Path: best_hazor/cpu_physics/rf/Mram_regfile5 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     RAM32M:WCLK->DOA1     5   1.345   0.866  best_hazor/cpu_physics/rf/Mram_regfile3 (best_hazor/cpu_physics/rd1<13>)
+     RAM32M:WCLK->DOA1     3   1.345   0.858  best_hazor/cpu_physics/rf/Mram_regfile5 (best_hazor/cpu_physics/rd1<25>)
      LUT6:I0->O            1   0.086   0.611  best_hazor/cpu_physics/z128 (best_hazor/cpu_physics/z128)
      LUT6:I2->O            3   0.086   0.369  best_hazor/cpu_physics/z262 (best_hazor/cpu_physics/z)
-     LUT6:I5->O           59   0.086   0.454  best_hazor/cpu_physics/npc_next<10>21 (best_hazor/cpu_physics/N71)
-     LUT5:I4->O            1   0.086   0.549  best_hazor/cpu_physics/npc_next<10>_SW1 (N564)
-     LUT6:I3->O           34   0.086   0.858  best_hazor/cpu_physics/ma<10>1 (best_hazor/ma_physics<10>)
-     LUT5:I0->O            3   0.086   0.369  best_hazor/physics_beta_IO/spi_start1181 (best_hazor/physics_beta_IO/spi_start1181)
-     LUT5:I4->O           41   0.086   0.451  best_hazor/physics_beta_IO/spi_start1198 (best_hazor/physics_beta_IO/dout_and0000)
-     LUT6:I5->O           32   0.086   0.450  best_hazor/physics_beta_IO/out_port_a_not00011 (best_hazor/physics_beta_IO/out_port_a_not0001)
-     LUT3:I2->O            1   0.086   0.000  best_hazor/physics_beta_IO/out_port_a_0_rstpot (best_hazor/physics_beta_IO/out_port_a_0_rstpot)
-     FD:D                     -0.022          best_hazor/physics_beta_IO/out_port_a_0
+     LUT6:I5->O           46   0.086   0.941  best_hazor/cpu_physics/npc_next<10>21 (best_hazor/cpu_physics/N71)
+     LUT6:I0->O            2   0.086   0.772  best_hazor/cpu_physics/npc_next<19> (best_hazor/cpu_physics/npc_next<19>)
+     LUT6:I1->O            3   0.086   0.369  best_hazor/physics_decode/sel_ram_and0000132 (best_hazor/physics_decode/sel_ram_and0000132)
+     LUT6:I5->O            1   0.086   0.361  best_hazor/physics_decode/sel_ram_and0000341_SW1 (N901)
+     LUT6:I5->O          114   0.086   0.335  best_hazor/_and00001 (best_hazor/_and0000)
+     begin scope: 'best_hazor/physics_beta_ram'
+     begin scope: 'BU2'
+     RAMB18:WEA1               0.509          U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SP.SINGLE_PRIM18.SP
     ----------------------------------------
-    Total                      7.096ns (2.119ns logic, 4.977ns route)
-                                       (29.9% logic, 70.1% route)
+    Total                      7.072ns (2.456ns logic, 4.616ns route)
+                                       (34.7% logic, 65.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'USER_CLK'
-  Total number of paths / destination ports: 2933436 / 2242
+  Total number of paths / destination ports: 88 / 88
 -------------------------------------------------------------------------
-Offset:              7.402ns (Levels of Logic = 8)
-  Source:            GPIO_SW_C (PAD)
-  Destination:       best_hazor/cpu_physics/rf/Mram_regfile_ren_12 (RAM)
+Offset:              3.103ns (Levels of Logic = 4)
+  Source:            GPIO_DIP_SW2 (PAD)
+  Destination:       best_hazor/physics_beta_IO/dout_1 (FF)
   Destination Clock: USER_CLK rising 0.5X
 
-  Data Path: GPIO_SW_C to best_hazor/cpu_physics/rf/Mram_regfile_ren_12
+  Data Path: GPIO_DIP_SW2 to best_hazor/physics_beta_IO/dout_1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O           152   0.694   0.873  GPIO_SW_C_IBUF (HDR1_20_OBUF)
-     LUT5:I0->O           34   0.086   0.451  best_hazor/cpu_physics/ctl/asel_and00001 (best_hazor/cpu_physics/interrupt)
-     LUT5:I4->O          100   0.086   0.534  best_hazor/cpu_physics/ctl/csel1 (best_hazor/cpu_physics/asel)
-     LUT5:I3->O           94   0.086   0.332  best_hazor/cpu_physics/b<3>1 (best_hazor/cpu_physics/b<3>)
-     DSP48E:B3->P28        1   2.645   0.361  best_hazor/cpu_physics/mpy/Mmult_mult (best_hazor/cpu_physics/mult<28>)
-     LUT5:I4->O            2   0.086   0.365  best_hazor/cpu_physics/wd<28>336 (best_hazor/cpu_physics/wd<28>336)
-     LUT6:I5->O            1   0.086   0.000  best_hazor/cpu_physics/wd<28>376_G (N1221)
-     MUXF7:I1->O           3   0.214   0.243  best_hazor/cpu_physics/wd<28>376 (best_hazor/cpu_physics/wd<28>)
-     RAM32M:DIC0               0.260          best_hazor/cpu_physics/rf/Mram_regfile_ren_15
+     IBUF:I->O             2   0.694   0.772  GPIO_DIP_SW2_IBUF (GPIO_DIP_SW2_IBUF)
+     LUT5:I0->O            1   0.086   0.768  best_hazor/physics_beta_IO/dout_mux0000<1>71 (best_hazor/physics_beta_IO/dout_mux0000<1>71)
+     LUT6:I1->O            1   0.086   0.611  best_hazor/physics_beta_IO/dout_mux0000<1>96 (best_hazor/physics_beta_IO/dout_mux0000<1>96)
+     LUT6:I2->O            1   0.086   0.000  best_hazor/physics_beta_IO/dout_mux0000<1>140 (best_hazor/physics_beta_IO/dout_mux0000<1>)
+     FD:D                     -0.022          best_hazor/physics_beta_IO/dout_1
     ----------------------------------------
-    Total                      7.402ns (4.243ns logic, 3.159ns route)
-                                       (57.3% logic, 42.7% route)
+    Total                      3.103ns (0.952ns logic, 2.151ns route)
+                                       (30.7% logic, 69.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'USER_CLK'
-  Total number of paths / destination ports: 7 / 7
+  Total number of paths / destination ports: 13 / 10
 -------------------------------------------------------------------------
-Offset:              3.226ns (Levels of Logic = 2)
-  Source:            best_hazor/laser_beta_IO/out_port_a_2 (FF)
-  Destination:       HDR1_10 (PAD)
+Offset:              3.507ns (Levels of Logic = 2)
+  Source:            instance_name/reset_timer_15 (FF)
+  Destination:       HDR1_20 (PAD)
   Source Clock:      USER_CLK rising 0.5X
 
-  Data Path: best_hazor/laser_beta_IO/out_port_a_2 to HDR1_10
+  Data Path: instance_name/reset_timer_15 to HDR1_20
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              2   0.396   0.239  best_hazor/laser_beta_IO/out_port_a_2 (best_hazor/laser_beta_IO/out_port_a_2)
-     INV:I->O              1   0.212   0.235  _AUX_2<2>1_INV_0 (HDR1_10_OBUF)
-     OBUF:I->O                 2.144          HDR1_10_OBUF (HDR1_10)
+     FDE:C->Q            240   0.396   0.552  instance_name/reset_timer_15 (instance_name/reset_timer_15)
+     LUT2:I0->O           67   0.086   0.329  instance_name/reset1 (HDR1_20_OBUF)
+     OBUF:I->O                 2.144          HDR1_20_OBUF (HDR1_20)
     ----------------------------------------
-    Total                      3.226ns (2.752ns logic, 0.474ns route)
-                                       (85.3% logic, 14.7% route)
-
-=========================================================================
-Timing constraint: Default path analysis
-  Total number of paths / destination ports: 3 / 3
--------------------------------------------------------------------------
-Delay:               3.629ns (Levels of Logic = 3)
-  Source:            GPIO_SW_C (PAD)
-  Destination:       HDR1_42 (PAD)
-
-  Data Path: GPIO_SW_C to HDR1_42
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O           152   0.694   0.340  GPIO_SW_C_IBUF (HDR1_20_OBUF)
-     INV:I->O              2   0.212   0.239  HDR1_421_INV_0 (HDR1_42_OBUF)
-     OBUF:I->O                 2.144          HDR1_42_OBUF (HDR1_42)
-    ----------------------------------------
-    Total                      3.629ns (3.050ns logic, 0.579ns route)
-                                       (84.1% logic, 15.9% route)
+    Total                      3.507ns (2.626ns logic, 0.881ns route)
+                                       (74.9% logic, 25.1% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 106.00 secs
-Total CPU time to Xst completion: 106.23 secs
+Total REAL time to Xst completion: 111.00 secs
+Total CPU time to Xst completion: 111.18 secs
  
 --> 
 
 
-Total memory usage is 677116 kilobytes
+Total memory usage is 667792 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  360 (   0 filtered)
+Number of warnings :  362 (   0 filtered)
 Number of infos    :    6 (   0 filtered)
 

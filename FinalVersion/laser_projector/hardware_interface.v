@@ -92,6 +92,7 @@ module hardware_interface(
 	 wire camera_href;
 	 
 	 wire camera_clk; //12.5Mhz
+	 wire user_reset;
 	 
 	 //inputs from camera
 	 assign camera_dout = {HDR1_50, HDR1_52, HDR1_54, HDR1_56, HDR1_58, HDR1_60, HDR1_62, HDR1_64};
@@ -103,6 +104,9 @@ module hardware_interface(
 	 assign HDR1_40 = camera_xclk; 
 	 assign HDR1_42 = ~reset; //reset is active high
 	 assign camera_xclk = camera_clk;
+	 //test outputs
+	 assign HDR1_18 = clk_50;
+	 assign HDR1_20 = reset; 
 	 
 	 assign {DVI_D11, DVI_D10, DVI_D9, DVI_D8, DVI_D7, DVI_D6, DVI_D5,
 								DVI_D4, DVI_D3, DVI_D2, DVI_D1, DVI_D0} = DVI_data;
@@ -135,11 +139,6 @@ module hardware_interface(
 	 wire paddle_l; //button for left paddle
 	 wire paddle_r; //button for right paddle
 	 wire camera_start;
-	 
-		
-	//test outputs
-	assign HDR1_18 = clk_50;
-	assign HDR1_20 = reset; 
 		 
 	clocking clk_50_gen (
     .CLKIN_IN(USER_CLK), //100MHz
@@ -175,16 +174,21 @@ module hardware_interface(
     .dac_sclk(dac_sclk), 
     .debug_led(debug_led)
     );
-
-	 /*
+	 
+	 reset_controller instance_name (
+    .clk(clk_50), 
+    .user_reset(user_reset), 
+    .reset(reset)
+    );
+	 
 	 debounce db_1 (
     .reset(0), 
     .clock(clk_50), 
     .noisy(GPIO_SW_C), 
-    .clean(reset)
+    .clean(user_reset)
     );
-	 */
-	 assign reset = GPIO_SW_C; 
+	 
+	  
 	 
 	 debounce db_2 (
     .reset(reset), 

@@ -37,18 +37,18 @@ Timing constraint: PERIOD analysis for net "clk_50_gen/CLKDV_BUF" derived from
 NET "USER_CLK_IBUFG" PERIOD = 10 ns HIGH 50%;  multiplied by 2.00 and duty 
 cycle corrected to 20 nS  HIGH 10 nS  
 
- 52703017 paths analyzed, 6744 endpoints analyzed, 0 failing endpoints
+ 59992871 paths analyzed, 6885 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is  11.249ns.
+ Minimum period is  15.541ns.
 --------------------------------------------------------------------------------
-Slack:                  8.751ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_laser/inst_28 (FF)
-  Destination:          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  4.459ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               instance_name/reset_timer_15 (FF)
+  Destination:          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      11.310ns (Levels of Logic = 12)
-  Clock Path Skew:      0.171ns (1.247 - 1.076)
-  Source Clock:         HDR1_18_OBUF rising at 0.000ns
-  Destination Clock:    HDR1_18_OBUF rising at 20.000ns
+  Data Path Delay:      15.446ns (Levels of Logic = 11)
+  Clock Path Skew:      0.015ns (1.262 - 1.247)
+  Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
+  Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
 
   Clock Uncertainty:          0.110ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -57,65 +57,62 @@ Slack:                  8.751ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_laser/inst_28 to best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+  Maximum Data Path: instance_name/reset_timer_15 to best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
     Location                Delay type         Delay(ns)  Physical Resource
                                                           Logical Resource(s)
     ----------------------------------------------------  -------------------
-    SLICE_X33Y96.BQ         Tcko                  0.326   best_hazor/cpu_laser/inst<28>
-                                                          best_hazor/cpu_laser/inst_28
-    SLICE_X25Y100.C4        net (fanout=22)       2.289   best_hazor/cpu_laser/inst<28>
-    SLICE_X25Y100.C         Tilo                  0.080   best_hazor/cpu_laser/wd<0>37
-                                                          best_hazor/cpu_laser/ctl/addsub_op1
-    SLICE_X22Y94.C3         net (fanout=34)       0.868   best_hazor/cpu_laser/addsub_op
-    SLICE_X22Y94.C          Tilo                  0.080   best_hazor/cpu_laser/a<0>
-                                                          best_hazor/cpu_laser/Madd_addsub_lut<0>
-    SLICE_X26Y94.A1         net (fanout=1)        0.669   best_hazor/cpu_laser/Madd_addsub_lut<0>
-    SLICE_X26Y94.COUT       Topcya                0.391   best_hazor/cpu_laser/Madd_addsub_cy<3>
-                                                          best_hazor/cpu_laser/Madd_addsub_lut<0>_rt
-                                                          best_hazor/cpu_laser/Madd_addsub_cy<3>
-    SLICE_X26Y95.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<3>
-    SLICE_X26Y95.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<7>
+    SLICE_X0Y0.AQ           Tcko                  0.346   instance_name/reset_timer<15>
+                                                          instance_name/reset_timer_15
+    SLICE_X23Y81.A3         net (fanout=240)      4.552   instance_name/reset_timer<15>
+    SLICE_X23Y81.A          Tilo                  0.080   best_hazor/cpu_laser/bsel
+                                                          best_hazor/cpu_laser/ctl/asel_and00001
+    SLICE_X19Y89.C3         net (fanout=40)       0.802   best_hazor/cpu_laser/interrupt
+    SLICE_X19Y89.C          Tilo                  0.080   best_hazor/cpu_laser/a<24>
+                                                          best_hazor/cpu_laser/ctl/csel1
+    SLICE_X10Y85.A2         net (fanout=101)      1.020   best_hazor/cpu_laser/asel
+    SLICE_X10Y85.A          Tilo                  0.080   N1027
+                                                          best_hazor/cpu_laser/b<4>1
+    SLICE_X18Y84.A1         net (fanout=69)       0.886   best_hazor/cpu_laser/b<4>
+    SLICE_X18Y84.COUT       Topcya                0.391   best_hazor/cpu_laser/Madd_addsub_cy<7>
+                                                          best_hazor/cpu_laser/Madd_addsub_lut<4>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<7>
-    SLICE_X26Y96.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<7>
-    SLICE_X26Y96.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<11>
+    SLICE_X18Y85.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<7>
+    SLICE_X18Y85.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<11>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<11>
-    SLICE_X26Y97.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<11>
-    SLICE_X26Y97.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<15>
+    SLICE_X18Y86.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<11>
+    SLICE_X18Y86.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<15>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<15>
-    SLICE_X26Y98.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<15>
-    SLICE_X26Y98.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<19>
+    SLICE_X18Y87.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<15>
+    SLICE_X18Y87.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<19>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<19>
-    SLICE_X26Y99.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<19>
-    SLICE_X26Y99.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<23>
+    SLICE_X18Y88.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<19>
+    SLICE_X18Y88.DMUX       Tcind                 0.307   best_hazor/cpu_laser/Madd_addsub_cy<23>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<23>
-    SLICE_X26Y100.CIN       net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<23>
-    SLICE_X26Y100.DMUX      Tcind                 0.307   best_hazor/cpu_laser/Madd_addsub_cy<27>
-                                                          best_hazor/cpu_laser/Madd_addsub_cy<27>
-    SLICE_X29Y104.D2        net (fanout=4)        1.032   best_hazor/cpu_laser/addsub<27>
-    SLICE_X29Y104.D         Tilo                  0.080   best_hazor/cpu_laser/npc<27>
-                                                          best_hazor/cpu_laser/npc_next<27>
-    SLICE_X29Y104.A1        net (fanout=1)        0.511   best_hazor/cpu_laser/npc_next<27>
-    SLICE_X29Y104.A         Tilo                  0.080   best_hazor/cpu_laser/npc<27>
-                                                          best_hazor/laser_decode/sel_ram_and0000125
-    SLICE_X29Y99.D2         net (fanout=2)        0.711   best_hazor/laser_decode/sel_ram_and0000125
-    SLICE_X29Y99.D          Tilo                  0.080   best_hazor/_and0003
+    SLICE_X29Y92.D2         net (fanout=5)        1.200   best_hazor/cpu_laser/addsub<23>
+    SLICE_X29Y92.D          Tilo                  0.080   best_hazor/cpu_laser/npc<23>
+                                                          best_hazor/cpu_laser/npc_next<23>
+    SLICE_X29Y92.A1         net (fanout=1)        0.511   best_hazor/cpu_laser/npc_next<23>
+    SLICE_X29Y92.A          Tilo                  0.080   best_hazor/cpu_laser/npc<23>
+                                                          best_hazor/laser_decode/sel_ram_and0000132
+    SLICE_X28Y88.D1         net (fanout=4)        0.806   best_hazor/laser_decode/sel_ram_and0000132
+    SLICE_X28Y88.D          Tilo                  0.080   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A/sel_pipe<1>
                                                           best_hazor/_and00031
-    RAMB36_X0Y21.WEAU1      net (fanout=116)      2.959   best_hazor/_and0003
-    RAMB36_X0Y21.CLKARDCLKU Trcck_WEA             0.432   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    RAMB36_X0Y20.WEAU1      net (fanout=116)      3.464   best_hazor/_and0003
+    RAMB36_X0Y20.CLKARDCLKU Trcck_WEA             0.432   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+                                                          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
     ----------------------------------------------------  ---------------------------
-    Total                                        11.310ns (2.271ns logic, 9.039ns route)
-                                                          (20.1% logic, 79.9% route)
+    Total                                        15.446ns (2.205ns logic, 13.241ns route)
+                                                          (14.3% logic, 85.7% route)
 
 --------------------------------------------------------------------------------
-Slack:                  8.751ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_laser/inst_28 (FF)
-  Destination:          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  4.459ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               instance_name/reset_timer_15 (FF)
+  Destination:          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      11.310ns (Levels of Logic = 12)
-  Clock Path Skew:      0.171ns (1.247 - 1.076)
-  Source Clock:         HDR1_18_OBUF rising at 0.000ns
-  Destination Clock:    HDR1_18_OBUF rising at 20.000ns
+  Data Path Delay:      15.446ns (Levels of Logic = 11)
+  Clock Path Skew:      0.015ns (1.262 - 1.247)
+  Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
+  Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
 
   Clock Uncertainty:          0.110ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -124,65 +121,62 @@ Slack:                  8.751ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_laser/inst_28 to best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+  Maximum Data Path: instance_name/reset_timer_15 to best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
     Location                Delay type         Delay(ns)  Physical Resource
                                                           Logical Resource(s)
     ----------------------------------------------------  -------------------
-    SLICE_X33Y96.BQ         Tcko                  0.326   best_hazor/cpu_laser/inst<28>
-                                                          best_hazor/cpu_laser/inst_28
-    SLICE_X25Y100.C4        net (fanout=22)       2.289   best_hazor/cpu_laser/inst<28>
-    SLICE_X25Y100.C         Tilo                  0.080   best_hazor/cpu_laser/wd<0>37
-                                                          best_hazor/cpu_laser/ctl/addsub_op1
-    SLICE_X22Y94.C3         net (fanout=34)       0.868   best_hazor/cpu_laser/addsub_op
-    SLICE_X22Y94.C          Tilo                  0.080   best_hazor/cpu_laser/a<0>
-                                                          best_hazor/cpu_laser/Madd_addsub_lut<0>
-    SLICE_X26Y94.A1         net (fanout=1)        0.669   best_hazor/cpu_laser/Madd_addsub_lut<0>
-    SLICE_X26Y94.COUT       Topcya                0.391   best_hazor/cpu_laser/Madd_addsub_cy<3>
-                                                          best_hazor/cpu_laser/Madd_addsub_lut<0>_rt
-                                                          best_hazor/cpu_laser/Madd_addsub_cy<3>
-    SLICE_X26Y95.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<3>
-    SLICE_X26Y95.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<7>
+    SLICE_X0Y0.AQ           Tcko                  0.346   instance_name/reset_timer<15>
+                                                          instance_name/reset_timer_15
+    SLICE_X23Y81.A3         net (fanout=240)      4.552   instance_name/reset_timer<15>
+    SLICE_X23Y81.A          Tilo                  0.080   best_hazor/cpu_laser/bsel
+                                                          best_hazor/cpu_laser/ctl/asel_and00001
+    SLICE_X19Y89.C3         net (fanout=40)       0.802   best_hazor/cpu_laser/interrupt
+    SLICE_X19Y89.C          Tilo                  0.080   best_hazor/cpu_laser/a<24>
+                                                          best_hazor/cpu_laser/ctl/csel1
+    SLICE_X10Y85.A2         net (fanout=101)      1.020   best_hazor/cpu_laser/asel
+    SLICE_X10Y85.A          Tilo                  0.080   N1027
+                                                          best_hazor/cpu_laser/b<4>1
+    SLICE_X18Y84.A1         net (fanout=69)       0.886   best_hazor/cpu_laser/b<4>
+    SLICE_X18Y84.COUT       Topcya                0.391   best_hazor/cpu_laser/Madd_addsub_cy<7>
+                                                          best_hazor/cpu_laser/Madd_addsub_lut<4>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<7>
-    SLICE_X26Y96.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<7>
-    SLICE_X26Y96.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<11>
+    SLICE_X18Y85.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<7>
+    SLICE_X18Y85.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<11>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<11>
-    SLICE_X26Y97.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<11>
-    SLICE_X26Y97.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<15>
+    SLICE_X18Y86.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<11>
+    SLICE_X18Y86.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<15>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<15>
-    SLICE_X26Y98.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<15>
-    SLICE_X26Y98.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<19>
+    SLICE_X18Y87.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<15>
+    SLICE_X18Y87.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<19>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<19>
-    SLICE_X26Y99.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<19>
-    SLICE_X26Y99.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<23>
+    SLICE_X18Y88.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<19>
+    SLICE_X18Y88.DMUX       Tcind                 0.307   best_hazor/cpu_laser/Madd_addsub_cy<23>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<23>
-    SLICE_X26Y100.CIN       net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<23>
-    SLICE_X26Y100.DMUX      Tcind                 0.307   best_hazor/cpu_laser/Madd_addsub_cy<27>
-                                                          best_hazor/cpu_laser/Madd_addsub_cy<27>
-    SLICE_X29Y104.D2        net (fanout=4)        1.032   best_hazor/cpu_laser/addsub<27>
-    SLICE_X29Y104.D         Tilo                  0.080   best_hazor/cpu_laser/npc<27>
-                                                          best_hazor/cpu_laser/npc_next<27>
-    SLICE_X29Y104.A1        net (fanout=1)        0.511   best_hazor/cpu_laser/npc_next<27>
-    SLICE_X29Y104.A         Tilo                  0.080   best_hazor/cpu_laser/npc<27>
-                                                          best_hazor/laser_decode/sel_ram_and0000125
-    SLICE_X29Y99.D2         net (fanout=2)        0.711   best_hazor/laser_decode/sel_ram_and0000125
-    SLICE_X29Y99.D          Tilo                  0.080   best_hazor/_and0003
+    SLICE_X29Y92.D2         net (fanout=5)        1.200   best_hazor/cpu_laser/addsub<23>
+    SLICE_X29Y92.D          Tilo                  0.080   best_hazor/cpu_laser/npc<23>
+                                                          best_hazor/cpu_laser/npc_next<23>
+    SLICE_X29Y92.A1         net (fanout=1)        0.511   best_hazor/cpu_laser/npc_next<23>
+    SLICE_X29Y92.A          Tilo                  0.080   best_hazor/cpu_laser/npc<23>
+                                                          best_hazor/laser_decode/sel_ram_and0000132
+    SLICE_X28Y88.D1         net (fanout=4)        0.806   best_hazor/laser_decode/sel_ram_and0000132
+    SLICE_X28Y88.D          Tilo                  0.080   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A/sel_pipe<1>
                                                           best_hazor/_and00031
-    RAMB36_X0Y21.WEAU0      net (fanout=116)      2.959   best_hazor/_and0003
-    RAMB36_X0Y21.CLKARDCLKU Trcck_WEA             0.432   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    RAMB36_X0Y20.WEAU0      net (fanout=116)      3.464   best_hazor/_and0003
+    RAMB36_X0Y20.CLKARDCLKU Trcck_WEA             0.432   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+                                                          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
     ----------------------------------------------------  ---------------------------
-    Total                                        11.310ns (2.271ns logic, 9.039ns route)
-                                                          (20.1% logic, 79.9% route)
+    Total                                        15.446ns (2.205ns logic, 13.241ns route)
+                                                          (14.3% logic, 85.7% route)
 
 --------------------------------------------------------------------------------
-Slack:                  8.756ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_laser/inst_28 (FF)
-  Destination:          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  4.462ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               instance_name/reset_timer_15 (FF)
+  Destination:          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      11.322ns (Levels of Logic = 12)
-  Clock Path Skew:      0.188ns (1.264 - 1.076)
-  Source Clock:         HDR1_18_OBUF rising at 0.000ns
-  Destination Clock:    HDR1_18_OBUF rising at 20.000ns
+  Data Path Delay:      15.446ns (Levels of Logic = 11)
+  Clock Path Skew:      0.018ns (1.265 - 1.247)
+  Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
+  Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
 
   Clock Uncertainty:          0.110ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -191,55 +185,52 @@ Slack:                  8.756ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_laser/inst_28 to best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+  Maximum Data Path: instance_name/reset_timer_15 to best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
     Location                Delay type         Delay(ns)  Physical Resource
                                                           Logical Resource(s)
     ----------------------------------------------------  -------------------
-    SLICE_X33Y96.BQ         Tcko                  0.326   best_hazor/cpu_laser/inst<28>
-                                                          best_hazor/cpu_laser/inst_28
-    SLICE_X25Y100.C4        net (fanout=22)       2.289   best_hazor/cpu_laser/inst<28>
-    SLICE_X25Y100.C         Tilo                  0.080   best_hazor/cpu_laser/wd<0>37
-                                                          best_hazor/cpu_laser/ctl/addsub_op1
-    SLICE_X22Y94.C3         net (fanout=34)       0.868   best_hazor/cpu_laser/addsub_op
-    SLICE_X22Y94.C          Tilo                  0.080   best_hazor/cpu_laser/a<0>
-                                                          best_hazor/cpu_laser/Madd_addsub_lut<0>
-    SLICE_X26Y94.A1         net (fanout=1)        0.669   best_hazor/cpu_laser/Madd_addsub_lut<0>
-    SLICE_X26Y94.COUT       Topcya                0.391   best_hazor/cpu_laser/Madd_addsub_cy<3>
-                                                          best_hazor/cpu_laser/Madd_addsub_lut<0>_rt
-                                                          best_hazor/cpu_laser/Madd_addsub_cy<3>
-    SLICE_X26Y95.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<3>
-    SLICE_X26Y95.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<7>
+    SLICE_X0Y0.AQ           Tcko                  0.346   instance_name/reset_timer<15>
+                                                          instance_name/reset_timer_15
+    SLICE_X23Y81.A3         net (fanout=240)      4.552   instance_name/reset_timer<15>
+    SLICE_X23Y81.A          Tilo                  0.080   best_hazor/cpu_laser/bsel
+                                                          best_hazor/cpu_laser/ctl/asel_and00001
+    SLICE_X19Y89.C3         net (fanout=40)       0.802   best_hazor/cpu_laser/interrupt
+    SLICE_X19Y89.C          Tilo                  0.080   best_hazor/cpu_laser/a<24>
+                                                          best_hazor/cpu_laser/ctl/csel1
+    SLICE_X10Y85.A2         net (fanout=101)      1.020   best_hazor/cpu_laser/asel
+    SLICE_X10Y85.A          Tilo                  0.080   N1027
+                                                          best_hazor/cpu_laser/b<4>1
+    SLICE_X18Y84.A1         net (fanout=69)       0.886   best_hazor/cpu_laser/b<4>
+    SLICE_X18Y84.COUT       Topcya                0.391   best_hazor/cpu_laser/Madd_addsub_cy<7>
+                                                          best_hazor/cpu_laser/Madd_addsub_lut<4>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<7>
-    SLICE_X26Y96.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<7>
-    SLICE_X26Y96.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<11>
+    SLICE_X18Y85.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<7>
+    SLICE_X18Y85.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<11>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<11>
-    SLICE_X26Y97.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<11>
-    SLICE_X26Y97.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<15>
+    SLICE_X18Y86.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<11>
+    SLICE_X18Y86.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<15>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<15>
-    SLICE_X26Y98.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<15>
-    SLICE_X26Y98.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<19>
+    SLICE_X18Y87.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<15>
+    SLICE_X18Y87.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<19>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<19>
-    SLICE_X26Y99.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<19>
-    SLICE_X26Y99.COUT       Tbyp                  0.083   best_hazor/cpu_laser/Madd_addsub_cy<23>
+    SLICE_X18Y88.CIN        net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<19>
+    SLICE_X18Y88.DMUX       Tcind                 0.307   best_hazor/cpu_laser/Madd_addsub_cy<23>
                                                           best_hazor/cpu_laser/Madd_addsub_cy<23>
-    SLICE_X26Y100.CIN       net (fanout=1)        0.000   best_hazor/cpu_laser/Madd_addsub_cy<23>
-    SLICE_X26Y100.DMUX      Tcind                 0.307   best_hazor/cpu_laser/Madd_addsub_cy<27>
-                                                          best_hazor/cpu_laser/Madd_addsub_cy<27>
-    SLICE_X29Y104.D2        net (fanout=4)        1.032   best_hazor/cpu_laser/addsub<27>
-    SLICE_X29Y104.D         Tilo                  0.080   best_hazor/cpu_laser/npc<27>
-                                                          best_hazor/cpu_laser/npc_next<27>
-    SLICE_X29Y104.A1        net (fanout=1)        0.511   best_hazor/cpu_laser/npc_next<27>
-    SLICE_X29Y104.A         Tilo                  0.080   best_hazor/cpu_laser/npc<27>
-                                                          best_hazor/laser_decode/sel_ram_and0000125
-    SLICE_X29Y99.D2         net (fanout=2)        0.711   best_hazor/laser_decode/sel_ram_and0000125
-    SLICE_X29Y99.D          Tilo                  0.080   best_hazor/_and0003
+    SLICE_X29Y92.D2         net (fanout=5)        1.200   best_hazor/cpu_laser/addsub<23>
+    SLICE_X29Y92.D          Tilo                  0.080   best_hazor/cpu_laser/npc<23>
+                                                          best_hazor/cpu_laser/npc_next<23>
+    SLICE_X29Y92.A1         net (fanout=1)        0.511   best_hazor/cpu_laser/npc_next<23>
+    SLICE_X29Y92.A          Tilo                  0.080   best_hazor/cpu_laser/npc<23>
+                                                          best_hazor/laser_decode/sel_ram_and0000132
+    SLICE_X28Y88.D1         net (fanout=4)        0.806   best_hazor/laser_decode/sel_ram_and0000132
+    SLICE_X28Y88.D          Tilo                  0.080   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A/sel_pipe<1>
                                                           best_hazor/_and00031
-    RAMB36_X0Y20.WEAU3      net (fanout=116)      2.971   best_hazor/_and0003
-    RAMB36_X0Y20.CLKARDCLKU Trcck_WEA             0.432   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    RAMB36_X0Y20.WEAL1      net (fanout=116)      3.464   best_hazor/_and0003
+    RAMB36_X0Y20.CLKARDCLKL Trcck_WEA             0.432   best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+                                                          best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
     ----------------------------------------------------  ---------------------------
-    Total                                        11.322ns (2.271ns logic, 9.051ns route)
-                                                          (20.1% logic, 79.9% route)
+    Total                                        15.446ns (2.205ns logic, 13.241ns route)
+                                                          (14.3% logic, 85.7% route)
 
 --------------------------------------------------------------------------------
 
@@ -251,8 +242,8 @@ Derived Constraints for USER_CLK_IBUFG
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|USER_CLK_IBUFG                 |     10.000ns|          N/A|      5.625ns|            0|            0|            0|     52703017|
-| clk_50_gen/CLKDV_BUF          |     20.000ns|     11.249ns|          N/A|            0|            0|     52703017|            0|
+|USER_CLK_IBUFG                 |     10.000ns|          N/A|      7.771ns|            0|            0|            0|     59992871|
+| clk_50_gen/CLKDV_BUF          |     20.000ns|     15.541ns|          N/A|            0|            0|     59992871|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -267,7 +258,7 @@ Clock to Setup on destination clock USER_CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-USER_CLK       |   11.249|         |         |         |
+USER_CLK       |   15.541|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -276,23 +267,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0
 
-Constraints cover 52703017 paths, 0 nets, and 14276 connections
+Constraints cover 59992871 paths, 0 nets, and 15030 connections
 
 Design statistics:
-   Minimum period:  11.249ns{1}   (Maximum frequency:  88.897MHz)
+   Minimum period:  15.541ns{1}   (Maximum frequency:  64.346MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Fri Dec  5 23:37:38 2014 
+Analysis completed Sat Dec  6 02:27:51 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 505 MB
+Peak Memory Usage: 510 MB
 
 
 

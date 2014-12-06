@@ -100,7 +100,7 @@ module laser_projector_full(
 	.clka(clk), 
 	.dina(mdout_physics), 
 	.addra(ma_physics[15:2]),
-	.wea(mwe_physics && sel_ram_physics),	
+	.wea(mwe_physics && sel_ram_physics && (~reset)),	
 	.douta(ram_dout_physics) 
 	); 
 	
@@ -117,6 +117,7 @@ module laser_projector_full(
 	//select mdin for beta
 	beta_read_decode physics_read_decode (
 	.clk(clk), 
+	.reset(reset),
 	.read_select(read_select_physics), 
 	.ram_dout(ram_dout_physics),
 	.IO_dout(IO_dout_physics), 
@@ -156,7 +157,7 @@ module laser_projector_full(
     );
 	
 	
-	//westons beta					
+	//laser beta					
 	beta2 cpu_laser(
 	.clk(clk), 
 	.reset(reset), 
@@ -174,7 +175,7 @@ module laser_projector_full(
 	.clka(clk),
 	.dina(mdout_laser), 
 	.addra(ma_laser[15:2]), 
-	.wea(mwe_laser&&sel_ram_laser),
+	.wea(mwe_laser&&sel_ram_laser&&(~reset)),
 	.douta(ram_dout_laser) 
 	);
 	
@@ -192,6 +193,7 @@ module laser_projector_full(
 	//write data back
 	beta_read_decode laser_read_decode (
 	.clk(clk),
+	.reset(reset),
 	.read_select(read_select_laser),
 	.ram_dout(ram_dout_laser),
 	.IO_dout(IO_dout_laser),
