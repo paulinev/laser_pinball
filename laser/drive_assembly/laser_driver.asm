@@ -60,9 +60,11 @@ draw_frame:
 	| Load sprite IDs until you find a null-terminated one
 	LD(r4, 0, r7) 		| load new sprite data into r7
 	SHRC(r7, 27, r2) 	| get just the sprite ID
+|| FOR TEST ONLY
+	ST(r2, SHARED_MEM_READ_STATUS, r4)
 	BEQ(r2, frame_done) 	| if sprite ID is null then we're done, otherwise continue loading
 	
-	SUBC(r8, 1, r8) 	| store 0xFFFFFFFF in r8
+	SUBC(r20, 1, r8) 	| store 0xFFFFFFFF in r8
 	SHRC(r8, 8, r8) 	| 0x00FFFFFF in r8
 	AND(r7, r8, r0) 	| mask off the sprite ID and RGB data
 	SHRC(r0, 12, r0) 	| store only x data in r0
@@ -77,14 +79,15 @@ draw_frame:
 	| get next sprite location in shared memory
 	ADDC(r4, NEXT_SPRITE_OFFSET, r4)
 	
-	JMP(draw_frame)
+	BR(draw_frame)
 	
 frame_done:
-	ANDC(r4, 0x0000, r4) 			| clear frame offset (shared memory)
+	CMOVE(2, r4)
+	SHLC(r4, 16, r4) 			| clear frame offset (shared memory)
 	CMOVE(0, r7)
 	ST(r7, SHARED_MEM_READ_STATUS, r4)	| clear busy flag
 	
-	JMP(check_data_available)
+	BR(check_data_available)
 
 
 || Start the timer, wait for it to finish, and clear the flag (have to reload counter to reset)
@@ -98,6 +101,7 @@ set_timer:
 	
 wait_timer:
 	LD(r7, TIMER_OVERFLOW, r8)
+	|BNE(r8, wait_timer)	| TEST ONLY
 	BEQ(r8, wait_timer) 	| flag should be set when timer is done
 	CMOVE(0x0, r8) 		| clear flag
 	ST(r8, TIMER_OVERFLOW, r7)
@@ -115,9 +119,11 @@ draw_sprite:
 	CMOVE(0x0, r3)		| turn off laser while travelling between sprites
 | Starting from first memory location:
 draw_loop:
+	PUSH(LP)
 	CALL(go_to_point)
 	CALL(get_next_point)
 	CALL(set_timer)
+	POP(LP)
 	
 	SUBC(r6, 0x01, r6)
 	MOVE(r16, r3)		| restore RGB data after first point
@@ -132,13 +138,15 @@ go_to_point:
 	
 	ORC(r3, 0b01000, r7) 	| Store CS & RGB data in r7
 	CMOVE(0b0011, r10) 	| Store config data (1) in r10
-	SHL(r10, 12, r10) 	| Shift left to bit 15
+	SHLC(r10, 12, r10) 	| Shift left to bit 15
 	ADD(r10, r0, r10) 	| r10 now contains config data for write to DACA
 	
-	CMOVE(0b1011, r12) 	| Store config data (2) in r12
-	SHL(r11, 12, r11) 	| Shift left to bit 15
+	CMOVE(0b1011, r11) 	| Store config data (2) in r11
+	SHLC(r11, 12, r11) 	| Shift left to bit 15
 	ADD(r11, r1, r11) 	| r11 now contains config data for write to DACB
 	
+	CMOVE(0x01, r8) 	| put SPI address in r8
+	SHLC(r8, 16, r8)
 	ST(r7, DAC_CTL_OUT, r8) | Write to output port A (memory location 8)--lower CS
 	ST(r10, SPI_TX, r8) 	| Write configuration and X data to SPI TX (0018)
 	
@@ -166,13 +174,13 @@ spi_wait_y: 			| Wait for second SPI completion flag
 	ORC(r7, 0b10000, r7)
 	ST(r7, DAC_CTL_OUT, r8) | Write to output port A (memory location 8)--raise CS
 	ADD(r31, r31, r31)
-	ANDC(r7, 0b10111, r7)
+	SUBC(r7, 0b01000, r7)
 	ST(r7, DAC_CTL_OUT, r8) | Lower ADC latch
 	ADD(r31, r31, r31)
 	ADD(r31, r31, r31)
 	ADD(r31, r31, r31)
 	ADD(r31, r31, r31)
-	ANDC(r7, 0b01111, r7)
+	ADDC(r7, 0b01000, r7)
 	ST(r7, DAC_CTL_OUT, r8) | Raise ADC latch	
 	ADD(r31, r31, r31)
 	ADD(r31, r31, r31)
@@ -200,7 +208,7 @@ get_next_point:
 
 | Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
 . = 0x200
-LONG(16) 			| h100 x h100 square with 16 points (four per side)
+LONG(17) 			| h100 x h100 square with 16 (+1) points (four per side)
 LONG(0x04000000) 		| 16 bits of x offset, 16 bits of y offset (sign extended!)
 LONG(0x04000000)
 LONG(0x04000000)
@@ -222,7 +230,7 @@ LONG(0x0000FC00)
 LONG(0x0000FC00)
 
 . = 0x300
-LONG(5)				| a five-pointed circle for the ball
+LONG(6)				| a five-pointed circle for the ball
 LONG(0x00F000B0)
 LONG(0xFDB00120)
 LONG(0xFC900000)

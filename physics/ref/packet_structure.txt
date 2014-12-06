@@ -1,0 +1,8 @@
+s: sprite id
+rgb: rgb
+x: x first point
+y: y first point
+
+31 30 29 29 27 26 25 24  23  22  21  20  19  18  17  16  15  14  13  12  11  10  09  08  07  06  05  04  03  02  01  00
+s4 s3 s2 s1 s0  r  g  b x11 x10 x09 x08 x07 x06 x05 x04 x03 x02 x01 x00 y11 y10 y09 y08 y07 y06 y05 y04 y03 y02 y01 y00
+
