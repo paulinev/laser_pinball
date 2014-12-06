@@ -94,13 +94,11 @@ main:
 set_timer:
 	CMOVE(0x9c4, r8)
 	ST(r8, 0x0024, r6)
-	CMOVE(0x01, r8)
-	ST(r8, 0x0028, r6)
 wait_timer:
-	LD(r6, 0x0028, r8)
-	BNE(r8, wait_timer)
-	CMOVE(0x01, r8)
-	ST(r8, 0x0028, r6)
+	LD(r6, 0x002C, r8) | read overflow flag
+	BEQ(r8, wait_timer) | if zero wait
+	CMOVE(0x0, r8)
+	ST(r8, 0x002C, r6) | clear by writing a zero
 	RTN()
 
 go_to_point:
