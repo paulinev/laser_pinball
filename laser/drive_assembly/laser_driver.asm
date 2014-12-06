@@ -3,7 +3,7 @@
 | REGISTER MAP
 |	r0: x location
 |	r1: y location
-|	r2: current sprite ID
+|	r2: current sprite id
 |	r3: rgb value for laser
 |	r4: current offset into shared memory
 |	r5: counter
@@ -12,9 +12,8 @@
 |	r8: scratch
 |	r9: current location in local sprite lookup table
 |	r10 and above: scratch
+|	r16: reserved for copy of rgb data
 
-
-. = 0 				| start at memory location 0
 
 | Define parameters
 SPRITE_OFFSET = 4
@@ -30,17 +29,33 @@ SPI_STATUS = 0x14
 DAC_CTL_OUT = 0x08
 SPI_TX = 0x18
 TIMER_SET = 0x24
-SHARED_MEM_STATUS = 0x100
+SHARED_MEM_WRITE_STATUS = 0x100
+SHARED_MEM_READ_STATUS = 0x101
+
+. = 0				| start at memory location 0
+BR(init)
+
+. = 4
+INTERRUPT:
+ADD(r31, r31, r31)
+XRTN()
 
 | Output port B (0008): {ADC_CSN, ADC_latch_n, R, G, B}
 
 | Initialize sprite location in shared memory
-CMOVE(2, r4)
-SHLC(r4, 16, r4)
+init:
+	CMOVE(2, r4)
+	SHLC(r4, 16, r4)
 
 | Draws every sprite in a frame
+check_data_available:
+	LD(r4, SHARED_MEM_WRITE_STATUS, r7)	| shared memory status register. if one, the memory is being written.
+	BNE(r7, check_data_available)
+	CMOVE(1, r7)
+	ST(r7, SHARED_MEM_READ_STATUS, r4)	| set the busy flag, because we're going to use the shared memory now.
+
 draw_frame:
-	| Load sprite IDs until you find a null-terminated one| draw every 20khz
+	| Load sprite IDs until you find a null-terminated one
 	LD(r4, 0, r7) 		| load new sprite data into r7
 	SHRC(r7, 27, r2) 	| get just the sprite ID
 	BEQ(r2, frame_done) 	| if sprite ID is null then we're done, otherwise continue loading
@@ -52,7 +67,7 @@ draw_frame:
 	SHRC(r8, 12, r8) 	| 0x00000FFF in r8
 	AND(r7, r8, r1) 	| store only y data in r1
 	SHRC(r7, 24, r3) 	| mask off x and y data
-	ANDC(r3, 0x1F, r3) 	| rgb data in r3
+	ANDC(r3, 0x07, r3) 	| rgb data in r3
 	
 	
 	CALL(draw_sprite)
@@ -63,8 +78,11 @@ draw_frame:
 	JMP(draw_frame)
 	
 frame_done:
-	| frame finished: raise status flag, get the next one once "writing" flag is off
-	ADD(r31, r31, r4) 	| clear frame offset
+	ANDC(r4, 0x0000, r4) 			| clear frame offset
+	CMOVE(0, r7)
+	ST(r7, SHARED_MEM_READ_STATUS, r4)	| clear busy flag
+	
+	JMP(check_data_available)
 
 
 || Start the timer, wait for it to finish, and clear the flag (currently not resetting every time--might have to, copy code from initialization at top)
@@ -87,7 +105,8 @@ wait_timer:
 || Draw a single sprite
 draw_sprite:
 	| Get length of sprite from lookup table, store in r6
-	SHL(r2, 3, r9) 		| translate sprite ID into lookup table location
+	SHLC(r2, 8, r9) 	| translate sprite ID into lookup table location
+	ADDC(r9, 0x100, r9)
 	LD(r9, 0, r6) 		| first entry in lookup table is sprite length
 	ADDC(r9, 0x4, r9)	| store first point for get_next_point routine
 	MOVE(r3, r16)		| store RGB data in a temp register
@@ -130,9 +149,11 @@ spi_wait_x: 			| Wait for SPI completion flag
 	
 	ORC(r7, 0b10000, r7)
 	ST(r7, DAC_CTL_OUT, r8) | Write to output port A (memory location 8)--raise CS
+	ADD(r31, r31, r31)
 	ANDC(r7, 0b01111, r7)
 	
 	ST(r7, DAC_CTL_OUT, r8) | Write to output port A--lower CS
+	ADD(r31, r31, r31)
 	ST(r11, SPI_TX, r8) 	| Write configuration and Y data to SPI TX (0018)
 	ST(r13, SPI_STATUS, r8) | Start SPI
 	
@@ -142,11 +163,19 @@ spi_wait_y: 			| Wait for second SPI completion flag
 	
 	ORC(r7, 0b10000, r7)
 	ST(r7, DAC_CTL_OUT, r8) | Write to output port A (memory location 8)--raise CS
+	ADD(r31, r31, r31)
 	ANDC(r7, 0b10111, r7)
 	ST(r7, DAC_CTL_OUT, r8) | Lower ADC latch
+	ADD(r31, r31, r31)
+	ADD(r31, r31, r31)
+	ADD(r31, r31, r31)
+	ADD(r31, r31, r31)
 	ANDC(r7, 0b01111, r7)
-	ST(r7, DAC_CTL_OUT, r8) | Raise ADC latch
-	
+	ST(r7, DAC_CTL_OUT, r8) | Raise ADC latch	
+	ADD(r31, r31, r31)
+	ADD(r31, r31, r31)
+	ADD(r31, r31, r31)
+	ADD(r31, r31, r31)
 	RTN()
 
 || Get the location of the next point within a shape and store the updated location in registers 0 and 1 (x and y)	
@@ -168,32 +197,32 @@ get_next_point:
 
 
 | Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
-. = 0x1000
+. = 0x200
 LONG(16) 			| h100 x h100 square with 16 points (four per side)
-LONG(0x0040 0000) 		| 16 bits of x offset, 16 bits of y offset (sign extended! so an add will do a subtract!)
-LONG(0x0040 0000)
-LONG(0x0040 0000)
-LONG(0x0040 0000)
+LONG(0x04000000) 		| 16 bits of x offset, 16 bits of y offset (sign extended!)
+LONG(0x04000000)
+LONG(0x04000000)
+LONG(0x04000000)
 
-LONG(0x0000 0040)
-LONG(0x0000 0040)
-LONG(0x0000 0040)
-LONG(0x0000 0040)
+LONG(0x00000400)
+LONG(0x00000400)
+LONG(0x00000400)
+LONG(0x00000400)
 
-LONG(0xFFC0 0000)
-LONG(0xFFC0 0000)
-LONG(0xFFC0 0000)
-LONG(0xFFC0 0000)
+LONG(0xFC000000)
+LONG(0xFC000000)
+LONG(0xFC000000)
+LONG(0xFC000000)
 
-LONG(0x0000 FFC0)
-LONG(0x0000 FFC0)
-LONG(0x0000 FFC0)
-LONG(0x0000 FFC0)
+LONG(0x0000FC00)
+LONG(0x0000FC00)
+LONG(0x0000FC00)
+LONG(0x0000FC00)
 
-
+. = 0x300
 LONG(5)				| a five-pointed circle for the ball
-LONG(0x000F 000B)
-LONG(0xFFDB 0012)
-LONG(0xFFC9 0000)
-LONG(0xFFDB FFC9)
-LONG(0x000F FFDB)
+LONG(0x00F000B0)
+LONG(0xFDB00120)
+LONG(0xFC900000)
+LONG(0xFDB0FC90)
+LONG(0x00F0FDB0)

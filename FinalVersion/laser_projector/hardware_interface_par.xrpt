@@ -5,20 +5,20 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Fri Dec  5 23:36:59 2014">
+  <application stringID="par" timeStamp="Sat Dec  6 02:27:12 2014">
     <task stringID="PAR_DEVICE_UTILIZATION">
       <section stringID="PAR_DEVICE_UTLIZATION">
         <item AVAILABLE="32" dataType="int" stringID="PAR_BUFG" value="4"/>
         <item AVAILABLE="480" dataType="int" stringID="PAR_EXTERNAL_IOB" value="82">
           <item AVAILABLE="82" dataType="int" stringID="PAR_LOC_IOB" value="82"/>
         </item>
-        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_REGISTERS" value="938">
-          <item dataType="int" stringID="PAR_FLIP_FLOPS" value="938"/>
+        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_REGISTERS" value="961">
+          <item dataType="int" stringID="PAR_FLIP_FLOPS" value="961"/>
           <item dataType="int" stringID="PAR_LATCHES" value="0"/>
           <item dataType="int" stringID="PAR_LATCH_THRUS" value="0"/>
         </item>
-        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUTS" value="2477"/>
-        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUT_FLIPFLOP_PAIRS" value="2654"/>
+        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUTS" value="2531"/>
+        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUT_FLIPFLOP_PAIRS" value="2764"/>
       </section>
     </task>
     <task stringID="PAR_PAR">
@@ -28,7 +28,7 @@
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
         <item dataType="float" stringID="PAR_TIMING_SCORE" value="0.000000"/>
         <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="33 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="32 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="33 secs "/>
       </section>
     </task>
     <task stringID="PAR_par">
