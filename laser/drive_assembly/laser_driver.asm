@@ -17,25 +17,22 @@
 . = 0 				| start at memory location 0
 
 | Define parameters
-
-SPRITE_ID_IN = 0
-RGB_IN = 8
-X_LOC_IN = 0xC
-Y_LOC_IN = 0x18
-STATUS = 0x100
 SPRITE_OFFSET = 4
 RGB_OFFSET = 4
 X_OFFSET = 4
 Y_OFFSET = 4
 NEXT_SPRITE_OFFSET = 0x04
 
-| Output port A (0008): {ADC_CSN, ADC_latch_n, R, G, B}
+| External address offsets
+TIMER_OVERFLOW = 0x2C
+SPI_CONFIG = 0x10
+SPI_STATUS = 0x14
+DAC_CTL_OUT = 0x08
+SPI_TX = 0x18
+TIMER_SET = 0x24
+SHARED_MEM_STATUS = 0x100
 
-| Initialize timer
-CMOVE(1, r7) 			| store timer address in r7
-SHLC(r7, 16, r7)
-CMOVE(0x9c4, r8) 		| load for 20kHz interrupt
-ST(r8, 0x0024, r7)
+| Output port B (0008): {ADC_CSN, ADC_latch_n, R, G, B}
 
 | Initialize sprite location in shared memory
 CMOVE(2, r4)
@@ -72,15 +69,18 @@ frame_done:
 
 || Start the timer, wait for it to finish, and clear the flag (currently not resetting every time--might have to, copy code from initialization at top)
 set_timer:
-	CMOVE(0x01, r8)
-	CMOVE(0x01, r7)
+	
+	| Initialize and reset timer
+	CMOVE(1, r7) 			| store timer address in r7
 	SHLC(r7, 16, r7)
-	ST(r8, 0x0028, r7) 	| start timer
+	CMOVE(0x9c4, r8) 		| load for 20kHz frequency
+	ST(r8, TIMER_SET, r7)
+	
 wait_timer:
-	LD(r7, 0x0028, r8)
-	BNE(r8, wait_timer) 	| flag should be set when timer is done
-	CMOVE(0x01, r8) 	| clear flag
-	ST(r8, 0x0028, r7)
+	LD(r7, TIMER_OVERFLOW, r8)
+	BEQ(r8, wait_timer) 	| flag should be set when timer is done
+	CMOVE(0x0, r8) 		| clear flag
+	ST(r8, TIMER_OVERFLOW, r7)
 	RTN()
 
 
@@ -89,13 +89,17 @@ draw_sprite:
 	| Get length of sprite from lookup table, store in r6
 	SHL(r2, 3, r9) 		| translate sprite ID into lookup table location
 	LD(r9, 0, r6) 		| first entry in lookup table is sprite length
+	ADDC(r9, 0x4, r9)	| store first point for get_next_point routine
+	MOVE(r3, r16)		| store RGB data in a temp register
+	CMOVE(0x0, r3)		| turn off laser while travelling between sprites
 | Starting from first memory location:
 draw_loop:
-	CALL(get_next_point)
 	CALL(go_to_point)
+	CALL(get_next_point)
 	CALL(set_timer)
 	
 	SUBC(r6, 0x01, r6)
+	MOVE(r16, r3)		| restore RGB data after first point
 	BNE(r6, draw_loop)
 	RTN()
 
@@ -114,41 +118,41 @@ go_to_point:
 	SHL(r11, 12, r11) 	| Shift left to bit 15
 	ADD(r11, r1, r11) 	| r11 now contains config data for write to DACB
 	
-	ST(r7, 0x8, r8) 	| Write to output port A (memory location 8)--lower CS
-	ST(r10, 0x18, r8) 	| Write configuration and X data to SPI TX (0018)
+	ST(r7, DAC_CTL_OUT, r8) | Write to output port A (memory location 8)--lower CS
+	ST(r10, SPI_TX, r8) 	| Write configuration and X data to SPI TX (0018)
 	
 	CMOVE(1, r13) 		| Store 1 (start flag) in r13
-	ST(r13, 0x14, r8) 	| Start SPI
+	ST(r13, SPI_STATUS, r8) | Start SPI
 
 spi_wait_x: 			| Wait for SPI completion flag
-	LD(r8, 0x14, r13)
+	LD(r8, SPI_STATUS, r13)
 	BF(r13, spi_wait_x)
 	
 	ORC(r7, 0b10000, r7)
-	ST(r7, 0x8, r8) 	| Write to output port A (memory location 8)--raise CS
+	ST(r7, DAC_CTL_OUT, r8) | Write to output port A (memory location 8)--raise CS
 	ANDC(r7, 0b01111, r7)
 	
-	ST(r7, 0x8, r8) 	| Write to output port A--lower CS
-	ST(r11, 0x18, r8) 	| Write configuration and Y data to SPI TX (0018)
-	ST(r13, 0x14, r8) 	| Start SPI
+	ST(r7, DAC_CTL_OUT, r8) | Write to output port A--lower CS
+	ST(r11, SPI_TX, r8) 	| Write configuration and Y data to SPI TX (0018)
+	ST(r13, SPI_STATUS, r8) | Start SPI
 	
 spi_wait_y: 			| Wait for second SPI completion flag
-	LD(r8, 0x14, r13)
+	LD(r8, SPI_STATUS, r13)
 	BF(r13, spi_wait_y)
 	
 	ORC(r7, 0b10000, r7)
-	ST(r7, 0x8, r8) 	| Write to output port A (memory location 8)--raise CS
+	ST(r7, DAC_CTL_OUT, r8) | Write to output port A (memory location 8)--raise CS
 	ANDC(r7, 0b10111, r7)
-	ST(r7, 0x8, r8) 	| Lower ADC latch
+	ST(r7, DAC_CTL_OUT, r8) | Lower ADC latch
 	ANDC(r7, 0b01111, r7)
-	ST(r7, 0x8, r8) 	| Raise ADC latch
+	ST(r7, DAC_CTL_OUT, r8) | Raise ADC latch
 	
 	RTN()
 
 || Get the location of the next point within a shape and store the updated location in registers 0 and 1 (x and y)	
 get_next_point:
 	
-	LD(r9, 0x8, r8) 	| load next point into r8
+	LD(r9, 0, r8)	 	| load next point into r8
 	MOVE(r8, r7)		| copy point
 	ADDC(r9, 0x4, r9) 	| increment location in local table
 	
@@ -165,8 +169,31 @@ get_next_point:
 
 | Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
 . = 0x1000
-LONG(1) | sprite ID 1
-LONG(4) | has four points
-LONG(0x0100 0000) | 16 bits of x offset, 16 bits of y offset (sign extended! so an add will do a subtract!)
-| MORE POINTS
-LONG(0xFFFF) | null terminate
+LONG(16) 			| h100 x h100 square with 16 points (four per side)
+LONG(0x0040 0000) 		| 16 bits of x offset, 16 bits of y offset (sign extended! so an add will do a subtract!)
+LONG(0x0040 0000)
+LONG(0x0040 0000)
+LONG(0x0040 0000)
+
+LONG(0x0000 0040)
+LONG(0x0000 0040)
+LONG(0x0000 0040)
+LONG(0x0000 0040)
+
+LONG(0xFFC0 0000)
+LONG(0xFFC0 0000)
+LONG(0xFFC0 0000)
+LONG(0xFFC0 0000)
+
+LONG(0x0000 FFC0)
+LONG(0x0000 FFC0)
+LONG(0x0000 FFC0)
+LONG(0x0000 FFC0)
+
+
+LONG(5)				| a five-pointed circle for the ball
+LONG(0x000F 000B)
+LONG(0xFFDB 0012)
+LONG(0xFFC9 0000)
+LONG(0xFFDB FFC9)
+LONG(0x000F FFDB)

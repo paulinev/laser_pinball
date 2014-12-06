@@ -1,7 +1,7 @@
 .include beta.uasm
 
 . = 0
-
+ADD(r31, r31, r31)
 CMOVE(1, r6)
 SHLC(r6, 16, r6)
 CMOVE(0x3, r3)
