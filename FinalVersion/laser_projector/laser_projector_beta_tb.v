@@ -66,7 +66,11 @@ module laser_projector_beta_tb;
 		// Wait 100 ns for global reset to finish
 		#100;
       reset = 1;
-		#20;
+		#40;
+		reset = 0;
+		#3000;
+		reset = 1;
+		#40;
 		reset = 0;
 		
 		// Add stimulus here

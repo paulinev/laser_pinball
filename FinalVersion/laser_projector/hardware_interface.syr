@@ -5,14 +5,14 @@ Parameter TMPDIR set to /home/wbraun/laser_pinball/FinalVersion/laser_projector/
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Parameter xsthdpdir set to /home/wbraun/laser_pinball/FinalVersion/laser_projector/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.04 secs
+Total CPU time to Xst completion: 0.03 secs
  
 --> 
 Reading design: hardware_interface.prj
@@ -117,7 +117,7 @@ Compiling verilog file "spi_io.v" in library work
 Module <system_timer> compiled
 Compiling verilog file "mul32.v" in library work
 Module <spi_io> compiled
-Compiling verilog file "beta_shared_mem.v" in library work
+Compiling verilog file "./beta_shared_mem.v" in library work
 Module <mul32> compiled
 Compiling verilog file "physics_beta_mem.v" in library work
 Module <beta_shared_mem> compiled
@@ -160,7 +160,9 @@ Analyzing hierarchy for module <clocking> in library <work>.
 
 Analyzing hierarchy for module <camera_clk> in library <work>.
 
-Analyzing hierarchy for module <laser_projector_full> in library <work>.
+Analyzing hierarchy for module <laser_projector_full> in library <work> with parameters.
+	xadr_laser = "0000000000000000000000000000100"
+	xadr_physics = "0000000000000000000000000000100"
 
 Analyzing hierarchy for module <debounce> in library <work>.
 
@@ -234,6 +236,8 @@ Module <camera_clk> is correct for synthesis.
     Set user-defined property "SIM_DEVICE =  VIRTEX5" for instance <DCM_ADV_INST> in unit <camera_clk>.
     Set user-defined property "STARTUP_WAIT =  FALSE" for instance <DCM_ADV_INST> in unit <camera_clk>.
 Analyzing module <laser_projector_full> in library <work>.
+	xadr_laser = 31'b0000000000000000000000000000100
+	xadr_physics = 31'b0000000000000000000000000000100
 Module <laser_projector_full> is correct for synthesis.
  
 Analyzing module <beta2> in library <work>.
@@ -455,22 +459,17 @@ Unit <memory_share> synthesized.
 
 Synthesizing Unit <laser_projector_full>.
     Related source file is "laser_projector_full.v".
-WARNING:Xst:1780 - Signal <xadr_laser> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <shared_write_dout_laser> is used but never assigned. This sourceless signal will be automatically connected to value 00000000000000000000000000000000.
 WARNING:Xst:646 - Signal <sel_write_shared_laser> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:1780 - Signal <irq_laser> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <IO_port<31:24>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <IO_port<15:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <IO_port<31:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 Unit <laser_projector_full> synthesized.
 
 
 Synthesizing Unit <hardware_interface>.
     Related source file is "hardware_interface.v".
 WARNING:Xst:1306 - Output <AUDIO_SDATA_OUT> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_20> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_16> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_22> is never assigned.
-WARNING:Xst:1306 - Output <HDR1_18> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_24> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_30> is never assigned.
 WARNING:Xst:1306 - Output <HDR1_26> is never assigned.
@@ -517,10 +516,10 @@ Macro Statistics
  32-bit subtractor                                     : 2
  5-bit subtractor                                      : 2
  8-bit adder                                           : 2
-# Counters                                             : 5
- 20-bit up counter                                     : 5
-# Registers                                            : 130
- 1-bit register                                        : 92
+# Counters                                             : 4
+ 20-bit up counter                                     : 4
+# Registers                                            : 128
+ 1-bit register                                        : 90
  3-bit register                                        : 2
  32-bit register                                       : 30
  5-bit register                                        : 4
@@ -532,8 +531,8 @@ Macro Statistics
  1-bit 32-to-1 multiplexer                             : 2
 # Logic shifters                                       : 2
  32-bit shifter logical left                           : 2
-# Xors                                                 : 11
- 1-bit xor2                                            : 7
+# Xors                                                 : 10
+ 1-bit xor2                                            : 6
  32-bit xor2                                           : 4
 
 =========================================================================
@@ -779,7 +778,6 @@ WARNING:Xst:2677 - Node <host_reg_data_28> of sequential type is unconnected in 
 WARNING:Xst:2677 - Node <host_reg_data_29> of sequential type is unconnected in block <physics_shared_memory>.
 WARNING:Xst:2677 - Node <host_reg_data_30> of sequential type is unconnected in block <physics_shared_memory>.
 WARNING:Xst:2677 - Node <host_reg_data_31> of sequential type is unconnected in block <physics_shared_memory>.
-WARNING:Xst:2677 - Node <irq> of sequential type is unconnected in block <beta_timer1>.
 WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <db_4>.
 WARNING:Xst:2677 - Node <clean> of sequential type is unconnected in block <db_5>.
 
@@ -797,10 +795,10 @@ Macro Statistics
  32-bit subtractor                                     : 2
  5-bit subtractor                                      : 2
  8-bit adder                                           : 2
-# Counters                                             : 5
- 20-bit up counter                                     : 5
-# Registers                                            : 1038
- Flip-Flops                                            : 1038
+# Counters                                             : 4
+ 20-bit up counter                                     : 4
+# Registers                                            : 1036
+ Flip-Flops                                            : 1036
 # Comparators                                          : 6
  14-bit comparator lessequal                           : 4
  8-bit comparator greatequal                           : 2
@@ -808,8 +806,8 @@ Macro Statistics
  1-bit 32-to-1 multiplexer                             : 2
 # Logic shifters                                       : 2
  32-bit shifter logical left                           : 2
-# Xors                                                 : 11
- 1-bit xor2                                            : 7
+# Xors                                                 : 10
+ 1-bit xor2                                            : 6
  32-bit xor2                                           : 4
 
 =========================================================================
@@ -941,7 +939,6 @@ WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_25> has a 
 WARNING:Xst:1293 - FF/Latch <best_hazor/physics_beta_IO/beta_spi/dout_24> has a constant value of 0 in block <hardware_interface>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <best_hazor/physics_beta_IO/beta_spi/mosi> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <best_hazor/physics_beta_IO/beta_spi/sclk> of sequential type is unconnected in block <hardware_interface>.
-WARNING:Xst:2677 - Node <best_hazor/laser_beta_IO/beta_timer1/irq> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_0> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_1> of sequential type is unconnected in block <hardware_interface>.
 WARNING:Xst:2677 - Node <best_hazor/physics_shared_memory/host_reg_data_2> of sequential type is unconnected in block <hardware_interface>.
@@ -985,9 +982,9 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <best_hazor/cpu_lase
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block hardware_interface, actual ratio is 10.
+Found area constraint ratio of 100 (+ 5) on block hardware_interface, actual ratio is 9.
+FlipFlop best_hazor/cpu_laser/ctl/msel has been replicated 1 time(s)
 FlipFlop best_hazor/cpu_physics/ctl/msel has been replicated 1 time(s)
-FlipFlop db_1/clean has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -995,8 +992,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 955
- Flip-Flops                                            : 955
+# Registers                                            : 934
+ Flip-Flops                                            : 934
 
 =========================================================================
 
@@ -1025,24 +1022,24 @@ Design Statistics
 # IOs                              : 82
 
 Cell Usage :
-# BELS                             : 2819
+# BELS                             : 2873
 #      GND                         : 5
-#      INV                         : 74
-#      LUT1                        : 115
-#      LUT2                        : 80
-#      LUT3                        : 340
-#      LUT4                        : 144
-#      LUT5                        : 440
-#      LUT6                        : 1098
-#      MUXCY                       : 237
-#      MUXF7                       : 35
+#      INV                         : 73
+#      LUT1                        : 96
+#      LUT2                        : 83
+#      LUT3                        : 338
+#      LUT4                        : 160
+#      LUT5                        : 429
+#      LUT6                        : 1164
+#      MUXCY                       : 218
+#      MUXF7                       : 76
 #      VCC                         : 5
-#      XORCY                       : 246
-# FlipFlops/Latches                : 959
-#      FD                          : 484
-#      FDE                         : 403
-#      FDR                         : 1
-#      FDRE                        : 60
+#      XORCY                       : 226
+# FlipFlops/Latches                : 938
+#      FD                          : 456
+#      FDE                         : 429
+#      FDR                         : 2
+#      FDRE                        : 40
 #      FDRS                        : 2
 #      FDS                         : 5
 #      FDSE                        : 4
@@ -1054,10 +1051,10 @@ Cell Usage :
 #      RAMB36_EXP                  : 28
 # Clock Buffers                    : 4
 #      BUFG                        : 4
-# IO Buffers                       : 47
+# IO Buffers                       : 49
 #      IBUF                        : 11
 #      IBUFG                       : 1
-#      OBUF                        : 35
+#      OBUF                        : 37
 # DCM_ADVs                         : 2
 #      DCM_ADV                     : 2
 # DSPs                             : 2
@@ -1071,22 +1068,22 @@ Selected Device : 5vlx50tff1136-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             959  out of  28800     3%  
- Number of Slice LUTs:                 2435  out of  28800     8%  
-    Number used as Logic:              2291  out of  28800     7%  
+ Number of Slice Registers:             938  out of  28800     3%  
+ Number of Slice LUTs:                 2487  out of  28800     8%  
+    Number used as Logic:              2343  out of  28800     8%  
     Number used as Memory:              144  out of   7680     1%  
        Number used as RAM:              144
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   2682
-   Number with an unused Flip Flop:    1723  out of   2682    64%  
-   Number with an unused LUT:           247  out of   2682     9%  
-   Number of fully used LUT-FF pairs:   712  out of   2682    26%  
-   Number of unique control sets:        34
+ Number of LUT Flip Flop pairs used:   2762
+   Number with an unused Flip Flop:    1824  out of   2762    66%  
+   Number with an unused LUT:           275  out of   2762     9%  
+   Number of fully used LUT-FF pairs:   663  out of   2762    24%  
+   Number of unique control sets:        32
 
 IO Utilization: 
  Number of IOs:                          82
- Number of bonded IOBs:                  47  out of    480     9%  
+ Number of bonded IOBs:                  49  out of    480    10%  
 
 Specific Feature Utilization:
  Number of Block RAM/FIFO:               30  out of     60    50%  
@@ -1116,7 +1113,7 @@ Clock Information:
 ---------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                           | Clock buffer(FF name)                                                                                                 | Load  |
 ---------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
-USER_CLK                               | clk_50_gen/DCM_ADV_INST:CLKDV                                                                                         | 1033  |
+USER_CLK                               | clk_50_gen/DCM_ADV_INST:CLKDV                                                                                         | 1012  |
 best_hazor/laser_beta_ram/BU2/dbiterr  | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 15    |
 best_hazor/physics_beta_ram/BU2/dbiterr| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 15    |
 ---------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
@@ -1124,21 +1121,21 @@ INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered
 
 Asynchronous Control Signals Information:
 ----------------------------------------
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
-Control Signal                                                                    | Buffer(FF name)                                                                                                        | Load  |
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
-best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)   | 112   |
-best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                    | Buffer(FF name)                                                                                                       | Load  |
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP) | 112   |
+best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 3.555ns (Maximum Frequency: 281.258MHz)
-   Minimum input arrival time before clock: 2.853ns
-   Maximum output required time after clock: 3.328ns
-   Maximum combinational path delay: No path found
+   Minimum period: 3.548ns (Maximum Frequency: 281.851MHz)
+   Minimum input arrival time before clock: 7.402ns
+   Maximum output required time after clock: 3.226ns
+   Maximum combinational path delay: 3.629ns
 
 Timing Detail:
 --------------
@@ -1146,87 +1143,111 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'USER_CLK'
-  Clock period: 3.555ns (frequency: 281.258MHz)
-  Total number of paths / destination ports: 49227922 / 3270
+  Clock period: 3.548ns (frequency: 281.851MHz)
+  Total number of paths / destination ports: 52013547 / 3232
 -------------------------------------------------------------------------
-Delay:               7.111ns (Levels of Logic = 8)
-  Source:            best_hazor/cpu_physics/rf/Mram_regfile5 (RAM)
-  Destination:       best_hazor/physics_beta_IO/timer1_cin_0 (FF)
+Delay:               7.096ns (Levels of Logic = 9)
+  Source:            best_hazor/cpu_physics/rf/Mram_regfile3 (RAM)
+  Destination:       best_hazor/physics_beta_IO/out_port_a_0 (FF)
   Source Clock:      USER_CLK rising 0.5X
   Destination Clock: USER_CLK rising 0.5X
 
-  Data Path: best_hazor/cpu_physics/rf/Mram_regfile5 to best_hazor/physics_beta_IO/timer1_cin_0
+  Data Path: best_hazor/cpu_physics/rf/Mram_regfile3 to best_hazor/physics_beta_IO/out_port_a_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     RAM32M:WCLK->DOA1     4   1.345   0.861  best_hazor/cpu_physics/rf/Mram_regfile5 (best_hazor/cpu_physics/rd1<25>)
+     RAM32M:WCLK->DOA1     5   1.345   0.866  best_hazor/cpu_physics/rf/Mram_regfile3 (best_hazor/cpu_physics/rd1<13>)
      LUT6:I0->O            1   0.086   0.611  best_hazor/cpu_physics/z128 (best_hazor/cpu_physics/z128)
      LUT6:I2->O            3   0.086   0.369  best_hazor/cpu_physics/z262 (best_hazor/cpu_physics/z)
-     LUT6:I5->O           58   0.086   0.454  best_hazor/cpu_physics/npc_next<10>21 (best_hazor/cpu_physics/N71)
-     LUT6:I5->O            1   0.086   0.549  best_hazor/cpu_physics/npc_next<14>_SW2 (N511)
-     LUT6:I3->O           13   0.086   0.896  best_hazor/cpu_physics/ma<14>1 (best_hazor/ma_physics<14>)
-     LUT6:I0->O            5   0.086   0.377  best_hazor/physics_beta_IO/spi_start1178 (best_hazor/physics_beta_IO/spi_start1178)
-     LUT3:I2->O           38   0.086   0.451  best_hazor/physics_beta_IO/spi_start1194 (best_hazor/physics_beta_IO/dout_and0000)
-     LUT5:I4->O           33   0.086   0.324  best_hazor/physics_beta_IO/timer1_mwe1 (best_hazor/physics_beta_IO/timer1_mwe)
-     FDE:CE                    0.185          best_hazor/physics_beta_IO/timer1_cin_0
+     LUT6:I5->O           59   0.086   0.454  best_hazor/cpu_physics/npc_next<10>21 (best_hazor/cpu_physics/N71)
+     LUT5:I4->O            1   0.086   0.549  best_hazor/cpu_physics/npc_next<10>_SW1 (N564)
+     LUT6:I3->O           34   0.086   0.858  best_hazor/cpu_physics/ma<10>1 (best_hazor/ma_physics<10>)
+     LUT5:I0->O            3   0.086   0.369  best_hazor/physics_beta_IO/spi_start1181 (best_hazor/physics_beta_IO/spi_start1181)
+     LUT5:I4->O           41   0.086   0.451  best_hazor/physics_beta_IO/spi_start1198 (best_hazor/physics_beta_IO/dout_and0000)
+     LUT6:I5->O           32   0.086   0.450  best_hazor/physics_beta_IO/out_port_a_not00011 (best_hazor/physics_beta_IO/out_port_a_not0001)
+     LUT3:I2->O            1   0.086   0.000  best_hazor/physics_beta_IO/out_port_a_0_rstpot (best_hazor/physics_beta_IO/out_port_a_0_rstpot)
+     FD:D                     -0.022          best_hazor/physics_beta_IO/out_port_a_0
     ----------------------------------------
-    Total                      7.111ns (2.218ns logic, 4.893ns route)
-                                       (31.2% logic, 68.8% route)
+    Total                      7.096ns (2.119ns logic, 4.977ns route)
+                                       (29.9% logic, 70.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'USER_CLK'
-  Total number of paths / destination ports: 88 / 88
+  Total number of paths / destination ports: 2933436 / 2242
 -------------------------------------------------------------------------
-Offset:              2.853ns (Levels of Logic = 4)
-  Source:            GPIO_DIP_SW2 (PAD)
-  Destination:       best_hazor/physics_beta_IO/dout_1 (FF)
+Offset:              7.402ns (Levels of Logic = 8)
+  Source:            GPIO_SW_C (PAD)
+  Destination:       best_hazor/cpu_physics/rf/Mram_regfile_ren_12 (RAM)
   Destination Clock: USER_CLK rising 0.5X
 
-  Data Path: GPIO_DIP_SW2 to best_hazor/physics_beta_IO/dout_1
+  Data Path: GPIO_SW_C to best_hazor/cpu_physics/rf/Mram_regfile_ren_12
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             2   0.694   0.854  GPIO_DIP_SW2_IBUF (GPIO_DIP_SW2_IBUF)
-     LUT6:I0->O            1   0.086   0.436  best_hazor/physics_beta_IO/dout_mux0000<1>96_SW0 (N444)
-     LUT6:I4->O            1   0.086   0.611  best_hazor/physics_beta_IO/dout_mux0000<1>96 (best_hazor/physics_beta_IO/dout_mux0000<1>96)
-     LUT6:I2->O            1   0.086   0.000  best_hazor/physics_beta_IO/dout_mux0000<1>140 (best_hazor/physics_beta_IO/dout_mux0000<1>)
-     FD:D                     -0.022          best_hazor/physics_beta_IO/dout_1
+     IBUF:I->O           152   0.694   0.873  GPIO_SW_C_IBUF (HDR1_20_OBUF)
+     LUT5:I0->O           34   0.086   0.451  best_hazor/cpu_physics/ctl/asel_and00001 (best_hazor/cpu_physics/interrupt)
+     LUT5:I4->O          100   0.086   0.534  best_hazor/cpu_physics/ctl/csel1 (best_hazor/cpu_physics/asel)
+     LUT5:I3->O           94   0.086   0.332  best_hazor/cpu_physics/b<3>1 (best_hazor/cpu_physics/b<3>)
+     DSP48E:B3->P28        1   2.645   0.361  best_hazor/cpu_physics/mpy/Mmult_mult (best_hazor/cpu_physics/mult<28>)
+     LUT5:I4->O            2   0.086   0.365  best_hazor/cpu_physics/wd<28>336 (best_hazor/cpu_physics/wd<28>336)
+     LUT6:I5->O            1   0.086   0.000  best_hazor/cpu_physics/wd<28>376_G (N1221)
+     MUXF7:I1->O           3   0.214   0.243  best_hazor/cpu_physics/wd<28>376 (best_hazor/cpu_physics/wd<28>)
+     RAM32M:DIC0               0.260          best_hazor/cpu_physics/rf/Mram_regfile_ren_15
     ----------------------------------------
-    Total                      2.853ns (0.952ns logic, 1.901ns route)
-                                       (33.4% logic, 66.6% route)
+    Total                      7.402ns (4.243ns logic, 3.159ns route)
+                                       (57.3% logic, 42.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'USER_CLK'
-  Total number of paths / destination ports: 9 / 9
+  Total number of paths / destination ports: 7 / 7
 -------------------------------------------------------------------------
-Offset:              3.328ns (Levels of Logic = 2)
-  Source:            db_1/clean (FF)
-  Destination:       HDR1_42 (PAD)
+Offset:              3.226ns (Levels of Logic = 2)
+  Source:            best_hazor/laser_beta_IO/out_port_a_2 (FF)
+  Destination:       HDR1_10 (PAD)
   Source Clock:      USER_CLK rising 0.5X
 
-  Data Path: db_1/clean to HDR1_42
+  Data Path: best_hazor/laser_beta_IO/out_port_a_2 to HDR1_10
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q            135   0.396   0.338  db_1/clean (db_1/clean)
+     FDE:C->Q              2   0.396   0.239  best_hazor/laser_beta_IO/out_port_a_2 (best_hazor/laser_beta_IO/out_port_a_2)
+     INV:I->O              1   0.212   0.235  _AUX_2<2>1_INV_0 (HDR1_10_OBUF)
+     OBUF:I->O                 2.144          HDR1_10_OBUF (HDR1_10)
+    ----------------------------------------
+    Total                      3.226ns (2.752ns logic, 0.474ns route)
+                                       (85.3% logic, 14.7% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Delay:               3.629ns (Levels of Logic = 3)
+  Source:            GPIO_SW_C (PAD)
+  Destination:       HDR1_42 (PAD)
+
+  Data Path: GPIO_SW_C to HDR1_42
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O           152   0.694   0.340  GPIO_SW_C_IBUF (HDR1_20_OBUF)
      INV:I->O              2   0.212   0.239  HDR1_421_INV_0 (HDR1_42_OBUF)
      OBUF:I->O                 2.144          HDR1_42_OBUF (HDR1_42)
     ----------------------------------------
-    Total                      3.328ns (2.752ns logic, 0.576ns route)
-                                       (82.7% logic, 17.3% route)
+    Total                      3.629ns (3.050ns logic, 0.579ns route)
+                                       (84.1% logic, 15.9% route)
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 104.00 secs
-Total CPU time to Xst completion: 103.95 secs
+Total REAL time to Xst completion: 106.00 secs
+Total CPU time to Xst completion: 106.23 secs
  
 --> 
 
 
-Total memory usage is 668596 kilobytes
+Total memory usage is 677116 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  368 (   0 filtered)
+Number of warnings :  360 (   0 filtered)
 Number of infos    :    6 (   0 filtered)
 

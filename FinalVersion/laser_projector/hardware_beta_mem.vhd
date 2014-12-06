@@ -107,7 +107,7 @@ end component;
 			c_sinitb_val => "0",
 			c_use_byte_web => 0,
 			c_use_byte_wea => 0,
-			c_use_default_data => 0);
+			c_use_default_data => 1);
 -- synthesis translate_on
 BEGIN
 -- synthesis translate_off

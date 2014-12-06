@@ -12,38 +12,38 @@ Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Fri Dec  5 15:56:53 2014
+Mapped Date    : Fri Dec  5 23:36:04 2014
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:   38
+Number of warnings:   36
 Slice Logic Utilization:
-  Number of Slice Registers:                   959 out of  28,800    3%
-    Number used as Flip Flops:                 959
-  Number of Slice LUTs:                      2,424 out of  28,800    8%
-    Number used as logic:                    2,281 out of  28,800    7%
-      Number using O6 output only:           2,106
-      Number using O5 output only:             110
-      Number using O5 and O6:                   65
+  Number of Slice Registers:                   938 out of  28,800    3%
+    Number used as Flip Flops:                 938
+  Number of Slice LUTs:                      2,477 out of  28,800    8%
+    Number used as logic:                    2,334 out of  28,800    8%
+      Number using O6 output only:           2,178
+      Number using O5 output only:              92
+      Number using O5 and O6:                   64
     Number used as Memory:                     136 out of   7,680    1%
       Number used as Dual Port RAM:            136
         Number using O6 output only:             8
         Number using O5 and O6:                128
     Number used as exclusive route-thru:         7
-  Number of route-thrus:                       117 out of  57,600    1%
-    Number using O6 output only:               115
-    Number using O5 and O6:                      2
+  Number of route-thrus:                        99 out of  57,600    1%
+    Number using O6 output only:                96
+    Number using O5 and O6:                      3
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   941 out of   7,200   13%
-  Number of LUT Flip Flop pairs used:        2,629
-    Number with an unused Flip Flop:         1,670 out of   2,629   63%
-    Number with an unused LUT:                 205 out of   2,629    7%
-    Number of fully used LUT-FF pairs:         754 out of   2,629   28%
-    Number of unique control sets:              34
+  Number of occupied Slices:                   853 out of   7,200   11%
+  Number of LUT Flip Flop pairs used:        2,654
+    Number with an unused Flip Flop:         1,716 out of   2,654   64%
+    Number with an unused LUT:                 177 out of   2,654    6%
+    Number of fully used LUT-FF pairs:         761 out of   2,654   28%
+    Number of unique control sets:              32
     Number of slice register sites lost
-      to control set restrictions:              53 out of  28,800    1%
+      to control set restrictions:              50 out of  28,800    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -66,9 +66,9 @@ Specific Feature Utilization:
   Number of DCM_ADVs:                            2 out of      12   16%
   Number of DSP48Es:                             2 out of      48    4%
 
-Peak Memory Usage:  807 MB
-Total REAL time to MAP completion:  1 mins 13 secs 
-Total CPU time to MAP completion:   1 mins 12 secs 
+Peak Memory Usage:  803 MB
+Total REAL time to MAP completion:  46 secs 
+Total CPU time to MAP completion:   46 secs 
 
 Table of Contents
 -----------------
@@ -121,8 +121,6 @@ WARNING:PhysDesignRules:368 - The signal <AUDIO_BIT_CLK_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:367 - The signal <IIC_SDA_MAIN_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:368 - The signal <HDR1_20_OBUF> is incomplete. The
-   signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_30_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_22_OBUF> is incomplete. The
@@ -138,8 +136,6 @@ WARNING:PhysDesignRules:367 - The signal <HDR1_50_IBUF> is incomplete. The
 WARNING:PhysDesignRules:368 - The signal <HDR1_34_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_26_OBUF> is incomplete. The
-   signal is not driven by any source pin in the design.
-WARNING:PhysDesignRules:368 - The signal <HDR1_18_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:367 - The signal <HDR1_60_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
@@ -175,6 +171,8 @@ WARNING:PhysDesignRules:368 - The signal <AUDIO_SDATA_OUT_OBUF> is incomplete.
 Section 3 - Informational
 -------------------------
 INFO:MapLib:562 - No environment variables are currently set.
+INFO:MapLib:159 - Net Timing constraints on signal USER_CLK are pushed forward
+   through input buffer.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
    rate limited output drivers. The delay on speed critical single ended outputs
    can be dramatically reduced by designating them as fast outputs.
@@ -362,28 +360,28 @@ Section 14 - Utilization by Hierarchy
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Module                       | Partition | Slices*       | Slice Reg     | LUTs          | LUTRAM        | BRAM/FIFO | DSP48E  | BUFG  | BUFIO | BUFR  | DCM   | PLL   | Full Hierarchical Name                                                                                                        |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| hardware_interface/          |           | 93/1223       | 0/959         | 237/2424      | 120/136       | 0/30      | 0/2     | 0/4   | 0/0   | 0/0   | 0/2   | 0/0   | hardware_interface                                                                                                            |
-| +best_hazor                  |           | 5/1094        | 0/892         | 6/2161        | 0/16          | 0/30      | 0/2     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor                                                                                                 |
-| ++cpu_laser                  |           | 235/289       | 97/100        | 510/580       | 0/8           | 0/0       | 0/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser                                                                                       |
-| +++ctl                       |           | 18/18         | 3/3           | 20/20         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/ctl                                                                                   |
+| hardware_interface/          |           | 89/1210       | 0/938         | 219/2477      | 120/136       | 0/30      | 0/2     | 0/4   | 0/0   | 0/0   | 0/2   | 0/0   | hardware_interface                                                                                                            |
+| +best_hazor                  |           | 9/1099        | 0/894         | 9/2240        | 0/16          | 0/30      | 0/2     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor                                                                                                 |
+| ++cpu_laser                  |           | 217/275       | 97/101        | 522/598       | 0/8           | 0/0       | 0/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser                                                                                       |
+| +++ctl                       |           | 22/22         | 4/4           | 23/23         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/ctl                                                                                   |
 | +++mpy                       |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/mpy                                                                                   |
-| +++rf                        |           | 3/3           | 0/0           | 10/10         | 8/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/rf                                                                                    |
-| +++sr                        |           | 33/33         | 0/0           | 40/40         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/sr                                                                                    |
-| ++cpu_physics                |           | 225/280       | 97/101        | 502/577       | 0/8           | 0/0       | 0/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics                                                                                     |
+| +++rf                        |           | 4/4           | 0/0           | 10/10         | 8/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/rf                                                                                    |
+| +++sr                        |           | 32/32         | 0/0           | 43/43         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/sr                                                                                    |
+| ++cpu_physics                |           | 217/295       | 97/101        | 536/633       | 0/8           | 0/0       | 0/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics                                                                                     |
 | +++ctl                       |           | 21/21         | 4/4           | 23/23         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/ctl                                                                                 |
 | +++mpy                       |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/mpy                                                                                 |
 | +++rf                        |           | 4/4           | 0/0           | 10/10         | 8/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/rf                                                                                  |
-| +++sr                        |           | 30/30         | 0/0           | 42/42         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/sr                                                                                  |
-| ++laser_beta_IO              |           | 102/157       | 193/246       | 200/324       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO                                                                                   |
-| +++beta_spi                  |           | 30/30         | 19/19         | 51/51         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO/beta_spi                                                                          |
-| +++beta_timer1               |           | 25/25         | 34/34         | 73/73         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO/beta_timer1                                                                       |
-| ++laser_beta_ram             |           | 0/25          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram                                                                                  |
-| +++BU2                       |           | 0/25          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2                                                                              |
-| ++++U0                       |           | 0/25          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0                                                                           |
-| +++++blk_mem_generator       |           | 0/25          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator                                                         |
-| ++++++valid.cstr             |           | 0/25          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr                                              |
+| +++sr                        |           | 53/53         | 0/0           | 64/64         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/sr                                                                                  |
+| ++laser_beta_IO              |           | 91/143        | 193/247       | 130/255       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO                                                                                   |
+| +++beta_spi                  |           | 26/26         | 19/19         | 51/51         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO/beta_spi                                                                          |
+| +++beta_timer1               |           | 26/26         | 35/35         | 74/74         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO/beta_timer1                                                                       |
+| ++laser_beta_ram             |           | 0/26          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram                                                                                  |
+| +++BU2                       |           | 0/26          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2                                                                              |
+| ++++U0                       |           | 0/26          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0                                                                           |
+| +++++blk_mem_generator       |           | 0/26          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator                                                         |
+| ++++++valid.cstr             |           | 0/26          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr                                              |
 | +++++++bindec_a.bindec_inst_ |           | 4/4           | 0/0           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a                       |
-| +++++++has_mux_a.A           |           | 21/21         | 2/2           | 27/27         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A                                  |
+| +++++++has_mux_a.A           |           | 22/22         | 2/2           | 27/27         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A                                  |
 | +++++++ramloop[0].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r                             |
 | ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram                 |
 | +++++++ramloop[10].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r                            |
@@ -414,9 +412,9 @@ Section 14 - Utilization by Hierarchy
 | ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram                 |
 | +++++++ramloop[9].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r                             |
 | ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram                 |
-| ++laser_decode               |           | 6/6           | 0/0           | 8/8           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_decode                                                                                    |
-| ++laser_read_decode          |           | 41/41         | 2/2           | 64/64         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_read_decode                                                                               |
-| ++laser_shared_memory        |           | 41/41         | 128/128       | 137/137       | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory                                                                             |
+| ++laser_decode               |           | 7/7           | 0/0           | 10/10         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_decode                                                                                    |
+| ++laser_read_decode          |           | 53/53         | 2/2           | 76/76         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_read_decode                                                                               |
+| ++laser_shared_memory        |           | 44/44         | 128/128       | 140/140       | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory                                                                             |
 | +++shared_ram                |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram                                                                  |
 | ++++BU2                      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2                                                              |
 | +++++U0                      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0                                                           |
@@ -424,16 +422,16 @@ Section 14 - Utilization by Hierarchy
 | +++++++valid.cstr            |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0/blk_mem_generator/valid.cstr                              |
 | ++++++++ramloop[0].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r             |
 | +++++++++v5_init.ram         |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram |
-| ++physics_beta_IO            |           | 80/125        | 193/245       | 114/228       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO                                                                                 |
-| +++beta_spi                  |           | 16/16         | 17/17         | 39/39         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO/beta_spi                                                                        |
-| +++beta_timer1               |           | 29/29         | 35/35         | 75/75         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO/beta_timer1                                                                     |
-| ++physics_beta_ram           |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram                                                                                |
-| +++BU2                       |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2                                                                            |
-| ++++U0                       |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0                                                                         |
-| +++++blk_mem_generator       |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator                                                       |
-| ++++++valid.cstr             |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr                                            |
+| ++physics_beta_IO            |           | 95/138        | 193/245       | 168/281       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO                                                                                 |
+| +++beta_spi                  |           | 17/17         | 17/17         | 39/39         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO/beta_spi                                                                        |
+| +++beta_timer1               |           | 26/26         | 35/35         | 74/74         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO/beta_timer1                                                                     |
+| ++physics_beta_ram           |           | 0/27          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram                                                                                |
+| +++BU2                       |           | 0/27          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2                                                                            |
+| ++++U0                       |           | 0/27          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0                                                                         |
+| +++++blk_mem_generator       |           | 0/27          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator                                                       |
+| ++++++valid.cstr             |           | 0/27          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr                                            |
 | +++++++bindec_a.bindec_inst_ |           | 4/4           | 0/0           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a                     |
-| +++++++has_mux_a.A           |           | 25/25         | 2/2           | 27/27         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A                                |
+| +++++++has_mux_a.A           |           | 23/23         | 2/2           | 27/27         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A                                |
 | +++++++ramloop[10].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r                          |
 | ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r/v5_init.ram              |
 | +++++++ramloop[11].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r                          |
@@ -462,14 +460,13 @@ Section 14 - Utilization by Hierarchy
 | ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram               |
 | +++++++ramloop[9].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r                           |
 | ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram               |
-| ++physics_decode             |           | 6/6           | 0/0           | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_decode                                                                                  |
-| ++physics_read_decode        |           | 69/69         | 2/2           | 96/96         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_read_decode                                                                             |
-| ++physics_shared_memory      |           | 21/21         | 64/64         | 70/70         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_shared_memory                                                                           |
+| ++physics_decode             |           | 8/8           | 0/0           | 11/11         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_decode                                                                                  |
+| ++physics_read_decode        |           | 54/54         | 2/2           | 96/96         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_read_decode                                                                             |
+| ++physics_shared_memory      |           | 20/20         | 64/64         | 69/69         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_shared_memory                                                                           |
 | +clk12_5_gen                 |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 2/2   | 0/0   | 0/0   | 1/1   | 0/0   | hardware_interface/clk12_5_gen                                                                                                |
 | +clk_50_gen                  |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 2/2   | 0/0   | 0/0   | 1/1   | 0/0   | hardware_interface/clk_50_gen                                                                                                 |
-| +db_1                        |           | 13/13         | 23/23         | 8/8           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_1                                                                                                       |
-| +db_2                        |           | 11/11         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_2                                                                                                       |
-| +db_3                        |           | 12/12         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_3                                                                                                       |
+| +db_2                        |           | 12/12         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_2                                                                                                       |
+| +db_3                        |           | 10/10         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_3                                                                                                       |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 * Slices can be packed with basic elements from multiple hierarchies.

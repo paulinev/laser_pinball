@@ -7,11 +7,11 @@
 // \   \   \/     Version : 10.1.03
 //  \   \         Application : xaw2verilog
 //  /   /         Filename : camera_clk.v
-// /___/   /\     Timestamp : 12/05/2014 19:39:34
+// /___/   /\     Timestamp : 12/05/2014 22:44:35
 // \   \  /  \ 
 //  \___\/\___\ 
 //
-//Command: xaw2verilog -intstyle /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/FinalVersion/laser_projector/camera_clk.xaw -st camera_clk.v
+//Command: xaw2verilog -intstyle /home/wbraun/laser_pinball/FinalVersion/laser_projector/camera_clk.xaw -st camera_clk.v
 //Design Name: camera_clk
 //Device: xc5vlx50t-3ff1136
 //

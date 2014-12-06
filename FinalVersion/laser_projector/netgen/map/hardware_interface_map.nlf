@@ -1,0 +1,39 @@
+Release 10.1.03 - netgen K.39 (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+Command Line: netgen -intstyle ise -s 3 -pcf hardware_interface.pcf -sdf_anno
+true -sdf_path netgen/map -insert_glbl true -w -dir netgen/map -ofmt verilog
+-sim hardware_interface_map.ncd hardware_interface_map.v  
+
+Read and Annotate design 'hardware_interface_map.ncd' ...
+Loading device for application Rf_Device from file '5vlx50t.nph' in environment
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE.
+   "hardware_interface" is an NCD, version 3.2, device xc5vlx50t, package
+ff1136, speed -3
+Loading constraints from 'hardware_interface.pcf'...
+The speed grade (-3) differs from the speed grade specified in the .ncd file
+(-3).
+WARNING:Anno:67 - NCD is not completely routed, some delays may be inaccurate.
+The number of routable networks is 3361
+Flattening design ...
+Processing design ... 
+  Preping design's networks ...
+  Preping design's macros ...
+Writing Verilog SDF file 'netgen/map/hardware_interface_map.sdf' ...
+Writing Verilog netlist file
+'/home/wbraun/laser_pinball/FinalVersion/laser_projector/netgen/map/hardware_int
+erface_map.v' ...
+INFO:NetListWriters:633 - The generated Verilog netlist contains Xilinx SIMPRIM
+   simulation primitives and has to be used with SIMPRIM simulation library for
+   correct compilation and simulation. 
+INFO:NetListWriters - Setup Simulation - To perform a setup simulation, specify
+   values in the Maximum (MAX) field with the following command line modifier: 
+   -SDFMAX
+INFO:NetListWriters - Hold Simulation - To perform the most accurate hold
+   simulation, specify values in the Minimum (MIN) field with the following
+   command line modifier:  -SDFMIN
+INFO:NetListWriters:665 - For more information on how to pass the SDF switches
+   to the simulator, see your Simulator tool documentation.
+Number of warnings: 1
+Number of info messages: 4
+Total memory usage is 526500 kilobytes

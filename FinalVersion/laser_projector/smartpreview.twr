@@ -1,3 +1,5 @@
+Number of Timing Constraints that were not applied: 1
+
 Asterisk (*) preceding a constraint indicates it was not met.
    This may be due to a setup or hold violation.
 
@@ -5,10 +7,25 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
                                             |         |    Slack   | Achievable | Errors |    Score   
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net DVI | SETUP   |         N/A|     9.676ns|     N/A|           0
-  _XCLK_N_OBUF                              | HOLD    |     0.263ns|            |       0|           0
+  PERIOD analysis for net "clk_50_gen/CLKDV | SETUP   |     8.730ns|    11.270ns|       0|           0
+  _BUF" derived from  NET "USER_CLK_IBUFG"  | HOLD    |     0.272ns|            |       0|           0
+  PERIOD = 10 ns HIGH 50%                   |         |            |            |        |            
+------------------------------------------------------------------------------------------------------
+  NET "USER_CLK_IBUFG" PERIOD = 10 ns HIGH  | N/A     |         N/A|         N/A|     N/A|         N/A
+  50%                                       |         |            |            |        |            
 ------------------------------------------------------------------------------------------------------
 
+
+Derived Constraint Report
+Derived Constraints for USER_CLK_IBUFG
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|USER_CLK_IBUFG                 |     10.000ns|          N/A|      5.635ns|            0|            0|            0|     52703017|
+| clk_50_gen/CLKDV_BUF          |     20.000ns|     11.270ns|          N/A|            0|            0|     52703017|            0|
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
 INFO:Timing:2761 - N/A entries in the Constraints list may indicate that the 

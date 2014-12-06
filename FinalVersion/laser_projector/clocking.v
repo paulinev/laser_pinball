@@ -7,11 +7,11 @@
 // \   \   \/     Version : 10.1.03
 //  \   \         Application : xaw2verilog
 //  /   /         Filename : clocking.v
-// /___/   /\     Timestamp : 12/05/2014 19:39:33
+// /___/   /\     Timestamp : 12/05/2014 23:15:16
 // \   \  /  \ 
 //  \___\/\___\ 
 //
-//Command: xaw2verilog -intstyle /afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/FinalVersion/laser_projector/clocking.xaw -st clocking.v
+//Command: xaw2verilog -intstyle /home/wbraun/laser_pinball/FinalVersion/laser_projector/clocking.xaw -st clocking.v
 //Design Name: clocking
 //Device: xc5vlx50t-3ff1136
 //

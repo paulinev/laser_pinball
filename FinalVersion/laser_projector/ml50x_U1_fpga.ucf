@@ -540,3 +540,4 @@ NET  VGA_IN_SOGOUT        LOC="AF6";   # Bank 18, Vcco=3.3V, No DCI
 NET  VGA_IN_VSOUT         LOC="Y6";    # Bank 18, Vcco=3.3V, No DCI
 
 NET HDR1_48 CLOCK_DEDICATED_ROUTE = FALSE; #my kludge
+NET  USER_CLK PERIOD = 10;

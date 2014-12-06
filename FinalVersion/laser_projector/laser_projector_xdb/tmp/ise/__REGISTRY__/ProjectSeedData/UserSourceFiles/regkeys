@@ -1,5 +1,5 @@
 NUM_USER_FILES
-26
+25
 s
 user_file_1
 hardware_interface.v
@@ -54,9 +54,6 @@ clocking.xaw
 s
 user_file_25
 camera_clk.xaw
-s
-user_file_26
-blk_mem_gen_v2_8.xco
 s
 user_file_3
 hardware_beta_mem.xco

@@ -206,7 +206,7 @@ always #5 USER_CLK = ~USER_CLK;
 		
 		#500;
 		GPIO_SW_C=1;
-		#60;
+		#100;
 		GPIO_SW_C=0;
         
 		// Add stimulus here

@@ -1,7 +1,7 @@
 verilog work "system_timer.v"
 verilog work "spi_io.v"
 verilog work "mul32.v"
-verilog work "beta_shared_mem.v"
+verilog work "./beta_shared_mem.v"
 verilog work "physics_beta_mem.v"
 verilog work "memory_share.v"
 verilog work "mapped_IO.v"

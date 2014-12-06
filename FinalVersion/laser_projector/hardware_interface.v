@@ -94,7 +94,6 @@ module hardware_interface(
 	 wire camera_clk; //12.5Mhz
 	 
 	 //inputs from camera
-	 //assign camera_dout = 8'hFF;
 	 assign camera_dout = {HDR1_50, HDR1_52, HDR1_54, HDR1_56, HDR1_58, HDR1_60, HDR1_62, HDR1_64};
 	 assign camera_href = HDR1_44;
 	 assign camera_vsync = HDR1_46;
@@ -112,12 +111,12 @@ module hardware_interface(
 	 assign HDR1_6 = dac_mosi;
 	 assign HDR1_8 = dac_latchn;
 	 
-	 assign {HDR1_10, HDR1_12, HDR1_14} = ~laser_rgb; //inveted output
+	 assign {HDR1_10, HDR1_12, HDR1_14} = ~laser_rgb; //inverted output
 	 
 	 assign dip_sw = 	{GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
 							GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1};	 
 	 assign {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, 
-							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 8'hF0;
+							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 8'hAA;
 							//debug_led;
 	 
 	 assign DVI_RESET_B = ~reset; //keep reset high
@@ -137,7 +136,10 @@ module hardware_interface(
 	 wire paddle_r; //button for right paddle
 	 wire camera_start;
 	 
-		 
+		
+	//test outputs
+	assign HDR1_18 = clk_50;
+	assign HDR1_20 = reset; 
 		 
 	clocking clk_50_gen (
     .CLKIN_IN(USER_CLK), //100MHz
@@ -174,13 +176,15 @@ module hardware_interface(
     .debug_led(debug_led)
     );
 
-	 
+	 /*
 	 debounce db_1 (
     .reset(0), 
     .clock(clk_50), 
     .noisy(GPIO_SW_C), 
     .clean(reset)
     );
+	 */
+	 assign reset = GPIO_SW_C; 
 	 
 	 debounce db_2 (
     .reset(reset), 
