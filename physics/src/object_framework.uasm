@@ -124,5 +124,5 @@ write_external:
   ANDC(R16,0xFF,R16)  | mask off the top 3 bits of the count
   RTN()
 
-. = 0x00400000
-LONG(0xEEEB)
+|. = 0x00400000
+|LONG(0xEEEB)
