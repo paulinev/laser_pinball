@@ -1,5 +1,5 @@
 The following files were generated for 'hardware_beta_mem' in directory 
-/home/wbraun/laser_pinball/FinalVersion/laser_projector:
+/afs/athena.mit.edu/user/p/a/paulinev/Documents/6.111/laser_pinball/FinalVersion/laser_projector:
 
 hardware_beta_mem.asy:
    Graphical symbol information file. Used by the ISE tools and some

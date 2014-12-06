@@ -44,7 +44,7 @@ ENTITY blk_mem_gen_v2_8 IS
 	port (
 	clka: IN std_logic;
 	dina: IN std_logic_VECTOR(31 downto 0);
-	addra: IN std_logic_VECTOR(13 downto 0);
+	addra: IN std_logic_VECTOR(15 downto 0);
 	wea: IN std_logic_VECTOR(0 downto 0);
 	douta: OUT std_logic_VECTOR(31 downto 0));
 END blk_mem_gen_v2_8;
@@ -55,7 +55,7 @@ component wrapped_blk_mem_gen_v2_8
 	port (
 	clka: IN std_logic;
 	dina: IN std_logic_VECTOR(31 downto 0);
-	addra: IN std_logic_VECTOR(13 downto 0);
+	addra: IN std_logic_VECTOR(15 downto 0);
 	wea: IN std_logic_VECTOR(0 downto 0);
 	douta: OUT std_logic_VECTOR(31 downto 0));
 end component;
@@ -73,29 +73,29 @@ end component;
 			c_read_width_a => 32,
 			c_disable_warn_bhv_coll => 0,
 			c_write_mode_b => "WRITE_FIRST",
-			c_init_file_name => "no_coe_file_loaded",
+			c_init_file_name => "blk_mem_gen_v2_8.mif",
 			c_write_mode_a => "WRITE_FIRST",
 			c_mux_pipeline_stages => 0,
 			c_has_mem_output_regs_b => 0,
-			c_load_init_file => 0,
+			c_load_init_file => 1,
 			c_xdevicefamily => "virtex5",
 			c_has_mem_output_regs_a => 0,
-			c_write_depth_b => 16384,
-			c_write_depth_a => 16384,
+			c_write_depth_b => 65536,
+			c_write_depth_a => 65536,
 			c_has_ssrb => 0,
 			c_has_mux_output_regs_b => 0,
 			c_has_ssra => 0,
 			c_has_mux_output_regs_a => 0,
-			c_addra_width => 14,
-			c_addrb_width => 14,
+			c_addra_width => 16,
+			c_addrb_width => 16,
 			c_default_data => "0",
 			c_use_ecc => 0,
 			c_algorithm => 1,
 			c_disable_warn_bhv_range => 0,
 			c_write_width_b => 32,
 			c_write_width_a => 32,
-			c_read_depth_b => 16384,
-			c_read_depth_a => 16384,
+			c_read_depth_b => 65536,
+			c_read_depth_a => 65536,
 			c_byte_size => 9,
 			c_sim_collision_check => "ALL",
 			c_use_ramb16bwer_rst_bhv => 0,

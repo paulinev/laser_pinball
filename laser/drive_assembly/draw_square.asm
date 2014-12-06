@@ -5,7 +5,7 @@
 CMOVE(1, r6)
 SHLC(r6, 16, r6)
 CMOVE(0x3, r3)
-CMOVE(0x400C, r0)
+CMOVE(0x080C, r0)
 ST(r0, 0x10, r6)
 
 main:
@@ -14,18 +14,78 @@ main:
 	CALL(go_to_point) 
 	CALL(set_timer)
 	
+	CMOVE(0x40, r0) 
+	CMOVE(0x000, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0x80, r0) 
+	CMOVE(0x000, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0xC0, r0) 
+	CMOVE(0x000, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
 	CMOVE(0x100, r0) 
 	CMOVE(0x000, r1)
 	CALL(go_to_point) 
 	CALL(set_timer)
+
+	CMOVE(0x100, r0) 
+	CMOVE(0x40, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0x100, r0) 
+	CMOVE(0x80, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0x100, r0) 
+	CMOVE(0xC0, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
 	
 	CMOVE(0x100, r0) 
+	CMOVE(0x100, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0xC0, r0) 
+	CMOVE(0x100, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0x80, r0) 
+	CMOVE(0x100, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0x40, r0) 
 	CMOVE(0x100, r1)
 	CALL(go_to_point) 
 	CALL(set_timer)
 	
 	CMOVE(0x00, r0) 
 	CMOVE(0x100, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0x00, r0) 
+	CMOVE(0xC0, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0x00, r0) 
+	CMOVE(0x80, r1)
+	CALL(go_to_point) 
+	CALL(set_timer)
+
+	CMOVE(0x00, r0) 
+	CMOVE(0x40, r1)
 	CALL(go_to_point) 
 	CALL(set_timer)
 	
@@ -65,22 +125,32 @@ spi_wait_x:
 	BF(r5, spi_wait_x)
 	
 	ADDC(r4, 0b10000, r4)
-	ST(r4, 0x8, r6) 
-	SUBC(r4, 0b10000, r4)
+	ST(r4, 0x8, r6) || Raise CS
+	ADD(r31, r31, r31)
+	SUBC(r4, 0b10000, r4) || Lower CS
 	ST(r4, 0x8, r6)
-	
-	ST(r2, 0x18, r6)
-	ST(r5, 0x14, r6)
+	ADD(r31, r31, r31)
+	ST(r2, 0x18, r6) || Send data
+	ST(r5, 0x14, r6) || Start SPI
 	
 spi_wait_y:
 	LD(r6, 0x14, r5)
 	BF(r5, spi_wait_y)
 	
 	ADDC(r4, 0b10000, r4)
+	ST(r4, 0x8, r6) || Raise CS
+	ADDC(r31, r31, r31)
+	SUBC(r4, 0b1000, r4) || Lower latch
 	ST(r4, 0x8, r6)
-	SUBC(r4, 0b1000, r4)
+	ADDC(r31, r31, r31)
+	ADDC(r31, r31, r31)
+	ADDC(r31, r31, r31)
+	ADDC(r31, r31, r31)
+	ADDC(r4, 0b1000, r4) || Raise latch
 	ST(r4, 0x8, r6)
-	ADDC(r4, 0b1000, r4)
-	ST(r4, 0x8, r6)
+	ADDC(r31, r31, r31)
+	ADDC(r31, r31, r31)
+	ADDC(r31, r31, r31)
+	ADDC(r31, r31, r31)
 
 	RTN()

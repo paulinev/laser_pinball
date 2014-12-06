@@ -34,7 +34,7 @@
 blk_mem_gen_v2_8 YourInstanceName (
 	.clka(clka),
 	.dina(dina), // Bus [31 : 0] 
-	.addra(addra), // Bus [13 : 0] 
+	.addra(addra), // Bus [15 : 0] 
 	.wea(wea), // Bus [0 : 0] 
 	.douta(douta)); // Bus [31 : 0] 
 

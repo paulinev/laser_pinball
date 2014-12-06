@@ -33,7 +33,7 @@ component blk_mem_gen_v2_8
 	port (
 	clka: IN std_logic;
 	dina: IN std_logic_VECTOR(31 downto 0);
-	addra: IN std_logic_VECTOR(13 downto 0);
+	addra: IN std_logic_VECTOR(15 downto 0);
 	wea: IN std_logic_VECTOR(0 downto 0);
 	douta: OUT std_logic_VECTOR(31 downto 0));
 end component;

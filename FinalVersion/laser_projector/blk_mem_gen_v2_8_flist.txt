@@ -1,5 +1,6 @@
 # Output products list for <blk_mem_gen_v2_8>
 blk_mem_gen_v2_8.asy
+blk_mem_gen_v2_8.mif
 blk_mem_gen_v2_8.ngc
 blk_mem_gen_v2_8.sym
 blk_mem_gen_v2_8.v

@@ -47,15 +47,15 @@ module blk_mem_gen_v2_8(
 
 input clka;
 input [31 : 0] dina;
-input [13 : 0] addra;
+input [15 : 0] addra;
 input [0 : 0] wea;
 output [31 : 0] douta;
 
 // synthesis translate_off
 
       BLK_MEM_GEN_V2_8 #(
-		.C_ADDRA_WIDTH(14),
-		.C_ADDRB_WIDTH(14),
+		.C_ADDRA_WIDTH(16),
+		.C_ADDRB_WIDTH(16),
 		.C_ALGORITHM(1),
 		.C_BYTE_SIZE(9),
 		.C_COMMON_CLK(0),
@@ -73,13 +73,13 @@ output [31 : 0] douta;
 		.C_HAS_REGCEB(0),
 		.C_HAS_SSRA(0),
 		.C_HAS_SSRB(0),
-		.C_INIT_FILE_NAME("no_coe_file_loaded"),
-		.C_LOAD_INIT_FILE(0),
+		.C_INIT_FILE_NAME("blk_mem_gen_v2_8.mif"),
+		.C_LOAD_INIT_FILE(1),
 		.C_MEM_TYPE(0),
 		.C_MUX_PIPELINE_STAGES(0),
 		.C_PRIM_TYPE(1),
-		.C_READ_DEPTH_A(16384),
-		.C_READ_DEPTH_B(16384),
+		.C_READ_DEPTH_A(65536),
+		.C_READ_DEPTH_B(65536),
 		.C_READ_WIDTH_A(32),
 		.C_READ_WIDTH_B(32),
 		.C_SIM_COLLISION_CHECK("ALL"),
@@ -92,8 +92,8 @@ output [31 : 0] douta;
 		.C_USE_RAMB16BWER_RST_BHV(0),
 		.C_WEA_WIDTH(1),
 		.C_WEB_WIDTH(1),
-		.C_WRITE_DEPTH_A(16384),
-		.C_WRITE_DEPTH_B(16384),
+		.C_WRITE_DEPTH_A(65536),
+		.C_WRITE_DEPTH_B(65536),
 		.C_WRITE_MODE_A("WRITE_FIRST"),
 		.C_WRITE_MODE_B("WRITE_FIRST"),
 		.C_WRITE_WIDTH_A(32),
