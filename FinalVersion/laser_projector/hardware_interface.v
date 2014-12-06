@@ -115,7 +115,7 @@ module hardware_interface(
 	 assign HDR1_6 = dac_mosi;
 	 assign HDR1_8 = dac_latchn;
 	 
-	 assign {HDR1_10, HDR1_12, HDR1_14} = ~laser_rgb; //inverted output
+	 assign {HDR1_10, HDR1_12, HDR1_14} = laser_rgb; //inverted output
 	 
 	 assign dip_sw = 	{GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
 							GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1};	 

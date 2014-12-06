@@ -1,0 +1,131 @@
+--------------------------------------------------------------------------------
+Release 10.1.03 Trace  (lin64)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+/afs/csail.mit.edu/proj/redsocs/Xilinx10.1/ISE/bin/lin64/unwrapped/trce -ise
+/home/wbraun/laser_pinball/laser/Beta_hardware/laser_projector/laser_projector.ise
+-intstyle ise -v 3 -s 3 -xml hardware_interface hardware_interface.ncd -o
+hardware_interface.twr hardware_interface.pcf -ucf ml50x_U1_fpga.ucf
+
+Design file:              hardware_interface.ncd
+Physical constraint file: hardware_interface.pcf
+Device,package,speed:     xc5vlx50t,ff1136,-3 (PRODUCTION 1.64 2008-12-19, STEPPING level 0)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock HDR1_48
+------------+------------+------------+------------------+--------+
+            |  Setup to  |  Hold to   |                  | Clock  |
+Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+------------+------------+------------+------------------+--------+
+HDR1_44     |    0.756(R)|    2.791(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_46     |   -0.884(R)|    2.729(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_50     |   -0.308(R)|    2.674(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_52     |   -0.028(R)|    2.036(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_54     |   -0.428(R)|    2.418(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_56     |   -0.418(R)|    2.194(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_58     |   -0.441(R)|    2.679(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_60     |   -0.291(R)|    2.017(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_62     |   -0.310(R)|    2.030(R)|HDR1_48_BUFGP     |   0.000|
+HDR1_64     |   -0.456(R)|    2.157(R)|HDR1_48_BUFGP     |   0.000|
+------------+------------+------------+------------------+--------+
+
+Setup/Hold to clock USER_CLK
+-------------+------------+------------+------------------+--------+
+             |  Setup to  |  Hold to   |                  | Clock  |
+Source       | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+-------------+------------+------------+------------------+--------+
+GPIO_SW_C    |    4.080(R)|   -2.181(R)|DVI_XCLK_N_OBUF   |   0.000|
+GPIO_SW_E    |    2.745(R)|   -1.407(R)|DVI_XCLK_N_OBUF   |   0.000|
+GPIO_SW_W    |    3.148(R)|   -1.265(R)|DVI_XCLK_N_OBUF   |   0.000|
+IIC_SCL_MAIN |    2.015(R)|   -1.374(R)|DVI_XCLK_N_OBUF   |   0.000|
+IIC_SCL_VIDEO|    1.691(R)|   -1.024(R)|DVI_XCLK_N_OBUF   |   0.000|
+IIC_SDA_MAIN |    1.985(R)|   -1.346(R)|DVI_XCLK_N_OBUF   |   0.000|
+IIC_SDA_VIDEO|    1.958(R)|   -1.270(R)|DVI_XCLK_N_OBUF   |   0.000|
+-------------+------------+------------+------------------+--------+
+
+Clock USER_CLK to Pad
+-------------+------------+------------------+--------+
+             | clk (edge) |                  | Clock  |
+Destination  |   to PAD   |Internal Clock(s) | Phase  |
+-------------+------------+------------------+--------+
+DVI_D0       |    4.934(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D1       |    5.885(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D2       |    5.846(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D3       |    5.874(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D4       |    4.681(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D5       |    4.520(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D6       |    5.015(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D7       |    5.156(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D8       |    4.353(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D9       |    4.370(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D10      |    4.726(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_D11      |    4.624(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_DE       |    4.974(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_H        |    5.144(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_RESET_B  |    5.435(R)|DVI_XCLK_N_OBUF   |   0.000|
+DVI_V        |    4.751(R)|DVI_XCLK_N_OBUF   |   0.000|
+HDR1_40      |    3.604(R)|DVI_XCLK_N_OBUF   |   0.000|
+HDR1_42      |    6.258(R)|DVI_XCLK_N_OBUF   |   0.000|
+IIC_SCL_MAIN |    4.322(R)|DVI_XCLK_N_OBUF   |   0.000|
+IIC_SCL_VIDEO|    3.775(R)|DVI_XCLK_N_OBUF   |   0.000|
+IIC_SDA_MAIN |    4.309(R)|DVI_XCLK_N_OBUF   |   0.000|
+IIC_SDA_VIDEO|    3.874(R)|DVI_XCLK_N_OBUF   |   0.000|
+-------------+------------+------------------+--------+
+
+Clock to Setup on destination clock HDR1_48
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+HDR1_48        |    6.360|         |         |         |
+USER_CLK       |    2.872|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock USER_CLK
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+USER_CLK       |    6.583|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+USER_CLK       |DVI_XCLK_N     |    3.127|
+USER_CLK       |DVI_XCLK_P     |    3.114|
+---------------+---------------+---------+
+
+
+Analysis completed Sat Dec  6 05:19:22 2014 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 471 MB
+
+
+

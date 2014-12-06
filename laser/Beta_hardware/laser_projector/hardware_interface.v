@@ -203,7 +203,7 @@ module hardware_interface(
     .LOCKED_OUT()
     );*/
 
-	 
+	 /*
 	 laser_projector_full best_hazor (
     .clk(clk_50), 
     .reset(GPIO_SW_C), 
@@ -217,6 +217,7 @@ module hardware_interface(
     .dac_sclk(dac_sclk), 
     .debug_led(debug_led)
     );
+	 */
 	 
 	 
 	vga_setup vga_test (
