@@ -5,11 +5,11 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
                                             |         |    Slack   | Achievable | Errors |    Score   
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net DVI | SETUP   |         N/A|     9.651ns|     N/A|           0
-  _XCLK_N_OBUF                              | HOLD    |     0.152ns|            |       0|           0
+  Autotimespec constraint for clock net DVI | SETUP   |         N/A|     6.604ns|     N/A|           0
+  _XCLK_N_OBUF                              | HOLD    |     0.161ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net HDR | SETUP   |         N/A|     6.849ns|     N/A|           0
-  1_48_BUFGP                                | HOLD    |     0.144ns|            |       0|           0
+  Autotimespec constraint for clock net HDR | SETUP   |         N/A|     6.381ns|     N/A|           0
+  1_48_BUFGP                                | HOLD    |     0.152ns|            |       0|           0
 ------------------------------------------------------------------------------------------------------
 
 

@@ -5,14 +5,14 @@ Parameter TMPDIR set to /home/wbraun/laser_pinball/FinalVersion/laser_projector/
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Parameter xsthdpdir set to /home/wbraun/laser_pinball/FinalVersion/laser_projector/xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.03 secs
+Total CPU time to Xst completion: 0.05 secs
  
 --> 
 Reading design: hardware_interface.prj
@@ -1046,9 +1046,9 @@ Design Statistics
 # IOs                              : 82
 
 Cell Usage :
-# BELS                             : 2944
+# BELS                             : 2941
 #      GND                         : 5
-#      INV                         : 73
+#      INV                         : 70
 #      LUT1                        : 115
 #      LUT2                        : 65
 #      LUT3                        : 219
@@ -1095,17 +1095,17 @@ Selected Device : 5vlx50tff1136-3
 
 Slice Logic Utilization: 
  Number of Slice Registers:             961  out of  28800     3%  
- Number of Slice LUTs:                 2541  out of  28800     8%  
-    Number used as Logic:              2396  out of  28800     8%  
+ Number of Slice LUTs:                 2538  out of  28800     8%  
+    Number used as Logic:              2393  out of  28800     8%  
     Number used as Memory:              145  out of   7680     1%  
        Number used as RAM:              144
        Number used as SRL:                1
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   2852
-   Number with an unused Flip Flop:    1891  out of   2852    66%  
-   Number with an unused LUT:           311  out of   2852    10%  
-   Number of fully used LUT-FF pairs:   650  out of   2852    22%  
+ Number of LUT Flip Flop pairs used:   2850
+   Number with an unused Flip Flop:    1889  out of   2850    66%  
+   Number with an unused LUT:           312  out of   2850    10%  
+   Number of fully used LUT-FF pairs:   649  out of   2850    22%  
    Number of unique control sets:        38
 
 IO Utilization: 
@@ -1148,12 +1148,12 @@ INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered
 
 Asynchronous Control Signals Information:
 ----------------------------------------
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
-Control Signal                                                                    | Buffer(FF name)                                                                                                        | Load  |
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
-best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 112   |
-best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
-----------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------+-------+
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+Control Signal                                                                    | Buffer(FF name)                                                                                                       | Load  |
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
+best_hazor/laser_beta_ram/BU2/dbiterr(best_hazor/laser_beta_ram/BU2/XST_GND:G)    | NONE(best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)  | 112   |
+best_hazor/physics_beta_ram/BU2/dbiterr(best_hazor/physics_beta_ram/BU2/XST_GND:G)| NONE(best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP)| 112   |
+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
@@ -1243,13 +1243,13 @@ Offset:              3.507ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 111.00 secs
-Total CPU time to Xst completion: 111.18 secs
+Total REAL time to Xst completion: 108.00 secs
+Total CPU time to Xst completion: 107.35 secs
  
 --> 
 
 
-Total memory usage is 667792 kilobytes
+Total memory usage is 667932 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  362 (   0 filtered)

@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Sat Dec  6 02:27:12 2014">
+  <application stringID="par" timeStamp="Sat Dec  6 04:55:06 2014">
     <task stringID="PAR_DEVICE_UTILIZATION">
       <section stringID="PAR_DEVICE_UTLIZATION">
         <item AVAILABLE="32" dataType="int" stringID="PAR_BUFG" value="4"/>
@@ -18,7 +18,7 @@
           <item dataType="int" stringID="PAR_LATCH_THRUS" value="0"/>
         </item>
         <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUTS" value="2531"/>
-        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUT_FLIPFLOP_PAIRS" value="2764"/>
+        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUT_FLIPFLOP_PAIRS" value="2737"/>
       </section>
     </task>
     <task stringID="PAR_PAR">
