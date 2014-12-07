@@ -12,6 +12,7 @@
 |	r8: scratch
 |	r9: current location in local sprite lookup table
 |	r10, r11: spi tx data
+| r12: holds remaining number of points in current segment
 |	r14: scale factor - currently inactive
 |	r16: reserved for copy of rgb data
 
@@ -120,7 +121,8 @@ draw_sprite:
 	ADDC(r9, 0x100, r9)
 	LD(r9, 0, r6) 		| first entry in lookup table is sprite length
 	ADDC(r9, 0x4, r9)	| store location of first point for get_next_point routine
-	MOVE(r3, r16)		| store RGB data in a temp register
+  LD(r9,0x4,r12)    | load number of points in next segment into r12
+	MOVE(r3, r16)		  | store RGB data in a temp register
 	CMOVE(0x0, r3)		| turn off laser while travelling between sprites
 | Starting from first memory location:
 draw_loop:
@@ -198,9 +200,12 @@ get_next_point:
 	
 	LD(r9, 0, r8)	 	| load next point into r8
 ||	SHL(r8, r14, r8)	| shift left by the scale factor specified by the user switches
-	MOVE(r8, r7)		| copy point
-	ADDC(r9, 0x4, r9) 	| increment location in local table
-	
+	MOVE(r8, r7)		              | copy point
+  SUBC(r12,0x1,r12)             | decrement remaining points in the line
+  BNE(r12, get_next_continue)   | if we're done with this line segment,
+    ADDC(r9, 0x8, r9) 	        | increment location in local table
+
+  get_next_continue:
 	SRAC(r8, 16, r8) 	| Get only x data
 	SHLC(r7, 16, r7) 	| Get only y data, preserving sign bit
 	SRAC(r7, 16, r7)
@@ -213,24 +218,16 @@ get_next_point:
 . = 0x200
 LONG(17) 			| h100 x h100 square with 16 (+1) points (four per side)
 LONG(0x04000000) 		| 16 bits of x offset, 16 bits of y offset (sign extended!)
-LONG(0x04000000)
-LONG(0x04000000)
-LONG(0x04000000)
+LONG(0x4)
 
 LONG(0x00000400)
-LONG(0x00000400)
-LONG(0x00000400)
-LONG(0x00000400)
+LONG(0x4)
 
 LONG(0xFC000000)
-LONG(0xFC000000)
-LONG(0xFC000000)
-LONG(0xFC000000)
+LONG(0x4)
 
 LONG(0x0000FC00)
-LONG(0x0000FC00)
-LONG(0x0000FC00)
-LONG(0x0000FC00)
+LONG(0x4)
 
 . = 0x300
 LONG(6)				| a five-pointed circle for the ball
@@ -241,31 +238,37 @@ LONG(0xFDB0FC90)
 LONG(0x00F0FDB0)
 
 . = 0x400			| the frame outline
-LONG(12)
-LONG(0x02000000)
-LONG(0x00000148)
-LONG(0xFE080040)
-LONG(0x00400040)
-LONG(0x01480000)
-LONG(0xFF400060)
-LONG(0xFFA00000)
-LONG(0xFF40FFA0)
-LONG(0x0000FE40)
-LONG(0x0040FE08)
-LONG(0xFE08FE08)
-LONG(0x0000FF40)
+LONG(13)
+LONG(0x00200000), LONG(0x10)
+LONG(0x00000020), LONG(0xD)
+LONG(0xFFFE0020), LONG(0x2)
+LONG(0x00200020), LONG(0x2)
+LONG(0x00000020), LONG(0xD)
+LONG(0xFFFE0010), LONG(0x6)
+LONG(0xFFFE0000), LONG(0x3)
+LONG(0xFFFEFFF0), LONG(0x6)
+LONG(0x0000FFFE), LONG(0xD)
+LONG(0x0020FFFE), LONG(0x2)
+LONG(0xFFFEFFFE), LONG(0x2)
+LONG(0x0000FFFE), LONG(0xD)
 
 . = 0x500			| left triangle bumper
 LONG(4)
-LONG(0x00600080)
-LONG(0xFFA00000)
-LONG(0x0000FF80)
+LONG(0x00180020), LONG(0x4)
+LONG(0xFFFE0000), LONG(0x3)
+LONG(0x0000FFFE), LONG(0x4)
 
 .= 0x600			| right triangle bumper
 LONG(4)
-LONG(0x00000080)
-LONG(0xFFA00000)
-LONG(0x0060FF80)
+LONG(0x00000020), LONG(0x4)
+LONG(0xFFFE0000), LONG(0x3)
+LONG(0x0018FFFE), LONG(0x4)
 
 stack:
 STORAGE(128)
+
+
+|.=0x20000
+|LONG(0x18000000)
+|.=0x40000
+|LONG(0x1EEB)
