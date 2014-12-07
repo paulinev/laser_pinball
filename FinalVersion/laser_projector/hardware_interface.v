@@ -188,9 +188,7 @@ module hardware_interface(
     .beta_addr(), 
     .beta_din()
     );
-	*/ 
-
-	 
+		*/ 
 	 
 	 reset_controller gen_sys_reset (
     .clk(clk_50), 

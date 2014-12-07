@@ -1,0 +1,13 @@
+
+
+
+// Instantiate the module
+pixel_cost_function instance_name (
+    .clk(clk), 
+    .pixel_data(pixel_data), 
+    .pixel_red_cost(pixel_red_cost), 
+    .pixel_green_cost(pixel_green_cost), 
+    .pixel_blue_cost(pixel_blue_cost)
+    );
+
+

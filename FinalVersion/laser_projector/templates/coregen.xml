@@ -110,12 +110,12 @@ blk_mem_gen_v2_8 YourInstanceName (
  
 image_memory YourInstanceName (
     .clka(clka),
-    .dina(dina), // Bus [15 : 0] 
-    .addra(addra), // Bus [16 : 0] 
+    .dina(dina), // Bus [8 : 0] 
+    .addra(addra), // Bus [15 : 0] 
     .wea(wea), // Bus [0 : 0] 
     .clkb(clkb),
-    .addrb(addrb), // Bus [16 : 0] 
-    .doutb(doutb)); // Bus [15 : 0] 
+    .addrb(addrb), // Bus [15 : 0] 
+    .doutb(doutb)); // Bus [8 : 0] 
 
  
 		</Template>
@@ -315,12 +315,12 @@ your_instance_name : blk_mem_gen_v2_8
 component image_memory
     port (
     clka: IN std_logic;
-    dina: IN std_logic_VECTOR(15 downto 0);
-    addra: IN std_logic_VECTOR(16 downto 0);
+    dina: IN std_logic_VECTOR(8 downto 0);
+    addra: IN std_logic_VECTOR(15 downto 0);
     wea: IN std_logic_VECTOR(0 downto 0);
     clkb: IN std_logic;
-    addrb: IN std_logic_VECTOR(16 downto 0);
-    doutb: OUT std_logic_VECTOR(15 downto 0));
+    addrb: IN std_logic_VECTOR(15 downto 0);
+    doutb: OUT std_logic_VECTOR(8 downto 0));
 end component;
 
 

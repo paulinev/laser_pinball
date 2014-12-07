@@ -1,0 +1,32 @@
+
+
+
+// Instantiate the module
+load_pixel_block instance_name (
+    .clk(clk), 
+    .start(start), 
+    .block_x(block_x), 
+    .block_y(block_y), 
+    .memory_in(memory_in), 
+    .mem_hcount(mem_hcount), 
+    .mem_vcount(mem_vcount), 
+    .done(done), 
+    .pixel_0(pixel_0), 
+    .pixel_1(pixel_1), 
+    .pixel_2(pixel_2), 
+    .pixel_3(pixel_3), 
+    .pixel_4(pixel_4), 
+    .pixel_5(pixel_5), 
+    .pixel_6(pixel_6), 
+    .pixel_7(pixel_7), 
+    .pixel_8(pixel_8), 
+    .pixel_9(pixel_9), 
+    .pixel_a(pixel_a), 
+    .pixel_b(pixel_b), 
+    .pixel_c(pixel_c), 
+    .pixel_d(pixel_d), 
+    .pixel_e(pixel_e), 
+    .pixel_f(pixel_f)
+    );
+
+

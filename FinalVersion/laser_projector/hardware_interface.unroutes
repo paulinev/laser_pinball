@@ -1,7 +1,7 @@
 Release 10.1.03 - par K.39 (lin64)
 Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
 
-Sat Dec  6 22:31:50 2014
+Sun Dec  7 04:08:00 2014
 
 All signals are completely routed.
 
@@ -22,20 +22,27 @@ WARNING:ParHelpers:362 - There are 14 sourceless signals in this design. This de
    HDR1_34_OBUF
    HDR1_36_OBUF
    HDR1_38_OBUF
-WARNING:ParHelpers:361 - There are 12 loadless signals in this design. This design will cause Bitgen to issue DRC
+WARNING:ParHelpers:361 - There are 19 loadless signals in this design. This design will cause Bitgen to issue DRC
    warnings.
 
    AUDIO_SDATA_IN_IBUF
    CLK_27MHZ_FPGA_IBUF
-   GPIO_DIP_SW1_IBUF
-   GPIO_DIP_SW2_IBUF
-   GPIO_DIP_SW3_IBUF
-   GPIO_DIP_SW4_IBUF
-   GPIO_DIP_SW5_IBUF
-   GPIO_DIP_SW6_IBUF
-   GPIO_DIP_SW7_IBUF
-   GPIO_DIP_SW8_IBUF
    GPIO_SW_N_IBUF
    GPIO_SW_S_IBUF
+   HDR1_44_IBUF
+   HDR1_46_IBUF
+   HDR1_48_IBUF
+   HDR1_50_IBUF
+   HDR1_52_IBUF
+   HDR1_54_IBUF
+   HDR1_56_IBUF
+   HDR1_58_IBUF
+   HDR1_60_IBUF
+   HDR1_62_IBUF
+   HDR1_64_IBUF
+   IIC_SCL_MAIN_IBUF
+   IIC_SCL_VIDEO_IBUF
+   IIC_SDA_MAIN_IBUF
+   IIC_SDA_VIDEO_IBUF
 
 

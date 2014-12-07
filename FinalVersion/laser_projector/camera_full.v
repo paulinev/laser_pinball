@@ -51,19 +51,22 @@ module camera_full(
 	 wire local_hsync; 
 	 wire local_blank; 	
 	 
+	 wire image_process; //controlls mux for frame buffer
+	 
 	 assign vga_vsync = local_vsync;
 	 assign vga_hsync = local_hsync;
 	 assign vga_blank = local_blank;
+	 
+	 assign 
 	  
 	 wire [23:0] vga_data;
-	 wire [15:0] vga_pixel;
+	 wire [8:0] vga_pixel;
 	 wire [15:0] camera_pixel; //processed camera pixel
 	 wire mwe_camera;
-	 
-	 assign vga_data = {vga_pixel[15:11],{3{vga_pixel[11]}}, 
-								vga_pixel[10:5], {2{vga_pixel[5]}},
-								vga_pixel[4:0], {3{vga_pixel[0]}}};
-	 
+								 
+	 assign vga_data = {vga_pixel[8:6], {5{vga_pixel[6]}},
+								vga_pixel[5:3], {5{vga_pixel[3]}},
+								vga_pixel[2:0], {5{vga_pixel[0]}};
 	 
 	 
 	 
@@ -128,19 +131,28 @@ module camera_full(
     .done() // done signal
     );
 	 
+	 image_addr_gen camera_addr (
+    .hcount(hcount), 
+    .vcount(vcount), 
+    .addr(addr)
+    );
 	 
-	 shared_video_mem image_buffer (
-    .clk_vga(clk_50), 
-    .clk_camera(camera_pclk), 
-    .camera_hcount(camera_hcount), 
-    .camera_vcount(camera_vcount), 
-    .vga_hcount(vga_hcount), 
-    .vga_vcount(vga_vcount), 
-    .dout_camera(camera_pixel), 
-    .mwe_camera(mwe_camera), 
-    .dout_vga(vga_pixel)
+	 image_addr_gen buffer_read_addr (
+    .hcount(hcount), 
+    .vcount(vcount), 
+    .addr(addr)
     );
 
+	//240x240 9 bit color
+	shared_video_mem instance_name (
+    .clk_read(clk_50), 
+    .clk_write(camera_pclk), 
+    .write_addr(buffer_write_addr), 
+    .read_addr(buffer_read_addr), 
+    .dout_camera(camera_pixel), 
+    .mwe_camera(mwe_camera), 
+    .dout_pixel(vga_pixel)
+    );
 
 
 

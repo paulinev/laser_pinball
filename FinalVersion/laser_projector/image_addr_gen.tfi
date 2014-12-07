@@ -1,0 +1,11 @@
+
+
+
+// Instantiate the module
+image_addr_gen instance_name (
+    .hcount(hcount), 
+    .vcount(vcount), 
+    .addr(addr)
+    );
+
+

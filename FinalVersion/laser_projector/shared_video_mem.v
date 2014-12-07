@@ -20,47 +20,30 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module shared_video_mem(
-	input wire clk_vga,
-	input wire clk_camera,
-	input wire camera_request,
-	input wire [9:0] camera_hcount,
-	input wire [9:0] camera_vcount,
-	input wire [9:0] vga_hcount,
-	input wire [9:0] vga_vcount,
+	input wire clk_read,
+	input wire clk_write,
+	input wire [15:0] write_addr,
+	input wire [15:0] read_addr,
 	input wire [15:0] dout_camera,
 	input wire mwe_camera,
-	
-	output wire [15:0] dout_vga
+	output wire [8:0] dout_pixel
     );
-
-
-	wire [17:0] addr_vga;
-	wire [17:0] addr_camera;
-
+	 
+	 
+	wire [8:0] read_data;
 	
-	
-	
-	image_addr_gen vga_addr_gen (
-    .hcount(vga_hcount), 
-    .vcount(vga_vcount), 
-    .addr(addr_vga)
-    );
+	assign read_data = {dout_camera[15:13],dout_camera[10:8], dout_camera[4:2]};
 
-	image_addr_gen camera_addr_gen (
-    .hcount(camera_hcount), 
-    .vcount(camera_vcount), 
-    .addr(addr_camera)
-    );
 
 	image_memory framebuffer(
 	.clka(clk_camera),
-	.dina(dout_camera),
-	.addra(addr_camera),
+	.dina(write_data),
+	.addra(write_addr),
 	.wea(mwe_camera),
-	.clkb(clk_vga),
-	.addrb(addr_vga),
-	.doutb(dout_vga))
-	;
+	.clkb(clk_read),
+	.addrb(read_addr),
+	.doutb(dout_pixel)
+	);
 
 
 endmodule
