@@ -81,7 +81,7 @@ end component;
 			c_write_mode_a => "READ_FIRST",
 			c_mux_pipeline_stages => 0,
 			c_has_mem_output_regs_b => 0,
-			c_load_init_file => 1,
+			c_load_init_file => 0,
 			c_xdevicefamily => "virtex5",
 			c_has_mem_output_regs_a => 0,
 			c_write_depth_b => 256,

@@ -11,6 +11,8 @@ Reading NGO file
 "/home/wbraun/laser_pinball/FinalVersion/laser_projector/hardware_interface.ngc"
 ...
 Loading design module
+"/home/wbraun/laser_pinball/FinalVersion/laser_projector/image_memory.ngc"...
+Loading design module
 "/home/wbraun/laser_pinball/FinalVersion/laser_projector/beta_shared_mem.ngc"...
 Loading design module
 "/home/wbraun/laser_pinball/FinalVersion/laser_projector/hardware_beta_mem.ngc".
@@ -2397,6 +2399,120 @@ Checking Partitions ...
 
 Checking expanded design ...
 WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_T" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_B" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_T" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_B" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_T" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_B" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_T" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_B" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_T" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_B" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_T" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SDP.CASCADED_PR
+   IM36.TDP_B" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SDP.CASCADED_P
+   RIM36.TDP_T" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram/SDP.CASCADED_P
+   RIM36.TDP_B" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[30].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[29].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[28].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[27].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[26].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[25].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[24].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[23].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[22].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[21].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[20].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[19].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[18].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[17].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[16].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[15].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r/v5_init.ram/SDP.SINGLE_PRI
+   M36.TDP" of type "RAMB36_EXP".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram/SDP.SINGLE_PRIM
+   18.SDP" of type "RAMB18".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r/v5_init.ram/SDP.SINGLE_PRIM
+   18.SDP" of type "RAMB18".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM
+   18.SDP" of type "RAMB18".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
+   "U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r/v5_init.ram/SDP.SINGLE_PRIM
+   18.SDP" of type "RAMB18".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
    "U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram/SDP.WIDE_PRIM18
    .TDP" of type "RAMB18SDP".  This attribute will be ignored.
 WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
@@ -2492,10 +2608,6 @@ WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
 WARNING:NgdBuild:486 - Attribute "SIM_MODE" is not allowed on symbol
    "U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SP.SINGLE_PRIM3
    6.SP" of type "RAMB36_EXP".  This attribute will be ignored.
-WARNING:NgdBuild:470 - bidirect pad net 'IIC_SDA_MAIN' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'IIC_SCL_VIDEO' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'IIC_SCL_MAIN' has no legal driver
-WARNING:NgdBuild:470 - bidirect pad net 'IIC_SDA_VIDEO' has no legal driver
 
 Partition Implementation Status
 -------------------------------
@@ -2506,9 +2618,9 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings:  36
+  Number of warnings:  70
 
-Total memory usage is 257364 kilobytes
+Total memory usage is 267040 kilobytes
 
 Writing NGD file "hardware_interface.ngd" ...
 

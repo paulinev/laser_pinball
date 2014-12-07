@@ -78,7 +78,7 @@ output [31 : 0] doutb;
 		.C_HAS_SSRA(0),
 		.C_HAS_SSRB(0),
 		.C_INIT_FILE_NAME("beta_shared_mem.mif"),
-		.C_LOAD_INIT_FILE(1),
+		.C_LOAD_INIT_FILE(0),
 		.C_MEM_TYPE(1),
 		.C_MUX_PIPELINE_STAGES(0),
 		.C_PRIM_TYPE(1),

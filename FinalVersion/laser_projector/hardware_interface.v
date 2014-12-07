@@ -91,7 +91,6 @@ module hardware_interface(
 	 wire camera_vsync;
 	 wire camera_href;
 	 
-	 wire camera_clk; //12.5Mhz
 	 wire user_reset;
 	 
 	 //inputs from camera
@@ -103,7 +102,7 @@ module hardware_interface(
 	 //outputs to camera
 	 assign HDR1_40 = camera_xclk; 
 	 assign HDR1_42 = ~reset; //reset is active high
-	 assign camera_xclk = camera_clk;
+	
 	 //test outputs
 	 assign HDR1_18 = clk_50;
 	 assign HDR1_20 = reset; 
@@ -115,7 +114,7 @@ module hardware_interface(
 	 assign HDR1_6 = dac_mosi;
 	 assign HDR1_8 = dac_latchn;
 	 
-	 assign {HDR1_10, HDR1_12, HDR1_14} = laser_rgb; //inverted output
+	 assign {HDR1_10, HDR1_12, HDR1_14} = ~laser_rgb; //inverted output
 	 
 	 assign dip_sw = 	{GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
 							GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1};	 
@@ -149,15 +148,6 @@ module hardware_interface(
     );
 	 
 	 
-	camera_clk clk12_5_gen ( //12.5Mhz camera clk
-    .CLKIN_IN(USER_CLK), 
-    .RST_IN(0), 
-    .CLKDV_OUT(camera_clk),  
-    .CLK0_OUT(), 
-    .LOCKED_OUT()
-    );
-
-	 
 	 laser_projector_full best_hazor (
     .clk(clk_50), 
     .reset(reset), 
@@ -175,18 +165,48 @@ module hardware_interface(
     .debug_led(debug_led)
     );
 	 
-	 reset_controller instance_name (
+	 /*
+	 camera_full camera_module (
+    .clk_50(clk_50), 
+    .camera_pclk(camera_pclk), 
+    .reset(reset), 
+    .system_start(paddle_r), 
+    .capture_frame(paddle_l), 
+    .camera_href(camera_href), 
+    .camera_vsync(camera_vsync), 
+    .camera_data(camera_dout), 
+    .camera_scl(IIC_SCL_MAIN), 
+    .camera_sda(IIC_SDA_MAIN), 
+    .vga_scl(IIC_SCL_VIDEO), 
+    .vga_sda(IIC_SDA_VIDEO), 
+    .camera_xclk(camera_xclk), 
+    .vga_drive(DVI_data), 
+    .vga_hsync(hsync), 
+    .vga_vsync(vsync), 
+    .vga_blank(blank), 
+    .beta_mwe(), 
+    .beta_addr(), 
+    .beta_din()
+    );
+	*/ 
+
+	 
+	 
+	 reset_controller gen_sys_reset (
     .clk(clk_50), 
     .user_reset(user_reset), 
     .reset(reset)
     );
 	 
+	 /*
 	 debounce db_1 (
     .reset(0), 
     .clock(clk_50), 
     .noisy(GPIO_SW_C), 
     .clean(user_reset)
     );
+	 */ 
+	 assign user_reset = GPIO_SW_C;
 	 
 	  
 	 

@@ -1,0 +1,12 @@
+# Output products list for <image_memory>
+image_memory.asy
+image_memory.ngc
+image_memory.sym
+image_memory.v
+image_memory.veo
+image_memory.vhd
+image_memory.vho
+image_memory.xco
+image_memory_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+image_memory_flist.txt
+image_memory_xmdf.tcl

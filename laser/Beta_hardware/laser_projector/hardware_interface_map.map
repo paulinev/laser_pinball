@@ -12,7 +12,7 @@ Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sat Dec  6 05:17:53 2014
+Mapped Date    : Sat Dec  6 21:51:26 2014
 
 Mapping design into LUTs...
 Running directed packing...
@@ -49,10 +49,10 @@ WARNING:Place:644 - A clock IOB clock component is not placed at an optimal
    this override is highly discouraged as it may lead to very poor timing
    results. It is recommended that this error condition be corrected in the
    design.
-Phase 6.2 (Checksum:503634) REAL time: 7 secs 
+Phase 6.2 (Checksum:503634) REAL time: 6 secs 
 
 Phase 7.30
-Phase 7.30 (Checksum:503634) REAL time: 7 secs 
+Phase 7.30 (Checksum:503634) REAL time: 6 secs 
 
 Phase 8.3
 Phase 8.3 (Checksum:503634) REAL time: 7 secs 
@@ -74,16 +74,16 @@ Phase 12.5
 Phase 12.5 (Checksum:6005733) REAL time: 13 secs 
 
 Phase 13.18
-Phase 13.18 (Checksum:61a3a8f) REAL time: 54 secs 
+Phase 13.18 (Checksum:61a3a8f) REAL time: 56 secs 
 
 Phase 14.5
-Phase 14.5 (Checksum:61a3a8f) REAL time: 54 secs 
+Phase 14.5 (Checksum:61a3a8f) REAL time: 57 secs 
 
 Phase 15.34
-Phase 15.34 (Checksum:61a3a8f) REAL time: 54 secs 
+Phase 15.34 (Checksum:61a3a8f) REAL time: 57 secs 
 
-REAL time consumed by placer: 55 secs 
-CPU  time consumed by placer: 55 secs 
+REAL time consumed by placer: 57 secs 
+CPU  time consumed by placer: 57 secs 
 
 Design Summary
 --------------
@@ -132,9 +132,9 @@ Specific Feature Utilization:
     Number used as BUFGs:                        3
   Number of DCM_ADVs:                            1 out of      12    8%
 
-Peak Memory Usage:  748 MB
-Total REAL time to MAP completion:  1 mins 2 secs 
-Total CPU time to MAP completion:   1 mins 2 secs 
+Peak Memory Usage:  745 MB
+Total REAL time to MAP completion:  1 mins 4 secs 
+Total CPU time to MAP completion:   1 mins 4 secs 
 
 Mapping completed.
 See MAP report file "hardware_interface_map.mrp" for details.

@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version K.39
-# Date: Sun Nov 30 09:16:09 2014
+# Date: Sat Dec  6 22:46:15 2014
 #
 ##############################################################
 #
@@ -38,7 +38,7 @@ SELECT Block_Memory_Generator family Xilinx,_Inc. 2.8
 CSET algorithm=Minimum_Area
 CSET assume_synchronous_clk=false
 CSET byte_size=9
-CSET coe_file=/home/wbraun/laser_pinball/laser/beta_test_code/beta_test_2.coe
+CSET coe_file=/home/wbraun/laser_pinball/physics/src/object_framework.asm.coe
 CSET collision_warnings=ALL
 CSET component_name=physics_beta_mem
 CSET disable_collision_warnings=false
@@ -74,5 +74,5 @@ CSET write_width_a=32
 CSET write_width_b=32
 # END Parameters
 GENERATE
-# CRC: b2ccef1a
+# CRC: 653d120f
 

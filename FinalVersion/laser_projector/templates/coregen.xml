@@ -99,6 +99,26 @@ blk_mem_gen_v2_8 YourInstanceName (
 
  
 		</Template>
+		<Template label="test_" treetype="template">
+		</Template>
+		<Template label="image_memory" treetype="template">
+ 
+ 
+// The following must be inserted into your Verilog file for this
+// core to be instantiated. Change the instance name and port connections
+// (in parentheses) to your own signal names.
+ 
+image_memory YourInstanceName (
+    .clka(clka),
+    .dina(dina), // Bus [15 : 0] 
+    .addra(addra), // Bus [16 : 0] 
+    .wea(wea), // Bus [0 : 0] 
+    .clkb(clkb),
+    .addrb(addrb), // Bus [16 : 0] 
+    .doutb(doutb)); // Bus [15 : 0] 
+
+ 
+		</Template>
 	</Folder>
 	<Folder label="VHDL Component Instantiation" treetype="folder">
 		<Template label="ILDA_rom" treetype="template">
@@ -283,6 +303,42 @@ your_instance_name : blk_mem_gen_v2_8
             addra =&gt; addra,
             wea =&gt; wea,
             douta =&gt; douta);
+ 
+		</Template>
+		<Template label="test_" treetype="template">
+		</Template>
+		<Template label="image_memory" treetype="template">
+ 
+ 
+-- The following code must appear in the VHDL architecture header:
+ 
+component image_memory
+    port (
+    clka: IN std_logic;
+    dina: IN std_logic_VECTOR(15 downto 0);
+    addra: IN std_logic_VECTOR(16 downto 0);
+    wea: IN std_logic_VECTOR(0 downto 0);
+    clkb: IN std_logic;
+    addrb: IN std_logic_VECTOR(16 downto 0);
+    doutb: OUT std_logic_VECTOR(15 downto 0));
+end component;
+
+
+ 
+-------------------------------------------------------------
+ 
+-- The following code must appear in the VHDL architecture body.
+-- Substitute your own instance name and net names.
+ 
+your_instance_name : image_memory
+        port map (
+            clka =&gt; clka,
+            dina =&gt; dina,
+            addra =&gt; addra,
+            wea =&gt; wea,
+            clkb =&gt; clkb,
+            addrb =&gt; addrb,
+            doutb =&gt; doutb);
  
 		</Template>
 	</Folder>

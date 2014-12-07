@@ -61,7 +61,7 @@ input wire clk,
 		start_write <= 0;
 		end
 
-		1: begin //configure clkrc reg
+		1: begin //thanks magiv internet person
 		FSM_state <= 2;
 		write_id <= device_id;
 		//write_reg <= 8'h11; //clk setup

@@ -12,7 +12,7 @@ Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sat Dec  6 05:17:53 2014
+Mapped Date    : Sat Dec  6 21:51:26 2014
 
 Design Summary
 --------------
@@ -59,9 +59,9 @@ Specific Feature Utilization:
     Number used as BUFGs:                        3
   Number of DCM_ADVs:                            1 out of      12    8%
 
-Peak Memory Usage:  748 MB
-Total REAL time to MAP completion:  1 mins 2 secs 
-Total CPU time to MAP completion:   1 mins 2 secs 
+Peak Memory Usage:  745 MB
+Total REAL time to MAP completion:  1 mins 4 secs 
+Total CPU time to MAP completion:   1 mins 4 secs 
 
 Table of Contents
 -----------------

@@ -205,7 +205,7 @@ always #5 USER_CLK = ~USER_CLK;
 		#100;
 		
 		#500;
-		GPIO_SW_C=1;
+		GPIO_SW_C=0;
 		#100;
 		GPIO_SW_C=0;
         

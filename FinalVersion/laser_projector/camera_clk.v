@@ -7,7 +7,7 @@
 // \   \   \/     Version : 10.1.03
 //  \   \         Application : xaw2verilog
 //  /   /         Filename : camera_clk.v
-// /___/   /\     Timestamp : 12/05/2014 22:44:35
+// /___/   /\     Timestamp : 12/06/2014 20:35:37
 // \   \  /  \ 
 //  \___\/\___\ 
 //
@@ -72,11 +72,11 @@ module camera_clk(CLKIN_IN,
                          .LOCKED(LOCKED_OUT), 
                          .PSDONE());
    defparam DCM_ADV_INST.CLK_FEEDBACK = "1X";
-   defparam DCM_ADV_INST.CLKDV_DIVIDE = 8.0;
+   defparam DCM_ADV_INST.CLKDV_DIVIDE = 4.0;
    defparam DCM_ADV_INST.CLKFX_DIVIDE = 1;
    defparam DCM_ADV_INST.CLKFX_MULTIPLY = 4;
    defparam DCM_ADV_INST.CLKIN_DIVIDE_BY_2 = "FALSE";
-   defparam DCM_ADV_INST.CLKIN_PERIOD = 10.000;
+   defparam DCM_ADV_INST.CLKIN_PERIOD = 20.000;
    defparam DCM_ADV_INST.CLKOUT_PHASE_SHIFT = "NONE";
    defparam DCM_ADV_INST.DCM_AUTOCALIBRATION = "TRUE";
    defparam DCM_ADV_INST.DCM_PERFORMANCE_MODE = "MAX_SPEED";

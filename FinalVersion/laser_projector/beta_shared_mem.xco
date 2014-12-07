@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version K.39
-# Date: Sun Nov 30 02:05:25 2014
+# Date: Sat Dec  6 22:40:43 2014
 #
 ##############################################################
 #
@@ -47,7 +47,7 @@ CSET ecc=false
 CSET enable_a=Always_Enabled
 CSET enable_b=Always_Enabled
 CSET fill_remaining_memory_locations=true
-CSET load_init_file=true
+CSET load_init_file=false
 CSET memory_type=Simple_Dual_Port_RAM
 CSET operating_mode_a=READ_FIRST
 CSET operating_mode_b=READ_FIRST
@@ -74,5 +74,5 @@ CSET write_width_a=32
 CSET write_width_b=32
 # END Parameters
 GENERATE
-# CRC: 85c1e665
+# CRC:  ca404b9
 

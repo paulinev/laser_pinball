@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Sat Dec  6 05:18:56 2014">
+  <application stringID="Map" timeStamp="Sat Dec  6 21:52:30 2014">
     <task stringID="MAP_PACK_REPORT">
       <item AVAILABLE="28800" dataType="int" stringID="MAP_SLICE_REGISTERS" value="583">
         <item dataType="int" stringID="MAP_NUM_SLICE_FF" value="583"/>
@@ -67,9 +67,9 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="30"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="765768"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="1 mins 2 secs "/>
-        <item stringID="MAP_TOTAL_CPU_TIME" value="1 mins 2 secs "/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="762748"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="1 mins 4 secs "/>
+        <item stringID="MAP_TOTAL_CPU_TIME" value="1 mins 4 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING">
         <item AVAILABLE="28800" dataType="int" stringID="MAP_SLICE_REGISTERS" value="583">
