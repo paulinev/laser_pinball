@@ -19,8 +19,8 @@
 
 | Define parameters
 NEXT_SPRITE_OFFSET = 0x04
-|TIMER_VALUE = 0xD05
-TIMER_VALUE = 0x01
+TIMER_VALUE = 0xD05
+|TIMER_VALUE = 0x01
 
 | External address offsets
 SPI_CONFIG = 0x10
@@ -106,8 +106,8 @@ set_timer:
 	
 wait_timer:
 	LD(r7, TIMER_OVERFLOW, r8)
-	BNE(r8, wait_timer)	| TEST ONLY
-	|BEQ(r8, wait_timer) 	| flag should be set when timer is done
+	|BNE(r8, wait_timer)	| TEST ONLY
+	BEQ(r8, wait_timer) 	| flag should be set when timer is done
 	CMOVE(0x0, r8) 		| clear flag
 	ST(r8, TIMER_OVERFLOW, r7)
 	RTN()
@@ -269,7 +269,7 @@ stack:
 STORAGE(128)
 
 
-.=0x20000
-LONG(0x18000000)
-.=0x40000
-LONG(0x1EEB)
+|.=0x20000
+|LONG(0x18000000)
+|.=0x40000
+|LONG(0x1EEB)
