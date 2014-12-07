@@ -66,8 +66,6 @@ draw_frame:
 	| Load sprite IDs until you find a null-terminated one
 	LD(r4, 0, r7) 		| load new sprite data into r7
 	SHRC(r7, 27, r2) 	| get just the sprite ID
-|| FOR TEST ONLY
-	|ST(r2, SHARED_MEM_READ_STATUS, r4)
 	BEQ(r2, frame_done) 	| if sprite ID is null then we're done, otherwise continue loading
 	
 	SUBC(r20, 1, r8) 	| store 0xFFFFFFFF in r8
@@ -107,8 +105,8 @@ set_timer:
 	
 wait_timer:
 	LD(r7, TIMER_OVERFLOW, r8)
-	|BNE(r8, wait_timer)	| TEST ONLY
-	BEQ(r8, wait_timer) 	| flag should be set when timer is done
+	BNE(r8, wait_timer)	| TEST ONLY
+	|BEQ(r8, wait_timer) 	| flag should be set when timer is done
 	CMOVE(0x0, r8) 		| clear flag
 	ST(r8, TIMER_OVERFLOW, r7)
 	RTN()
@@ -132,7 +130,6 @@ draw_loop:
 	CALL(set_timer)
 	POP(LP)
 	
-	SUBC(r6, 0x01, r6)
 	MOVE(r16, r3)		| restore RGB data after first point
 	BNE(r6, draw_loop)
 	RTN()
@@ -204,11 +201,14 @@ get_next_point:
   SUBC(r12,0x1,r12)             | decrement remaining points in the line
   BNE(r12, get_next_continue)   | if we're done with this line segment,
     ADDC(r9, 0x8, r9) 	        | increment location in local table
+    LD(r9,0x4,r12)              | load point count for next segment
+	  SUBC(r6, 0x01, r6)          | decrement points left for sprite
 
   get_next_continue:
 	SRAC(r8, 16, r8) 	| Get only x data
 	SHLC(r7, 16, r7) 	| Get only y data, preserving sign bit
 	SRAC(r7, 16, r7)
+  .breakpoint
 	ADD(r8, r0, r0) 	| Add x offset
 	ADD(r7, r1, r1) 	| Add y offset
 	
@@ -238,19 +238,19 @@ LONG(0xFDB0FC90)
 LONG(0x00F0FDB0)
 
 . = 0x400			| the frame outline
-LONG(13)
+LONG(12)
 LONG(0x00200000), LONG(0x10)
 LONG(0x00000020), LONG(0xD)
-LONG(0xFFFE0020), LONG(0x2)
+LONG(0xFFE00020), LONG(0x2)
 LONG(0x00200020), LONG(0x2)
 LONG(0x00000020), LONG(0xD)
-LONG(0xFFFE0010), LONG(0x6)
-LONG(0xFFFE0000), LONG(0x3)
-LONG(0xFFFEFFF0), LONG(0x6)
-LONG(0x0000FFFE), LONG(0xD)
-LONG(0x0020FFFE), LONG(0x2)
-LONG(0xFFFEFFFE), LONG(0x2)
-LONG(0x0000FFFE), LONG(0xD)
+LONG(0xFFE00010), LONG(0x6)
+LONG(0xFFE00000), LONG(0x4)
+LONG(0xFFE0FFF0), LONG(0x6)
+LONG(0x0000FFE0), LONG(0xD)
+LONG(0x0020FFE0), LONG(0x2)
+LONG(0xFFE0FFE0), LONG(0x2)
+LONG(0x0000FFE0), LONG(0xD)
 
 . = 0x500			| left triangle bumper
 LONG(4)
@@ -268,7 +268,7 @@ stack:
 STORAGE(128)
 
 
-|.=0x20000
-|LONG(0x18000000)
-|.=0x40000
-|LONG(0x1EEB)
+.=0x20000
+LONG(0x18000000)
+.=0x40000
+LONG(0x1EEB)
