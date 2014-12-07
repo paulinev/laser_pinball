@@ -1,4 +1,0 @@
-set -tmpdir "./xst/projnav.tmp"
-elaborate
--ifn pixel_cost_function.prj
--ifmt mixed

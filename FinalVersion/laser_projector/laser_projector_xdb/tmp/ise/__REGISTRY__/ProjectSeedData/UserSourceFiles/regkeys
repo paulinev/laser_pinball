@@ -1,5 +1,5 @@
 NUM_USER_FILES
-54
+58
 s
 user_file_1
 hardware_interface.v
@@ -150,6 +150,18 @@ load_pixel_block.v
 s
 user_file_54
 pixel_cost_function.v
+s
+user_file_55
+image_hunt_tb.v
+s
+user_file_56
+shared_video_mem_tb.v
+s
+user_file_57
+frame_buff.xco
+s
+user_file_58
+camera_main_tb.v
 s
 user_file_6
 beta_addr_decode.v

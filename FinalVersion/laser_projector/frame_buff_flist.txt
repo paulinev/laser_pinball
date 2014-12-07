@@ -1,0 +1,12 @@
+# Output products list for <frame_buff>
+frame_buff.asy
+frame_buff.ngc
+frame_buff.sym
+frame_buff.v
+frame_buff.veo
+frame_buff.vhd
+frame_buff.vho
+frame_buff.xco
+frame_buff_blk_mem_gen_v2_8_xst_1.ngc_xst.xrpt
+frame_buff_flist.txt
+frame_buff_xmdf.tcl

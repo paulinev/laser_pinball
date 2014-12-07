@@ -24,19 +24,19 @@ module image_hunt(
 	input wire clk,
 	input wire [8:0] mem_pixel_data,
 	input wire start,
-	output reg mem_request,
-	output reg done,
-	output wire [8:0] mem_hcount,
-	output wire [8:0] mem_vcount,
-	output reg [8:0] red_x = 0,
-	output reg [8:0] red_y = 0,
-	output reg [8:0] green_x = 0,
-	output reg [8:0] green_y = 0,
-	output reg [8:0] blue_x = 0,
-	output reg [8:0] blue_y = 0
+	output reg mem_request = 0,
+	output reg done = 0,
+	output wire [9:0] mem_hcount,
+	output wire [9:0] mem_vcount,
+	output reg [9:0] red_x = 0,
+	output reg [9:0] red_y = 0,
+	output reg [9:0] green_x = 0,
+	output reg [9:0] green_y = 0,
+	output reg [9:0] blue_x = 0,
+	output reg [9:0] blue_y = 0
     );
 	 
-	 parameter block_max = 63; //number of blocks minus 1
+	 parameter block_max = 59; //number of blocks minus 1
 	 
 	 reg [3:0] FSM_state = 0;
 	 
@@ -62,10 +62,9 @@ module image_hunt(
 	 //pipeline values
 	 reg [8:0] p_1, p_2, p_3, p_4;
 	 
-	 wire [8:0] p_1_red, p_2_red, p_3_red;
-	 wire [8:0] p_1_green, p_2_green, p_2_green;
-	 wire [8:0] p_1_blue, p_2_blue, p_3_blue;
-	 wire
+	 wire [8:0] p_1_red, p_2_red, p_3_red, p_4_red; 
+	 wire [8:0] p_1_green, p_2_green, p_3_green, p_4_green;
+	 wire [8:0] p_1_blue, p_2_blue, p_3_blue, p_4_blue;
 	 
 	 
 	 wire load_done;
@@ -76,11 +75,12 @@ module image_hunt(
 		 case(FSM_state)
 		 
 		 0: begin //reset and wait for start
-		 FSM_state <= start ? 1 : 0;
-		 row_count <= 0; 
+		 FSM_state <= start ? 1 : 0; 
 		 mem_request <= start ? 1 : 0;
-		 block_x <= 0;
-		 block_y <= 0;
+		 done <= 0;
+		 
+		 block_x <= 2;
+		 block_y <= 2;
 		 
 		 red_cost <= 0;
 		 green_cost <= 0;
@@ -101,9 +101,8 @@ module image_hunt(
 		 start_fetch <= 0;
 		 end
 		 
-		 
 		 3: begin //process data
-		 FSM_state <= 4
+		 FSM_state <= 4;
 		 p_1 <= pixel_0;
 		 p_2 <= pixel_1;
 		 p_3 <= pixel_2;
@@ -111,11 +110,11 @@ module image_hunt(
 		 end
 		 
 		 4: begin //process data
-		 FSM_state <= 5:
+		 FSM_state <= 5;
 		 
-		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red + red_cost;
-		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green + green_cost;
-		 blue_cost <= p_1_blue + p_2_blue + p_3_blue + p_4_blue + blue_cost;
+		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red;
+		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green;
+		 blue_cost <= p_1_blue + p_2_blue + p_3_blue + p_4_blue;
 		 
 		 p_1 <= pixel_4;
 		 p_2 <= pixel_5;
@@ -124,7 +123,7 @@ module image_hunt(
 		 end
 		 
 		 5: begin //process data
-		 FSM_state <= 6:
+		 FSM_state <= 6;
 		 
 		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red + red_cost;
 		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green + green_cost;
@@ -137,7 +136,7 @@ module image_hunt(
 		 end
 		 
 		 6: begin //process data
-		 FSM_state <= 7:
+		 FSM_state <= 7;
 		 
 		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red + red_cost;
 		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green + green_cost;
@@ -150,7 +149,7 @@ module image_hunt(
 		 end
 		 
 		 7: begin //process data
-		 FSM_state <= 8:
+		 FSM_state <= 8;
 		 
 		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red + red_cost;
 		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green + green_cost;
@@ -158,31 +157,38 @@ module image_hunt(
 		 end
 		 
 		 8: begin //process results
-		 FSM_state <= (block_y >= block_max) ? 9 : 1;
+		 FSM_state <= (block_y >= block_max) && (block_x >= block_max) ? 9 : 1;
 		 
 		 red_cost_max <= (red_cost > red_cost_max) ? red_cost : red_cost_max;
 		 green_cost_max <= (green_cost > green_cost_max) ? green_cost : green_cost_max;
 		 blue_cost_max <= (blue_cost > blue_cost_max) ? blue_cost : blue_cost_max;
 		 
-		 red_x <= (red_cost >= red_cost_max) ? block_x : red_x;
-		 red_y <= (red_cost >= red_cost_max) ? block_y : red_y;
+		 red_x <= (red_cost >= red_cost_max) ? (block_x<<3) : red_x;
+		 red_y <= (red_cost >= red_cost_max) ? (block_y<<3) : red_y;
 		 
-		 green_x <= (green_cost >= green_cost_max) ? block_x : green_x;
-		 green_y <= (green_cost >= green_cost_max) ? block_y : green_y;
+		 green_x <= (green_cost >= green_cost_max) ? (block_x<<3) : green_x;
+		 green_y <= (green_cost >= green_cost_max) ? (block_y<<3) : green_y;
 		 
-		 blue_x <= (blue_cost >= blue_cost_max) ? block_x : blue_x;
-		 blue_y <= (blue_cost >= blue_cost_max) ? block_y : blue_y;
+		 blue_x <= (blue_cost >= blue_cost_max) ? (block_x<<3) : blue_x;
+		 blue_y <= (blue_cost >= blue_cost_max) ? (block_y<<3) : blue_y;
 		 
 		 //go x, then y,
 		 block_x <= (block_x >= block_max) ? 0 : block_x+1;
 		 block_y <= (block_x >= block_max) ? block_y+1 : block_y;
+		 
+		 //reset
+		 red_cost <= 0;
+		 green_cost <= 0;
+		 blue_cost <= 0;
 		 end
 		 
 		 9:begin //end state
 		 FSM_state <= 0;
 		 done <= 1;
+		 end
 		 
 		 endcase
+		 end
 		 
 		 
 	load_pixel_block data_fetch (
@@ -190,7 +196,7 @@ module image_hunt(
     .start(start_fetch), 
     .block_x(block_x), 
     .block_y(block_y), 
-    .memory_in(memory_pixel_data), 
+    .memory_in(mem_pixel_data), 
     .mem_hcount(mem_hcount), 
     .mem_vcount(mem_vcount), 
     .done(load_done), 

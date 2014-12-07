@@ -29,14 +29,20 @@ module pixel_cost_function(
 	wire [2:0] green = pixel_data[5:3];
 	wire [2:0] blue = pixel_data[2:0];
 	
-	assign pixel_red_cost = ((red>(green<<1)) && (red>(blue<<1)) && (red>(blue+red))) ?
+	/*
+	assign pixel_red_cost = ((red>(green<<1)) && (red>(blue<<1)) && (red>(blue+red)) && (red>2)) ?
 									(red<<2)-(green<<1)-(blue<<1) + 3: 0;
 									
-	assign pixel_blue_cost = ((blue>(green<<1)) && (blue>(red<<1)) && (blue>(red+green))) ?
+	assign pixel_blue_cost = ((blue>(green<<1)) && (blue>(red<<1)) && (blue>(red+green)) && (blue>2)) ?
 									(blue<<2) - (green<<1) - (blue<<1) +15 : 0;
 									
-	assign pixel_green_cost = ((green>(blue<<1)) && (green>(red<<1)) && (green>(red+blue))) ?
+	assign pixel_green_cost = ((green>(blue<<1)) && (green>(red<<1)) && (green>(red+blue)) &&(green>2)) ?
 									(green<<2) - (green<<1) - (blue<<1) +7 : 0;
+	*/
+	assign pixel_red_cost = ((red>=(green<<1)) && (red>=(blue<<1))) ? 1 : 0;
+	assign pixel_blue_cost = ((blue>=(green<<1)) && (blue>=(red<<1))) ? 1 : 0;
+	assign pixel_green_cost = ((green>=(blue<<1)) && (green>=(red<<1))) ? 1: 0;
+	
 	
 
 endmodule

@@ -30,13 +30,14 @@ module shared_video_mem(
     );
 	 
 	 
-	wire [8:0] read_data;
+	wire [8:0] write_data;
 	
-	assign read_data = {dout_camera[15:13],dout_camera[10:8], dout_camera[4:2]};
+	assign write_data = {dout_camera[15:13], dout_camera[10:8], dout_camera[4:2]};
 
 
-	image_memory framebuffer(
-	.clka(clk_camera),
+
+	frame_buff framebuffer(
+	.clka(clk_write),
 	.dina(write_data),
 	.addra(write_addr),
 	.wea(mwe_camera),
@@ -44,6 +45,17 @@ module shared_video_mem(
 	.addrb(read_addr),
 	.doutb(dout_pixel)
 	);
+/*
+	image_memory framebufferf(
+	.clka(clk_write),
+	.dina(write_data),
+	.addra(write_addr),
+	.wea(mwe_camera),
+	.clkb(clk_read),
+	.addrb(read_addr),
+	.doutb(dout_pixel)
+	);
+	*/ 
 
 
 endmodule
