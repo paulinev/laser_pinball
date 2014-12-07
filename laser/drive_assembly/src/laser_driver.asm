@@ -11,13 +11,14 @@
 |	r7: scratch
 |	r8: scratch
 |	r9: current location in local sprite lookup table
-|	r10 and above: scratch
+|	r10, r11: spi tx data
+|	r14: scale factor - currently inactive
 |	r16: reserved for copy of rgb data
 
 
 | Define parameters
 NEXT_SPRITE_OFFSET = 0x04
-TIMER_VALUE = 0x9C4
+TIMER_VALUE = 0xD05
 
 | External address offsets
 SPI_CONFIG = 0x10
@@ -28,6 +29,7 @@ TIMER_SET = 0x24
 TIMER_OVERFLOW = 0x2C
 SHARED_MEM_WRITE_STATUS = 0x100
 SHARED_MEM_READ_STATUS = 0x101
+SWITCHES = 0x00
 
 . = 0				| start at memory location 0
 BR(init)
@@ -39,7 +41,7 @@ XRTN()
 
 | Output port B (0008): {ADC_CSN, ADC_latch_n, R, G, B}
 
-| Initialize sprite location in shared memory, initialize SPI
+| Initialize sprite location in shared memory, initialize SPI, get scale factor
 init:
 	CMOVE(stack, SP)
 	CMOVE(2, r4)
@@ -49,6 +51,8 @@ init:
 	SHLC(r7, 16, r7)
 	CMOVE(0x0810, r8)
 	ST(r8, SPI_CONFIG, r7)
+
+||	LD(r7, 0, r14)
 
 | Draws every sprite in a frame
 check_data_available:
@@ -115,7 +119,7 @@ draw_sprite:
 	SHLC(r2, 8, r9) 	| translate sprite ID into lookup table location
 	ADDC(r9, 0x100, r9)
 	LD(r9, 0, r6) 		| first entry in lookup table is sprite length
-	ADDC(r9, 0x4, r9)	| store first point for get_next_point routine
+	ADDC(r9, 0x4, r9)	| store location of first point for get_next_point routine
 	MOVE(r3, r16)		| store RGB data in a temp register
 	CMOVE(0x0, r3)		| turn off laser while travelling between sprites
 | Starting from first memory location:
@@ -193,6 +197,7 @@ spi_wait_y: 			| Wait for second SPI completion flag
 get_next_point:
 	
 	LD(r9, 0, r8)	 	| load next point into r8
+||	SHL(r8, r14, r8)	| shift left by the scale factor specified by the user switches
 	MOVE(r8, r7)		| copy point
 	ADDC(r9, 0x4, r9) 	| increment location in local table
 	
