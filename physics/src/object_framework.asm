@@ -45,27 +45,27 @@ CMOVE(0x9,R4)
 CMOVE(0x3,R5)
 CALL(build_object)
 
-|CMOVE(0x4,R1)
-|CMOVE(0x0006,R2)
-|SHL(R2,4,R2)
-|CMOVE(0x02A0,R0)
-|AND(R0,R10,R0)
-|ADD(R0,R2,R2)
-|CMOVE(0x9,R3)
-|CMOVE(0x1,R4)
-|CALL(build_object)
+CMOVE(0x4,R1)
+CMOVE(0x0060,R2)
+SHLC(R2,12,R2)
+CMOVE(0x02A0,R0)
+AND(R0,R10,R0)
+ADD(R0,R2,R2)
+CMOVE(0x9,R3)
+CMOVE(0x1,R4)
+CMOVE(0x2,R5)
+CALL(build_object)
 
-|CMOVE(0x5,R1)
-|CMOVE(0x001A,R2)
-|SHL(R2,4,R2)
-|CMOVE(0x02A0,R0)
-|AND(R0,R10,R0)
-|ADD(R0,R2,R2)
-|CMOVE(0x9,R3)
-|CMOVE(0x1,R4)
-|CALL(build_object)
-
-
+CMOVE(0x5,R1)
+CMOVE(0x01A0,R2)
+SHLC(R2,12,R2)
+CMOVE(0x02A0,R0)
+AND(R0,R10,R0)
+ADD(R0,R2,R2)
+CMOVE(0x9,R3)
+CMOVE(0x1,R4)
+CMOVE(0x4,R5)
+CALL(build_object)
 
 loop:
   CALL(update)
@@ -84,6 +84,7 @@ update_start:
   SHLC(R5,24,R0)		| shift RGB into bits [26:24] of R17
   ADD(R17,R0,R17)		| combine
   ADD(R17,R2,R17)		| include POSITION: R17 now contains {SPRITE_ID[4:0], RGB[2:0], POSITION_X[11:0], POSITION_Y[11:0]}
+.breakpoint
 
   PUSH(LP)     			| gotta push LP before you call a function within a function!
   CALL(write_external)
