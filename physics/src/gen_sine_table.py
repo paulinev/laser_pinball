@@ -6,21 +6,24 @@ f = open('sine-table.txt', 'w')
 
 #modifies the file sin.txt
 
-for i in range(0,256):
+for i in range(0,180):
+    #i = 160
     bin_str = ''
-    neg = 0
-    dec = math.sin(i)
-    if dec < 0
-        neg = 1
-        dec = -dec
-    for j in range(0,6):
-        dec = dec/(2**j)
-        if dec > 1/(2**(j+1)):
-            bin_str += ('0' if neg else '1')
-        else bin_str += ('1' if neg else '0')
-    if neg:
-        bin_temp = int(bin_str,2)
-        bin_temp = bin_temp^0b111111 + 1
-        bin_str = bin(
+    dec = math.sin(i*math.pi/180.0)
+    check = dec
+    dec = dec*(2**6)
+    bin_str = bin(int(dec))[2:]
+    print bin_str
+    while len(bin_str)<6:
+        bin_str = '0' + bin_str
+    print bin_str
+    bin_val = int(bin_str,2)
+    hex_str = hex(bin_val)
+
+    print check,bin(bin_val)
+    if i%4==3:
+        f.write("LONG(" + hex_str + ')\n')
+    else:
+        f.write("LONG(" + hex_str + '), ')
 
 f.close()
