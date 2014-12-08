@@ -177,7 +177,7 @@ go_to_point:
 	CMOVE(0b1011, r11) 			| Store config data (2) in r11
 	SHLC(r11, 12, r11) 			| Shift left to bit 15
 	ADD(r11, r18, r11) 			| r11 now contains config data for write to DACB
-	|.breakpoint
+	.breakpoint
 	CMOVE(0x01, r8) 			| put SPI address in r8
 	SHLC(r8, 16, r8)
 	ST(r7, DAC_CTL_OUT, r8) 		| Write to output port A (memory location 8)--lower CS
@@ -236,7 +236,7 @@ get_next_point:
 
 
   	BNE(r12, get_next_end)   		| if we're done with this line segment,
-    	.breakpoint
+    	|.breakpoint
     		ADDC(r9, 0x8, r9)       	| increment location in local table
     		LD(r9,0x4,r12)          	| load point count for next segment
 	  	SUBC(r6, 0x01, r6)      	| decrement points left for sprite
@@ -262,20 +262,20 @@ sprite_lookup:
 LONG(7) 				| a four-pointed circle for the ball: 1
 LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
-LONG(0x00100000), LONG(0x06)
-LONG(0x00000010), LONG(0x06)
-LONG(0xFFF00000), LONG(0x06)
-LONG(0x0000FFF0), LONG(0x06)
+LONG(0x00100000), LONG(0x08)
+LONG(0x00000010), LONG(0x08)
+LONG(0xFFF00000), LONG(0x08)
+LONG(0x0000FFF0), LONG(0x08)
 LONG(0x00000000), LONG(STALL_TIME)
 
 . = sprite_lookup+0x200
 LONG(7)					| arbitrary circle (three times bigger): 2
 LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
-LONG(0x00100000), LONG(0x18)
-LONG(0x00000010), LONG(0x18)
-LONG(0xFFF00000), LONG(0x18)
-LONG(0x0000FFF0), LONG(0x18)
+LONG(0x00300000), LONG(0x08)
+LONG(0x00000030), LONG(0x08)
+LONG(0xFFD00000), LONG(0x08)
+LONG(0x0000FFD0), LONG(0x08)
 LONG(0x00000000), LONG(STALL_TIME)
 
 . = sprite_lookup+0x300
@@ -372,6 +372,8 @@ STORAGE(128)
 |LONG(0x1)
 |.=0x20000
 |LONG(0x1B000000)
+|LONG(0x151E01E0)
+|LONG(0x0C600400)
 |LONG(0x221E07E0)
 |LONG(0x2A8207E0)
 |.=0x40000
