@@ -68,7 +68,7 @@ CMOVE(0x3,R5)
 CALL(build_object)	| bounding box: cyan
 
 CMOVE(0x2,R1)
-CMOVE(0x01E0,R2)
+CMOVE(0x02E0,R2)
 SHLC(R2,12,R2)
 CMOVE(0x01E0,R0)
 AND(R0,R10,R0)
@@ -200,7 +200,7 @@ LD(R8,8,R3)                 | load x and y velocities
 LD(R8,12,R4)
 PUSH(LP)
 CALL(update_pos)
-CALL(detect_collision)
+|CALL(detect_collision)
 CALL(update_velocity)
 POP(LP)
 JMP(R9)                     	| return to update function
@@ -346,7 +346,7 @@ wait_timer:
 update_pos:
   LD(pinball_x,R11)
   LD(pinball_y,R12)
-  ADDC(R4, GRAV_FRACT, R4) | add acceleration due to gravity
+  |ADDC(R4, GRAV_FRACT, R4) | add acceleration due to gravity
   ADD(R11,R3,R11)       |
   ADD(R12,R4,R12)       | increase position by v*t
   ST(R11,pinball_x)     | store them back in pinball_x and _y
@@ -370,9 +370,6 @@ d_outer_loop:
     CMOVE(0x0,R0)
     BR(end_detect)
 detect_continue:
-|  CMPEQC(t7, 0x2, R0)
-|  BNE(R0, detect_circle)      | we're testing a circle; that's pretty nice and easy
-|  LD(R8,POSITION_OFFSET,t0)
   SHLC(R20,0x10,t0)    | R22 = O_y
   SRAC(t0,0x10,t0)
   SUB(R14,t0,t0)
