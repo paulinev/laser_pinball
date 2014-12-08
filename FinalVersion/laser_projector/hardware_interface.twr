@@ -37,16 +37,16 @@ Timing constraint: PERIOD analysis for net "clk_50_gen/CLKDV_BUF" derived from
 NET "USER_CLK_IBUFG" PERIOD = 10 ns HIGH 50%;  multiplied by 2.00 and duty 
 cycle corrected to 20 nS  HIGH 10 nS  
 
- 54927299 paths analyzed, 6842 endpoints analyzed, 0 failing endpoints
+ 66435266 paths analyzed, 11510 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is  11.415ns.
+ Minimum period is  12.742ns.
 --------------------------------------------------------------------------------
-Slack:                  8.585ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_physics/inst_29 (FF)
-  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  7.258ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               gen_sys_reset/reset_timer_15 (FF)
+  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      11.316ns (Levels of Logic = 12)
-  Clock Path Skew:      0.011ns (1.168 - 1.157)
+  Data Path Delay:      12.733ns (Levels of Logic = 13)
+  Clock Path Skew:      0.101ns (1.112 - 1.011)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -57,63 +57,66 @@ Slack:                  8.585ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_physics/inst_29 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    SLICE_X6Y78.CQ          Tcko                  0.326   best_hazor/cpu_physics/inst<30>
-                                                          best_hazor/cpu_physics/inst_29
-    SLICE_X15Y83.B1         net (fanout=18)       1.479   best_hazor/cpu_physics/inst<29>
-    SLICE_X15Y83.B          Tilo                  0.080   best_hazor/cpu_physics/ctl/mem_next_and0000
-                                                          best_hazor/cpu_physics/ctl/asel_cmp_eq000111
-    SLICE_X13Y88.A4         net (fanout=7)        0.652   best_hazor/cpu_physics/ctl/mem_next_and0000
-    SLICE_X13Y88.A          Tilo                  0.080   best_hazor/cpu_physics/sr/x<8>
-                                                          best_hazor/cpu_physics/ctl/csel1
-    SLICE_X23Y83.B3         net (fanout=117)      1.034   best_hazor/cpu_physics/asel
-    SLICE_X23Y83.B          Tilo                  0.080   best_hazor/physics_shared_memory/client_status_not0001
-                                                          best_hazor/cpu_physics/b<9>1
-    SLICE_X15Y86.B1         net (fanout=4)        0.904   best_hazor/cpu_physics/b<9>
-    SLICE_X15Y86.COUT       Topcyb                0.384   best_hazor/cpu_physics/Madd_addsub_cy<11>
-                                                          best_hazor/cpu_physics/Madd_addsub_lut<9>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X15Y87.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X15Y87.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X15Y88.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X15Y88.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<19>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X15Y89.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X15Y89.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<23>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<23>
-    SLICE_X15Y90.CIN        net (fanout=1)        0.009   best_hazor/cpu_physics/Madd_addsub_cy<23>
-    SLICE_X15Y90.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<27>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<27>
-    SLICE_X15Y91.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<27>
-    SLICE_X15Y91.CMUX       Tcinc                 0.258   best_hazor/cpu_physics/addsub<31>
-                                                          best_hazor/cpu_physics/Madd_addsub_xor<31>
-    SLICE_X14Y89.A1         net (fanout=4)        0.807   best_hazor/cpu_physics/addsub<30>
-    SLICE_X14Y89.A          Tilo                  0.080   best_hazor/cpu_physics/ctl/msel
-                                                          best_hazor/physics_decode/sel_ram_and0000214
-    SLICE_X17Y84.B1         net (fanout=2)        0.776   best_hazor/physics_decode/sel_ram_and0000214
-    SLICE_X17Y84.B          Tilo                  0.080   best_hazor/physics_read_decode/old_read_select<0>
-                                                          best_hazor/physics_decode/sel_ram_and0000326
-    SLICE_X21Y83.A4         net (fanout=9)        0.536   best_hazor/physics_decode/sel_ram_and0000326
-    SLICE_X21Y83.A          Tilo                  0.080   N54
-                                                          best_hazor/_and00001
-    RAMB36_X1Y20.WEAU1      net (fanout=116)      2.907   best_hazor/_and0000
-    RAMB36_X1Y20.CLKARDCLKU Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    ----------------------------------------------------  ---------------------------
-    Total                                        11.316ns (2.212ns logic, 9.104ns route)
-                                                          (19.5% logic, 80.5% route)
+  Maximum Data Path: gen_sys_reset/reset_timer_15 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    Location               Delay type         Delay(ns)  Physical Resource
+                                                         Logical Resource(s)
+    ---------------------------------------------------  -------------------
+    SLICE_X40Y47.AQ        Tcko                  0.346   gen_sys_reset/reset_timer<15>
+                                                         gen_sys_reset/reset_timer_15
+    SLICE_X20Y28.C5        net (fanout=45)       1.606   gen_sys_reset/reset_timer<15>
+    SLICE_X20Y28.C         Tilo                  0.080   best_hazor/cpu_physics/bsel
+                                                         best_hazor/cpu_physics/ctl/asel_and00001
+    SLICE_X20Y28.D5        net (fanout=24)       0.198   best_hazor/cpu_physics/interrupt
+    SLICE_X20Y28.D         Tilo                  0.080   best_hazor/cpu_physics/bsel
+                                                         best_hazor/cpu_physics/ctl/bsel1
+    SLICE_X5Y22.D2         net (fanout=56)       1.795   best_hazor/cpu_physics/bsel
+    SLICE_X5Y22.D          Tilo                  0.080   best_hazor/cpu_physics/b<2>
+                                                         best_hazor/cpu_physics/b<2>1
+    SLICE_X19Y19.C2        net (fanout=85)       1.300   best_hazor/cpu_physics/b<2>
+    SLICE_X19Y19.COUT      Topcyc                0.321   best_hazor/cpu_physics/Madd_addsub_cy<3>
+                                                         best_hazor/cpu_physics/Madd_addsub_lut<2>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<3>
+    SLICE_X19Y20.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<3>
+    SLICE_X19Y20.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<7>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<7>
+    SLICE_X19Y21.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<7>
+    SLICE_X19Y21.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<11>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<11>
+    SLICE_X19Y22.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
+    SLICE_X19Y22.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<15>
+    SLICE_X19Y23.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
+    SLICE_X19Y23.DMUX      Tcind                 0.307   best_hazor/cpu_physics/Madd_addsub_cy<19>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<19>
+    SLICE_X22Y25.B1        net (fanout=4)        0.929   best_hazor/cpu_physics/addsub<19>
+    SLICE_X22Y25.B         Tilo                  0.080   best_hazor/cpu_physics/npc<21>
+                                                         best_hazor/physics_decode/sel_ram_and0000140
+    SLICE_X21Y26.D1        net (fanout=1)        0.738   best_hazor/physics_decode/sel_ram_and0000140
+    SLICE_X21Y26.D         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
+                                                         best_hazor/physics_decode/sel_ram_and0000166
+    SLICE_X21Y26.C6        net (fanout=1)        0.106   best_hazor/physics_decode/sel_ram_and0000166
+    SLICE_X21Y26.C         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
+                                                         best_hazor/physics_decode/sel_ram_and0000210
+    SLICE_X23Y26.C3        net (fanout=5)        0.433   best_hazor/physics_decode/sel_ram_and0000210
+    SLICE_X23Y26.C         Tilo                  0.080   best_hazor/physics_decode/sel_ram_and0000320
+                                                         best_hazor/physics_decode/sel_ram_and0000338
+    SLICE_X22Y29.C1        net (fanout=3)        0.921   best_hazor/physics_decode/sel_ram_and0000
+    SLICE_X22Y29.C         Tilo                  0.080   best_hazor/cpu_physics/inst<17>
+                                                         best_hazor/_and00001
+    RAMB36_X1Y5.WEAU1      net (fanout=116)      2.412   best_hazor/_and0000
+    RAMB36_X1Y5.CLKARDCLKU Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+                                                         best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    ---------------------------------------------------  ---------------------------
+    Total                                       12.733ns (2.295ns logic, 10.438ns route)
+                                                         (18.0% logic, 82.0% route)
 
 --------------------------------------------------------------------------------
-Slack:                  8.585ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_physics/inst_29 (FF)
-  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  7.258ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               gen_sys_reset/reset_timer_15 (FF)
+  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      11.316ns (Levels of Logic = 12)
-  Clock Path Skew:      0.011ns (1.168 - 1.157)
+  Data Path Delay:      12.733ns (Levels of Logic = 13)
+  Clock Path Skew:      0.101ns (1.112 - 1.011)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -124,63 +127,66 @@ Slack:                  8.585ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_physics/inst_29 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    SLICE_X6Y78.CQ          Tcko                  0.326   best_hazor/cpu_physics/inst<30>
-                                                          best_hazor/cpu_physics/inst_29
-    SLICE_X15Y83.B1         net (fanout=18)       1.479   best_hazor/cpu_physics/inst<29>
-    SLICE_X15Y83.B          Tilo                  0.080   best_hazor/cpu_physics/ctl/mem_next_and0000
-                                                          best_hazor/cpu_physics/ctl/asel_cmp_eq000111
-    SLICE_X13Y88.A4         net (fanout=7)        0.652   best_hazor/cpu_physics/ctl/mem_next_and0000
-    SLICE_X13Y88.A          Tilo                  0.080   best_hazor/cpu_physics/sr/x<8>
-                                                          best_hazor/cpu_physics/ctl/csel1
-    SLICE_X23Y83.B3         net (fanout=117)      1.034   best_hazor/cpu_physics/asel
-    SLICE_X23Y83.B          Tilo                  0.080   best_hazor/physics_shared_memory/client_status_not0001
-                                                          best_hazor/cpu_physics/b<9>1
-    SLICE_X15Y86.B1         net (fanout=4)        0.904   best_hazor/cpu_physics/b<9>
-    SLICE_X15Y86.COUT       Topcyb                0.384   best_hazor/cpu_physics/Madd_addsub_cy<11>
-                                                          best_hazor/cpu_physics/Madd_addsub_lut<9>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X15Y87.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X15Y87.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X15Y88.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X15Y88.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<19>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X15Y89.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X15Y89.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<23>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<23>
-    SLICE_X15Y90.CIN        net (fanout=1)        0.009   best_hazor/cpu_physics/Madd_addsub_cy<23>
-    SLICE_X15Y90.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<27>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<27>
-    SLICE_X15Y91.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<27>
-    SLICE_X15Y91.CMUX       Tcinc                 0.258   best_hazor/cpu_physics/addsub<31>
-                                                          best_hazor/cpu_physics/Madd_addsub_xor<31>
-    SLICE_X14Y89.A1         net (fanout=4)        0.807   best_hazor/cpu_physics/addsub<30>
-    SLICE_X14Y89.A          Tilo                  0.080   best_hazor/cpu_physics/ctl/msel
-                                                          best_hazor/physics_decode/sel_ram_and0000214
-    SLICE_X17Y84.B1         net (fanout=2)        0.776   best_hazor/physics_decode/sel_ram_and0000214
-    SLICE_X17Y84.B          Tilo                  0.080   best_hazor/physics_read_decode/old_read_select<0>
-                                                          best_hazor/physics_decode/sel_ram_and0000326
-    SLICE_X21Y83.A4         net (fanout=9)        0.536   best_hazor/physics_decode/sel_ram_and0000326
-    SLICE_X21Y83.A          Tilo                  0.080   N54
-                                                          best_hazor/_and00001
-    RAMB36_X1Y20.WEAU0      net (fanout=116)      2.907   best_hazor/_and0000
-    RAMB36_X1Y20.CLKARDCLKU Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    ----------------------------------------------------  ---------------------------
-    Total                                        11.316ns (2.212ns logic, 9.104ns route)
-                                                          (19.5% logic, 80.5% route)
+  Maximum Data Path: gen_sys_reset/reset_timer_15 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    Location               Delay type         Delay(ns)  Physical Resource
+                                                         Logical Resource(s)
+    ---------------------------------------------------  -------------------
+    SLICE_X40Y47.AQ        Tcko                  0.346   gen_sys_reset/reset_timer<15>
+                                                         gen_sys_reset/reset_timer_15
+    SLICE_X20Y28.C5        net (fanout=45)       1.606   gen_sys_reset/reset_timer<15>
+    SLICE_X20Y28.C         Tilo                  0.080   best_hazor/cpu_physics/bsel
+                                                         best_hazor/cpu_physics/ctl/asel_and00001
+    SLICE_X20Y28.D5        net (fanout=24)       0.198   best_hazor/cpu_physics/interrupt
+    SLICE_X20Y28.D         Tilo                  0.080   best_hazor/cpu_physics/bsel
+                                                         best_hazor/cpu_physics/ctl/bsel1
+    SLICE_X5Y22.D2         net (fanout=56)       1.795   best_hazor/cpu_physics/bsel
+    SLICE_X5Y22.D          Tilo                  0.080   best_hazor/cpu_physics/b<2>
+                                                         best_hazor/cpu_physics/b<2>1
+    SLICE_X19Y19.C2        net (fanout=85)       1.300   best_hazor/cpu_physics/b<2>
+    SLICE_X19Y19.COUT      Topcyc                0.321   best_hazor/cpu_physics/Madd_addsub_cy<3>
+                                                         best_hazor/cpu_physics/Madd_addsub_lut<2>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<3>
+    SLICE_X19Y20.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<3>
+    SLICE_X19Y20.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<7>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<7>
+    SLICE_X19Y21.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<7>
+    SLICE_X19Y21.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<11>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<11>
+    SLICE_X19Y22.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
+    SLICE_X19Y22.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<15>
+    SLICE_X19Y23.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
+    SLICE_X19Y23.DMUX      Tcind                 0.307   best_hazor/cpu_physics/Madd_addsub_cy<19>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<19>
+    SLICE_X22Y25.B1        net (fanout=4)        0.929   best_hazor/cpu_physics/addsub<19>
+    SLICE_X22Y25.B         Tilo                  0.080   best_hazor/cpu_physics/npc<21>
+                                                         best_hazor/physics_decode/sel_ram_and0000140
+    SLICE_X21Y26.D1        net (fanout=1)        0.738   best_hazor/physics_decode/sel_ram_and0000140
+    SLICE_X21Y26.D         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
+                                                         best_hazor/physics_decode/sel_ram_and0000166
+    SLICE_X21Y26.C6        net (fanout=1)        0.106   best_hazor/physics_decode/sel_ram_and0000166
+    SLICE_X21Y26.C         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
+                                                         best_hazor/physics_decode/sel_ram_and0000210
+    SLICE_X23Y26.C3        net (fanout=5)        0.433   best_hazor/physics_decode/sel_ram_and0000210
+    SLICE_X23Y26.C         Tilo                  0.080   best_hazor/physics_decode/sel_ram_and0000320
+                                                         best_hazor/physics_decode/sel_ram_and0000338
+    SLICE_X22Y29.C1        net (fanout=3)        0.921   best_hazor/physics_decode/sel_ram_and0000
+    SLICE_X22Y29.C         Tilo                  0.080   best_hazor/cpu_physics/inst<17>
+                                                         best_hazor/_and00001
+    RAMB36_X1Y5.WEAU0      net (fanout=116)      2.412   best_hazor/_and0000
+    RAMB36_X1Y5.CLKARDCLKU Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+                                                         best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    ---------------------------------------------------  ---------------------------
+    Total                                       12.733ns (2.295ns logic, 10.438ns route)
+                                                         (18.0% logic, 82.0% route)
 
 --------------------------------------------------------------------------------
-Slack:                  8.588ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_physics/inst_29 (FF)
-  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  7.262ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               gen_sys_reset/reset_timer_15 (FF)
+  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      11.316ns (Levels of Logic = 12)
-  Clock Path Skew:      0.014ns (1.171 - 1.157)
+  Data Path Delay:      12.790ns (Levels of Logic = 13)
+  Clock Path Skew:      0.162ns (1.173 - 1.011)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -191,55 +197,58 @@ Slack:                  8.588ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_physics/inst_29 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    Location                Delay type         Delay(ns)  Physical Resource
-                                                          Logical Resource(s)
-    ----------------------------------------------------  -------------------
-    SLICE_X6Y78.CQ          Tcko                  0.326   best_hazor/cpu_physics/inst<30>
-                                                          best_hazor/cpu_physics/inst_29
-    SLICE_X15Y83.B1         net (fanout=18)       1.479   best_hazor/cpu_physics/inst<29>
-    SLICE_X15Y83.B          Tilo                  0.080   best_hazor/cpu_physics/ctl/mem_next_and0000
-                                                          best_hazor/cpu_physics/ctl/asel_cmp_eq000111
-    SLICE_X13Y88.A4         net (fanout=7)        0.652   best_hazor/cpu_physics/ctl/mem_next_and0000
-    SLICE_X13Y88.A          Tilo                  0.080   best_hazor/cpu_physics/sr/x<8>
-                                                          best_hazor/cpu_physics/ctl/csel1
-    SLICE_X23Y83.B3         net (fanout=117)      1.034   best_hazor/cpu_physics/asel
-    SLICE_X23Y83.B          Tilo                  0.080   best_hazor/physics_shared_memory/client_status_not0001
-                                                          best_hazor/cpu_physics/b<9>1
-    SLICE_X15Y86.B1         net (fanout=4)        0.904   best_hazor/cpu_physics/b<9>
-    SLICE_X15Y86.COUT       Topcyb                0.384   best_hazor/cpu_physics/Madd_addsub_cy<11>
-                                                          best_hazor/cpu_physics/Madd_addsub_lut<9>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X15Y87.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X15Y87.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X15Y88.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X15Y88.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<19>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X15Y89.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X15Y89.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<23>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<23>
-    SLICE_X15Y90.CIN        net (fanout=1)        0.009   best_hazor/cpu_physics/Madd_addsub_cy<23>
-    SLICE_X15Y90.COUT       Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<27>
-                                                          best_hazor/cpu_physics/Madd_addsub_cy<27>
-    SLICE_X15Y91.CIN        net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<27>
-    SLICE_X15Y91.CMUX       Tcinc                 0.258   best_hazor/cpu_physics/addsub<31>
-                                                          best_hazor/cpu_physics/Madd_addsub_xor<31>
-    SLICE_X14Y89.A1         net (fanout=4)        0.807   best_hazor/cpu_physics/addsub<30>
-    SLICE_X14Y89.A          Tilo                  0.080   best_hazor/cpu_physics/ctl/msel
-                                                          best_hazor/physics_decode/sel_ram_and0000214
-    SLICE_X17Y84.B1         net (fanout=2)        0.776   best_hazor/physics_decode/sel_ram_and0000214
-    SLICE_X17Y84.B          Tilo                  0.080   best_hazor/physics_read_decode/old_read_select<0>
-                                                          best_hazor/physics_decode/sel_ram_and0000326
-    SLICE_X21Y83.A4         net (fanout=9)        0.536   best_hazor/physics_decode/sel_ram_and0000326
-    SLICE_X21Y83.A          Tilo                  0.080   N54
-                                                          best_hazor/_and00001
-    RAMB36_X1Y20.WEAL1      net (fanout=116)      2.907   best_hazor/_and0000
-    RAMB36_X1Y20.CLKARDCLKL Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    ----------------------------------------------------  ---------------------------
-    Total                                        11.316ns (2.212ns logic, 9.104ns route)
-                                                          (19.5% logic, 80.5% route)
+  Maximum Data Path: gen_sys_reset/reset_timer_15 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    Location               Delay type         Delay(ns)  Physical Resource
+                                                         Logical Resource(s)
+    ---------------------------------------------------  -------------------
+    SLICE_X40Y47.AQ        Tcko                  0.346   gen_sys_reset/reset_timer<15>
+                                                         gen_sys_reset/reset_timer_15
+    SLICE_X20Y28.C5        net (fanout=45)       1.606   gen_sys_reset/reset_timer<15>
+    SLICE_X20Y28.C         Tilo                  0.080   best_hazor/cpu_physics/bsel
+                                                         best_hazor/cpu_physics/ctl/asel_and00001
+    SLICE_X20Y28.D5        net (fanout=24)       0.198   best_hazor/cpu_physics/interrupt
+    SLICE_X20Y28.D         Tilo                  0.080   best_hazor/cpu_physics/bsel
+                                                         best_hazor/cpu_physics/ctl/bsel1
+    SLICE_X5Y22.D2         net (fanout=56)       1.795   best_hazor/cpu_physics/bsel
+    SLICE_X5Y22.D          Tilo                  0.080   best_hazor/cpu_physics/b<2>
+                                                         best_hazor/cpu_physics/b<2>1
+    SLICE_X19Y19.C2        net (fanout=85)       1.300   best_hazor/cpu_physics/b<2>
+    SLICE_X19Y19.COUT      Topcyc                0.321   best_hazor/cpu_physics/Madd_addsub_cy<3>
+                                                         best_hazor/cpu_physics/Madd_addsub_lut<2>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<3>
+    SLICE_X19Y20.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<3>
+    SLICE_X19Y20.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<7>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<7>
+    SLICE_X19Y21.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<7>
+    SLICE_X19Y21.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<11>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<11>
+    SLICE_X19Y22.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
+    SLICE_X19Y22.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<15>
+    SLICE_X19Y23.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
+    SLICE_X19Y23.DMUX      Tcind                 0.307   best_hazor/cpu_physics/Madd_addsub_cy<19>
+                                                         best_hazor/cpu_physics/Madd_addsub_cy<19>
+    SLICE_X22Y25.B1        net (fanout=4)        0.929   best_hazor/cpu_physics/addsub<19>
+    SLICE_X22Y25.B         Tilo                  0.080   best_hazor/cpu_physics/npc<21>
+                                                         best_hazor/physics_decode/sel_ram_and0000140
+    SLICE_X21Y26.D1        net (fanout=1)        0.738   best_hazor/physics_decode/sel_ram_and0000140
+    SLICE_X21Y26.D         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
+                                                         best_hazor/physics_decode/sel_ram_and0000166
+    SLICE_X21Y26.C6        net (fanout=1)        0.106   best_hazor/physics_decode/sel_ram_and0000166
+    SLICE_X21Y26.C         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
+                                                         best_hazor/physics_decode/sel_ram_and0000210
+    SLICE_X23Y26.C3        net (fanout=5)        0.433   best_hazor/physics_decode/sel_ram_and0000210
+    SLICE_X23Y26.C         Tilo                  0.080   best_hazor/physics_decode/sel_ram_and0000320
+                                                         best_hazor/physics_decode/sel_ram_and0000338
+    SLICE_X22Y29.C1        net (fanout=3)        0.921   best_hazor/physics_decode/sel_ram_and0000
+    SLICE_X22Y29.C         Tilo                  0.080   best_hazor/cpu_physics/inst<17>
+                                                         best_hazor/_and00001
+    RAMB36_X1Y0.WEAU1      net (fanout=116)      2.469   best_hazor/_and0000
+    RAMB36_X1Y0.CLKARDCLKU Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+                                                         best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
+    ---------------------------------------------------  ---------------------------
+    Total                                       12.790ns (2.295ns logic, 10.495ns route)
+                                                         (17.9% logic, 82.1% route)
 
 --------------------------------------------------------------------------------
 
@@ -251,8 +260,8 @@ Derived Constraints for USER_CLK_IBUFG
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|USER_CLK_IBUFG                 |     10.000ns|          N/A|      5.708ns|            0|            0|            0|     54927299|
-| clk_50_gen/CLKDV_BUF          |     20.000ns|     11.415ns|          N/A|            0|            0|     54927299|            0|
+|USER_CLK_IBUFG                 |     10.000ns|          N/A|      6.371ns|            0|            0|            0|     66435266|
+| clk_50_gen/CLKDV_BUF          |     20.000ns|     12.742ns|          N/A|            0|            0|     66435266|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -267,7 +276,7 @@ Clock to Setup on destination clock USER_CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-USER_CLK       |   11.415|         |         |         |
+USER_CLK       |   12.742|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -276,23 +285,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0
 
-Constraints cover 54927299 paths, 0 nets, and 15208 connections
+Constraints cover 66435266 paths, 0 nets, and 21739 connections
 
 Design statistics:
-   Minimum period:  11.415ns{1}   (Maximum frequency:  87.604MHz)
+   Minimum period:  12.742ns{1}   (Maximum frequency:  78.481MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Mon Dec  8 02:19:09 2014 
+Analysis completed Mon Dec  8 06:18:14 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 509 MB
+Peak Memory Usage: 550 MB
 
 
 
