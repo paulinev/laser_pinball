@@ -37,16 +37,16 @@ Timing constraint: PERIOD analysis for net "clk_50_gen/CLKDV_BUF" derived from
 NET "USER_CLK_IBUFG" PERIOD = 10 ns HIGH 50%;  multiplied by 2.00 and duty 
 cycle corrected to 20 nS  HIGH 10 nS  
 
- 66435266 paths analyzed, 11510 endpoints analyzed, 0 failing endpoints
+ 2660 paths analyzed, 246 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is  12.742ns.
+ Minimum period is   3.629ns.
 --------------------------------------------------------------------------------
-Slack:                  7.258ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               gen_sys_reset/reset_timer_15 (FF)
-  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  16.371ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               nes_controller/FSM_state_4 (FF)
+  Destination:          nes_controller/button_E (FF)
   Requirement:          20.000ns
-  Data Path Delay:      12.733ns (Levels of Logic = 13)
-  Clock Path Skew:      0.101ns (1.112 - 1.011)
+  Data Path Delay:      3.401ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.118ns (1.009 - 1.127)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -57,66 +57,29 @@ Slack:                  7.258ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: gen_sys_reset/reset_timer_15 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    Location               Delay type         Delay(ns)  Physical Resource
-                                                         Logical Resource(s)
-    ---------------------------------------------------  -------------------
-    SLICE_X40Y47.AQ        Tcko                  0.346   gen_sys_reset/reset_timer<15>
-                                                         gen_sys_reset/reset_timer_15
-    SLICE_X20Y28.C5        net (fanout=45)       1.606   gen_sys_reset/reset_timer<15>
-    SLICE_X20Y28.C         Tilo                  0.080   best_hazor/cpu_physics/bsel
-                                                         best_hazor/cpu_physics/ctl/asel_and00001
-    SLICE_X20Y28.D5        net (fanout=24)       0.198   best_hazor/cpu_physics/interrupt
-    SLICE_X20Y28.D         Tilo                  0.080   best_hazor/cpu_physics/bsel
-                                                         best_hazor/cpu_physics/ctl/bsel1
-    SLICE_X5Y22.D2         net (fanout=56)       1.795   best_hazor/cpu_physics/bsel
-    SLICE_X5Y22.D          Tilo                  0.080   best_hazor/cpu_physics/b<2>
-                                                         best_hazor/cpu_physics/b<2>1
-    SLICE_X19Y19.C2        net (fanout=85)       1.300   best_hazor/cpu_physics/b<2>
-    SLICE_X19Y19.COUT      Topcyc                0.321   best_hazor/cpu_physics/Madd_addsub_cy<3>
-                                                         best_hazor/cpu_physics/Madd_addsub_lut<2>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<3>
-    SLICE_X19Y20.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<3>
-    SLICE_X19Y20.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<7>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<7>
-    SLICE_X19Y21.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<7>
-    SLICE_X19Y21.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<11>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X19Y22.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X19Y22.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X19Y23.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X19Y23.DMUX      Tcind                 0.307   best_hazor/cpu_physics/Madd_addsub_cy<19>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X22Y25.B1        net (fanout=4)        0.929   best_hazor/cpu_physics/addsub<19>
-    SLICE_X22Y25.B         Tilo                  0.080   best_hazor/cpu_physics/npc<21>
-                                                         best_hazor/physics_decode/sel_ram_and0000140
-    SLICE_X21Y26.D1        net (fanout=1)        0.738   best_hazor/physics_decode/sel_ram_and0000140
-    SLICE_X21Y26.D         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
-                                                         best_hazor/physics_decode/sel_ram_and0000166
-    SLICE_X21Y26.C6        net (fanout=1)        0.106   best_hazor/physics_decode/sel_ram_and0000166
-    SLICE_X21Y26.C         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
-                                                         best_hazor/physics_decode/sel_ram_and0000210
-    SLICE_X23Y26.C3        net (fanout=5)        0.433   best_hazor/physics_decode/sel_ram_and0000210
-    SLICE_X23Y26.C         Tilo                  0.080   best_hazor/physics_decode/sel_ram_and0000320
-                                                         best_hazor/physics_decode/sel_ram_and0000338
-    SLICE_X22Y29.C1        net (fanout=3)        0.921   best_hazor/physics_decode/sel_ram_and0000
-    SLICE_X22Y29.C         Tilo                  0.080   best_hazor/cpu_physics/inst<17>
-                                                         best_hazor/_and00001
-    RAMB36_X1Y5.WEAU1      net (fanout=116)      2.412   best_hazor/_and0000
-    RAMB36_X1Y5.CLKARDCLKU Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                         best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    ---------------------------------------------------  ---------------------------
-    Total                                       12.733ns (2.295ns logic, 10.438ns route)
-                                                         (18.0% logic, 82.0% route)
+  Maximum Data Path: nes_controller/FSM_state_4 to nes_controller/button_E
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X0Y47.DQ       Tcko                  0.346   nes_controller/FSM_state<4>
+                                                       nes_controller/FSM_state_4
+    SLICE_X14Y69.A3      net (fanout=31)       2.188   nes_controller/FSM_state<4>
+    SLICE_X14Y69.A       Tilo                  0.080   nes_controller/button_E_cmp_eq0000
+                                                       nes_controller/button_E_cmp_eq00002
+    SLICE_X16Y76.CE      net (fanout=1)        0.612   nes_controller/button_E_cmp_eq0000
+    SLICE_X16Y76.CLK     Tceck                 0.175   nes_controller/button_E
+                                                       nes_controller/button_E
+    -------------------------------------------------  ---------------------------
+    Total                                      3.401ns (0.601ns logic, 2.800ns route)
+                                                       (17.7% logic, 82.3% route)
 
 --------------------------------------------------------------------------------
-Slack:                  7.258ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               gen_sys_reset/reset_timer_15 (FF)
-  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  16.442ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               nes_controller/FSM_state_4 (FF)
+  Destination:          nes_controller/button_W (FF)
   Requirement:          20.000ns
-  Data Path Delay:      12.733ns (Levels of Logic = 13)
-  Clock Path Skew:      0.101ns (1.112 - 1.011)
+  Data Path Delay:      3.330ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.118ns (1.009 - 1.127)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -127,66 +90,29 @@ Slack:                  7.258ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: gen_sys_reset/reset_timer_15 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    Location               Delay type         Delay(ns)  Physical Resource
-                                                         Logical Resource(s)
-    ---------------------------------------------------  -------------------
-    SLICE_X40Y47.AQ        Tcko                  0.346   gen_sys_reset/reset_timer<15>
-                                                         gen_sys_reset/reset_timer_15
-    SLICE_X20Y28.C5        net (fanout=45)       1.606   gen_sys_reset/reset_timer<15>
-    SLICE_X20Y28.C         Tilo                  0.080   best_hazor/cpu_physics/bsel
-                                                         best_hazor/cpu_physics/ctl/asel_and00001
-    SLICE_X20Y28.D5        net (fanout=24)       0.198   best_hazor/cpu_physics/interrupt
-    SLICE_X20Y28.D         Tilo                  0.080   best_hazor/cpu_physics/bsel
-                                                         best_hazor/cpu_physics/ctl/bsel1
-    SLICE_X5Y22.D2         net (fanout=56)       1.795   best_hazor/cpu_physics/bsel
-    SLICE_X5Y22.D          Tilo                  0.080   best_hazor/cpu_physics/b<2>
-                                                         best_hazor/cpu_physics/b<2>1
-    SLICE_X19Y19.C2        net (fanout=85)       1.300   best_hazor/cpu_physics/b<2>
-    SLICE_X19Y19.COUT      Topcyc                0.321   best_hazor/cpu_physics/Madd_addsub_cy<3>
-                                                         best_hazor/cpu_physics/Madd_addsub_lut<2>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<3>
-    SLICE_X19Y20.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<3>
-    SLICE_X19Y20.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<7>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<7>
-    SLICE_X19Y21.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<7>
-    SLICE_X19Y21.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<11>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X19Y22.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X19Y22.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X19Y23.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X19Y23.DMUX      Tcind                 0.307   best_hazor/cpu_physics/Madd_addsub_cy<19>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X22Y25.B1        net (fanout=4)        0.929   best_hazor/cpu_physics/addsub<19>
-    SLICE_X22Y25.B         Tilo                  0.080   best_hazor/cpu_physics/npc<21>
-                                                         best_hazor/physics_decode/sel_ram_and0000140
-    SLICE_X21Y26.D1        net (fanout=1)        0.738   best_hazor/physics_decode/sel_ram_and0000140
-    SLICE_X21Y26.D         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
-                                                         best_hazor/physics_decode/sel_ram_and0000166
-    SLICE_X21Y26.C6        net (fanout=1)        0.106   best_hazor/physics_decode/sel_ram_and0000166
-    SLICE_X21Y26.C         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
-                                                         best_hazor/physics_decode/sel_ram_and0000210
-    SLICE_X23Y26.C3        net (fanout=5)        0.433   best_hazor/physics_decode/sel_ram_and0000210
-    SLICE_X23Y26.C         Tilo                  0.080   best_hazor/physics_decode/sel_ram_and0000320
-                                                         best_hazor/physics_decode/sel_ram_and0000338
-    SLICE_X22Y29.C1        net (fanout=3)        0.921   best_hazor/physics_decode/sel_ram_and0000
-    SLICE_X22Y29.C         Tilo                  0.080   best_hazor/cpu_physics/inst<17>
-                                                         best_hazor/_and00001
-    RAMB36_X1Y5.WEAU0      net (fanout=116)      2.412   best_hazor/_and0000
-    RAMB36_X1Y5.CLKARDCLKU Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                         best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    ---------------------------------------------------  ---------------------------
-    Total                                       12.733ns (2.295ns logic, 10.438ns route)
-                                                         (18.0% logic, 82.0% route)
+  Maximum Data Path: nes_controller/FSM_state_4 to nes_controller/button_W
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X0Y47.DQ       Tcko                  0.346   nes_controller/FSM_state<4>
+                                                       nes_controller/FSM_state_4
+    SLICE_X12Y69.A4      net (fanout=31)       2.130   nes_controller/FSM_state<4>
+    SLICE_X12Y69.A       Tilo                  0.080   nes_controller/button_W_cmp_eq0000
+                                                       nes_controller/button_W_cmp_eq00001
+    SLICE_X17Y76.CE      net (fanout=1)        0.603   nes_controller/button_W_cmp_eq0000
+    SLICE_X17Y76.CLK     Tceck                 0.171   nes_controller/button_W
+                                                       nes_controller/button_W
+    -------------------------------------------------  ---------------------------
+    Total                                      3.330ns (0.597ns logic, 2.733ns route)
+                                                       (17.9% logic, 82.1% route)
 
 --------------------------------------------------------------------------------
-Slack:                  7.262ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               gen_sys_reset/reset_timer_15 (FF)
-  Destination:          best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP (RAM)
+Slack:                  16.474ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               nes_controller/FSM_state_4 (FF)
+  Destination:          nes_controller/button_B (FF)
   Requirement:          20.000ns
-  Data Path Delay:      12.790ns (Levels of Logic = 13)
-  Clock Path Skew:      0.162ns (1.173 - 1.011)
+  Data Path Delay:      3.296ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.120ns (1.007 - 1.127)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -197,58 +123,21 @@ Slack:                  7.262ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: gen_sys_reset/reset_timer_15 to best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    Location               Delay type         Delay(ns)  Physical Resource
-                                                         Logical Resource(s)
-    ---------------------------------------------------  -------------------
-    SLICE_X40Y47.AQ        Tcko                  0.346   gen_sys_reset/reset_timer<15>
-                                                         gen_sys_reset/reset_timer_15
-    SLICE_X20Y28.C5        net (fanout=45)       1.606   gen_sys_reset/reset_timer<15>
-    SLICE_X20Y28.C         Tilo                  0.080   best_hazor/cpu_physics/bsel
-                                                         best_hazor/cpu_physics/ctl/asel_and00001
-    SLICE_X20Y28.D5        net (fanout=24)       0.198   best_hazor/cpu_physics/interrupt
-    SLICE_X20Y28.D         Tilo                  0.080   best_hazor/cpu_physics/bsel
-                                                         best_hazor/cpu_physics/ctl/bsel1
-    SLICE_X5Y22.D2         net (fanout=56)       1.795   best_hazor/cpu_physics/bsel
-    SLICE_X5Y22.D          Tilo                  0.080   best_hazor/cpu_physics/b<2>
-                                                         best_hazor/cpu_physics/b<2>1
-    SLICE_X19Y19.C2        net (fanout=85)       1.300   best_hazor/cpu_physics/b<2>
-    SLICE_X19Y19.COUT      Topcyc                0.321   best_hazor/cpu_physics/Madd_addsub_cy<3>
-                                                         best_hazor/cpu_physics/Madd_addsub_lut<2>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<3>
-    SLICE_X19Y20.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<3>
-    SLICE_X19Y20.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<7>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<7>
-    SLICE_X19Y21.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<7>
-    SLICE_X19Y21.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<11>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X19Y22.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<11>
-    SLICE_X19Y22.COUT      Tbyp                  0.083   best_hazor/cpu_physics/Madd_addsub_cy<15>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X19Y23.CIN       net (fanout=1)        0.000   best_hazor/cpu_physics/Madd_addsub_cy<15>
-    SLICE_X19Y23.DMUX      Tcind                 0.307   best_hazor/cpu_physics/Madd_addsub_cy<19>
-                                                         best_hazor/cpu_physics/Madd_addsub_cy<19>
-    SLICE_X22Y25.B1        net (fanout=4)        0.929   best_hazor/cpu_physics/addsub<19>
-    SLICE_X22Y25.B         Tilo                  0.080   best_hazor/cpu_physics/npc<21>
-                                                         best_hazor/physics_decode/sel_ram_and0000140
-    SLICE_X21Y26.D1        net (fanout=1)        0.738   best_hazor/physics_decode/sel_ram_and0000140
-    SLICE_X21Y26.D         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
-                                                         best_hazor/physics_decode/sel_ram_and0000166
-    SLICE_X21Y26.C6        net (fanout=1)        0.106   best_hazor/physics_decode/sel_ram_and0000166
-    SLICE_X21Y26.C         Tilo                  0.080   best_hazor/cpu_physics/rc_save<4>
-                                                         best_hazor/physics_decode/sel_ram_and0000210
-    SLICE_X23Y26.C3        net (fanout=5)        0.433   best_hazor/physics_decode/sel_ram_and0000210
-    SLICE_X23Y26.C         Tilo                  0.080   best_hazor/physics_decode/sel_ram_and0000320
-                                                         best_hazor/physics_decode/sel_ram_and0000338
-    SLICE_X22Y29.C1        net (fanout=3)        0.921   best_hazor/physics_decode/sel_ram_and0000
-    SLICE_X22Y29.C         Tilo                  0.080   best_hazor/cpu_physics/inst<17>
-                                                         best_hazor/_and00001
-    RAMB36_X1Y0.WEAU1      net (fanout=116)      2.469   best_hazor/_and0000
-    RAMB36_X1Y0.CLKARDCLKU Trcck_WEA             0.432   best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-                                                         best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram/SP.SINGLE_PRIM36.SP
-    ---------------------------------------------------  ---------------------------
-    Total                                       12.790ns (2.295ns logic, 10.495ns route)
-                                                         (17.9% logic, 82.1% route)
+  Maximum Data Path: nes_controller/FSM_state_4 to nes_controller/button_B
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X0Y47.DQ       Tcko                  0.346   nes_controller/FSM_state<4>
+                                                       nes_controller/FSM_state_4
+    SLICE_X15Y69.A3      net (fanout=31)       2.173   nes_controller/FSM_state<4>
+    SLICE_X15Y69.A       Tilo                  0.080   nes_controller/button_S_cmp_eq0000
+                                                       nes_controller/button_B_cmp_eq00001
+    SLICE_X16Y75.CE      net (fanout=1)        0.522   nes_controller/button_B_cmp_eq0000
+    SLICE_X16Y75.CLK     Tceck                 0.175   nes_controller/button_B
+                                                       nes_controller/button_B
+    -------------------------------------------------  ---------------------------
+    Total                                      3.296ns (0.601ns logic, 2.695ns route)
+                                                       (18.2% logic, 81.8% route)
 
 --------------------------------------------------------------------------------
 
@@ -260,8 +149,8 @@ Derived Constraints for USER_CLK_IBUFG
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|USER_CLK_IBUFG                 |     10.000ns|          N/A|      6.371ns|            0|            0|            0|     66435266|
-| clk_50_gen/CLKDV_BUF          |     20.000ns|     12.742ns|          N/A|            0|            0|     66435266|            0|
+|USER_CLK_IBUFG                 |     10.000ns|          N/A|      1.815ns|            0|            0|            0|         2660|
+| clk_50_gen/CLKDV_BUF          |     20.000ns|      3.629ns|          N/A|            0|            0|         2660|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -276,7 +165,7 @@ Clock to Setup on destination clock USER_CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-USER_CLK       |   12.742|         |         |         |
+USER_CLK       |    3.629|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -285,23 +174,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0
 
-Constraints cover 66435266 paths, 0 nets, and 21739 connections
+Constraints cover 2660 paths, 0 nets, and 519 connections
 
 Design statistics:
-   Minimum period:  12.742ns{1}   (Maximum frequency:  78.481MHz)
+   Minimum period:   3.629ns{1}   (Maximum frequency: 275.558MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Mon Dec  8 06:18:14 2014 
+Analysis completed Mon Dec  8 07:09:44 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 550 MB
+Peak Memory Usage: 442 MB
 
 
 

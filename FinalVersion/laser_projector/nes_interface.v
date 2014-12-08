@@ -76,7 +76,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 4; 
 	 controller_clk <= 0;
-	 button_B <= controller_dout;
+	 button_B <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -91,7 +91,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 6;
 	 controller_clk <= 0;
-	 button_Y <= controller_dout;
+	 button_Y <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -106,7 +106,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 8;
 	 controller_clk <= 0;
-	 button_SELECT <= controller_dout;
+	 button_SELECT <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -121,7 +121,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 10;
 	 controller_clk <= 0;
-	 button_START <= controller_dout;
+	 button_START <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -136,7 +136,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 12;
 	 controller_clk <= 0;
-	 button_N <= controller_dout;
+	 button_N <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -151,7 +151,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 14;
 	 controller_clk <= 0;
-	 button_S <= controller_dout;
+	 button_S <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -166,7 +166,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 16;
 	 controller_clk <= 0;
-	 button_W <= controller_dout;
+	 button_W <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -181,7 +181,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 18;
 	 controller_clk <= 0;
-	 button_E <= controller_dout;
+	 button_E <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -196,7 +196,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 20;
 	 controller_clk <= 0;
-	 button_A <= controller_dout;
+	 button_A <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -211,7 +211,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 22;
 	 controller_clk <= 0;
-	 button_X <= controller_dout;
+	 button_X <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -226,7 +226,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 24;
 	 controller_clk <= 0;
-	 button_L <= controller_dout;
+	 button_L <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
@@ -241,7 +241,7 @@ module nes_interface(
 	 FSM_state <= timer_state;
 	 FSM_state_return <= 26;
 	 controller_clk <= 0;
-	 button_R <= controller_dout;
+	 button_R <= ~controller_dout;
 	 counter <= clk_period;
 	 end
 	 
