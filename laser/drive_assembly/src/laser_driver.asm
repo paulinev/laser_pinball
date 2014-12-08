@@ -16,16 +16,18 @@
 |	r14: scale factor - currently inactive
 | r15: laser power flag for implementing travels
 |	r16: reserved for copy of rgb data
+| r19: holds scaling factor
 
 
 | Define parameters
 NEXT_SPRITE_OFFSET = 0x04
-|TIMER_VALUE = 0x1388
-TIMER_VALUE = 0x01
+TIMER_VALUE = 0x1388
+|TIMER_VALUE = 0x01
 
 | External address offsets
 SPI_CONFIG = 0x10
 SPI_STATUS = 0x14
+INPUT_PORT_A = 0x0
 DAC_CTL_OUT = 0x08
 SPI_TX = 0x18
 TIMER_SET = 0x24
@@ -34,6 +36,8 @@ SHARED_MEM_WRITE_STATUS = 0x100
 SHARED_MEM_READ_STATUS = 0x101
 SWITCHES = 0x00
 STALL_TIME = 0x04
+SCALING_FACTOR = 0x0      | full scale
+|SCALING_FACTOR = 0x1      | half scale
 
 . = 0				| start at memory location 0
 BR(init)
@@ -55,6 +59,8 @@ init:
 	SHLC(r7, 16, r7)
 	CMOVE(0x0810, r8)
 	ST(r8, SPI_CONFIG, r7)
+
+  LD(r7, INPUT_PORT_A, r19)
 
 ||	LD(r7, 0, r14)
 
@@ -138,16 +144,21 @@ go_to_point:
 		
 	CMOVE(0x02, r8) 	| put SPI address in r8
 	SHLC(r8, 16, r8)
+
+  |SHR(r0,r9,r17)
+  |SHR(r1,r9,r18)
+  SHRC(r0,SCALING_FACTOR,r17)
+  SHRC(r1,SCALING_FACTOR,r18)
 	
 	ORC(r3, 0b01000, r7) 	| Store CS & RGB data in r7
 	CMOVE(0b0011, r10) 	| Store config data (1) in r10
 	SHLC(r10, 12, r10) 	| Shift left to bit 15
-	ADD(r10, r0, r10) 	| r10 now contains config data for write to DACA
+	ADD(r10, r17, r10) 	| r10 now contains config data for write to DACA
 	
 	CMOVE(0b1011, r11) 	| Store config data (2) in r11
 	SHLC(r11, 12, r11) 	| Shift left to bit 15
-	ADD(r11, r1, r11) 	| r11 now contains config data for write to DACB
-	
+	ADD(r11, r18, r11) 	| r11 now contains config data for write to DACB
+	.breakpoint
 	CMOVE(0x01, r8) 	| put SPI address in r8
 	SHLC(r8, 16, r8)
 	ST(r7, DAC_CTL_OUT, r8) | Write to output port A (memory location 8)--lower CS
@@ -207,7 +218,7 @@ get_next_point:
 
 
   BNE(r12, get_next_end)   | if we're done with this line segment,
-    .breakpoint
+    |.breakpoint
     ADDC(r9, 0x8, r9) 	        | increment location in local table
     LD(r9,0x4,r12)              | load point count for next segment
 	  SUBC(r6, 0x01, r6)          | decrement points left for sprite
@@ -286,7 +297,8 @@ LONG(0x00000000), LONG(STALL_TIME)    | stall for laser off
 stack:
 STORAGE(128)
 
-
+|.=0x10000
+|LONG(0x1)
 |.=0x20000
 |LONG(0x1B000000)
 |LONG(0x221E07E0)
