@@ -20,9 +20,6 @@ NONE                      No environment variables were set
 INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
    option. All paths that are not constrained will be reported in the 
    unconstrained paths section(s) of the report.
-INFO:Timing:3284 - This timing report was generated using estimated delay 
-   information.  For accurate numbers, please refer to the post Place and Route 
-   timing report.
 INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
    a 50 Ohm transmission line loading model.  For the details of this model, 
    and for more information on accounting for different loading conditions, 
@@ -40,16 +37,16 @@ Timing constraint: PERIOD analysis for net "clk_50_gen/CLKDV_BUF" derived from
 NET "USER_CLK_IBUFG" PERIOD = 10 ns HIGH 50%;  multiplied by 2.00 and duty 
 cycle corrected to 20 nS  HIGH 10 nS  
 
- 59801426 paths analyzed, 9207 endpoints analyzed, 0 failing endpoints
+ 76581 paths analyzed, 4239 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors)
- Minimum period is   4.804ns.
+ Minimum period is  10.377ns.
 --------------------------------------------------------------------------------
-Slack:                  15.196ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_laser/rf/Mram_regfile_ren1_RAMC (RAM)
-  Destination:          best_hazor/cpu_laser/rf/Mram_regfile62/DP (RAM)
+Slack:                  9.623ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               camera_main/vga_signal_gen/vcount_d_7 (FF)
+  Destination:          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      4.694ns (Levels of Logic = 4)
-  Clock Path Skew:      0.000ns
+  Data Path Delay:      10.237ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.030ns (1.057 - 1.087)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -60,38 +57,38 @@ Slack:                  15.196ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_laser/rf/Mram_regfile_ren1_RAMC to best_hazor/cpu_laser/rf/Mram_regfile62/DP
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICEM.CMUX          Tshcko                1.170   best_hazor/cpu_laser/rd2<5>
-                                                       best_hazor/cpu_laser/rf/Mram_regfile_ren1_RAMC
-    SLICEL.D4            net (fanout=2)     e  0.000   best_hazor/cpu_laser/rd2<4>
-    SLICEL.D             Tilo                  0.080   best_hazor/cpu_laser/b<4>
-                                                       best_hazor/cpu_laser/b<4>1
-    DSP48E.B4            net (fanout=65)    e  0.000   best_hazor/cpu_laser/b<4>
-    DSP48E.P31           Tdspdo_BP_M           2.645   best_hazor/cpu_laser/mpy/Mmult_mult
-                                                       best_hazor/cpu_laser/mpy/Mmult_mult
-    SLICEL.C4            net (fanout=1)     e  0.000   best_hazor/cpu_laser/mult<31>
-    SLICEL.C             Tilo                  0.080   best_hazor/cpu_laser/wd<31>276
-                                                       best_hazor/cpu_laser/wd<31>315
-    SLICEL.C1            net (fanout=1)     e  0.000   best_hazor/cpu_laser/wd<31>315
-    SLICEL.C             Tilo                  0.080   best_hazor/cpu_laser/inst<31>
-                                                       best_hazor/cpu_laser/wd<31>356
-    SLICEM.BX            net (fanout=4)     e  0.000   best_hazor/cpu_laser/wd<31>
-    SLICEM.CLK           Tds                   0.639   best_hazor/cpu_laser/rd1<30>
-                                                       best_hazor/cpu_laser/rf/Mram_regfile62/DP
-    -------------------------------------------------  ---------------------------
-    Total                                      4.694ns (4.694ns logic, 0.000ns route)
-                                                       (100.0% logic, 0.0% route)
+  Maximum Data Path: camera_main/vga_signal_gen/vcount_d_7 to camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+    Location                Delay type         Delay(ns)  Physical Resource
+                                                          Logical Resource(s)
+    ----------------------------------------------------  -------------------
+    SLICE_X17Y43.BQ         Tcko                  0.326   camera_main/vga_signal_gen/vcount_d<6>
+                                                          camera_main/vga_signal_gen/vcount_d_7
+    SLICE_X14Y49.A1         net (fanout=20)       1.117   camera_main/vga_signal_gen/vcount_d<7>
+    SLICE_X14Y49.A          Tilo                  0.080   camera_main/buffer_read_addr_gen/vcount_trun<4>
+                                                          camera_main/buffer_read_addr_gen/vcount_trun<4>1
+    DSP48_X0Y21.A3          net (fanout=1)        0.399   camera_main/buffer_read_addr_gen/vcount_trun<4>
+    DSP48_X0Y21.P15         Tdspdo_AP_M           2.645   camera_main/buffer_read_addr_gen/Maddsub_addr_mult0001
+                                                          camera_main/buffer_read_addr_gen/Maddsub_addr_mult0001
+    SLICE_X11Y53.D4         net (fanout=1)        0.420   camera_main/vga_addr<15>
+    SLICE_X11Y53.D          Tilo                  0.080   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/has_mux_b.B/sel_pipe<4>
+                                                          camera_main/buffer_read_addr<15>1
+    SLICE_X42Y64.A2         net (fanout=15)       3.895   camera_main/buffer_read_addr<15>
+    SLICE_X42Y64.A          Tilo                  0.080   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb2
+                                                          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb21
+    RAMB36_X1Y14.ENBWRENL   net (fanout=2)        0.884   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb2
+    RAMB36_X1Y14.CLKBWRCLKL Trcck_ENB             0.311   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+                                                          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+    ----------------------------------------------------  ---------------------------
+    Total                                        10.237ns (3.522ns logic, 6.715ns route)
+                                                          (34.4% logic, 65.6% route)
 
 --------------------------------------------------------------------------------
-Slack:                  15.196ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_laser/rf/Mram_regfile1_RAMC (RAM)
-  Destination:          best_hazor/cpu_laser/rf/Mram_regfile62/DP (RAM)
+Slack:                  9.631ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               camera_main/vga_signal_gen/vcount_d_7 (FF)
+  Destination:          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      4.694ns (Levels of Logic = 4)
-  Clock Path Skew:      0.000ns
+  Data Path Delay:      10.229ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.030ns (1.057 - 1.087)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -102,38 +99,38 @@ Slack:                  15.196ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_laser/rf/Mram_regfile1_RAMC to best_hazor/cpu_laser/rf/Mram_regfile62/DP
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICEM.CMUX          Tshcko                1.170   best_hazor/cpu_laser/rd1<5>
-                                                       best_hazor/cpu_laser/rf/Mram_regfile1_RAMC
-    SLICEL.A5            net (fanout=3)     e  0.000   best_hazor/cpu_laser/rd1<4>
-    SLICEL.A             Tilo                  0.080   best_hazor/cpu_laser/sr/x<9>
-                                                       best_hazor/cpu_laser/a<4>1
-    DSP48E.A4            net (fanout=11)    e  0.000   best_hazor/cpu_laser/a<4>
-    DSP48E.P31           Tdspdo_AP_M           2.645   best_hazor/cpu_laser/mpy/Mmult_mult
-                                                       best_hazor/cpu_laser/mpy/Mmult_mult
-    SLICEL.C4            net (fanout=1)     e  0.000   best_hazor/cpu_laser/mult<31>
-    SLICEL.C             Tilo                  0.080   best_hazor/cpu_laser/wd<31>276
-                                                       best_hazor/cpu_laser/wd<31>315
-    SLICEL.C1            net (fanout=1)     e  0.000   best_hazor/cpu_laser/wd<31>315
-    SLICEL.C             Tilo                  0.080   best_hazor/cpu_laser/inst<31>
-                                                       best_hazor/cpu_laser/wd<31>356
-    SLICEM.BX            net (fanout=4)     e  0.000   best_hazor/cpu_laser/wd<31>
-    SLICEM.CLK           Tds                   0.639   best_hazor/cpu_laser/rd1<30>
-                                                       best_hazor/cpu_laser/rf/Mram_regfile62/DP
-    -------------------------------------------------  ---------------------------
-    Total                                      4.694ns (4.694ns logic, 0.000ns route)
-                                                       (100.0% logic, 0.0% route)
+  Maximum Data Path: camera_main/vga_signal_gen/vcount_d_7 to camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+    Location                Delay type         Delay(ns)  Physical Resource
+                                                          Logical Resource(s)
+    ----------------------------------------------------  -------------------
+    SLICE_X17Y43.BQ         Tcko                  0.326   camera_main/vga_signal_gen/vcount_d<6>
+                                                          camera_main/vga_signal_gen/vcount_d_7
+    SLICE_X13Y48.A2         net (fanout=20)       1.024   camera_main/vga_signal_gen/vcount_d<7>
+    SLICE_X13Y48.A          Tilo                  0.080   camera_main/buffer_read_addr_gen/vcount_trun<2>
+                                                          camera_main/buffer_read_addr_gen/vcount_trun<2>1
+    DSP48_X0Y21.A1          net (fanout=1)        0.484   camera_main/buffer_read_addr_gen/vcount_trun<2>
+    DSP48_X0Y21.P15         Tdspdo_AP_M           2.645   camera_main/buffer_read_addr_gen/Maddsub_addr_mult0001
+                                                          camera_main/buffer_read_addr_gen/Maddsub_addr_mult0001
+    SLICE_X11Y53.D4         net (fanout=1)        0.420   camera_main/vga_addr<15>
+    SLICE_X11Y53.D          Tilo                  0.080   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/has_mux_b.B/sel_pipe<4>
+                                                          camera_main/buffer_read_addr<15>1
+    SLICE_X42Y64.A2         net (fanout=15)       3.895   camera_main/buffer_read_addr<15>
+    SLICE_X42Y64.A          Tilo                  0.080   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb2
+                                                          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb21
+    RAMB36_X1Y14.ENBWRENL   net (fanout=2)        0.884   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb2
+    RAMB36_X1Y14.CLKBWRCLKL Trcck_ENB             0.311   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+                                                          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+    ----------------------------------------------------  ---------------------------
+    Total                                        10.229ns (3.522ns logic, 6.707ns route)
+                                                          (34.4% logic, 65.6% route)
 
 --------------------------------------------------------------------------------
-Slack:                  15.196ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               best_hazor/cpu_laser/rf/Mram_regfile2_RAMC (RAM)
-  Destination:          best_hazor/cpu_laser/rf/Mram_regfile62/DP (RAM)
+Slack:                  9.631ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               camera_main/vga_signal_gen/vcount_d_7 (FF)
+  Destination:          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP (RAM)
   Requirement:          20.000ns
-  Data Path Delay:      4.694ns (Levels of Logic = 4)
-  Clock Path Skew:      0.000ns
+  Data Path Delay:      10.237ns (Levels of Logic = 4)
+  Clock Path Skew:      -0.022ns (1.065 - 1.087)
   Source Clock:         DVI_XCLK_N_OBUF rising at 0.000ns
   Destination Clock:    DVI_XCLK_N_OBUF rising at 20.000ns
   Clock Uncertainty:    0.110ns
@@ -144,30 +141,30 @@ Slack:                  15.196ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.150ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: best_hazor/cpu_laser/rf/Mram_regfile2_RAMC to best_hazor/cpu_laser/rf/Mram_regfile62/DP
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICEM.CMUX          Tshcko                1.170   best_hazor/cpu_laser/rd1<11>
-                                                       best_hazor/cpu_laser/rf/Mram_regfile2_RAMC
-    SLICEL.C5            net (fanout=3)     e  0.000   best_hazor/cpu_laser/rd1<10>
-    SLICEL.C             Tilo                  0.080   best_hazor/cpu_laser/sr/x<7>
-                                                       best_hazor/cpu_laser/a<10>1
-    DSP48E.A10           net (fanout=11)    e  0.000   best_hazor/cpu_laser/a<10>
-    DSP48E.P31           Tdspdo_AP_M           2.645   best_hazor/cpu_laser/mpy/Mmult_mult
-                                                       best_hazor/cpu_laser/mpy/Mmult_mult
-    SLICEL.C4            net (fanout=1)     e  0.000   best_hazor/cpu_laser/mult<31>
-    SLICEL.C             Tilo                  0.080   best_hazor/cpu_laser/wd<31>276
-                                                       best_hazor/cpu_laser/wd<31>315
-    SLICEL.C1            net (fanout=1)     e  0.000   best_hazor/cpu_laser/wd<31>315
-    SLICEL.C             Tilo                  0.080   best_hazor/cpu_laser/inst<31>
-                                                       best_hazor/cpu_laser/wd<31>356
-    SLICEM.BX            net (fanout=4)     e  0.000   best_hazor/cpu_laser/wd<31>
-    SLICEM.CLK           Tds                   0.639   best_hazor/cpu_laser/rd1<30>
-                                                       best_hazor/cpu_laser/rf/Mram_regfile62/DP
-    -------------------------------------------------  ---------------------------
-    Total                                      4.694ns (4.694ns logic, 0.000ns route)
-                                                       (100.0% logic, 0.0% route)
+  Maximum Data Path: camera_main/vga_signal_gen/vcount_d_7 to camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+    Location                Delay type         Delay(ns)  Physical Resource
+                                                          Logical Resource(s)
+    ----------------------------------------------------  -------------------
+    SLICE_X17Y43.BQ         Tcko                  0.326   camera_main/vga_signal_gen/vcount_d<6>
+                                                          camera_main/vga_signal_gen/vcount_d_7
+    SLICE_X14Y49.A1         net (fanout=20)       1.117   camera_main/vga_signal_gen/vcount_d<7>
+    SLICE_X14Y49.A          Tilo                  0.080   camera_main/buffer_read_addr_gen/vcount_trun<4>
+                                                          camera_main/buffer_read_addr_gen/vcount_trun<4>1
+    DSP48_X0Y21.A3          net (fanout=1)        0.399   camera_main/buffer_read_addr_gen/vcount_trun<4>
+    DSP48_X0Y21.P15         Tdspdo_AP_M           2.645   camera_main/buffer_read_addr_gen/Maddsub_addr_mult0001
+                                                          camera_main/buffer_read_addr_gen/Maddsub_addr_mult0001
+    SLICE_X11Y53.D4         net (fanout=1)        0.420   camera_main/vga_addr<15>
+    SLICE_X11Y53.D          Tilo                  0.080   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/has_mux_b.B/sel_pipe<4>
+                                                          camera_main/buffer_read_addr<15>1
+    SLICE_X42Y64.A2         net (fanout=15)       3.895   camera_main/buffer_read_addr<15>
+    SLICE_X42Y64.A          Tilo                  0.080   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb2
+                                                          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb21
+    RAMB36_X1Y14.ENBU       net (fanout=2)        0.884   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ram_enb2
+    RAMB36_X1Y14.CLKBWRCLKU Trcck_ENB             0.311   camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+                                                          camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram/SDP.SINGLE_PRIM36.TDP
+    ----------------------------------------------------  ---------------------------
+    Total                                        10.237ns (3.522ns logic, 6.715ns route)
+                                                          (34.4% logic, 65.6% route)
 
 --------------------------------------------------------------------------------
 
@@ -179,8 +176,8 @@ Derived Constraints for USER_CLK_IBUFG
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|USER_CLK_IBUFG                 |     10.000ns|          N/A|      2.402ns|            0|            0|            0|     59801426|
-| clk_50_gen/CLKDV_BUF          |     20.000ns|      4.804ns|          N/A|            0|            0|     59801426|            0|
+|USER_CLK_IBUFG                 |     10.000ns|          N/A|      5.189ns|            0|            0|            0|        76581|
+| clk_50_gen/CLKDV_BUF          |     20.000ns|     10.377ns|          N/A|            0|            0|        76581|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -195,7 +192,7 @@ Clock to Setup on destination clock USER_CLK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-USER_CLK       |    4.804|         |         |         |
+USER_CLK       |   10.377|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -204,23 +201,23 @@ Timing summary:
 
 Timing errors: 0  Score: 0
 
-Constraints cover 59801426 paths, 0 nets, and 18571 connections
+Constraints cover 76581 paths, 0 nets, and 6102 connections
 
 Design statistics:
-   Minimum period:   4.804ns{1}   (Maximum frequency: 208.160MHz)
+   Minimum period:  10.377ns{1}   (Maximum frequency:  96.367MHz)
 
 
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Sat Dec  6 23:18:46 2014 
+Analysis completed Sun Dec  7 18:37:19 2014 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 524 MB
+Peak Memory Usage: 473 MB
 
 
 

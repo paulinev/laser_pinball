@@ -12,37 +12,36 @@ Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sat Dec  6 23:18:03 2014
+Mapped Date    : Sun Dec  7 18:36:21 2014
 
-Interim Summary
----------------
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:   29
 Slice Logic Utilization:
-  Number of Slice Registers:                 1,454 out of  28,800    5%
-    Number used as Flip Flops:               1,454
-  Number of Slice LUTs:                      2,970 out of  28,800   10%
-    Number used as logic:                    2,819 out of  28,800    9%
-      Number using O6 output only:           2,571
-      Number using O5 output only:             119
-      Number using O5 and O6:                  129
-    Number used as Memory:                     137 out of   7,680    1%
-      Number used as Dual Port RAM:            136
-        Number using O6 output only:             8
-        Number using O5 and O6:                128
+  Number of Slice Registers:                   909 out of  28,800    3%
+    Number used as Flip Flops:                 909
+  Number of Slice LUTs:                      1,176 out of  28,800    4%
+    Number used as logic:                    1,167 out of  28,800    4%
+      Number using O6 output only:             960
+      Number using O5 output only:             103
+      Number using O5 and O6:                  104
+    Number used as Memory:                       1 out of   7,680    1%
       Number used as Shift Register:             1
         Number using O6 output only:             1
-    Number used as exclusive route-thru:        14
-  Number of route-thrus:                       133 out of  57,600    1%
-    Number using O6 output only:               131
-    Number using O5 and O6:                      2
+    Number used as exclusive route-thru:         8
+  Number of route-thrus:                       111 out of  57,600    1%
+    Number using O6 output only:               111
 
 Slice Logic Distribution:
-  Number of LUT Flip Flop pairs used:        3,572
-    Number with an unused Flip Flop:         2,118 out of   3,572   59%
-    Number with an unused LUT:                 602 out of   3,572   16%
-    Number of fully used LUT-FF pairs:         852 out of   3,572   23%
-    Number of unique control sets:             113
+  Number of occupied Slices:                   552 out of   7,200    7%
+  Number of LUT Flip Flop pairs used:        1,466
+    Number with an unused Flip Flop:           557 out of   1,466   37%
+    Number with an unused LUT:                 290 out of   1,466   19%
+    Number of fully used LUT-FF pairs:         619 out of   1,466   42%
+    Number of unique control sets:             149
     Number of slice register sites lost
-      to control set restrictions:             205 out of  28,800    1%
+      to control set restrictions:             358 out of  28,800    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -54,51 +53,112 @@ IO Utilization:
   Number of bonded IOBs:                        82 out of     480   17%
 
 Specific Feature Utilization:
-  Number of BlockRAM/FIFO:                      66 out of      60  110% (OVERMAPPED)
-    Number using BlockRAM only:                 66
+  Number of BlockRAM/FIFO:                      15 out of      60   25%
+    Number using BlockRAM only:                 15
     Total primitives used:
-      Number of 36k BlockRAM used:              62
-      Number of 18k BlockRAM used:               8
-    Total Memory used (KB):                  2,376 out of   2,160  110% (OVERMAPPED)
+      Number of 36k BlockRAM used:              14
+      Number of 18k BlockRAM used:               1
+    Total Memory used (KB):                    522 out of   2,160   24%
   Number of BUFG/BUFGCTRLs:                      5 out of      32   15%
     Number used as BUFGs:                        5
   Number of DCM_ADVs:                            2 out of      12   16%
-  Number of DSP48Es:                             2 out of      48    4%
+  Number of DSP48Es:                             3 out of      48    6%
 
+Peak Memory Usage:  758 MB
+Total REAL time to MAP completion:  31 secs 
+Total CPU time to MAP completion:   31 secs 
 
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Modular Design Summary
+Section 11 - Timing Report
+Section 12 - Configuration String Information
 Section 13 - Control Set Information
-------------------------------------
-Use the "-detail" map option to print out Control Set Information.
-
-Design Summary
---------------
-Number of errors   :   2
-Number of warnings :   2
+Section 14 - Utilization by Hierarchy
 
 Section 1 - Errors
 ------------------
-ERROR:Pack:2310 - Too many comps of type "RAMB36_EXP" found to fit this device.
-ERROR:Map:115 - The design is too large to fit the device.  Please check the
-   Design Summary section to see which resource requirement for your design
-   exceeds the resources available in the device. Note that the number of slices
-   reported may not be reflected accurately as their packing might not have been
-   completed.
-
-   NOTE:  An NCD file will still be generated to allow you to examine the mapped
-   design.  This file is intended for evaluation use only, and will not process
-   successfully through PAR.
 
 Section 2 - Warnings
 --------------------
-WARNING:LIT:243 - Logical network AUDIO_SDATA_IN_IBUF has no load.
-WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 15
+WARNING:LIT:243 - Logical network GPIO_DIP_SW1_IBUF has no load.
+WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 10
    more times for the following (max. 5 shown):
-   CLK_27MHZ_FPGA_IBUF,
-   GPIO_SW_N_IBUF,
-   GPIO_SW_S_IBUF,
-   best_hazor/cpu_physics/rf/Mram_regfile_ren_161/SPO,
-   best_hazor/cpu_physics/rf/Mram_regfile_ren62/SPO
+   GPIO_DIP_SW2_IBUF,
+   GPIO_DIP_SW3_IBUF,
+   GPIO_DIP_SW4_IBUF,
+   GPIO_DIP_SW5_IBUF,
+   GPIO_DIP_SW6_IBUF
    To see the details of these warning messages, please use the -detail switch.
+WARNING:Place:644 - A clock IOB clock component is not placed at an optimal
+   clock IOB site. The clock IOB component <HDR1_48> is placed at site <AJ32>.
+   The clock IO site can use the fast path between the IO and the Clock
+   buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is
+   normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on
+   COMP.PIN <HDR1_48.PAD> allowing your design to continue. This constraint
+   disables all clock placer rules related to the specified COMP.PIN. The use of
+   this override is highly discouraged as it may lead to very poor timing
+   results. It is recommended that this error condition be corrected in the
+   design.
+WARNING:PhysDesignRules:368 - The signal <AUDIO_SYNC_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <DVI_GPIO1_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_SW_N_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <CLK_27MHZ_FPGA_IBUF> is incomplete.
+   The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <AUDIO_SDATA_IN_IBUF> is incomplete.
+   The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:368 - The signal <AUDIO_BIT_CLK_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW1_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW2_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW3_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW4_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW5_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW6_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW7_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW8_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_30_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_22_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_32_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_24_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_16_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_34_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_26_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_36_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_28_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <HDR1_38_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:368 - The signal <AUDIO_SDATA_OUT_OBUF> is incomplete.
+   The signal is not driven by any source pin in the design.
 
 Section 3 - Informational
 -------------------------
@@ -112,11 +172,14 @@ INFO:Pack:1716 - Initializing temperature to 85.000 Celsius. (default - Range:
    0.000 to 85.000 Celsius)
 INFO:Pack:1720 - Initializing voltage to 0.950 Volts. (default - Range: 0.950 to
    1.050 Volts)
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+INFO:Pack:1650 - Map created a placed design.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-  10 block(s) removed
-  12 block(s) optimized away
+   2 block(s) removed
+   4 block(s) optimized away
    1 signal(s) removed
 
 Section 5 - Removed Logic
@@ -132,33 +195,247 @@ To quickly locate the original cause for the removal of a chain of logic, look
 above the place where that logic is listed in the trimming report, then locate
 the lines that are least indented (begin at the leftmost edge).
 
-The signal "camera_module/image_buffer/framebuffer/BU2/N1" is sourceless and has
+The signal "camera_main/frame_buff/framebuffer/BU2/N1" is sourceless and has
 been removed.
-Unused block "best_hazor/laser_beta_ram/GND" (ZERO) removed.
-Unused block "best_hazor/laser_beta_ram/VCC" (ONE) removed.
-Unused block "best_hazor/laser_shared_memory/shared_ram/GND" (ZERO) removed.
-Unused block "best_hazor/laser_shared_memory/shared_ram/VCC" (ONE) removed.
-Unused block "best_hazor/physics_beta_ram/GND" (ZERO) removed.
-Unused block "best_hazor/physics_beta_ram/VCC" (ONE) removed.
-Unused block "best_hazor/physics_shared_memory/shared_ram/GND" (ZERO) removed.
-Unused block "best_hazor/physics_shared_memory/shared_ram/VCC" (ONE) removed.
-Unused block "camera_module/image_buffer/framebuffer/GND" (ZERO) removed.
-Unused block "camera_module/image_buffer/framebuffer/VCC" (ONE) removed.
+Unused block "camera_main/frame_buff/framebuffer/GND" (ZERO) removed.
+Unused block "camera_main/frame_buff/framebuffer/VCC" (ONE) removed.
 
 Optimized Block(s):
 TYPE 		BLOCK
 GND 		XST_GND
 VCC 		XST_VCC
-GND 		best_hazor/laser_beta_ram/BU2/XST_GND
-VCC 		best_hazor/laser_beta_ram/BU2/XST_VCC
-GND 		best_hazor/laser_shared_memory/shared_ram/BU2/XST_GND
-VCC 		best_hazor/laser_shared_memory/shared_ram/BU2/XST_VCC
-GND 		best_hazor/physics_beta_ram/BU2/XST_GND
-VCC 		best_hazor/physics_beta_ram/BU2/XST_VCC
-GND 		best_hazor/physics_shared_memory/shared_ram/BU2/XST_GND
-VCC 		best_hazor/physics_shared_memory/shared_ram/BU2/XST_VCC
-GND 		camera_module/image_buffer/framebuffer/BU2/XST_GND
-VCC 		camera_module/image_buffer/framebuffer/BU2/XST_VCC
+GND 		camera_main/frame_buff/framebuffer/BU2/XST_GND
+VCC 		camera_main/frame_buff/framebuffer/BU2/XST_VCC
 
 To enable printing of redundant blocks removed and signals merged, set the
 detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Strength | Rate |              |          | Delay    |
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+| AUDIO_BIT_CLK                      | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| AUDIO_SDATA_IN                     | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| AUDIO_SDATA_OUT                    | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| AUDIO_SYNC                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| CLK_27MHZ_FPGA                     | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| DVI_D0                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D1                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D2                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D3                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D4                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D5                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D6                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D7                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D8                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D9                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D10                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_D11                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_DE                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_GPIO1                          | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_H                              | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_RESET_B                        | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_V                              | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_XCLK_N                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| DVI_XCLK_P                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_DIP_SW1                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW2                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW3                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW4                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW5                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW6                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW7                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_DIP_SW8                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_LED_0                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_LED_1                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_LED_2                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_LED_3                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_LED_4                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_LED_5                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_LED_6                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_LED_7                         | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| GPIO_SW_C                          | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_SW_E                          | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_SW_N                          | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_SW_S                          | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| GPIO_SW_W                          | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_2                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_4                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_6                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_8                             | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_10                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_12                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_14                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_16                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_18                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_20                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_22                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_24                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_26                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_28                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_30                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_32                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_34                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_36                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_38                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_40                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_42                            | IOB              | OUTPUT    | LVCMOS25             | 12       | SLOW |              |          |          |
+| HDR1_44                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_46                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_48                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_50                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_52                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_54                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_56                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_58                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_60                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_62                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| HDR1_64                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| IIC_SCL_MAIN                       | IOB              | BIDIR     | LVCMOS25             | 12       | SLOW |              |          |          |
+| IIC_SCL_VIDEO                      | IOB              | BIDIR     | LVCMOS25             | 12       | SLOW |              |          |          |
+| IIC_SDA_MAIN                       | IOB              | BIDIR     | LVCMOS25             | 12       | SLOW |              |          |          |
+| IIC_SDA_VIDEO                      | IOB              | BIDIR     | LVCMOS25             | 12       | SLOW |              |          |          |
+| USER_CLK                           | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Modular Design Summary
+-----------------------------------
+Modular Design not used for this design.
+
+Section 11 - Timing Report
+--------------------------
+A logic-level (pre-route) timing report can be generated by using Xilinx static
+timing analysis tools, Timing Analyzer (GUI) or TRCE (command line), with the
+mapped NCD and PCF files. Please note that this timing report will be generated
+using estimated delay information. For accurate numbers, please generate a
+timing report with the post Place and Route NCD file.
+
+For more information about the Timing Analyzer, consult the Xilinx Timing
+Analyzer Reference Manual; for more information about TRCE, consult the Xilinx
+Development System Reference Guide "TRACE" chapter.
+
+Section 12 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 13 - Control Set Information
+------------------------------------
+Use the "-detail" map option to print out Control Set Information.
+
+Section 14 - Utilization by Hierarchy
+-------------------------------------
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Module                        | Partition | Slices*       | Slice Reg     | LUTs          | LUTRAM        | BRAM/FIFO | DSP48E  | BUFG  | BUFIO | BUFR  | DCM   | PLL   | Full Hierarchical Name                                                                                                  |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| hardware_interface/           |           | 60/696        | 0/909         | 112/1176      | 0/1           | 0/15      | 0/3     | 1/5   | 0/0   | 0/0   | 0/2   | 0/0   | hardware_interface                                                                                                      |
+| +camera_main                  |           | 15/604        | 0/842         | 25/1035       | 0/0           | 0/15      | 0/3     | 0/2   | 0/0   | 0/0   | 0/1   | 0/0   | hardware_interface/camera_main                                                                                          |
+| ++blue_blob                   |           | 5/5           | 1/1           | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/blue_blob                                                                                |
+| ++buffer_read_addr_gen        |           | 6/6           | 0/0           | 9/9           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/buffer_read_addr_gen                                                                     |
+| ++camera_addr_gen             |           | 3/3           | 0/0           | 9/9           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_addr_gen                                                                          |
+| ++camera_setup                |           | 7/109         | 16/194        | 16/203        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup                                                                             |
+| +++camera_i2c                 |           | 15/102        | 32/178        | 35/187        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c                                                                  |
+| ++++video_bus                 |           | 13/87         | 29/146        | 6/152         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c/video_bus                                                        |
+| +++++i2c_plz                  |           | 18/74         | 35/117        | 14/146        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c/video_bus/i2c_plz                                                |
+| ++++++byte_controller         |           | 15/56         | 22/82         | 38/132        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c/video_bus/i2c_plz/byte_controller                                |
+| +++++++bit_controller         |           | 41/41         | 60/60         | 94/94         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c/video_bus/i2c_plz/byte_controller/bit_controller                 |
+| ++clk12_5_gen                 |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 2/2   | 0/0   | 0/0   | 1/1   | 0/0   | hardware_interface/camera_main/clk12_5_gen                                                                              |
+| ++drive_vga                   |           | 10/10         | 15/15         | 11/11         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/drive_vga                                                                                |
+| ++frame_buff                  |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff                                                                               |
+| +++framebuffer                |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer                                                                   |
+| ++++BU2                       |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2                                                               |
+| +++++U0                       |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0                                                            |
+| ++++++blk_mem_generator       |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator                                          |
+| +++++++valid.cstr             |           | 27/53         | 0/5           | 28/75         | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr                               |
+| ++++++++bindec_a.bindec_inst_ |           | 1/1           | 0/0           | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a        |
+| ++++++++bindec_b.bindec_inst_ |           | 1/1           | 0/0           | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/bindec_b.bindec_inst_b        |
+| ++++++++has_mux_b.B           |           | 24/24         | 5/5           | 45/45         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/has_mux_b.B                   |
+| ++++++++ramloop[0].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram  |
+| ++++++++ramloop[10].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r             |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r/v5_init.ram |
+| ++++++++ramloop[11].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r             |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram |
+| ++++++++ramloop[12].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r             |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v5_init.ram |
+| ++++++++ramloop[13].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r             |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram |
+| ++++++++ramloop[14].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r             |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v5_init.ram |
+| ++++++++ramloop[1].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r/v5_init.ram  |
+| ++++++++ramloop[2].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram  |
+| ++++++++ramloop[3].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram  |
+| ++++++++ramloop[4].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r/v5_init.ram  |
+| ++++++++ramloop[5].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram  |
+| ++++++++ramloop[6].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram  |
+| ++++++++ramloop[7].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram  |
+| ++++++++ramloop[8].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram  |
+| ++++++++ramloop[9].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r              |
+| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram  |
+| ++get_a_frame                 |           | 12/37         | 31/67         | 22/83         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/get_a_frame                                                                              |
+| +++camera_reader              |           | 25/25         | 36/36         | 61/61         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/get_a_frame/camera_reader                                                                |
+| ++green_blob                  |           | 7/7           | 1/1           | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/green_blob                                                                               |
+| ++image_proc_gen              |           | 5/5           | 0/0           | 8/8           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/image_proc_gen                                                                           |
+| ++process_a_frame             |           | 142/211       | 191/342       | 308/343       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame                                                                          |
+| +++cost_a                     |           | 3/3           | 0/0           | 3/3           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/cost_a                                                                   |
+| +++cost_b                     |           | 3/3           | 0/0           | 3/3           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/cost_b                                                                   |
+| +++cost_c                     |           | 3/3           | 0/0           | 3/3           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/cost_c                                                                   |
+| +++cost_d                     |           | 3/3           | 0/0           | 3/3           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/cost_d                                                                   |
+| +++data_fetch                 |           | 57/57         | 151/151       | 23/23         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/data_fetch                                                               |
+| ++red_blob                    |           | 7/7           | 1/1           | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/red_blob                                                                                 |
+| ++vga_monitor                 |           | 7/118         | 15/190        | 15/203        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor                                                                              |
+| +++instance_name              |           | 15/111        | 29/175        | 36/188        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name                                                                |
+| ++++video_bus                 |           | 15/96         | 29/146        | 6/152         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name/video_bus                                                      |
+| +++++i2c_plz                  |           | 17/81         | 35/117        | 14/146        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name/video_bus/i2c_plz                                              |
+| ++++++byte_controller         |           | 16/64         | 22/82         | 38/132        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name/video_bus/i2c_plz/byte_controller                              |
+| +++++++bit_controller         |           | 48/48         | 60/60         | 94/94         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name/video_bus/i2c_plz/byte_controller/bit_controller               |
+| ++vga_signal_gen              |           | 18/18         | 26/26         | 21/21         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_signal_gen                                                                           |
+| +clk_50_gen                   |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 2/2   | 0/0   | 0/0   | 1/1   | 0/0   | hardware_interface/clk_50_gen                                                                                           |
+| +db_2                         |           | 10/10         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_2                                                                                                 |
+| +db_3                         |           | 10/10         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_3                                                                                                 |
+| +db_5                         |           | 10/10         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_5                                                                                                 |
+| +gen_sys_reset                |           | 2/2           | 1/1           | 2/2           | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/gen_sys_reset                                                                                        |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+* Slices can be packed with basic elements from multiple hierarchies.
+  Therefore, a slice will be counted in every hierarchical module
+  that each of its packed basic elements belong to.
+** For each column, there are two numbers reported <A>/<B>.
+   <A> is the number of elements that belong to that specific hierarchical module.
+   <B> is the total number of elements from that hierarchical module and any lower level
+   hierarchical modules below.
+*** The LUTRAM column counts all LUTs used as memory including RAM, ROM, and shift registers.

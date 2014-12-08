@@ -4,11 +4,11 @@ TEXT 32 32 LEFT 4 image_memory
 RECTANGLE Normal 32 32 544 576
 LINE Wide 0 80 32 80
 PIN 0 80 LEFT 36
-PINATTR PinName addra[16:0]
+PINATTR PinName addra[15:0]
 PINATTR Polarity IN
 LINE Wide 0 112 32 112
 PIN 0 112 LEFT 36
-PINATTR PinName dina[15:0]
+PINATTR PinName dina[8:0]
 PINATTR Polarity IN
 LINE Wide 0 208 32 208
 PIN 0 208 LEFT 36
@@ -20,7 +20,7 @@ PINATTR PinName clka
 PINATTR Polarity IN
 LINE Wide 0 336 32 336
 PIN 0 336 LEFT 36
-PINATTR PinName addrb[16:0]
+PINATTR PinName addrb[15:0]
 PINATTR Polarity IN
 LINE Normal 0 528 32 528
 PIN 0 528 LEFT 36
@@ -28,6 +28,6 @@ PINATTR PinName clkb
 PINATTR Polarity IN
 LINE Wide 576 336 544 336
 PIN 576 336 RIGHT 36
-PINATTR PinName doutb[15:0]
+PINATTR PinName doutb[8:0]
 PINATTR Polarity OUT
 

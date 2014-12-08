@@ -119,7 +119,7 @@ module hardware_interface(
 	 assign dip_sw = 	{GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
 							GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1};	 
 	 assign {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, 
-							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 8'hAA;
+							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 8'hFF;
 							//debug_led;
 	 
 	 assign DVI_RESET_B = ~reset; //keep reset high
@@ -138,6 +138,7 @@ module hardware_interface(
 	 wire paddle_l; //button for left paddle
 	 wire paddle_r; //button for right paddle
 	 wire camera_start;
+	 wire process_frame_start;
 		 
 	clocking clk_50_gen (
     .CLKIN_IN(USER_CLK), //100MHz
@@ -147,7 +148,7 @@ module hardware_interface(
     .LOCKED_OUT()
     );
 	 
-	 
+	 /*
 	 laser_projector_full best_hazor (
     .clk(clk_50), 
     .reset(reset), 
@@ -164,14 +165,16 @@ module hardware_interface(
     .dac_sclk(dac_sclk), 
     .debug_led(debug_led)
     );
+	 */
+	
 	 
-	 /*
-	 camera_full camera_module (
+	 camera_full camera_main (
     .clk_50(clk_50), 
     .camera_pclk(camera_pclk), 
     .reset(reset), 
     .system_start(paddle_r), 
     .capture_frame(paddle_l), 
+    .process_frame(process_frame_start), 
     .camera_href(camera_href), 
     .camera_vsync(camera_vsync), 
     .camera_data(camera_dout), 
@@ -188,9 +191,6 @@ module hardware_interface(
     .beta_addr(), 
     .beta_din()
     );
-	*/ 
-
-	 
 	 
 	 reset_controller gen_sys_reset (
     .clk(clk_50), 
@@ -235,7 +235,7 @@ module hardware_interface(
     .reset(reset), 
     .clock(clk_50), 
     .noisy(GPIO_SW_S), 
-    .clean()
+    .clean(process_frame_start)
     );
 
 	 

@@ -12,51 +12,110 @@ Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sat Dec  6 23:18:03 2014
+Mapped Date    : Sun Dec  7 18:36:21 2014
 
 Mapping design into LUTs...
 Running directed packing...
 Running delay-based LUT packing...
-ERROR:Pack:2310 - Too many comps of type "RAMB36_EXP" found to fit this device.
-ERROR:Map:115 - The design is too large to fit the device.  Please check the
-   Design Summary section to see which resource requirement for your design
-   exceeds the resources available in the device. Note that the number of slices
-   reported may not be reflected accurately as their packing might not have been
-   completed.
+INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
+   (.mrp).
+Running timing-driven packing...
 
-   NOTE:  An NCD file will still be generated to allow you to examine the mapped
-   design.  This file is intended for evaluation use only, and will not process
-   successfully through PAR.
+Phase 1.1
+Phase 1.1 (Checksum:8073e4) REAL time: 5 secs 
 
-Interim Summary
----------------
+Phase 2.7
+Phase 2.7 (Checksum:8073e4) REAL time: 5 secs 
+
+Phase 3.31
+Phase 3.31 (Checksum:8073e4) REAL time: 5 secs 
+
+Phase 4.33
+Phase 4.33 (Checksum:8073e4) REAL time: 8 secs 
+
+Phase 5.32
+Phase 5.32 (Checksum:8073e4) REAL time: 8 secs 
+
+Phase 6.2
+
+.....
+WARNING:Place:644 - A clock IOB clock component is not placed at an optimal
+   clock IOB site. The clock IOB component <HDR1_48> is placed at site <AJ32>.
+   The clock IO site can use the fast path between the IO and the Clock
+   buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is
+   normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on
+   COMP.PIN <HDR1_48.PAD> allowing your design to continue. This constraint
+   disables all clock placer rules related to the specified COMP.PIN. The use of
+   this override is highly discouraged as it may lead to very poor timing
+   results. It is recommended that this error condition be corrected in the
+   design.
+Phase 6.2 (Checksum:85257a) REAL time: 8 secs 
+
+Phase 7.30
+Phase 7.30 (Checksum:85257a) REAL time: 8 secs 
+
+Phase 8.3
+Phase 8.3 (Checksum:85257a) REAL time: 8 secs 
+
+Phase 9.5
+Phase 9.5 (Checksum:85257a) REAL time: 9 secs 
+
+Phase 10.8
+........................................
+........................................
+
+................
+...
+Phase 10.8 (Checksum:8bbb706) REAL time: 10 secs 
+
+Phase 11.29
+Phase 11.29 (Checksum:8bbb706) REAL time: 10 secs 
+
+Phase 12.5
+Phase 12.5 (Checksum:8bbb706) REAL time: 10 secs 
+
+Phase 13.18
+Phase 13.18 (Checksum:8c1321d) REAL time: 24 secs 
+
+Phase 14.5
+Phase 14.5 (Checksum:8c1321d) REAL time: 24 secs 
+
+Phase 15.34
+Phase 15.34 (Checksum:8c1321d) REAL time: 24 secs 
+
+REAL time consumed by placer: 24 secs 
+CPU  time consumed by placer: 24 secs 
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:   29
 Slice Logic Utilization:
-  Number of Slice Registers:                 1,454 out of  28,800    5%
-    Number used as Flip Flops:               1,454
-  Number of Slice LUTs:                      2,970 out of  28,800   10%
-    Number used as logic:                    2,819 out of  28,800    9%
-      Number using O6 output only:           2,571
-      Number using O5 output only:             119
-      Number using O5 and O6:                  129
-    Number used as Memory:                     137 out of   7,680    1%
-      Number used as Dual Port RAM:            136
-        Number using O6 output only:             8
-        Number using O5 and O6:                128
+  Number of Slice Registers:                   909 out of  28,800    3%
+    Number used as Flip Flops:                 909
+  Number of Slice LUTs:                      1,176 out of  28,800    4%
+    Number used as logic:                    1,167 out of  28,800    4%
+      Number using O6 output only:             960
+      Number using O5 output only:             103
+      Number using O5 and O6:                  104
+    Number used as Memory:                       1 out of   7,680    1%
       Number used as Shift Register:             1
         Number using O6 output only:             1
-    Number used as exclusive route-thru:        14
-  Number of route-thrus:                       133 out of  57,600    1%
-    Number using O6 output only:               131
-    Number using O5 and O6:                      2
+    Number used as exclusive route-thru:         8
+  Number of route-thrus:                       111 out of  57,600    1%
+    Number using O6 output only:               111
 
 Slice Logic Distribution:
-  Number of LUT Flip Flop pairs used:        3,572
-    Number with an unused Flip Flop:         2,118 out of   3,572   59%
-    Number with an unused LUT:                 602 out of   3,572   16%
-    Number of fully used LUT-FF pairs:         852 out of   3,572   23%
-    Number of unique control sets:             113
+  Number of occupied Slices:                   552 out of   7,200    7%
+  Number of LUT Flip Flop pairs used:        1,466
+    Number with an unused Flip Flop:           557 out of   1,466   37%
+    Number with an unused LUT:                 290 out of   1,466   19%
+    Number of fully used LUT-FF pairs:         619 out of   1,466   42%
+    Number of unique control sets:             149
     Number of slice register sites lost
-      to control set restrictions:             205 out of  28,800    1%
+      to control set restrictions:             358 out of  28,800    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -68,27 +127,20 @@ IO Utilization:
   Number of bonded IOBs:                        82 out of     480   17%
 
 Specific Feature Utilization:
-  Number of BlockRAM/FIFO:                      66 out of      60  110% (OVERMAPPED)
-    Number using BlockRAM only:                 66
+  Number of BlockRAM/FIFO:                      15 out of      60   25%
+    Number using BlockRAM only:                 15
     Total primitives used:
-      Number of 36k BlockRAM used:              62
-      Number of 18k BlockRAM used:               8
-    Total Memory used (KB):                  2,376 out of   2,160  110% (OVERMAPPED)
+      Number of 36k BlockRAM used:              14
+      Number of 18k BlockRAM used:               1
+    Total Memory used (KB):                    522 out of   2,160   24%
   Number of BUFG/BUFGCTRLs:                      5 out of      32   15%
     Number used as BUFGs:                        5
   Number of DCM_ADVs:                            2 out of      12   16%
-  Number of DSP48Es:                             2 out of      48    4%
+  Number of DSP48Es:                             3 out of      48    6%
 
-
-Section 13 - Control Set Information
-------------------------------------
-Use the "-detail" map option to print out Control Set Information.
+Peak Memory Usage:  758 MB
+Total REAL time to MAP completion:  31 secs 
+Total CPU time to MAP completion:   31 secs 
 
 Mapping completed.
 See MAP report file "hardware_interface_map.mrp" for details.
-Problem encountered during the packing phase.
-
-Design Summary
---------------
-Number of errors   :   2
-Number of warnings :   2

@@ -32,12 +32,12 @@
 component image_memory
 	port (
 	clka: IN std_logic;
-	dina: IN std_logic_VECTOR(15 downto 0);
-	addra: IN std_logic_VECTOR(16 downto 0);
+	dina: IN std_logic_VECTOR(8 downto 0);
+	addra: IN std_logic_VECTOR(15 downto 0);
 	wea: IN std_logic_VECTOR(0 downto 0);
 	clkb: IN std_logic;
-	addrb: IN std_logic_VECTOR(16 downto 0);
-	doutb: OUT std_logic_VECTOR(15 downto 0));
+	addrb: IN std_logic_VECTOR(15 downto 0);
+	doutb: OUT std_logic_VECTOR(8 downto 0));
 end component;
 
 -- Synplicity black box declaration

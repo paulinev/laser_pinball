@@ -48,22 +48,22 @@ module image_memory(
 
 
 input clka;
-input [15 : 0] dina;
-input [16 : 0] addra;
+input [8 : 0] dina;
+input [15 : 0] addra;
 input [0 : 0] wea;
 input clkb;
-input [16 : 0] addrb;
-output [15 : 0] doutb;
+input [15 : 0] addrb;
+output [8 : 0] doutb;
 
 // synthesis translate_off
 
       BLK_MEM_GEN_V2_8 #(
-		.C_ADDRA_WIDTH(17),
-		.C_ADDRB_WIDTH(17),
+		.C_ADDRA_WIDTH(16),
+		.C_ADDRB_WIDTH(16),
 		.C_ALGORITHM(1),
 		.C_BYTE_SIZE(9),
 		.C_COMMON_CLK(0),
-		.C_DEFAULT_DATA("FFFF"),
+		.C_DEFAULT_DATA("FF"),
 		.C_DISABLE_WARN_BHV_COLL(0),
 		.C_DISABLE_WARN_BHV_RANGE(0),
 		.C_FAMILY("virtex5"),
@@ -82,10 +82,10 @@ output [15 : 0] doutb;
 		.C_MEM_TYPE(1),
 		.C_MUX_PIPELINE_STAGES(0),
 		.C_PRIM_TYPE(1),
-		.C_READ_DEPTH_A(76800),
-		.C_READ_DEPTH_B(76800),
-		.C_READ_WIDTH_A(16),
-		.C_READ_WIDTH_B(16),
+		.C_READ_DEPTH_A(57600),
+		.C_READ_DEPTH_B(57600),
+		.C_READ_WIDTH_A(9),
+		.C_READ_WIDTH_B(9),
 		.C_SIM_COLLISION_CHECK("ALL"),
 		.C_SINITA_VAL("0"),
 		.C_SINITB_VAL("0"),
@@ -96,12 +96,12 @@ output [15 : 0] doutb;
 		.C_USE_RAMB16BWER_RST_BHV(0),
 		.C_WEA_WIDTH(1),
 		.C_WEB_WIDTH(1),
-		.C_WRITE_DEPTH_A(76800),
-		.C_WRITE_DEPTH_B(76800),
+		.C_WRITE_DEPTH_A(57600),
+		.C_WRITE_DEPTH_B(57600),
 		.C_WRITE_MODE_A("READ_FIRST"),
 		.C_WRITE_MODE_B("READ_FIRST"),
-		.C_WRITE_WIDTH_A(16),
-		.C_WRITE_WIDTH_B(16),
+		.C_WRITE_WIDTH_A(9),
+		.C_WRITE_WIDTH_B(9),
 		.C_XDEVICEFAMILY("virtex5"))
 	inst (
 		.CLKA(clka),
