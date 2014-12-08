@@ -27,7 +27,7 @@ input wire clk,
     );
 	 
 	 parameter device_id = 8'h42; //camera address for writes
-	 parameter rom_locations = 26; 
+	 parameter rom_locations = 30; 
 	 
 	 wire [7:0] write_reg;
 	 wire [7:0] write_data;

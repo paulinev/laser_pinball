@@ -5,30 +5,30 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="par" timeStamp="Mon Dec  8 02:18:32 2014">
+  <application stringID="par" timeStamp="Mon Dec  8 06:17:26 2014">
     <task stringID="PAR_DEVICE_UTILIZATION">
       <section stringID="PAR_DEVICE_UTLIZATION">
-        <item AVAILABLE="32" dataType="int" stringID="PAR_BUFG" value="2"/>
+        <item AVAILABLE="32" dataType="int" stringID="PAR_BUFG" value="5"/>
         <item AVAILABLE="480" dataType="int" stringID="PAR_EXTERNAL_IOB" value="82">
           <item AVAILABLE="82" dataType="int" stringID="PAR_LOC_IOB" value="82"/>
         </item>
-        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_REGISTERS" value="940">
-          <item dataType="int" stringID="PAR_FLIP_FLOPS" value="940"/>
+        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_REGISTERS" value="1910">
+          <item dataType="int" stringID="PAR_FLIP_FLOPS" value="1910"/>
           <item dataType="int" stringID="PAR_LATCHES" value="0"/>
           <item dataType="int" stringID="PAR_LATCH_THRUS" value="0"/>
         </item>
-        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUTS" value="2667"/>
-        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUT_FLIPFLOP_PAIRS" value="2848"/>
+        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUTS" value="3803"/>
+        <item AVAILABLE="28800" dataType="int" stringID="PAR_SLICE_LUT_FLIPFLOP_PAIRS" value="4272"/>
       </section>
     </task>
     <task stringID="PAR_PAR">
       <section stringID="PAR_DESIGN_SUMMARY">
-        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="27 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="26 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_ROUTER" value="35 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_ROUTER" value="35 secs "/>
         <item dataType="int" stringID="PAR_UNROUTES" value="0"/>
         <item dataType="float" stringID="PAR_TIMING_SCORE" value="0.000000"/>
-        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="32 secs "/>
-        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="32 secs "/>
+        <item stringID="PAR_REAL_TIME_COMPLETION_PAR" value="41 secs "/>
+        <item stringID="PAR_CPU_TIME_COMPLETION_PAR" value="41 secs "/>
       </section>
     </task>
     <task stringID="PAR_par">
@@ -36,13 +36,14 @@
       <section stringID="PAR_CLOCK_REPORT">
         <table stringID="PAR_CLOCK_TABLE">
           <row stringID="row" value="1"></row>
+          <row stringID="row" value="2"></row>
         </table>
       </section>
       <section stringID="PAR_PAD_PIN_REPORT"></section>
       <section stringID="PAR_UNROUTES_REPORT">
         <item dataType="int" stringID="PAR_UNROUTED_NETS" value="0"/>
-        <item dataType="int" stringID="PAR_TOTAL_SOURCELESS_NETS" value="14"/>
-        <item dataType="int" stringID="PAR_TOTAL_LOADLESS_NETS" value="19"/>
+        <item dataType="int" stringID="PAR_TOTAL_SOURCELESS_NETS" value="11"/>
+        <item dataType="int" stringID="PAR_TOTAL_LOADLESS_NETS" value="4"/>
       </section>
     </task>
   </application>

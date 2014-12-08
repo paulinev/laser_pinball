@@ -7,8 +7,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |  Check  | Worst Case |  Best Case | Timing |   Timing   
                                             |         |    Slack   | Achievable | Errors |    Score   
 ------------------------------------------------------------------------------------------------------
-  PERIOD analysis for net "clk_50_gen/CLKDV | SETUP   |     8.564ns|    11.436ns|       0|           0
-  _BUF" derived from  NET "USER_CLK_IBUFG"  | HOLD    |     0.257ns|            |       0|           0
+  PERIOD analysis for net "clk_50_gen/CLKDV | SETUP   |     7.237ns|    12.763ns|       0|           0
+  _BUF" derived from  NET "USER_CLK_IBUFG"  | HOLD    |     0.231ns|            |       0|           0
   PERIOD = 10 ns HIGH 50%                   |         |            |            |        |            
 ------------------------------------------------------------------------------------------------------
   NET "USER_CLK_IBUFG" PERIOD = 10 ns HIGH  | N/A     |         N/A|         N/A|     N/A|         N/A
@@ -23,8 +23,8 @@ Derived Constraints for USER_CLK_IBUFG
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|USER_CLK_IBUFG                 |     10.000ns|          N/A|      5.718ns|            0|            0|            0|     54927299|
-| clk_50_gen/CLKDV_BUF          |     20.000ns|     11.436ns|          N/A|            0|            0|     54927299|            0|
+|USER_CLK_IBUFG                 |     10.000ns|          N/A|      6.381ns|            0|            0|            0|     66435266|
+| clk_50_gen/CLKDV_BUF          |     20.000ns|     12.763ns|          N/A|            0|            0|     66435266|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.

@@ -41,13 +41,13 @@ module image_hunt(
 	 reg [3:0] FSM_state = 0;
 	 
 	 //storage for cost function values
-	 reg [15:0] red_cost;
-	 reg [15:0] green_cost;
-	 reg [15:0] blue_cost; 
+	 reg [31:0] red_cost;
+	 reg [31:0] green_cost;
+	 reg [31:0] blue_cost; 
 	 
-	 reg [15:0] red_cost_max;
-	 reg [15:0] green_cost_max;
-	 reg [15:0] blue_cost_max;
+	 reg [31:0] red_cost_max;
+	 reg [31:0] green_cost_max;
+	 reg [31:0] blue_cost_max;
 	 
 	 reg [7:0] block_x = 0;
 	 reg [7:0] block_y = 0; //current image segment
@@ -60,12 +60,10 @@ module image_hunt(
 	 reg start_fetch = 0;
 	 
 	 //pipeline values
-	 reg [8:0] p_1, p_2, p_3, p_4;
 	 
-	 wire [8:0] p_1_red, p_2_red, p_3_red, p_4_red; 
-	 wire [8:0] p_1_green, p_2_green, p_3_green, p_4_green;
-	 wire [8:0] p_1_blue, p_2_blue, p_3_blue, p_4_blue;
-	 
+	 reg[7:0] super_pixel_red;
+	 reg[7:0] super_pixel_green;
+	 reg[7:0] super_pixel_blue;
 	 
 	 wire load_done;
 	 
@@ -101,63 +99,38 @@ module image_hunt(
 		 start_fetch <= 0;
 		 end
 		 
-		 3: begin //process data
+		 3: begin //process data //I think I should limit the number of cascaded adds?
 		 FSM_state <= 4;
-		 p_1 <= pixel_0;
-		 p_2 <= pixel_1;
-		 p_3 <= pixel_2;
-		 p_4 <= pixel_3;
+		 super_pixel_red <= pixel_0[8:6]+pixel_1[8:6]+pixel_2[8:6]+pixel_3[8:6]
+		 +pixel_4[8:6]+pixel_5[8:6]+pixel_6[8:6]+pixel_7[8:6]
+		 +pixel_8[8:6]+pixel_9[8:6]+pixel_a[8:6]+pixel_b[8:6]
+		 +pixel_c[8:6]+pixel_d[8:6]+pixel_e[8:6]+pixel_f[8:6];
+		 
+		 super_pixel_green <= pixel_0[5:3]+pixel_1[5:3]+pixel_2[5:3]+pixel_3[5:3]
+		 +pixel_4[5:3]+pixel_5[5:3]+pixel_6[5:3]+pixel_7[5:3]
+		 +pixel_8[5:3]+pixel_9[5:3]+pixel_a[5:3]+pixel_b[5:3]
+		 +pixel_c[5:3]+pixel_d[5:3]+pixel_e[5:3]+pixel_f[5:3];
+		 
+		 super_pixel_blue <= pixel_0[2:0]+pixel_1[2:0]+pixel_2[2:0]+pixel_3[2:0]
+		 +pixel_4[2:0]+pixel_5[2:0]+pixel_6[2:0]+pixel_7[2:0] 
+		 +pixel_8[2:0]+pixel_9[2:0]+pixel_a[2:0]+pixel_b[2:0]
+		 +pixel_c[2:0]+pixel_d[2:0]+pixel_e[2:0]+pixel_f[2:0];
 		 end
 		 
 		 4: begin //process data
 		 FSM_state <= 5;
+		 red_cost <= ((super_pixel_red>super_pixel_green) && (super_pixel_red>super_pixel_blue)) ?
+		 (super_pixel_red-super_pixel_green)*(super_pixel_red-super_pixel_blue) : 0;
 		 
-		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red;
-		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green;
-		 blue_cost <= p_1_blue + p_2_blue + p_3_blue + p_4_blue;
+		 green_cost <= ((super_pixel_green>super_pixel_red) && (super_pixel_green>super_pixel_blue)) ?
+		 (super_pixel_green-super_pixel_red)*(super_pixel_green-super_pixel_blue) : 0;
 		 
-		 p_1 <= pixel_4;
-		 p_2 <= pixel_5;
-		 p_3 <= pixel_6;
-		 p_4 <= pixel_7;
+		 blue_cost <= ((super_pixel_blue>super_pixel_green) && (super_pixel_blue>super_pixel_red)) ?
+		 (super_pixel_blue-super_pixel_red)*(super_pixel_blue-super_pixel_green) : 0;
 		 end
-		 
-		 5: begin //process data
-		 FSM_state <= 6;
-		 
-		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red + red_cost;
-		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green + green_cost;
-		 blue_cost <= p_1_blue + p_2_blue + p_3_blue + p_4_blue + blue_cost;
-		 
-		 p_1 <= pixel_8;
-		 p_2 <= pixel_9;
-		 p_3 <= pixel_a;
-		 p_4 <= pixel_b;
-		 end
-		 
-		 6: begin //process data
-		 FSM_state <= 7;
-		 
-		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red + red_cost;
-		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green + green_cost;
-		 blue_cost <= p_1_blue + p_2_blue + p_3_blue + p_4_blue + blue_cost;
-		 
-		 p_1 <= pixel_c;
-		 p_2 <= pixel_d;
-		 p_3 <= pixel_e;
-		 p_4 <= pixel_f;
-		 end
-		 
-		 7: begin //process data
-		 FSM_state <= 8;
-		 
-		 red_cost <= p_1_red + p_2_red + p_3_red + p_4_red + red_cost;
-		 green_cost <= p_1_green +p_2_green + p_3_green + p_4_green + green_cost;
-		 blue_cost <= p_1_blue + p_2_blue + p_3_blue + p_4_blue + blue_cost;
-		 end
-		 
-		 8: begin //process results of block
-		 FSM_state <= (block_y >= block_max) && (block_x >= block_max) ? 9 : 1;
+		 		 
+		 5: begin //process results of block
+		 FSM_state <= (block_y >= block_max) && (block_x >= block_max) ? 6 : 1;
 		 
 		 red_cost_max <= (red_cost > red_cost_max) ? red_cost : red_cost_max;
 		 green_cost_max <= (green_cost > green_cost_max) ? green_cost : green_cost_max;
@@ -182,7 +155,7 @@ module image_hunt(
 		 blue_cost <= 0;
 		 end
 		 
-		 9:begin //end state
+		 6:begin //end state
 		 FSM_state <= 0;
 		 done <= 1;
 		 end
@@ -219,33 +192,5 @@ module image_hunt(
     );
 
 
-	pixel_cost_function cost_a ( 
-    .pixel_data(p_1), 
-    .pixel_red_cost(p_1_red), 
-    .pixel_green_cost(p_1_green), 
-    .pixel_blue_cost(p_1_blue)
-    );
-	 
-	 
-	pixel_cost_function cost_b ( 
-    .pixel_data(p_2), 
-    .pixel_red_cost(p_2_red), 
-    .pixel_green_cost(p_2_green), 
-    .pixel_blue_cost(p_2_blue)
-    );
-	 
-	 pixel_cost_function cost_c ( 
-    .pixel_data(p_3), 
-    .pixel_red_cost(p_3_red), 
-    .pixel_green_cost(p_3_green), 
-    .pixel_blue_cost(p_3_blue)
-    );
-	 
-	 pixel_cost_function cost_d ( 
-    .pixel_data(p_4), 
-    .pixel_red_cost(p_4_red), 
-    .pixel_green_cost(p_4_green), 
-    .pixel_blue_cost(p_4_blue)
-    );
-
+	
 		endmodule

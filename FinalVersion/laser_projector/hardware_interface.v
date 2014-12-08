@@ -47,7 +47,7 @@ module hardware_interface(
 	 
 	 output wire HDR1_2, HDR1_4, HDR1_6, HDR1_8;
 	 output wire HDR1_10, HDR1_12, HDR1_14, HDR1_16; 
-	 output wire HDR1_18, HDR1_20, HDR1_22, HDR1_24, HDR1_26, HDR1_28;
+	 output wire HDR1_18, HDR1_20, HDR1_28;
 	 output wire HDR1_30, HDR1_32, HDR1_34, HDR1_36, HDR1_38;
 	 
 	 output wire HDR1_40, HDR1_42; //camera xclk and reset;
@@ -71,6 +71,9 @@ module hardware_interface(
 	 inout wire IIC_SCL_VIDEO;
 	 inout wire IIC_SDA_MAIN, IIC_SCL_MAIN;
 	 
+	 output wire HDR1_22, HDR1_24;
+	 input wire HDR1_26;
+	 
 	 //wire clk;
 	 wire [2:0] laser_rgb;
 	 wire dac_sclk;
@@ -92,6 +95,18 @@ module hardware_interface(
 	 wire camera_href;
 	 
 	 wire user_reset;
+	 
+	 //SNES controller buttons
+	 wire snes_R, snes_L, snes_A, snes_B, snes_N;
+	 wire snes_E, snes_S, snes_W, snes_START, snes_SELECT;
+	 wire snes_X, snes_Y;
+	 wire snes_latch;
+	 wire snes_dout;
+	 wire snes_clk;
+	 
+	 assign HDR1_22 = snes_latch;
+	 assign HDR1_24 = snes_clk; 
+	 assign snes_dout = HDR1_26;
 	 
 	 //inputs from camera
 	 assign camera_dout = {HDR1_50, HDR1_52, HDR1_54, HDR1_56, HDR1_58, HDR1_60, HDR1_62, HDR1_64};
@@ -148,7 +163,7 @@ module hardware_interface(
     .LOCKED_OUT()
     );
 	 
-	 
+	
 	 laser_projector_full best_hazor (
     .clk(clk_50), 
     .reset(reset), 
@@ -167,7 +182,7 @@ module hardware_interface(
     );
 	 
 	
-	 /*
+	
 	 camera_full camera_main (
     .clk_50(clk_50), 
     .camera_pclk(camera_pclk), 
@@ -191,7 +206,7 @@ module hardware_interface(
     .beta_addr(), 
     .beta_din()
     );
-	 */
+	
 	 
 	 
 	 reset_controller gen_sys_reset (
@@ -211,6 +226,28 @@ module hardware_interface(
 	 assign user_reset = GPIO_SW_C;
 	 
 	  
+	 nes_interface nes_controller (
+    .clk_50(clk_50), 
+    .controller_dout(snes_dout), 
+    .controller_clk(snes_clk), 
+    .controller_latch(snes_latch), 
+    .updated(), 
+    .button_A(snes_A), 
+    .button_B(snes_B), 
+    .button_X(snes_X), 
+    .button_Y(snes_Y), 
+    .button_L(snes_L), 
+    .button_R(snes_R), 
+    .button_N(snes_N), 
+    .button_E(snes_E), 
+    .button_S(snes_S), 
+    .button_W(snes_W), 
+    .button_START(snes_START), 
+    .button_SELECT(snes_SELECT)
+    );
+
+	 
+	 
 	 
 	 debounce db_2 (
     .reset(reset), 

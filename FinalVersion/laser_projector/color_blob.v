@@ -29,7 +29,7 @@ module color_blob(
 	output reg [8:0] pixel
     );
 	 
-	parameter blob_size = 4; 
+	parameter blob_size = 8; 
 	
 	
 	always@(posedge clk)

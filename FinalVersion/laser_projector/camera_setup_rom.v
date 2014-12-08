@@ -53,12 +53,12 @@ module camera_setup_rom(
 	//begin magic internet color settings
 	4: begin 
 	register <= 8'h4f;
-	value <= 8'h80;
+	value <= 8'hb3;
 	end
 	
 	5: begin 
 	register <= 8'h50;
-	value <= 8'h80;
+	value <= 8'h0b3;
 	end
 	
 	6: begin 
@@ -68,17 +68,17 @@ module camera_setup_rom(
 	
 	7: begin 
 	register <= 8'h52;
-	value <= 8'h22;
+	value <= 8'h3d;
 	end
 	
 	8: begin 
 	register <= 8'h53;
-	value <= 8'h5e;
+	value <= 8'ha7;
 	end
 	
 	9: begin 
 	register <= 8'h54;
-	value <= 8'h80;
+	value <= 8'he4;
 	end
 	
 	10: begin 
@@ -159,6 +159,26 @@ module camera_setup_rom(
 	25: begin  //internet magic
 	register <= 8'hb0;
 	value <= 8'h84;
+	end
+	
+	26: begin  //internet magic
+	register <= 8'hb1;
+	value <= 8'h0c;
+	end
+	
+	27: begin  //internet magic
+	register <= 8'hb2;
+	value <= 8'h0e;
+	end
+	
+	28: begin  //internet magic
+	register <= 8'hb3;
+	value <= 8'h82;
+	end
+	
+	29: begin  //internet magic
+	register <= 8'hb4;
+	value <= 8'h0a;
 	end
 	
 	default: begin //nice values
