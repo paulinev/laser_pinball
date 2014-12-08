@@ -20,8 +20,8 @@
 
 | Define parameters
 NEXT_SPRITE_OFFSET = 0x04
-TIMER_VALUE = 0x1388
-|TIMER_VALUE = 0x01
+|TIMER_VALUE = 0x1388
+TIMER_VALUE = 0x01
 
 | External address offsets
 SPI_CONFIG = 0x10
