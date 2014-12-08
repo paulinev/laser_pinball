@@ -20,6 +20,15 @@
 | r18: byte offset sprite ID
 |========================================================
 
+t0 = R19
+t1 = R20
+t2 = R21
+t3 = R22
+t4 = R23
+t5 = R24
+t6 = R25
+t7 = r26
+
 | Define parameters
 
 |TIMER_VALUE = 0x8000   | 1.526 kHz
@@ -351,6 +360,85 @@ update_pos:
   RTN()
 
 detect_collision:
+  PUSH(R8)              | save offset into instance list
+  LD(pinball_x,R13)
+  LD(pinball_y,R14)
+d_outer_loop:
+  ADDC(R8,NEXT_SPRITE_OFFSET,R8)    | point R8 at the next sprite in the list
+  LD(R8,0,t7)          | load next sprite id
+  BNE(t7, detect_continue)
+    CMOVE(0x0,R0)
+    BR(end_detect)
+detect_continue:
+|  CMPEQC(t7, 0x2, R0)
+|  BNE(R0, detect_circle)      | we're testing a circle; that's pretty nice and easy
+|  LD(R8,POSITION_OFFSET,t0)
+  SHLC(R20,0x10,t0)    | R22 = O_y
+  SRAC(t0,0x10,t0)
+  SUB(R14,t0,t0)
+  LD(R8,POSITION_OFFSET,t1)
+  SRAC(t1,0x10,t1)  | R21 = O_x
+  SUB(R13,t1,t1)
+  SHLC(R19,0x5,R19)    | save R19 as an offset into the table
+  LD(R19,sprite_lookup,R11)     | get face offset coordinates
+  BEQ(R11, d_outer_loop)      | if NULL, look at the next sprite
+
+end_detect:
+  POP(R8)
+  RTN()
+
+
+detect_one:
+  |  argument order: Xx, Xy, Radius_squared, Px, Py, Dx, Dy, L
+  |  BP - 12 = L
+  |  BP - 16 = Dy
+  |  BP - 20 = Dx
+  |  BP - 24 = Py
+  |  BP - 28 = Px
+  |  BP - 32 = Radius_squared
+  |  BP - 36 = Xy
+  |  BP - 40 = Xx
+  PUSH(LP)
+  PUSH(BP)
+  MOVE(SP,BP)
+  PUSH(R1)
+  PUSH(R2)
+  PUSH(R3)
+  LD(BP,-40,R0)
+  LD(BP,-28,R1)
+  SUB(R0,R1,R0)
+  LD(BP,-36,R1)
+  LD(BP,-24,R2)
+  SUB(R1,R2,R1)
+  LD(BP,-20,R2)
+  MUL(R2,R0,R2)
+  LD(BP,-16,R3)
+  MUL(R3,R1,R3)
+  ADD(R2,R3,R2)
+  MUL(R0,R0,R0)
+  MUL(R1,R1,R1)
+  ADD(R0,R1,R0)
+  SUB(R0,R2,R0) | R0 has distance from line
+  SHRC(R2,31,R1)
+  BT(R1,detect_one_false)
+  LD(BP,-12,R1)
+  CMPLT(R1,R2,R1)
+  BT(R1,detect_one_false)
+  LD(BP,-32,R1)
+  CMPLT(R1, R0,R1)
+  BT(R1,detect_one_false)
+|  call(update_velocity)
+  CMOVE(1,R0)
+  BR(detect_one_exit)
+detect_one_false:
+  MOVE(R31,R0)
+detect_one_exit:
+  POP(R3)
+  POP(R2)
+  POP(R1) 
+  MOVE(BP,SP)
+  POP(BP)
+  POP(LP)
   RTN()
 
 update_velocity:

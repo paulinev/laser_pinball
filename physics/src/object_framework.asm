@@ -21,6 +21,8 @@
 POSITION_OFFSET = 0x04
 COLOR_OFFSET = 0x10
 NEXT_SPRITE_OFFSET = 0x14
+L_PADDLE_UPDATE = 0xF8
+R_PADDLE_UPDATE = 0xFC
 
 . = 0
 BR(start)
@@ -180,6 +182,11 @@ JMP(R9)                     | return to update function
 
 |+========
 l_flipper:
+| Read input port for flipper trigger
+| If trigger is on:
+|	Load in last offset from memory (0x30000 + L_PADDLE_UPDATE)
+|	Update (increase x, decrease y)	
+
 JMP(R9)                     | return to update function
 
 |+========
