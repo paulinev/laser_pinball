@@ -27,7 +27,8 @@
 
 | Define parameters
 NEXT_SPRITE_OFFSET = 0x04
-TIMER_VALUE = 0x0D05
+|TIMER_VALUE = 0x0D05		| 15kHz
+TIMER_VALUE = 0x09C4		| 20kHz
 |TIMER_VALUE = 0x01		| DEBUG
 
 | External address offsets
@@ -255,32 +256,30 @@ get_next_end:
 	RTN()
 
 
+| Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
 sprite_lookup:
 . = sprite_lookup+0x100
-| Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
-LONG(17) 				| h100 x h100 square with 16 (+1) points (four per side)
-LONG(0x04000000) 			| 16 bits of x offset, 16 bits of y offset (sign extended!)
-LONG(0x4)
-
-LONG(0x00000400)
-LONG(0x4)
-
-LONG(0xFC000000)
-LONG(0x4)
-
-LONG(0x0000FC00)
-LONG(0x4)
+LONG(7) 				| a four-pointed circle for the ball: 1
+LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
+LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
+LONG(0x00100000), LONG(0x06)
+LONG(0x00000010), LONG(0x06)
+LONG(0xFF010000), LONG(0x06)
+LONG(0x0000FF01), LONG(0x06)
+LONG(0x00000000), LONG(STALL_TIME)
 
 . = sprite_lookup+0x200
-LONG(6)					| a five-pointed circle for the ball
-LONG(0x00F000B0)
-LONG(0xFDB00120)
-LONG(0xFC900000)
-LONG(0xFDB0FC90)
-LONG(0x00F0FDB0)
+LONG(7)					| arbitrary circle (three times bigger): 2
+LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
+LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
+LONG(0x00100000), LONG(0x18)
+LONG(0x00000010), LONG(0x18)
+LONG(0xFF010000), LONG(0x18)
+LONG(0x0000FF01), LONG(0x18)
+LONG(0x00000000), LONG(STALL_TIME)
 
 . = sprite_lookup+0x300
-|. = 0x400				| the frame outline
+|. = 0x400				| the frame outline: 3
 LONG(26)
 LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
@@ -310,7 +309,7 @@ LONG(0x0000FFD0), LONG(0x20)
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser off
 
 . = sprite_lookup+0x400
-|. = 0x500				| left triangle bumper
+|. = 0x500				| left triangle bumper: 4
 LONG(8)
 LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
@@ -322,7 +321,7 @@ LONG(0x0000FFE8), LONG(0x10)
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser off
 
 . = sprite_lookup+0x500
-|.= 0x600				| right triangle bumper
+|.= 0x600				| right triangle bumper: 5
 LONG(8)
 LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
@@ -332,6 +331,39 @@ LONG(0xFFE20000), LONG(0x10)
 LONG(0x00000000), LONG(STALL_TIME)
 LONG(0x001EFFE8), LONG(0x10)
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser off
+
+. = sprite_lookup+0x600			| left bumpery thing: 6
+LONG(6)
+LONG(0x00000000), LONG(TRAVEL_TIME)
+LONG(0x00000000), LONG(STALL_TIME)
+LONG(0x00000022), LONG(0x10)
+LONG(0x00000000), LONG(STALL_TIME)
+LONG(0x00220008), LONG(0x10)
+LONG(0x00000000), LONG(STALL_TIME)
+
+. = sprite_lookup+0x700
+LONG(6)					| right bumpery thing: 7
+LONG(0x00000000), LONG(TRAVEL_TIME)
+LONG(0x00000000), LONG(STALL_TIME)
+LONG(0x00000022), LONG(0x10)
+LONG(0x00000000), LONG(STALL_TIME)
+LONG(0xFFDE0008), LONG(0x10)
+LONG(0x00000000), LONG(STALL_TIME)
+
+. = sprite_lookup+0x800
+LONG(4)					| left paddle: 8
+LONG(0x00000000), LONG(TRAVEL_TIME)
+LONG(0x00000000), LONG(STALL_TIME)
+LONG(0x00180008), LONG(0x10)
+LONG(0x00000000), LONG(STALL_TIME)
+
+. = sprite_lookup+0x900
+LONG(4)					| left paddle: 9
+LONG(0x00000000), LONG(TRAVEL_TIME)
+LONG(0x00000000), LONG(STALL_TIME)
+LONG(0xFFE80008), LONG(0x10)
+LONG(0x00000000), LONG(STALL_TIME)
+
 
 stack:
 STORAGE(128)
