@@ -53,8 +53,8 @@ SHRC(R10, 16, R10)
 
 CMOVE(0x3,R1)
 CMOVE(0,R2)
-CMOVE(0x7,R3)
-CMOVE(0x9,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x3,R5)
 CALL(build_object)	| bounding box: cyan
 
@@ -64,8 +64,8 @@ SHLC(R2,12,R2)
 CMOVE(0x01E0,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
-CMOVE(0x9,R3)
-CMOVE(0x1,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x5,R5)
 CALL(build_object)	| arbitrary circle: purple
 
@@ -75,8 +75,8 @@ SHLC(R2,12,R2)
 CMOVE(0x0400,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
-CMOVE(0x9,R3)
-CMOVE(0x1,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x4,R5)
 CALL(build_object)	| arbitrary circle (puck): red
 
@@ -86,8 +86,8 @@ SHLC(R2,12,R2)
 CMOVE(0x07E0,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
-CMOVE(0x9,R3)
-CMOVE(0x1,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x2,R5)
 CALL(build_object)	| left bumper: green
 
@@ -97,8 +97,8 @@ SHLC(R2,12,R2)
 CMOVE(0x07E0,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
-CMOVE(0x9,R3)
-CMOVE(0x1,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x1,R5)
 CALL(build_object)	| left slide thing: blue
 
@@ -108,8 +108,8 @@ SHLC(R2,12,R2)
 CMOVE(0x0A80,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
-CMOVE(0x9,R3)
-CMOVE(0x1,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x7,R5)
 CALL(build_object)	| left paddle: white
 
@@ -119,8 +119,8 @@ SHLC(R2,12,R2)
 CMOVE(0x07E0,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
-CMOVE(0x9,R3)
-CMOVE(0x1,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x2,R5)      	
 CALL(build_object)	| right bumper: green
 
@@ -130,8 +130,8 @@ SHLC(R2,12,R2)
 CMOVE(0x07E0,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
-CMOVE(0x9,R3)
-CMOVE(0x1,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x1,R5)
 CALL(build_object)	| right slide thing: blue
 
@@ -141,8 +141,8 @@ SHLC(R2,12,R2)
 CMOVE(0x0A80,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
-CMOVE(0x9,R3)
-CMOVE(0x1,R4)
+CMOVE(0x0,R3)
+CMOVE(0x0,R4)
 CMOVE(0x2,R5)
 CALL(build_object)	| right paddle: white
 
@@ -197,35 +197,35 @@ POP(LP)
 JMP(R9)                     	| return to update function
 
 |+========
-r_flipper:
-JMP(R9)                     | return to update function
-
-|+========
-l_flipper:
-JMP(R9)                     | return to update function
-
-|+========
-tri_bump:
-JMP(R9)                     | return to update function
-
-|+========
 circ_bump:
 JMP(R9)                     | return to update function
 
 |+========
-board:
+board_outline:
 JMP(R9)                     | return to update function
 
 |+========
-fixme_1:
+l_tri_bump:
 JMP(R9)                     | return to update function
 
 |+========
-fixme_2:
+r_tri_bump:
 JMP(R9)                     | return to update function
 
 |+========
-fixme_3:
+l_slide:
+JMP(R9)                     | return to update function
+
+|+========
+r_slide:
+JMP(R9)                     | return to update function
+
+|+========
+l_paddle:
+JMP(R9)                     | return to update function
+
+|+========
+r_paddle:
 JMP(R9)                     | return to update function
 
 |========================================================
@@ -344,57 +344,31 @@ update_velocity:
 
 | Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
 sprite_lookup:
-. = sprite_lookup+0x100
-LONG(7) 				| a four-pointed circle for the ball: 1
-LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
-LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
-LONG(0x00100000), LONG(0x06)
-LONG(0x00000010), LONG(0x06)
-LONG(0xFFF00000), LONG(0x06)
-LONG(0x0000FFF0), LONG(0x06)
-LONG(0x00000000), LONG(STALL_TIME)
+. = sprite_lookup+0x20
+LONG(0x00004000)    | RADIUS^2
+LONG(0x00000000)    | null termination of segments
 
-. = sprite_lookup+0x200
-LONG(7)					| arbitrary circle (three times bigger): 2
-LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
-LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
-LONG(0x00100000), LONG(0x18)
-LONG(0x00000010), LONG(0x18)
-LONG(0xFFF00000), LONG(0x18)
-LONG(0x0000FFF0), LONG(0x18)
-LONG(0x00000000), LONG(STALL_TIME)
+. = sprite_lookup+0x40
+					          | arbitrary circle (three times bigger): 2
+LONG(0x00009000)    | RADIUS^2
+LONG(0x00000000)
 
-. = sprite_lookup+0x300
-|. = 0x400				| the frame outline: 3
-LONG(26)
-LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
-LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
-LONG(0x00500000), LONG(0x20)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x00000030), LONG(0x20)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFD80018), LONG(0x8)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x00280018), LONG(0x8)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x00000030), LONG(0x12)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFD80012), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFB00000), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFD8FFEE), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x0000FFD0), LONG(0x12)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x0028FFE8), LONG(0x8)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFD8FFE8), LONG(0x8)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x0000FFD0), LONG(0x20)
-LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser off
+. = sprite_lookup+0x60        | the frame outline: 3
+LONG(0x0A000000)
+LONG(0x00000600)
+LONG(0xFEC000C0)     | right side
+LONG(0x014000C0)     | pointy bit
+LONG(0x00000360)
+LONG(0xFBA00120)      |*
+LONG(0xFEC00000)      | bottom bit
+LONG(0xFBA0FFE0)      |*
+LONG(0x0000FCA0)
+LONG(0x0140FF40)      | left side
+LONG(0xFEC0FF40)      | left side
+LONG(0x0000FA00)
+LONG(0x00000000)      | NULL means end of sprite!
 
-. = sprite_lookup+0x400
+. = sprite_lookup+0x80
 |. = 0x500				| left triangle bumper: 4
 LONG(8)
 LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
@@ -406,7 +380,7 @@ LONG(0x00000000), LONG(STALL_TIME)
 LONG(0x0000FFE8), LONG(0x10)
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser off
 
-. = sprite_lookup+0x500
+. = sprite_lookup+0xA0
 |.= 0x600				| right triangle bumper: 5
 LONG(8)
 LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
@@ -418,7 +392,7 @@ LONG(0x00000000), LONG(STALL_TIME)
 LONG(0x001EFFE8), LONG(0x10)
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser off
 
-. = sprite_lookup+0x600			| left bumpery thing: 6
+. = sprite_lookup+0xC0			| left bumpery thing: 6
 LONG(6)
 LONG(0x00000000), LONG(TRAVEL_TIME)
 LONG(0x00000000), LONG(STALL_TIME)
@@ -427,7 +401,7 @@ LONG(0x00000000), LONG(STALL_TIME)
 LONG(0x00220008), LONG(0x10)
 LONG(0x00000000), LONG(STALL_TIME)
 
-. = sprite_lookup+0x700
+. = sprite_lookup+0xE0
 LONG(6)					| right bumpery thing: 7
 LONG(0x00000000), LONG(TRAVEL_TIME)
 LONG(0x00000000), LONG(STALL_TIME)
@@ -436,14 +410,14 @@ LONG(0x00000000), LONG(STALL_TIME)
 LONG(0xFFDE0008), LONG(0x10)
 LONG(0x00000000), LONG(STALL_TIME)
 
-. = sprite_lookup+0x800
+. = sprite_lookup+0x100
 LONG(4)					| left paddle: 8
 LONG(0x00000000), LONG(TRAVEL_TIME)
 LONG(0x00000000), LONG(STALL_TIME)
 LONG(0x00180008), LONG(0x10)
 LONG(0x00000000), LONG(STALL_TIME)
 
-. = sprite_lookup+0x900
+. = sprite_lookup+0x120
 LONG(4)					| right paddle: 9
 LONG(0x00000000), LONG(TRAVEL_TIME)
 LONG(0x00000000), LONG(STALL_TIME)
