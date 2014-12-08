@@ -134,7 +134,8 @@ module hardware_interface(
 	 assign dip_sw = 	{GPIO_DIP_SW8, GPIO_DIP_SW7, GPIO_DIP_SW6, GPIO_DIP_SW5,
 							GPIO_DIP_SW4, GPIO_DIP_SW3, GPIO_DIP_SW2, GPIO_DIP_SW1};	 
 	 assign {GPIO_LED_7, GPIO_LED_6, GPIO_LED_5, GPIO_LED_4, 
-							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 8'hFF;
+							GPIO_LED_3, GPIO_LED_2, GPIO_LED_1, GPIO_LED_0} = 
+							{snes_R, snes_L, snes_A, snes_B, snes_N, snes_E, snes_S, snes_W};
 							//debug_led;
 	 
 	 assign DVI_RESET_B = ~reset; //keep reset high
@@ -150,8 +151,6 @@ module hardware_interface(
 		 
 	 //wires for connections between systems
 	 
-	 wire paddle_l; //button for left paddle
-	 wire paddle_r; //button for right paddle
 	 wire camera_start;
 	 wire process_frame_start;
 		 
@@ -168,8 +167,8 @@ module hardware_interface(
     .clk(clk_50), 
     .reset(reset), 
     .dip_sw(dip_sw), 
-    .paddle_l(paddle_l),  
-    .paddle_r(paddle_r), 
+    .paddle_l(snes_L),  
+    .paddle_r(snes_R), 
     .laser_rgb(laser_rgb), 
 	 .camera_addr(32'b0),
 	 .camera_dout(32'b0),
@@ -206,7 +205,7 @@ module hardware_interface(
     .beta_addr(), 
     .beta_din()
     );
-	
+	*/
 	 
 	 
 	 reset_controller gen_sys_reset (
@@ -215,14 +214,6 @@ module hardware_interface(
     .reset(reset)
     );
 	 
-	 /*
-	 debounce db_1 (
-    .reset(0), 
-    .clock(clk_50), 
-    .noisy(GPIO_SW_C), 
-    .clean(user_reset)
-    );
-	 */ 
 	 assign user_reset = GPIO_SW_C;
 	 
 	  
@@ -246,8 +237,6 @@ module hardware_interface(
     .button_SELECT(snes_SELECT)
     );
 
-	 
-	 
 	 
 	 debounce db_2 (
     .reset(reset), 
