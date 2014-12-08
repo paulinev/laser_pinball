@@ -43,7 +43,29 @@ CMOVE(0,R2)
 CMOVE(0x7,R3)
 CMOVE(0x9,R4)
 CMOVE(0x3,R5)
-CALL(build_object)
+CALL(build_object)	| bounding box: cyan
+
+CMOVE(0x2,R1)
+CMOVE(0x01E0,R2)
+SHLC(R2,12,R2)
+CMOVE(0x01E0,R0)
+AND(R0,R10,R0)
+ADD(R0,R2,R2)
+CMOVE(0x9,R3)
+CMOVE(0x1,R4)
+CMOVE(0x5,R5)
+CALL(build_object)	| arbitrary circle: purple
+
+CMOVE(0x1,R1)
+CMOVE(0x0600,R2)
+SHLC(R2,12,R2)
+CMOVE(0x0400,R0)
+AND(R0,R10,R0)
+ADD(R0,R2,R2)
+CMOVE(0x9,R3)
+CMOVE(0x1,R4)
+CMOVE(0x4,R5)
+CALL(build_object)	| arbitrary circle (puck): red
 
 CMOVE(0x4,R1)
 CMOVE(0x01E0,R2)
@@ -54,7 +76,29 @@ ADD(R0,R2,R2)
 CMOVE(0x9,R3)
 CMOVE(0x1,R4)
 CMOVE(0x2,R5)
-CALL(build_object)
+CALL(build_object)	| left bumper: green
+
+CMOVE(0x6,R1)
+CMOVE(0x001E,R2)
+SHLC(R2,12,R2)
+CMOVE(0x07E0,R0)
+AND(R0,R10,R0)
+ADD(R0,R2,R2)
+CMOVE(0x9,R3)
+CMOVE(0x1,R4)
+CMOVE(0x1,R5)
+CALL(build_object)	| left slide thing: blue
+
+CMOVE(0x8,R1)
+CMOVE(0x023E,R2)
+SHLC(R2,12,R2)
+CMOVE(0x0A80,R0)
+AND(R0,R10,R0)
+ADD(R0,R2,R2)
+CMOVE(0x9,R3)
+CMOVE(0x1,R4)
+CMOVE(0x7,R5)
+CALL(build_object)	| left paddle: white
 
 CMOVE(0x5,R1)
 CMOVE(0x0820,R2)
@@ -64,8 +108,30 @@ AND(R0,R10,R0)
 ADD(R0,R2,R2)
 CMOVE(0x9,R3)
 CMOVE(0x1,R4)
-CMOVE(0x2,R5)       | green
-CALL(build_object)
+CMOVE(0x2,R5)      	| green
+CALL(build_object)	| right bumper
+
+CMOVE(0x7,R1)
+CMOVE(0x09E2,R2)
+SHLC(R2,12,R2)
+CMOVE(0x07E0,R0)
+AND(R0,R10,R0)
+ADD(R0,R2,R2)
+CMOVE(0x9,R3)
+CMOVE(0x1,R4)
+CMOVE(0x1,R5)
+CALL(build_object)	| right slide thing: blue
+
+CMOVE(0x9,R1)
+CMOVE(0x07C2,R2)
+SHLC(R2,12,R2)
+CMOVE(0x0A80,R0)
+AND(R0,R10,R0)
+ADD(R0,R2,R2)
+CMOVE(0x9,R3)
+CMOVE(0x1,R4)
+CMOVE(0x2,R5)
+CALL(build_object)	| right paddle: white
 
 loop:
   CALL(update)
