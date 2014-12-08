@@ -31,8 +31,8 @@ t7 = r26
 
 | Define parameters
 
-|TIMER_VALUE = 0x8000   | 1.526 kHz
-TIMER_VALUE = 0x1       | DEBUG
+TIMER_VALUE = 0x8000   | 1.526 kHz
+|TIMER_VALUE = 0x1       | DEBUG
 
 GRAV_FRACT = 0xC        | .75 pixels/second^2 left shifted by a byte
 FRACT_SHIFT = 0x8        | otherwise known as 3/4
@@ -178,7 +178,7 @@ scan_rbump:
   BEQ(R20, scan_lbump)
     CMOVE(0x1,r_bump)
 
-scan_rbump:
+scan_lbump:
   CMOVE(0x0,l_bump)
   ANDC(R0,0x2,R20)
   BEQ(R20, scan_up)
@@ -354,6 +354,7 @@ write_end:
 |***********
 
 build_object:
+.breakpoint
   LD(count, R0)
   ADDC(R0,1,R0)                 | increment the count for next time
   ST(R0, count)                 | store the new count back in memory
@@ -391,8 +392,8 @@ set_timer:
 	
 wait_timer:
 	LD(r11, TIMER_OVERFLOW, r12)
-	BNE(r12, wait_timer)			| DEBUG
-|	BEQ(r12, wait_timer) 			| flag should be set when timer is done
+|	BNE(r12, wait_timer)			| DEBUG
+	BEQ(r12, wait_timer) 			| flag should be set when timer is done
 	CMOVE(0x0, r12) 				| clear flag
 	ST(r12, TIMER_OVERFLOW, r11)
 	RTN()
@@ -628,7 +629,7 @@ LONG(0xFFE8FFF8)
 stack:
 STORAGE(128)
 
-. = 0x10000
-LONG(0x4)
-. = 0x400000
-LONG(0x1EEB)
+|. = 0x10000
+|LONG(0x4)
+|. = 0x400000
+|LONG(0x1EEB)
