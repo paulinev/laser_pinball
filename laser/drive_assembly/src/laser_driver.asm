@@ -42,7 +42,7 @@ TIMER_OVERFLOW = 0x2C
 SHARED_MEM_WRITE_STATUS = 0x100
 SHARED_MEM_READ_STATUS = 0x101
 SWITCHES = 0x00
-STALL_TIME = 0x08		| DEBUG
+STALL_TIME = 0x04		| DEBUG
 TRAVEL_TIME = 0x16		| DEBUG
 SCALING_FACTOR = 0x0      	| full scale (DEBUG)
 |SCALING_FACTOR = 0x1      	| half scale (DEBUG)
@@ -172,11 +172,11 @@ go_to_point:
 	ORC(r3, 0b01000, r7) 			| Store CS & RGB data in r7
 	CMOVE(0b0011, r10) 			| Store config data (1) in r10
 	SHLC(r10, 12, r10) 			| Shift left to bit 15
-	ADD(r10, r17, r10) 			| r10 now contains config data for write to DACA
+	OR(r10, r17, r10) 			| r10 now contains config data for write to DACA
 	
-	CMOVE(0b1011, r11) 			| Store config data (2) in r11
+	CMOVE(0b01011, r11) 			| Store config data (2) in r11
 	SHLC(r11, 12, r11) 			| Shift left to bit 15
-	ADD(r11, r18, r11) 			| r11 now contains config data for write to DACB
+	OR(r11, r18, r11) 			| r11 now contains config data for write to DACB
 	.breakpoint
 	CMOVE(0x01, r8) 			| put SPI address in r8
 	SHLC(r8, 16, r8)
@@ -259,21 +259,9 @@ get_next_end:
 | Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
 sprite_lookup:
 . = sprite_lookup+0x100
-LONG(19) 				| a four-pointed circle for the ball: 1
+LONG(7) 				| a four-pointed circle for the ball: 1
 LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
 LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
-LONG(0x00100000), LONG(0x08)
-LONG(0x00000010), LONG(0x08)
-LONG(0xFFF00000), LONG(0x08)
-LONG(0x0000FFF0), LONG(0x08)
-LONG(0x00100000), LONG(0x08)
-LONG(0x00000010), LONG(0x08)
-LONG(0xFFF00000), LONG(0x08)
-LONG(0x0000FFF0), LONG(0x08)
-LONG(0x00100000), LONG(0x08)
-LONG(0x00000010), LONG(0x08)
-LONG(0xFFF00000), LONG(0x08)
-LONG(0x0000FFF0), LONG(0x08)
 LONG(0x00100000), LONG(0x08)
 LONG(0x00000010), LONG(0x08)
 LONG(0xFFF00000), LONG(0x08)

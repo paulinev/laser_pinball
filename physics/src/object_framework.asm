@@ -123,14 +123,14 @@ CMOVE(0x1,R5)
 CALL(build_object)	| right slide thing: blue
 
 CMOVE(0x9,R1)
-CMOVE(0x06F0,R2)
+CMOVE(0x07C2,R2)
 SHLC(R2,12,R2)
 CMOVE(0x0A80,R0)
 AND(R0,R10,R0)
 ADD(R0,R2,R2)
 CMOVE(0x9,R3)
 CMOVE(0x1,R4)
-CMOVE(0x2,R5)
+CMOVE(0x7,R5)
 CALL(build_object)	| right paddle: white
 
 loop:
