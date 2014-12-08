@@ -316,14 +316,14 @@ right_paddle_up:
 	LD(right_paddle_up_val, r13)
 	ST(r13, 0, r2)
 	AND(r8, r0, r8)
-	BEQ(left_paddle_down,r8)
+	BEQ(r8, left_paddle_down)
 	BR(left_paddle_up)
 
 right_paddle_down:
 	LD(right_paddle_down_val, r13)
 	ST(r13, 0, r2)
 	AND(r8, r0, r8)
-	BEQ(left_paddle_down,r8)
+	BEQ(r8, left_paddle_down)
 	BR(left_paddle_up)
 
 left_paddle_up:
@@ -358,10 +358,11 @@ LONG(0xFFE80008)
 right_paddle_up_val:
 LONG(0xFFE8FFF8)
 
+
 stack:
-STORAGE(128)
+STORAGE(256)
 
 |.=0x10000
-|LONG(0xFE000003)
+|LONG(0xFE000001)
 |. = 0x00400000
 |LONG(0x1EEB)
