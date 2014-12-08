@@ -46,6 +46,9 @@ STALL_TIME = 0x04		| DEBUG
 TRAVEL_TIME = 0x16		| DEBUG
 SCALING_FACTOR = 0x0      	| full scale (DEBUG)
 |SCALING_FACTOR = 0x1      	| half scale (DEBUG)
+LEFT_PADDLE_UPDATE = 0xF8	| location in shared memory of left and right paddle offset update values
+RIGHT_PADDLE_UPDATE = 0xFC
+
 
 . = 0				| start at memory location 0
 BR(init)
@@ -127,7 +130,14 @@ set_timer:
 	
 wait_timer:
 	LD(r7, TIMER_OVERFLOW, r8)
-|	BNE(r8, wait_timer)			| DEBUG
+						| update paddles while we're waiting for the timer
+|	SHLC(r7, 1, r13)			| address into shared memory
+|	LD(r13, LEFT_PADDLE_UPDATE, r17)	| update left paddle
+|	ST(r17, left_paddle_hops, r31)
+|	LD(r13, RIGHT_PADDLE_UPDATE, r17)	| update right paddle
+|	ST(r17, right_paddle_hops, r31)
+
+|	BNE(r8, wait_timer)			| DEBUG	
 	BEQ(r8, wait_timer) 			| flag should be set when timer is done
 	CMOVE(0x0, r8) 				| clear flag
 	ST(r8, TIMER_OVERFLOW, r7)
@@ -341,6 +351,7 @@ LONG(0x00000000), LONG(STALL_TIME)
 LONG(4)					| left paddle: 8
 LONG(0x00000000), LONG(TRAVEL_TIME)
 LONG(0x00000000), LONG(STALL_TIME)
+left_paddle_hops:
 LONG(0x00180008), LONG(0x20)
 LONG(0x00000000), LONG(STALL_TIME)
 
@@ -348,6 +359,7 @@ LONG(0x00000000), LONG(STALL_TIME)
 LONG(4)					| right paddle: 9
 LONG(0x00000000), LONG(TRAVEL_TIME)
 LONG(0x00000000), LONG(STALL_TIME)
+right_paddle_hops:
 LONG(0xFFE80008), LONG(0x20)
 LONG(0x00000000), LONG(STALL_TIME)
 
@@ -363,5 +375,9 @@ STORAGE(128)
 |LONG(0x0C600400)
 |LONG(0x221E07E0)
 |LONG(0x2A8207E0)
+
+|.=0x200F8
+|LONG(0x00150005)
+|LONG(0xFFCD0005)
 |.=0x40000
 |LONG(0x1EEB)
