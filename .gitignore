@@ -39,3 +39,7 @@ impact_impact.xwbt
 
 Thumbs.db
 .DS_Store
+
+#ignore extra BSIM files
+*.bin
+*.contents

@@ -79,7 +79,7 @@ CMOVE(0x2,R5)
 CALL(build_object)	| left bumper: green
 
 CMOVE(0x6,R1)
-CMOVE(0x001E,R2)
+CMOVE(0x00F0,R2)
 SHLC(R2,12,R2)
 CMOVE(0x07E0,R0)
 AND(R0,R10,R0)
@@ -108,11 +108,11 @@ AND(R0,R10,R0)
 ADD(R0,R2,R2)
 CMOVE(0x9,R3)
 CMOVE(0x1,R4)
-CMOVE(0x2,R5)      	| green
-CALL(build_object)	| right bumper
+CMOVE(0x2,R5)      	
+CALL(build_object)	| right bumper: green
 
 CMOVE(0x7,R1)
-CMOVE(0x09E2,R2)
+CMOVE(0x0910,R2)
 SHLC(R2,12,R2)
 CMOVE(0x07E0,R0)
 AND(R0,R10,R0)
@@ -123,7 +123,7 @@ CMOVE(0x1,R5)
 CALL(build_object)	| right slide thing: blue
 
 CMOVE(0x9,R1)
-CMOVE(0x07C2,R2)
+CMOVE(0x06F0,R2)
 SHLC(R2,12,R2)
 CMOVE(0x0A80,R0)
 AND(R0,R10,R0)
@@ -150,7 +150,7 @@ update_start:
   SHLC(R5,24,R0)		| shift RGB into bits [26:24] of R17
   ADD(R17,R0,R17)		| combine
   ADD(R17,R2,R17)		| include POSITION: R17 now contains {SPRITE_ID[4:0], RGB[2:0], POSITION_X[11:0], POSITION_Y[11:0]}
-.breakpoint
+|.breakpoint
 
   PUSH(LP)     			| gotta push LP before you call a function within a function!
   CALL(write_external)
@@ -194,6 +194,18 @@ JMP(R9)                     | return to update function
 board:
 JMP(R9)                     | return to update function
 
+|+========
+fixme_1:
+JMP(R9)                     | return to update function
+
+|+========
+fixme_2:
+JMP(R9)                     | return to update function
+
+|+========
+fixme_3:
+JMP(R9)                     | return to update function
+
 |========================================================
 | OBJECT ROUTINE LOOKUP
 |   index into list using SPRITE_ID*4
@@ -208,6 +220,9 @@ object_routines:
   LONG(tri_bump)
   LONG(circ_bump)
   LONG(board)
+  LONG(fixme_1)
+  LONG(fixme_2)
+  LONG(fixme_3)
 
 |========================================================
 | OBJECT INSTANCE LIST STRUCTURE:
@@ -236,6 +251,7 @@ write_external:
   SHLC(R15,4,R15)     | load R15 with the bottom address of the external mem
   ADD(R15,R16,R15)    | add offset into memory from R16
   ST(R17,0,R15)       | write the contents of R17 into memory
+.breakpoint
   ADDC(R16,4,R16)     | increment offset for next time
   BNE(R17,write_end)
     CMOVE(0x0,R16)    | if we're done with the frame, clear offset
@@ -259,13 +275,13 @@ build_object:
   ST(R4,instance_list+16,R0)
   ST(R5,instance_list+20,R0)
   ST(R31,instance_list+24,R0)   | end list with NULL; gets overwritten by next object
+.breakpoint
   RTN()
 
 count: LONG(0x0)      | for storing the object instance count
 
-
-STORAGE(128)
 stack:
+STORAGE(128)
 
 |. = 0x00400000
 |LONG(0x1EEB)
