@@ -14,13 +14,14 @@
 |	r10, r11: spi tx data
 | r12: holds remaining number of points in current segment
 |	r14: scale factor - currently inactive
+| r15: laser power flag for implementing travels
 |	r16: reserved for copy of rgb data
 
 
 | Define parameters
 NEXT_SPRITE_OFFSET = 0x04
-|TIMER_VALUE = 0x1388
-TIMER_VALUE = 0x01
+TIMER_VALUE = 0x1388
+|TIMER_VALUE = 0x01
 
 | External address offsets
 SPI_CONFIG = 0x10
@@ -32,6 +33,7 @@ TIMER_OVERFLOW = 0x2C
 SHARED_MEM_WRITE_STATUS = 0x100
 SHARED_MEM_READ_STATUS = 0x101
 SWITCHES = 0x00
+STALL_TIME = 0x04
 
 . = 0				| start at memory location 0
 BR(init)
@@ -75,10 +77,8 @@ draw_frame:
 	SHRC(r0, 12, r0) 	| store only x data in r0
 	SHRC(r8, 12, r8) 	| 0x00000FFF in r8
 	AND(r7, r8, r1) 	| store only y data in r1
-	SHRC(r7, 24, r3) 	| mask off x and y data
-	ANDC(r3, 0x07, r3) 	| rgb data in r3
-	
-	
+	SHRC(r7, 24, r16) 	| mask off x and y data
+	ANDC(r16, 0x07, r16) 	| rgb data in r16
 	CALL(draw_sprite)
 	
 	| get next sprite location in shared memory
@@ -121,8 +121,7 @@ draw_sprite:
 	LD(r9, 0, r6) 		| first entry in lookup table is sprite length
 	ADDC(r9, 0x4, r9)	| store location of first point for get_next_point routine
   LD(r9,0x4,r12)    | load number of points in next segment into r12
-	MOVE(r3, r16)		  | store RGB data in a temp register
-	CMOVE(0x0, r3)		| turn off laser while travelling between sprites
+  CMOVE(0x1, r15)    | set flag signaling laser turn on after next segment
 | Starting from first memory location:
 draw_loop:
 	PUSH(LP)
@@ -131,7 +130,6 @@ draw_loop:
 	CALL(set_timer)
 	POP(LP)
 	
-	MOVE(r16, r3)		| restore RGB data after first point
 	BNE(r6, draw_loop)
 	RTN()
 
@@ -200,19 +198,30 @@ get_next_point:
 ||	SHL(r8, r14, r8)	| shift left by the scale factor specified by the user switches
 	MOVE(r8, r7)		              | copy point
   SUBC(r12,0x1,r12)             | decrement remaining points in the line
-  BNE(r12, get_next_continue)   | if we're done with this line segment,
-    ADDC(r9, 0x8, r9) 	        | increment location in local table
-    LD(r9,0x4,r12)              | load point count for next segment
-	  SUBC(r6, 0x01, r6)          | decrement points left for sprite
 
-  get_next_continue:
 	SRAC(r8, 16, r8) 	| Get only x data
 	SHLC(r7, 16, r7) 	| Get only y data, preserving sign bit
 	SRAC(r7, 16, r7)
-  .breakpoint
 	ADD(r8, r0, r0) 	| Add x offset
 	ADD(r7, r1, r1) 	| Add y offset
-	
+
+
+  BNE(r12, get_next_end)   | if we're done with this line segment,
+    .breakpoint
+    ADDC(r9, 0x8, r9) 	        | increment location in local table
+    LD(r9,0x4,r12)              | load point count for next segment
+	  SUBC(r6, 0x01, r6)          | decrement points left for sprite
+    CMPEQC(r6, 1, r8)         | test to see if we're about to do our last stall
+    BEQ(r8, check_laser_flag)        | if we are, turn the laser off
+    |.breakpoint
+      CMOVE(0x0,r3)     | turn laser off
+      CMOVE(0x0,r15)    | clear flag so the laser doesn't turn on during the next stall
+check_laser_flag:
+  BEQ(r15, get_next_end)
+  |.breakpoint
+    MOVE(r16,r3)      | reload RGB data to turn laser back on
+
+get_next_end:
 	RTN()
 
 | Sprite lookup tables: one table for each sprite, memory location corresponds to sprite ID
@@ -239,39 +248,48 @@ LONG(0xFDB0FC90)
 LONG(0x00F0FDB0)
 
 . = 0x400			| the frame outline
-LONG(12)
-LONG(0x00200000), LONG(0x10)
-LONG(0x00000020), LONG(0xD)
-LONG(0xFFE00020), LONG(0x2)
-LONG(0x00200020), LONG(0x2)
-LONG(0x00000020), LONG(0xD)
-LONG(0xFFE00010), LONG(0x6)
-LONG(0xFFE00000), LONG(0x4)
-LONG(0xFFE0FFF0), LONG(0x6)
-LONG(0x0000FFE0), LONG(0xD)
-LONG(0x0020FFE0), LONG(0x2)
-LONG(0xFFE0FFE0), LONG(0x2)
-LONG(0x0000FFE0), LONG(0xE)
+LONG(15)
+LONG(0x00000000), LONG(STALL_TIME)    | stall for travel time
+LONG(0x00000000), LONG(STALL_TIME)    | stall for laser on
+LONG(0x00500000), LONG(0x20)
+LONG(0x00000030), LONG(0x20)
+LONG(0xFFD80018), LONG(0x8)
+LONG(0x00280018), LONG(0x8)
+LONG(0x00000030), LONG(0x12)
+LONG(0xFFD80012), LONG(0x10)
+LONG(0xFFB00000), LONG(0x10)
+LONG(0xFFD8FFEE), LONG(0x10)
+LONG(0x0000FFD0), LONG(0x12)
+LONG(0x0028FFE8), LONG(0x8)
+LONG(0xFFD8FFE8), LONG(0x8)
+LONG(0x0000FFD0), LONG(0x20)
+LONG(0x00000000), LONG(STALL_TIME)    | stall for laser off
 
 . = 0x500			| left triangle bumper
-LONG(3)
-LONG(0x00180020), LONG(0x4)
-LONG(0xFFE00000), LONG(0x3)
-LONG(0x0000FFE0), LONG(0x4)
+LONG(6)
+LONG(0x00000000), LONG(STALL_TIME)    | stall for travel time
+LONG(0x00000000), LONG(STALL_TIME)    | stall for laser on
+LONG(0x001E0018), LONG(0x10)
+LONG(0xFFE20000), LONG(0x10)
+LONG(0x0000FFE8), LONG(0x10)
+LONG(0x00000000), LONG(STALL_TIME)    | stall for laser off
 
 .= 0x600			| right triangle bumper
-LONG(3)
-LONG(0x00000020), LONG(0x4)
-LONG(0xFFE00000), LONG(0x3)
-LONG(0x0018FFE0), LONG(0x4)
+LONG(6)
+LONG(0x00000000), LONG(STALL_TIME)    | stall for travel time
+LONG(0x00000000), LONG(STALL_TIME)    | stall for laser on
+LONG(0x00000018), LONG(0x10)
+LONG(0xFFE20000), LONG(0x10)
+LONG(0x001EFFE8), LONG(0x10)
+LONG(0x00000000), LONG(STALL_TIME)    | stall for laser off
 
 stack:
 STORAGE(128)
 
 
 |.=0x20000
-|LONG(0x18000000)
-|LONG(0x220602A0)
-|LONG(0x2C1A02A0)
+|LONG(0x1B000000)
+|LONG(0x221E07E0)
+|LONG(0x2A8207E0)
 |.=0x40000
 |LONG(0x1EEB)
