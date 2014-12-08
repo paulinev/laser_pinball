@@ -131,7 +131,7 @@ set_timer:
 wait_timer:
 	LD(r7, TIMER_OVERFLOW, r8)
 						| update paddles while we're waiting for the timer
-|	SHLC(r7, 1, r13)			| address into shared memory
+	SHLC(r7, 1, r13)			| address into shared memory
 |	LD(r13, LEFT_PADDLE_UPDATE, r17)	| update left paddle
 |	ST(r17, left_paddle_hops, r31)
 |	LD(r13, RIGHT_PADDLE_UPDATE, r17)	| update right paddle
@@ -380,13 +380,13 @@ LONG(0x00000000), LONG(STALL_TIME)
 stack:
 STORAGE(128)
 
-.=0x10000				| DEBUG
-LONG(0x1)
-.=0x20000
-LONG(0x1B000000)
-LONG(0x151E01E0)
-LONG(0x0C600400)
-LONG(0x221E07E0)
-LONG(0x2A8207E0)
-.=0x40000
-LONG(0x1EEB)
+|.=0x10000				| DEBUG
+|LONG(0x1)
+|.=0x20000
+|LONG(0x1B000000)
+|LONG(0x151E01E0)
+|LONG(0x0C600400)
+|LONG(0x221E07E0)
+|LONG(0x2A8207E0)
+|.=0x40000
+|LONG(0x1EEB)
