@@ -167,6 +167,7 @@ cont_update:
   LD(R8,4,R2) 			          | load coordinates of next object
   SHLC(R1,0x2,R18)           	| turn SPRITE_ID into a byte offset
   LD(R18,object_routines,R18) | LD address of object-specific update routine
+  .breakpoint
   JMP(R18, R9)               	| JMP to execute; save PC in R9
   ADDC(R8,NEXT_SPRITE_OFFSET,R8)             	| point list pointer to next next object
   ST(R8,instance_list)
@@ -178,15 +179,18 @@ JMP(R9)                     	| return to update function
 
 |+========
 r_flipper:
+.breakpoint
+PUSH(LP)
+CALL(paddle_update)
+POP(LP)
 JMP(R9)                     | return to update function
 
 |+========
 l_flipper:
-| Read input port for flipper trigger
-| If trigger is on:
-|	Load in last offset from memory (0x30000 + L_PADDLE_UPDATE)
-|	Update (increase x, decrease y)	
-
+.breakpoint
+PUSH(LP)
+CALL(paddle_update)
+POP(LP)
 JMP(R9)                     | return to update function
 
 |+========
@@ -258,7 +262,7 @@ write_external:
   SHLC(R15,4,R15)     | load R15 with the bottom address of the external mem
   ADD(R15,R16,R15)    | add offset into memory from R16
   ST(R17,0,R15)       | write the contents of R17 into memory
-.breakpoint
+|.breakpoint
   ADDC(R16,4,R16)     | increment offset for next time
   BNE(R17,write_end)
     CMOVE(0x0,R16)    | if we're done with the frame, clear offset
@@ -287,8 +291,77 @@ build_object:
 
 count: LONG(0x0)      | for storing the object instance count
 
+paddle_update:
+	PUSH(r0)
+	PUSH(r1)
+	PUSH(r2)
+	PUSH(r7)
+	PUSH(r8)
+	CMOVE(0x1, r7) | right paddle mask
+	CMOVE(0x2, r8)	| left paddle mask
+	
+	CMOVE(0x1, r0)
+	SHLC(r0, 16, r0)
+	LD(r0, 0, r0)		| get value from input port a. lsb is right paddle, second bit is left paddle.
+	
+	CMOVE(0x2, r1)
+	SHLC(r1, 16, r1)
+	ORC(r1, 0x00F8, r3)	| left paddle update location
+	ORC(r1, 0x00FC, r2) | right paddle update location
+	
+	AND(r7, r0, r7)
+	BEQ(r7, right_paddle_down)
+
+right_paddle_up:
+	LD(right_paddle_up_val, r13)
+	ST(r13, 0, r2)
+	AND(r8, r0, r8)
+	BEQ(left_paddle_down,r8)
+	BR(left_paddle_up)
+
+right_paddle_down:
+	LD(right_paddle_down_val, r13)
+	ST(r13, 0, r2)
+	AND(r8, r0, r8)
+	BEQ(left_paddle_down,r8)
+	BR(left_paddle_up)
+
+left_paddle_up:
+	LD(left_paddle_up_val, r13)
+	ST(r13, 0, r3)
+	POP(r8)
+	POP(r7)
+	POP(r2)
+	POP(r1)
+	POP(r0)
+	RTN()
+	
+left_paddle_down:
+	LD(left_paddle_down_val, r13)
+	ST(r13, 0, r3)
+	POP(r8)
+	POP(r7)
+	POP(r2)
+	POP(r1)
+	POP(r0)
+	RTN()
+
+left_paddle_down_val:
+LONG(0x00180008)
+
+left_paddle_up_val:
+LONG(0x0018FFF8)
+
+right_paddle_down_val:
+LONG(0xFFE80008)
+
+right_paddle_up_val:
+LONG(0xFFE8FFF8)
+
 stack:
 STORAGE(128)
 
+|.=0x10000
+|LONG(0xFE000003)
 |. = 0x00400000
 |LONG(0x1EEB)

@@ -132,10 +132,10 @@ wait_timer:
 	LD(r7, TIMER_OVERFLOW, r8)
 						| update paddles while we're waiting for the timer
 	SHLC(r7, 1, r13)			| address into shared memory
-|	LD(r13, LEFT_PADDLE_UPDATE, r17)	| update left paddle
-|	ST(r17, left_paddle_hops, r31)
-|	LD(r13, RIGHT_PADDLE_UPDATE, r17)	| update right paddle
-|	ST(r17, right_paddle_hops, r31)
+	LD(r13, LEFT_PADDLE_UPDATE, r17)	| update left paddle
+	ST(r17, left_paddle_hops, r31)
+	LD(r13, RIGHT_PADDLE_UPDATE, r17)	| update right paddle
+	ST(r17, right_paddle_hops, r31)
 
 |	BNE(r8, wait_timer)			| DEBUG	
 	BEQ(r8, wait_timer) 			| flag should be set when timer is done
