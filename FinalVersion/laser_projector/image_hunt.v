@@ -36,7 +36,7 @@ module image_hunt(
 	output reg [9:0] blue_y = 0
     );
 	 
-	 parameter block_max = 59; //number of blocks minus 1
+	 parameter block_max = 58; //number of blocks minus 1
 	 
 	 reg [3:0] FSM_state = 0;
 	 
@@ -156,7 +156,7 @@ module image_hunt(
 		 blue_cost <= p_1_blue + p_2_blue + p_3_blue + p_4_blue + blue_cost;
 		 end
 		 
-		 8: begin //process results
+		 8: begin //process results of block
 		 FSM_state <= (block_y >= block_max) && (block_x >= block_max) ? 9 : 1;
 		 
 		 red_cost_max <= (red_cost > red_cost_max) ? red_cost : red_cost_max;

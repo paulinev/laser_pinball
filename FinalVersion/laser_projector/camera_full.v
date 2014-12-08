@@ -189,7 +189,7 @@ module camera_full(
 
 	image_addr_gen image_proc_gen(
     .hcount(proc_hcount), 
-    .vcount(proc_hcount), 
+    .vcount(proc_vcount), 
     .addr(proc_addr)
     );
 	 
@@ -214,7 +214,7 @@ module camera_full(
     .x_loc(red_x), 
     .y_loc(red_y), 
     .enable(1'b1), 
-    .color(9'b111_000_000), //red
+    .color(9'b111_000_000), //red display
     .pixel(red_blob_pixel)
     );
 
@@ -226,7 +226,7 @@ color_blob green_blob (
     .x_loc(green_x), 
     .y_loc(green_y), 
     .enable(1'b1), 
-    .color(9'b000_111_000), //green
+    .color(9'b000_111_000), //green display as red
     .pixel(green_blob_pixel)
     );
 	 
@@ -237,7 +237,7 @@ color_blob blue_blob (
     .x_loc(blue_x), 
     .y_loc(blue_y), 
     .enable(1'b1), 
-    .color(9'b000_000_111), //blue
+    .color(9'b000_000_111), //blue display as green
     .pixel(blue_blob_pixel)
     );
 

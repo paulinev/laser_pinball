@@ -27,17 +27,16 @@ input wire clk,
     );
 	 
 	 parameter device_id = 8'h42; //camera address for writes
+	 parameter rom_locations = 26; 
 	 
-	// reg [7:0] write_id;
-	 reg [7:0] write_reg;
-	 reg [7:0] write_data;
-	 reg [7:0] write_id;
+	 wire [7:0] write_reg;
+	 wire [7:0] write_data;
 	 reg [4:0] FSM_state = 0;
 	 
 	 wire done;
 	 
 	 reg start_write = 0;
-	
+	 reg [5:0] rom_addr = 0;
 	 
 	 
 	 i2c_configure_reg camera_i2c (
@@ -45,13 +44,57 @@ input wire clk,
     .reset(reset), 
     .start(start_write), 
     .write_reg(write_reg), 
-    .write_id(write_id), 
+    .write_id(device_id), 
     .write_data(write_data), 
     .done(done), 
     .scl(scl), 
     .sda(sda)
     );
 	 
+	 camera_setup_rom config_rom (
+	 .clk(clk),
+    .addr(rom_addr), 
+    .register(write_reg), 
+    .value(write_data)
+    );
+
+	 
+	 always@(posedge clk)
+	 begin
+	 case(FSM_state)
+	 
+	 0: begin //start
+	 FSM_state <= start ? 1 : 0;
+	 start_write <= 0;
+	 rom_addr <= 0;
+	 end
+	 
+	 1: begin //check rom value, give time for rom load
+	 FSM_state <= (rom_addr>=rom_locations) ? 5 : 2;
+	 end
+	 
+	 2: begin //start I2C
+	 FSM_state <= 3; 
+	 start_write <= 1;
+	 end
+	 
+	 3: begin //wait for end
+	 FSM_state <= done ? 4 : 3;
+	 end
+	 
+	 4: begin 
+	 FSM_state <= 1;
+	 rom_addr <= rom_addr +1;
+	 end
+	 
+	 5: begin //end state
+	 FSM_state <= 0;
+	 end
+	 endcase
+	 end
+	 
+	 
+	 /*
 	 always@(posedge clk)
 	 begin
 	 case(FSM_state)
@@ -137,7 +180,7 @@ input wire clk,
 		
 		endcase
 		end
-		
+		*/ 
 		
 
 

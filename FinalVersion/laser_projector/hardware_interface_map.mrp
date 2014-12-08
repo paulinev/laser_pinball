@@ -12,36 +12,40 @@ Target Device  : xc5vlx50t
 Target Package : ff1136
 Target Speed   : -3
 Mapper Version : virtex5 -- $Revision: 1.46.12.2 $
-Mapped Date    : Sun Dec  7 18:36:21 2014
+Mapped Date    : Mon Dec  8 02:17:21 2014
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:   29
+Number of warnings:   36
 Slice Logic Utilization:
-  Number of Slice Registers:                   909 out of  28,800    3%
-    Number used as Flip Flops:                 909
-  Number of Slice LUTs:                      1,176 out of  28,800    4%
-    Number used as logic:                    1,167 out of  28,800    4%
-      Number using O6 output only:             960
-      Number using O5 output only:             103
-      Number using O5 and O6:                  104
-    Number used as Memory:                       1 out of   7,680    1%
+  Number of Slice Registers:                   940 out of  28,800    3%
+    Number used as Flip Flops:                 940
+  Number of Slice LUTs:                      2,667 out of  28,800    9%
+    Number used as logic:                    2,524 out of  28,800    8%
+      Number using O6 output only:           2,368
+      Number using O5 output only:              92
+      Number using O5 and O6:                   64
+    Number used as Memory:                     137 out of   7,680    1%
+      Number used as Dual Port RAM:            136
+        Number using O6 output only:             8
+        Number using O5 and O6:                128
       Number used as Shift Register:             1
         Number using O6 output only:             1
-    Number used as exclusive route-thru:         8
-  Number of route-thrus:                       111 out of  57,600    1%
-    Number using O6 output only:               111
+    Number used as exclusive route-thru:         6
+  Number of route-thrus:                        98 out of  57,600    1%
+    Number using O6 output only:                96
+    Number using O5 and O6:                      2
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   552 out of   7,200    7%
-  Number of LUT Flip Flop pairs used:        1,466
-    Number with an unused Flip Flop:           557 out of   1,466   37%
-    Number with an unused LUT:                 290 out of   1,466   19%
-    Number of fully used LUT-FF pairs:         619 out of   1,466   42%
-    Number of unique control sets:             149
+  Number of occupied Slices:                   959 out of   7,200   13%
+  Number of LUT Flip Flop pairs used:        2,848
+    Number with an unused Flip Flop:         1,908 out of   2,848   66%
+    Number with an unused LUT:                 181 out of   2,848    6%
+    Number of fully used LUT-FF pairs:         759 out of   2,848   26%
+    Number of unique control sets:              33
     Number of slice register sites lost
-      to control set restrictions:             358 out of  28,800    1%
+      to control set restrictions:              55 out of  28,800    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -53,20 +57,20 @@ IO Utilization:
   Number of bonded IOBs:                        82 out of     480   17%
 
 Specific Feature Utilization:
-  Number of BlockRAM/FIFO:                      15 out of      60   25%
-    Number using BlockRAM only:                 15
+  Number of BlockRAM/FIFO:                      30 out of      60   50%
+    Number using BlockRAM only:                 30
     Total primitives used:
-      Number of 36k BlockRAM used:              14
-      Number of 18k BlockRAM used:               1
-    Total Memory used (KB):                    522 out of   2,160   24%
-  Number of BUFG/BUFGCTRLs:                      5 out of      32   15%
-    Number used as BUFGs:                        5
-  Number of DCM_ADVs:                            2 out of      12   16%
-  Number of DSP48Es:                             3 out of      48    6%
+      Number of 36k BlockRAM used:              28
+      Number of 18k BlockRAM used:               4
+    Total Memory used (KB):                  1,080 out of   2,160   50%
+  Number of BUFG/BUFGCTRLs:                      2 out of      32    6%
+    Number used as BUFGs:                        2
+  Number of DCM_ADVs:                            1 out of      12    8%
+  Number of DSP48Es:                             2 out of      48    4%
 
-Peak Memory Usage:  758 MB
-Total REAL time to MAP completion:  31 secs 
-Total CPU time to MAP completion:   31 secs 
+Peak Memory Usage:  811 MB
+Total REAL time to MAP completion:  1 mins 1 secs 
+Total CPU time to MAP completion:   1 mins 1 secs 
 
 Table of Contents
 -----------------
@@ -90,52 +94,34 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
-WARNING:LIT:243 - Logical network GPIO_DIP_SW1_IBUF has no load.
-WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 10
+WARNING:LIT:243 - Logical network IIC_SDA_MAIN_IBUF has no load.
+WARNING:LIT:395 - The above warning message base_net_load_rule is repeated 30
    more times for the following (max. 5 shown):
-   GPIO_DIP_SW2_IBUF,
-   GPIO_DIP_SW3_IBUF,
-   GPIO_DIP_SW4_IBUF,
-   GPIO_DIP_SW5_IBUF,
-   GPIO_DIP_SW6_IBUF
+   IIC_SCL_VIDEO_IBUF,
+   IIC_SCL_MAIN_IBUF,
+   IIC_SDA_VIDEO_IBUF,
+   HDR1_44_IBUF,
+   HDR1_50_IBUF
    To see the details of these warning messages, please use the -detail switch.
-WARNING:Place:644 - A clock IOB clock component is not placed at an optimal
-   clock IOB site. The clock IOB component <HDR1_48> is placed at site <AJ32>.
-   The clock IO site can use the fast path between the IO and the Clock
-   buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is
-   normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on
-   COMP.PIN <HDR1_48.PAD> allowing your design to continue. This constraint
-   disables all clock placer rules related to the specified COMP.PIN. The use of
-   this override is highly discouraged as it may lead to very poor timing
-   results. It is recommended that this error condition be corrected in the
-   design.
 WARNING:PhysDesignRules:368 - The signal <AUDIO_SYNC_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:368 - The signal <DVI_GPIO1_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:367 - The signal <GPIO_SW_N_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <GPIO_SW_S_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <IIC_SCL_MAIN_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <CLK_27MHZ_FPGA_IBUF> is incomplete.
    The signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:367 - The signal <AUDIO_SDATA_IN_IBUF> is incomplete.
    The signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <IIC_SCL_VIDEO_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:368 - The signal <AUDIO_BIT_CLK_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
-WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW1_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW2_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW3_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW4_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW5_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW6_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW7_IBUF> is incomplete. The
-   signal does not drive any load pins in the design.
-WARNING:PhysDesignRules:367 - The signal <GPIO_DIP_SW8_IBUF> is incomplete. The
+WARNING:PhysDesignRules:367 - The signal <IIC_SDA_MAIN_IBUF> is incomplete. The
    signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_30_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
@@ -147,16 +133,40 @@ WARNING:PhysDesignRules:368 - The signal <HDR1_24_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_16_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_50_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_34_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_26_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_60_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_52_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_44_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_36_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_28_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_62_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_54_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_46_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:368 - The signal <HDR1_38_OBUF> is incomplete. The
    signal is not driven by any source pin in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_64_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_56_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_48_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <HDR1_58_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
+WARNING:PhysDesignRules:367 - The signal <IIC_SDA_VIDEO_IBUF> is incomplete. The
+   signal does not drive any load pins in the design.
 WARNING:PhysDesignRules:368 - The signal <AUDIO_SDATA_OUT_OBUF> is incomplete.
    The signal is not driven by any source pin in the design.
 
@@ -178,34 +188,32 @@ INFO:Pack:1650 - Map created a placed design.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   2 block(s) removed
-   4 block(s) optimized away
-   1 signal(s) removed
+   8 block(s) removed
+  10 block(s) optimized away
 
 Section 5 - Removed Logic
 -------------------------
-
-The trimmed logic report below shows the logic removed from your design due to
-sourceless or loadless signals, and VCC or ground connections.  If the removal
-of a signal or symbol results in the subsequent removal of an additional signal
-or symbol, the message explaining that second removal will be indented.  This
-indentation will be repeated as a chain of related logic is removed.
-
-To quickly locate the original cause for the removal of a chain of logic, look
-above the place where that logic is listed in the trimming report, then locate
-the lines that are least indented (begin at the leftmost edge).
-
-The signal "camera_main/frame_buff/framebuffer/BU2/N1" is sourceless and has
-been removed.
-Unused block "camera_main/frame_buff/framebuffer/GND" (ZERO) removed.
-Unused block "camera_main/frame_buff/framebuffer/VCC" (ONE) removed.
+Unused block "best_hazor/laser_beta_ram/GND" (ZERO) removed.
+Unused block "best_hazor/laser_beta_ram/VCC" (ONE) removed.
+Unused block "best_hazor/laser_shared_memory/shared_ram/GND" (ZERO) removed.
+Unused block "best_hazor/laser_shared_memory/shared_ram/VCC" (ONE) removed.
+Unused block "best_hazor/physics_beta_ram/GND" (ZERO) removed.
+Unused block "best_hazor/physics_beta_ram/VCC" (ONE) removed.
+Unused block "best_hazor/physics_shared_memory/shared_ram/GND" (ZERO) removed.
+Unused block "best_hazor/physics_shared_memory/shared_ram/VCC" (ONE) removed.
 
 Optimized Block(s):
 TYPE 		BLOCK
 GND 		XST_GND
 VCC 		XST_VCC
-GND 		camera_main/frame_buff/framebuffer/BU2/XST_GND
-VCC 		camera_main/frame_buff/framebuffer/BU2/XST_VCC
+GND 		best_hazor/laser_beta_ram/BU2/XST_GND
+VCC 		best_hazor/laser_beta_ram/BU2/XST_VCC
+GND 		best_hazor/laser_shared_memory/shared_ram/BU2/XST_GND
+VCC 		best_hazor/laser_shared_memory/shared_ram/BU2/XST_VCC
+GND 		best_hazor/physics_beta_ram/BU2/XST_GND
+VCC 		best_hazor/physics_beta_ram/BU2/XST_VCC
+GND 		best_hazor/physics_shared_memory/shared_ram/BU2/XST_GND
+VCC 		best_hazor/physics_shared_memory/shared_ram/BU2/XST_VCC
 
 To enable printing of redundant blocks removed and signals merged, set the
 detailed map report option and rerun map.
@@ -294,10 +302,10 @@ Section 6 - IOB Properties
 | HDR1_60                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
 | HDR1_62                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
 | HDR1_64                            | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
-| IIC_SCL_MAIN                       | IOB              | BIDIR     | LVCMOS25             | 12       | SLOW |              |          |          |
-| IIC_SCL_VIDEO                      | IOB              | BIDIR     | LVCMOS25             | 12       | SLOW |              |          |          |
-| IIC_SDA_MAIN                       | IOB              | BIDIR     | LVCMOS25             | 12       | SLOW |              |          |          |
-| IIC_SDA_VIDEO                      | IOB              | BIDIR     | LVCMOS25             | 12       | SLOW |              |          |          |
+| IIC_SCL_MAIN                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| IIC_SCL_VIDEO                      | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| IIC_SDA_MAIN                       | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
+| IIC_SDA_VIDEO                      | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
 | USER_CLK                           | IOB              | INPUT     | LVCMOS25             |          |      |              |          |          |
 +-------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -351,85 +359,117 @@ Use the "-detail" map option to print out Control Set Information.
 
 Section 14 - Utilization by Hierarchy
 -------------------------------------
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Module                        | Partition | Slices*       | Slice Reg     | LUTs          | LUTRAM        | BRAM/FIFO | DSP48E  | BUFG  | BUFIO | BUFR  | DCM   | PLL   | Full Hierarchical Name                                                                                                  |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| hardware_interface/           |           | 60/696        | 0/909         | 112/1176      | 0/1           | 0/15      | 0/3     | 1/5   | 0/0   | 0/0   | 0/2   | 0/0   | hardware_interface                                                                                                      |
-| +camera_main                  |           | 15/604        | 0/842         | 25/1035       | 0/0           | 0/15      | 0/3     | 0/2   | 0/0   | 0/0   | 0/1   | 0/0   | hardware_interface/camera_main                                                                                          |
-| ++blue_blob                   |           | 5/5           | 1/1           | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/blue_blob                                                                                |
-| ++buffer_read_addr_gen        |           | 6/6           | 0/0           | 9/9           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/buffer_read_addr_gen                                                                     |
-| ++camera_addr_gen             |           | 3/3           | 0/0           | 9/9           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_addr_gen                                                                          |
-| ++camera_setup                |           | 7/109         | 16/194        | 16/203        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup                                                                             |
-| +++camera_i2c                 |           | 15/102        | 32/178        | 35/187        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c                                                                  |
-| ++++video_bus                 |           | 13/87         | 29/146        | 6/152         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c/video_bus                                                        |
-| +++++i2c_plz                  |           | 18/74         | 35/117        | 14/146        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c/video_bus/i2c_plz                                                |
-| ++++++byte_controller         |           | 15/56         | 22/82         | 38/132        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c/video_bus/i2c_plz/byte_controller                                |
-| +++++++bit_controller         |           | 41/41         | 60/60         | 94/94         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/camera_setup/camera_i2c/video_bus/i2c_plz/byte_controller/bit_controller                 |
-| ++clk12_5_gen                 |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 2/2   | 0/0   | 0/0   | 1/1   | 0/0   | hardware_interface/camera_main/clk12_5_gen                                                                              |
-| ++drive_vga                   |           | 10/10         | 15/15         | 11/11         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/drive_vga                                                                                |
-| ++frame_buff                  |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff                                                                               |
-| +++framebuffer                |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer                                                                   |
-| ++++BU2                       |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2                                                               |
-| +++++U0                       |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0                                                            |
-| ++++++blk_mem_generator       |           | 0/53          | 0/5           | 0/75          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator                                          |
-| +++++++valid.cstr             |           | 27/53         | 0/5           | 28/75         | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr                               |
-| ++++++++bindec_a.bindec_inst_ |           | 1/1           | 0/0           | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a        |
-| ++++++++bindec_b.bindec_inst_ |           | 1/1           | 0/0           | 1/1           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/bindec_b.bindec_inst_b        |
-| ++++++++has_mux_b.B           |           | 24/24         | 5/5           | 45/45         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/has_mux_b.B                   |
-| ++++++++ramloop[0].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram  |
-| ++++++++ramloop[10].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r             |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r/v5_init.ram |
-| ++++++++ramloop[11].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r             |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram |
-| ++++++++ramloop[12].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r             |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v5_init.ram |
-| ++++++++ramloop[13].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r             |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram |
-| ++++++++ramloop[14].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r             |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v5_init.ram |
-| ++++++++ramloop[1].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r/v5_init.ram  |
-| ++++++++ramloop[2].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram  |
-| ++++++++ramloop[3].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram  |
-| ++++++++ramloop[4].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r/v5_init.ram  |
-| ++++++++ramloop[5].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram  |
-| ++++++++ramloop[6].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram  |
-| ++++++++ramloop[7].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram  |
-| ++++++++ramloop[8].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram  |
-| ++++++++ramloop[9].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r              |
-| +++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/frame_buff/framebuffer/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram  |
-| ++get_a_frame                 |           | 12/37         | 31/67         | 22/83         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/get_a_frame                                                                              |
-| +++camera_reader              |           | 25/25         | 36/36         | 61/61         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/get_a_frame/camera_reader                                                                |
-| ++green_blob                  |           | 7/7           | 1/1           | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/green_blob                                                                               |
-| ++image_proc_gen              |           | 5/5           | 0/0           | 8/8           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/image_proc_gen                                                                           |
-| ++process_a_frame             |           | 142/211       | 191/342       | 308/343       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame                                                                          |
-| +++cost_a                     |           | 3/3           | 0/0           | 3/3           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/cost_a                                                                   |
-| +++cost_b                     |           | 3/3           | 0/0           | 3/3           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/cost_b                                                                   |
-| +++cost_c                     |           | 3/3           | 0/0           | 3/3           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/cost_c                                                                   |
-| +++cost_d                     |           | 3/3           | 0/0           | 3/3           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/cost_d                                                                   |
-| +++data_fetch                 |           | 57/57         | 151/151       | 23/23         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/process_a_frame/data_fetch                                                               |
-| ++red_blob                    |           | 7/7           | 1/1           | 15/15         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/red_blob                                                                                 |
-| ++vga_monitor                 |           | 7/118         | 15/190        | 15/203        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor                                                                              |
-| +++instance_name              |           | 15/111        | 29/175        | 36/188        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name                                                                |
-| ++++video_bus                 |           | 15/96         | 29/146        | 6/152         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name/video_bus                                                      |
-| +++++i2c_plz                  |           | 17/81         | 35/117        | 14/146        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name/video_bus/i2c_plz                                              |
-| ++++++byte_controller         |           | 16/64         | 22/82         | 38/132        | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name/video_bus/i2c_plz/byte_controller                              |
-| +++++++bit_controller         |           | 48/48         | 60/60         | 94/94         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_monitor/instance_name/video_bus/i2c_plz/byte_controller/bit_controller               |
-| ++vga_signal_gen              |           | 18/18         | 26/26         | 21/21         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/camera_main/vga_signal_gen                                                                           |
-| +clk_50_gen                   |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 2/2   | 0/0   | 0/0   | 1/1   | 0/0   | hardware_interface/clk_50_gen                                                                                           |
-| +db_2                         |           | 10/10         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_2                                                                                                 |
-| +db_3                         |           | 10/10         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_3                                                                                                 |
-| +db_5                         |           | 10/10         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_5                                                                                                 |
-| +gen_sys_reset                |           | 2/2           | 1/1           | 2/2           | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/gen_sys_reset                                                                                        |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Module                       | Partition | Slices*       | Slice Reg     | LUTs          | LUTRAM        | BRAM/FIFO | DSP48E  | BUFG  | BUFIO | BUFR  | DCM   | PLL   | Full Hierarchical Name                                                                                                        |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| hardware_interface/          |           | 89/1300       | 0/940         | 219/2667      | 120/137       | 0/30      | 0/2     | 0/2   | 0/0   | 0/0   | 0/1   | 0/0   | hardware_interface                                                                                                            |
+| +best_hazor                  |           | 12/1187       | 0/893         | 12/2428       | 0/16          | 0/30      | 0/2     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor                                                                                                 |
+| ++cpu_laser                  |           | 227/279       | 97/101        | 540/618       | 0/8           | 0/0       | 0/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser                                                                                       |
+| +++ctl                       |           | 21/21         | 4/4           | 25/25         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/ctl                                                                                   |
+| +++mpy                       |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/mpy                                                                                   |
+| +++rf                        |           | 4/4           | 0/0           | 10/10         | 8/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/rf                                                                                    |
+| +++sr                        |           | 27/27         | 0/0           | 43/43         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_laser/sr                                                                                    |
+| ++cpu_physics                |           | 207/270       | 97/100        | 513/592       | 0/8           | 0/0       | 0/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics                                                                                     |
+| +++ctl                       |           | 21/21         | 3/3           | 25/25         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/ctl                                                                                 |
+| +++mpy                       |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 1/1     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/mpy                                                                                 |
+| +++rf                        |           | 4/4           | 0/0           | 10/10         | 8/8           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/rf                                                                                  |
+| +++sr                        |           | 38/38         | 0/0           | 44/44         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/cpu_physics/sr                                                                                  |
+| ++laser_beta_IO              |           | 110/165       | 193/247       | 189/313       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO                                                                                   |
+| +++beta_spi                  |           | 31/31         | 19/19         | 51/51         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO/beta_spi                                                                          |
+| +++beta_timer1               |           | 24/24         | 35/35         | 73/73         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_IO/beta_timer1                                                                       |
+| ++laser_beta_ram             |           | 0/28          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram                                                                                  |
+| +++BU2                       |           | 0/28          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2                                                                              |
+| ++++U0                       |           | 0/28          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0                                                                           |
+| +++++blk_mem_generator       |           | 0/28          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator                                                         |
+| ++++++valid.cstr             |           | 0/28          | 0/2           | 0/31          | 0/0           | 0/15      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr                                              |
+| +++++++bindec_a.bindec_inst_ |           | 3/3           | 0/0           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a                       |
+| +++++++has_mux_a.A           |           | 25/25         | 2/2           | 27/27         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A                                  |
+| +++++++ramloop[0].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram                 |
+| +++++++ramloop[10].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r                            |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r/v5_init.ram                |
+| +++++++ramloop[11].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r                            |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram                |
+| +++++++ramloop[12].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r                            |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v5_init.ram                |
+| +++++++ramloop[13].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r                            |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram                |
+| +++++++ramloop[14].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r                            |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v5_init.ram                |
+| +++++++ramloop[1].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r/v5_init.ram                 |
+| +++++++ramloop[2].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram                 |
+| +++++++ramloop[3].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram                 |
+| +++++++ramloop[4].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r/v5_init.ram                 |
+| +++++++ramloop[5].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram                 |
+| +++++++ramloop[6].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram                 |
+| +++++++ramloop[7].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram                 |
+| +++++++ramloop[8].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram                 |
+| +++++++ramloop[9].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r                             |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram                 |
+| ++laser_decode               |           | 8/8           | 0/0           | 10/10         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_decode                                                                                    |
+| ++laser_read_decode          |           | 98/98         | 2/2           | 172/172       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_read_decode                                                                               |
+| ++laser_shared_memory        |           | 44/44         | 128/128       | 108/108       | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory                                                                             |
+| +++shared_ram                |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram                                                                  |
+| ++++BU2                      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2                                                              |
+| +++++U0                      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0                                                           |
+| ++++++blk_mem_generator      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0/blk_mem_generator                                         |
+| +++++++valid.cstr            |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0/blk_mem_generator/valid.cstr                              |
+| ++++++++ramloop[0].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r             |
+| +++++++++v5_init.ram         |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/laser_shared_memory/shared_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/v5_init.ram |
+| ++physics_beta_IO            |           | 115/162       | 193/245       | 280/393       | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO                                                                                 |
+| +++beta_spi                  |           | 19/19         | 17/17         | 39/39         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO/beta_spi                                                                        |
+| +++beta_timer1               |           | 28/28         | 35/35         | 74/74         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_IO/beta_timer1                                                                     |
+| ++physics_beta_ram           |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram                                                                                |
+| +++BU2                       |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2                                                                            |
+| ++++U0                       |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0                                                                         |
+| +++++blk_mem_generator       |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator                                                       |
+| ++++++valid.cstr             |           | 0/29          | 0/2           | 0/31          | 0/0           | 0/14      | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr                                            |
+| +++++++bindec_a.bindec_inst_ |           | 4/4           | 0/0           | 4/4           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/bindec_a.bindec_inst_a                     |
+| +++++++has_mux_a.A           |           | 25/25         | 2/2           | 27/27         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/has_mux_a.A                                |
+| +++++++ramloop[10].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r                          |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[10].ram.r/v5_init.ram              |
+| +++++++ramloop[11].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r                          |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[11].ram.r/v5_init.ram              |
+| +++++++ramloop[12].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r                          |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[12].ram.r/v5_init.ram              |
+| +++++++ramloop[13].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r                          |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[13].ram.r/v5_init.ram              |
+| +++++++ramloop[14].ram.r     |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r                          |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[14].ram.r/v5_init.ram              |
+| +++++++ramloop[1].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[1].ram.r/v5_init.ram               |
+| +++++++ramloop[2].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[2].ram.r/v5_init.ram               |
+| +++++++ramloop[3].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[3].ram.r/v5_init.ram               |
+| +++++++ramloop[4].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[4].ram.r/v5_init.ram               |
+| +++++++ramloop[5].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[5].ram.r/v5_init.ram               |
+| +++++++ramloop[6].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[6].ram.r/v5_init.ram               |
+| +++++++ramloop[7].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[7].ram.r/v5_init.ram               |
+| +++++++ramloop[8].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[8].ram.r/v5_init.ram               |
+| +++++++ramloop[9].ram.r      |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r                           |
+| ++++++++v5_init.ram          |           | 0/0           | 0/0           | 0/0           | 0/0           | 1/1       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_beta_ram/BU2/U0/blk_mem_generator/valid.cstr/ramloop[9].ram.r/v5_init.ram               |
+| ++physics_decode             |           | 8/8           | 0/0           | 13/13         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_decode                                                                                  |
+| ++physics_read_decode        |           | 63/63         | 2/2           | 96/96         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_read_decode                                                                             |
+| ++physics_shared_memory      |           | 21/21         | 64/64         | 39/39         | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/best_hazor/physics_shared_memory                                                                           |
+| +clk_50_gen                  |           | 0/0           | 0/0           | 0/0           | 0/0           | 0/0       | 0/0     | 2/2   | 0/0   | 0/0   | 1/1   | 0/0   | hardware_interface/clk_50_gen                                                                                                 |
+| +db_2                        |           | 9/9           | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_2                                                                                                       |
+| +db_3                        |           | 11/11         | 22/22         | 9/9           | 0/0           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/db_3                                                                                                       |
+| +gen_sys_reset               |           | 4/4           | 3/3           | 2/2           | 1/1           | 0/0       | 0/0     | 0/0   | 0/0   | 0/0   | 0/0   | 0/0   | hardware_interface/gen_sys_reset                                                                                              |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 * Slices can be packed with basic elements from multiple hierarchies.
   Therefore, a slice will be counted in every hierarchical module

@@ -50,8 +50,8 @@ module load_pixel_block(
 	
 	reg [4:0] FSM_state = 0;
 	 
-	assign mem_hcount = x_counter + (block_x<<3);
-	assign mem_vcount = y_counter + (block_y<<3);
+	assign mem_hcount = (x_counter<<1) + (block_x<<3);
+	assign mem_vcount = (y_counter<<1) + (block_y<<3);
 	
 	//from this level, memory pipeline is two cycles
 	always@(posedge clk)

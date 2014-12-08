@@ -1,5 +1,5 @@
 NUM_USER_FILES
-58
+61
 s
 user_file_1
 hardware_interface.v
@@ -163,8 +163,17 @@ s
 user_file_58
 camera_main_tb.v
 s
+user_file_59
+pixel_cost_function_tb.v
+s
 user_file_6
 beta_addr_decode.v
+s
+user_file_60
+nes_interface.v
+s
+user_file_61
+nes_interface_tb.v
 s
 user_file_7
 beta_read_decode.v

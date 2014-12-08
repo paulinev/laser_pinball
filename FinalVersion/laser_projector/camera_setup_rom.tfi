@@ -1,0 +1,11 @@
+
+
+
+// Instantiate the module
+camera_setup_rom instance_name (
+    .addr(addr), 
+    .register(register), 
+    .value(value)
+    );
+
+
