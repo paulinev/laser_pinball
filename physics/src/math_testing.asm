@@ -143,7 +143,7 @@ AND(R0,R10,R0)
 ADD(R0,R2,R2)
 CMOVE(0x0,R3)
 CMOVE(0x0,R4)
-CMOVE(0x2,R5)
+CMOVE(0x7,R5)
 CALL(build_object)	| right paddle: white
 
 loop:
@@ -176,6 +176,7 @@ update_start:
     CALL(write_external)
     BR(update_start)            | start over
 cont_update:
+  LD(R8,4,R2) 			          | load coordinates of next object
   SHLC(R1,0x2,R18)           	| turn SPRITE_ID into a byte offset
   LD(R18,object_routines,R18) | LD address of object-specific update routine
   JMP(R18, R9)               	| JMP to execute; save PC in R9
@@ -186,7 +187,6 @@ cont_update:
 |+========
 pinball:
 .breakpoint
-LD(R8,4,R2) 			          | load coordinates of next object
 LD(R8,8,R3)                 | load x and y velocities
 LD(R8,12,R4)
 PUSH(LP)
@@ -195,6 +195,11 @@ CALL(detect_collision)
 CALL(update_velocity)
 POP(LP)
 JMP(R9)                     	| return to update function
+
+pinball_x:
+  LONG(0x0)             | memory for storing pinball x and y
+pinball_y:
+  LONG(0x0)             | coordinates 32 bit form, w/ last byte as fractional data
 
 |+========
 circ_bump:
@@ -237,14 +242,14 @@ JMP(R9)                     | return to update function
 object_routines:
   LONG(0xABCD)
   LONG(pinball)
-  LONG(r_flipper)
-  LONG(l_flipper)
-  LONG(tri_bump)
   LONG(circ_bump)
-  LONG(board)
-  LONG(fixme_1)
-  LONG(fixme_2)
-  LONG(fixme_3)
+  LONG(board_outline)
+  LONG(l_tri_bump)
+  LONG(r_tri_bump)
+  LONG(l_slide)
+  LONG(r_slide)
+  LONG(l_paddle)
+  LONG(r_paddle)
 
 |========================================================
 | OBJECT INSTANCE LIST STRUCTURE:
@@ -297,6 +302,17 @@ build_object:
   ST(R4,instance_list+16,R0)
   ST(R5,instance_list+20,R0)
   ST(R31,instance_list+24,R0)   | end list with NULL; gets overwritten by next object
+
+  SHRC(R1,1,R11)      | check to see if this object is the pinball
+  BNE(R11,build_done) | if not, we're done
+    | if it's the pinball, store its x and y in pinball_xy
+    SHRC(R2,0x10,R11)     | x pos
+    SHLC(R11,0x8,R11)     | shift left to represent fractional portion
+    AND(R2,R10,R12)       | y pos
+    SHLC(R12,0x8,R12)
+    ST(R11,pinball_x)
+    ST(R12,pinball_y)
+build_done:
   RTN()
 
 count: LONG(0x0)      | for storing the object instance count
@@ -319,19 +335,19 @@ wait_timer:
 	RTN()
 
 update_pos:
-  SHRC(R2,0x10,R11)     | x pos
-  SHLC(R11,0x8,R11)     | shift left to represent fractional portion
-  AND(R2,R10,R12)       | y pos
-  SHLC(R12,0x8,R12)
+  LD(pinball_x,R11)
+  LD(pinball_y,R12)
   ADDC(R4, GRAV_FRACT, R4) | add acceleration due to gravity
-  ADD(R11,R3,R11)
-  ADD(R12,R4,R12)      | increase position by v*t
+  ADD(R11,R3,R11)       |
+  ADD(R12,R4,R12)       | increase position by v*t
+  ST(R11,pinball_x)     | store them back in pinball_x and _y
+  ST(R12,pinball_y)
   SHRC(R11,0x8,R11)     | shift out fractional byte
   SHLC(R11,0x10,R2)
   SHRC(R12,0x8,R12)
   AND(R12,R10,R12)
   ADD(R12,R2,R2)
-  ST(R2,4,R8)
+  ST(R2,4,R8)           | update R2 with 16 bit approximations
   RTN()
 
 detect_collision:
@@ -348,9 +364,8 @@ sprite_lookup:
 LONG(0x00004000)    | RADIUS^2
 LONG(0x00000000)    | null termination of segments
 
-. = sprite_lookup+0x40
-					          | arbitrary circle (three times bigger): 2
-LONG(0x00009000)    | RADIUS^2
+. = sprite_lookup+0x40		    | arbitrary circle (three times bigger): 2
+LONG(0x00009000)              | RADIUS^2
 LONG(0x00000000)
 
 . = sprite_lookup+0x60        | the frame outline: 3
@@ -370,59 +385,36 @@ LONG(0x00000000)      | NULL means end of sprite!
 
 . = sprite_lookup+0x80
 |. = 0x500				| left triangle bumper: 4
-LONG(8)
-LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
-LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
-LONG(0x001E0018), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFE20000), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x0000FFE8), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser off
+LONG(0x01E00180)
+LONG(0xFE200000)
+LONG(0x0000FE80)
+LONG(0x00000000)
 
 . = sprite_lookup+0xA0
 |.= 0x600				| right triangle bumper: 5
-LONG(8)
-LONG(0x00000000), LONG(TRAVEL_TIME)    	| stall for travel time
-LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser on
-LONG(0x00000018), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFE20000), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x001EFFE8), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)    	| stall for laser off
+LONG(0x00000180)
+LONG(0xFE200000)
+LONG(0x01E0FE80)
+LONG(0x00000000)
 
-. = sprite_lookup+0xC0			| left bumpery thing: 6
-LONG(6)
-LONG(0x00000000), LONG(TRAVEL_TIME)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x00000022), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x00220008), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
+. = sprite_lookup+0xC0			| left slidey thing: 6
+LONG(0x00000220)
+LONG(0x02200080)
+LONG(0x00000000)
 
-. = sprite_lookup+0xE0
-LONG(6)					| right bumpery thing: 7
-LONG(0x00000000), LONG(TRAVEL_TIME)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x00000022), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFDE0008), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
+. = sprite_lookup+0xE0      | right slidey thing: 7
+LONG(0x00000220)
+LONG(0xFDE00080)
+LONG(0x00000000)
 
-. = sprite_lookup+0x100
-LONG(4)					| left paddle: 8
-LONG(0x00000000), LONG(TRAVEL_TIME)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0x00180008), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
+|| TODO: figure out paddle representation
+. = sprite_lookup+0x100     | left paddle: 8
+LONG(0x00180008)
+LONG(0x00000000)
 
-. = sprite_lookup+0x120
-LONG(4)					| right paddle: 9
-LONG(0x00000000), LONG(TRAVEL_TIME)
-LONG(0x00000000), LONG(STALL_TIME)
-LONG(0xFFE80008), LONG(0x10)
-LONG(0x00000000), LONG(STALL_TIME)
+. = sprite_lookup+0x120     | right paddle: 9
+LONG(0xFFE80008)
+LONG(0x00000000)
 
 
 
