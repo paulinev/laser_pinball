@@ -304,7 +304,7 @@ paddle_update:
 	SHLC(r0, 16, r0)
 	LD(r0, 0, r0)		| get value from input port a. lsb is right paddle, second bit is left paddle.
 	
-	CMOVE(0x2, r1)
+	CMOVE(0x3, r1)
 	SHLC(r1, 16, r1)
 	ORC(r1, 0x00F8, r3)	| left paddle update location
 	ORC(r1, 0x00FC, r2) | right paddle update location

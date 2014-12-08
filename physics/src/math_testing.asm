@@ -45,7 +45,7 @@ TIMER_OVERFLOW = 0x2C
 INPUT_PORT_A = 0x0
 
 . = 0
-JMP(start)
+BR(start)
 
 . = 0x4
 INT_V:
@@ -157,8 +157,54 @@ CALL(build_object)	| right paddle: white
 
 loop:
   CALL(set_timer)
+  CALL(scan)
   CALL(update)
   BR(loop)
+
+r_bump = R22
+l_bump = R24
+y_vel = R21
+x_vel = R23
+
+scan:
+  .breakpoint
+  CMOVE(0x1000,R15)
+  SHLC(R15,4,R15)     | load R15 with the bottom address of the external mem
+  LD(R15,INPUT_PORT_A,R0)
+
+scan_rbump:
+  CMOVE(0x0,r_bump)
+  ANDC(R0,0x1,R20)
+  BEQ(R20, scan_lbump)
+    CMOVE(0x1,r_bump)
+
+scan_rbump:
+  CMOVE(0x0,l_bump)
+  ANDC(R0,0x2,R20)
+  BEQ(R20, scan_up)
+    CMOVE(0x1,r_bump)
+
+scan_up:
+  ANDC(R0,0x4,R20)
+  BEQ(R20, scan_rarrow)
+    ADDC(y_vel,2,y_vel)
+
+scan_rarrow:
+  ANDC(R0,0x8,R20)
+  BEQ(R20, scan_down)
+    ADDC(x_vel,2,x_vel)
+
+scan_down:
+  ANDC(R0,0x10,R20)
+  BEQ(R20, scan_larrow)
+    SUBC(y_vel,2,y_vel)
+
+scan_larrow:
+  ANDC(R0,0x20,R20)
+  BEQ(R20, end_scan)
+    SUBC(x_vel,1,x_vel)
+end_scan:
+  RTN()
 
 update:        			| process next game object
 
@@ -236,10 +282,18 @@ JMP(R9)                     | return to update function
 
 |+========
 l_paddle:
+.breakpoint
+PUSH(LP)
+CALL(paddle_update)
+POP(LP)
 JMP(R9)                     | return to update function
 
 |+========
 r_paddle:
+.breakpoint
+PUSH(LP)
+CALL(paddle_update)
+POP(LP)
 JMP(R9)                     | return to update function
 
 |========================================================
@@ -439,6 +493,8 @@ detect_one_exit:
   RTN()
 
 update_velocity:
+  ADDC(R3,x_vel,R3)
+  ADDC(R4,x_vel,R4)
   ST(R3,8,R8)
   ST(R4,12,R8)
   RTN()
@@ -502,9 +558,77 @@ LONG(0xFFE80008)
 LONG(0x00000000)
 
 
+paddle_update:
+	PUSH(r0)
+	PUSH(r1)
+	PUSH(r2)
+	PUSH(r7)
+	PUSH(r8)
+	CMOVE(0x1, r7) | right paddle mask
+	CMOVE(0x2, r8)	| left paddle mask
+	
+	CMOVE(0x1, r0)
+	SHLC(r0, 16, r0)
+	LD(r0, 0, r0)		| get value from input port a. lsb is right paddle, second bit is left paddle.
+	
+	CMOVE(0x3, r1)
+	SHLC(r1, 16, r1)
+	ORC(r1, 0x00F8, r3)	| left paddle update location
+	ORC(r1, 0x00FC, r2) | right paddle update location
+	
+	AND(r7, r0, r7)
+	BEQ(r7, right_paddle_down)
+
+right_paddle_up:
+	LD(right_paddle_up_val, r13)
+	ST(r13, 0, r2)
+	AND(r8, r0, r8)
+	BEQ(left_paddle_down,r8)
+	BR(left_paddle_up)
+
+right_paddle_down:
+	LD(right_paddle_down_val, r13)
+	ST(r13, 0, r2)
+	AND(r8, r0, r8)
+	BEQ(left_paddle_down,r8)
+	BR(left_paddle_up)
+
+left_paddle_up:
+	LD(left_paddle_up_val, r13)
+	ST(r13, 0, r3)
+	POP(r8)
+	POP(r7)
+	POP(r2)
+	POP(r1)
+	POP(r0)
+	RTN()
+	
+left_paddle_down:
+	LD(left_paddle_down_val, r13)
+	ST(r13, 0, r3)
+	POP(r8)
+	POP(r7)
+	POP(r2)
+	POP(r1)
+	POP(r0)
+	RTN()
+
+left_paddle_down_val:
+LONG(0x00180008)
+
+left_paddle_up_val:
+LONG(0x0018FFF8)
+
+right_paddle_down_val:
+LONG(0xFFE80008)
+
+right_paddle_up_val:
+LONG(0xFFE8FFF8)
 
 stack:
 STORAGE(128)
 
-. = 0x00400000
+. = 0x10000
+LONG(0x4)
+. = 0x400000
 LONG(0x1EEB)
