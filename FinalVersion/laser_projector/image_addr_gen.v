@@ -21,7 +21,8 @@
 module image_addr_gen(
 	input wire [9:0] hcount,
 	input wire [9:0] vcount,
-	output wire [15:0] addr
+	output wire [15:0] addr,
+	output wire blank //invalid signal
     );
 	//map 640 X 480 to 240 X 240
 	parameter div_by = 1;
@@ -34,5 +35,7 @@ module image_addr_gen(
 	assign vcount_trun = (vcount>=480) ? 0 : vcount;
 	
 	assign addr = hcount_trun[9:div_by] + vcount_trun[9:div_by] * hnumb[9:div_by];
+	
+	assign blank = (hcount>=480) | (vcount>=480) ? 1 : 0;
 
 endmodule

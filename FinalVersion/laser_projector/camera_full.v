@@ -34,9 +34,9 @@ module camera_full(
 	inout wire vga_sda,
 	output wire camera_xclk,
 	output wire [11:0] vga_drive,
-	output wire vga_hsync,
-	output wire vga_vsync,
-	output wire vga_blank,
+	output reg vga_hsync,
+	output reg vga_vsync,
+	output reg vga_blank,
 	output wire beta_mwe,
 	output wire [31:0] beta_addr,
 	output wire [31:0] beta_din	
@@ -62,10 +62,6 @@ module camera_full(
 	 
 	 wire image_process; //controlls mux for frame buffer
 	 
-	 assign vga_vsync = local_vsync;
-	 assign vga_hsync = local_hsync;
-	 assign vga_blank = local_blank;
-	 
 	  
 	 wire [23:0] vga_data;
 	 wire [8:0] vga_pixel;
@@ -85,8 +81,10 @@ module camera_full(
 	 wire [8:0] blue_blob_pixel; 
 	 wire [8:0] output_pixel;
 	 
+	 wire vga_pixel_invalid; 
+	 wire frame_proc_done;
 	
-	 assign output_pixel = vga_pixel | red_blob_pixel | green_blob_pixel | blue_blob_pixel;
+	 assign output_pixel = vga_pixel_invalid ? 0 : vga_pixel | red_blob_pixel | green_blob_pixel | blue_blob_pixel;
 	 
 	 assign vga_data = {output_pixel[8:6], {5{output_pixel[6]}},
 								output_pixel[5:3], {5{output_pixel[3]}},
@@ -96,12 +94,32 @@ module camera_full(
 	 assign vga_pixel = image_hunt_mem_request ?  9'b000_000_000: frame_data;
 	 assign buffer_read_addr = image_hunt_mem_request ? proc_addr : vga_addr ;
 	 
+	 reg blank_temp;
+	 reg hsync_temp;
+	 reg vsync_temp;
+	 
+	 //assign vga_vsync = local_vsync;
+	 //assign vga_hsync = local_hsync;
+	 //assign vga_blank = local_blank;
+	 
+	 //solve output delay, delay by two clock cycles
+	 always@(posedge clk_50)
+	 begin
+	 blank_temp <= local_blank;
+	 hsync_temp <= local_hsync;
+	 vsync_temp <= local_vsync;
+	 
+	 vga_blank <= blank_temp;
+	 vga_hsync <= hsync_temp;
+	 vga_vsync <= vsync_temp;
+	 end
+	 
 	 image_hunt process_a_frame (
     .clk(clk_50), 
     .mem_pixel_data(frame_data), 
     .start(process_frame), 
     .mem_request(image_hunt_mem_request), 
-    .done(), 
+    .done(frame_proc_done), 
     .mem_hcount(proc_hcount), 
     .mem_vcount(proc_vcount), 
     .red_x(red_x), 
@@ -178,19 +196,22 @@ module camera_full(
 	 image_addr_gen camera_addr_gen (
     .hcount(camera_hcount), 
     .vcount(camera_vcount), 
-    .addr(camera_addr)
+    .addr(camera_addr),
+	 .blank()
     );
 	 
 	 image_addr_gen buffer_read_addr_gen (
     .hcount(vga_hcount), 
     .vcount(vga_vcount), 
-    .addr(vga_addr)
+    .addr(vga_addr),
+	 .blank(vga_pixel_invalid)
     );
 
 	image_addr_gen image_proc_gen(
     .hcount(proc_hcount), 
     .vcount(proc_vcount), 
-    .addr(proc_addr)
+    .addr(proc_addr),
+	 .blank()
     );
 	 
 	 
@@ -207,6 +228,20 @@ module camera_full(
     );
 
 
+	camera_write_to_beta beta_dump (
+    .clk(clk_50), 
+    .start(frame_proc_done), 
+    .red_x(red_x), 
+    .red_y(red_y), 
+    .green_x(green_x), 
+    .green_y(green_y), 
+    .blue_x(blue_x), 
+    .blue_y(blue_y), 
+    .beta_addr(beta_addr), 
+    .beta_data(beta_din), 
+    .beta_mwe(beta_mwe)
+    );
+
 	color_blob red_blob (
     .clk(clk_50), 
     .hcount(vga_hcount), 
@@ -214,7 +249,7 @@ module camera_full(
     .x_loc(red_x), 
     .y_loc(red_y), 
     .enable(1'b1), 
-    .color(9'b111_000_000), //red display
+    .color(9'b111_000_000), 
     .pixel(red_blob_pixel)
     );
 
@@ -226,7 +261,7 @@ color_blob green_blob (
     .x_loc(green_x), 
     .y_loc(green_y), 
     .enable(1'b1), 
-    .color(9'b000_111_000), //green display as red
+    .color(9'b000_111_000), 
     .pixel(green_blob_pixel)
     );
 	 
@@ -237,7 +272,7 @@ color_blob blue_blob (
     .x_loc(blue_x), 
     .y_loc(blue_y), 
     .enable(1'b1), 
-    .color(9'b000_000_111), //blue display as green
+    .color(9'b000_000_111), 
     .pixel(blue_blob_pixel)
     );
 

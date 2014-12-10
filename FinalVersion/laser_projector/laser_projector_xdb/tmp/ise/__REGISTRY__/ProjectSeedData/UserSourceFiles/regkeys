@@ -1,5 +1,5 @@
 NUM_USER_FILES
-61
+64
 s
 user_file_1
 hardware_interface.v
@@ -174,6 +174,15 @@ nes_interface.v
 s
 user_file_61
 nes_interface_tb.v
+s
+user_file_62
+camera_sequencer.v
+s
+user_file_63
+start_sync.v
+s
+user_file_64
+camera_write_to_beta.v
 s
 user_file_7
 beta_read_decode.v

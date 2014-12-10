@@ -94,7 +94,14 @@ module hardware_interface(
 	 wire camera_vsync;
 	 wire camera_href;
 	 
+	 wire setup_start;
+	 
+	 //buttons
 	 wire user_reset;
+	 wire GPIO_SW_E_db;
+	 wire GPIO_SW_N_db;
+	 wire GPIO_SW_S_db;
+	 wire GPIO_SW_W_db;
 	 
 	 //SNES controller buttons
 	 wire snes_R, snes_L, snes_A, snes_B, snes_N;
@@ -103,6 +110,10 @@ module hardware_interface(
 	 wire snes_latch;
 	 wire snes_dout;
 	 wire snes_clk;
+	 
+	 wire [31:0] beta_camera_addr;
+	 wire [31:0] beta_camera_data;
+	 wire beta_camera_mwe;
 	 
 	 assign HDR1_22 = snes_latch;
 	 assign HDR1_24 = snes_clk; 
@@ -170,9 +181,9 @@ module hardware_interface(
     .paddle_l(snes_L),  
     .paddle_r(snes_R), 
     .laser_rgb(laser_rgb), 
-	 .camera_addr(32'b0),
-	 .camera_dout(32'b0),
-	 .camera_mwe(1'b0),
+	 .camera_addr(beta_camera_addr),
+	 .camera_dout(beta_camera_data),
+	 .camera_mwe(beta_camera_mwe),
     .dac_mosi(dac_mosi),
     .dac_csn(dac_csn), 
     .dac_latchn(dac_latchn), 
@@ -186,9 +197,9 @@ module hardware_interface(
     .clk_50(clk_50), 
     .camera_pclk(camera_pclk), 
     .reset(reset), 
-    .system_start(paddle_r), 
-    .capture_frame(paddle_l), 
-    .process_frame(process_frame_start), 
+    .system_start(setup_start), 
+    .capture_frame(GPIO_SW_E_db), 
+    .process_frame(GPIO_SW_W_db), 
     .camera_href(camera_href), 
     .camera_vsync(camera_vsync), 
     .camera_data(camera_dout), 
@@ -201,11 +212,11 @@ module hardware_interface(
     .vga_hsync(hsync), 
     .vga_vsync(vsync), 
     .vga_blank(blank), 
-    .beta_mwe(), 
-    .beta_addr(), 
-    .beta_din()
+    .beta_mwe(beta_camera_mwe), 
+    .beta_addr(beta_camera_addr), 
+    .beta_din(beta_camera_data)
     );
-	*/
+	
 	 
 	 
 	 reset_controller gen_sys_reset (
@@ -213,6 +224,14 @@ module hardware_interface(
     .user_reset(user_reset), 
     .reset(reset)
     );
+	 
+	 setup_timer instance_name (
+    .clk(clk_50), 
+    .reset(reset), 
+    .setup_start(setup_start)
+    );
+
+
 	 
 	 assign user_reset = GPIO_SW_C;
 	 
@@ -242,28 +261,28 @@ module hardware_interface(
     .reset(reset), 
     .clock(clk_50), 
     .noisy(GPIO_SW_E), 
-    .clean(paddle_r)
+    .clean(GPIO_SW_E_db)
     );
 	 
 	 debounce db_3 (
     .reset(reset), 
     .clock(clk_50), 
     .noisy(GPIO_SW_W), 
-    .clean(paddle_l)
+    .clean(GPIO_SW_W_db)
     );
 	 
 	 debounce db_4 (
     .reset(reset), 
     .clock(clk_50), 
     .noisy(GPIO_SW_N), 
-    .clean(camera_start)
+    .clean(GPIO_SW_N_db)
     );
 	 
 	  debounce db_5 (
     .reset(reset), 
     .clock(clk_50), 
     .noisy(GPIO_SW_S), 
-    .clean(process_frame_start)
+    .clean(GPIO_SW_S_db)
     );
 
 	 

@@ -21,14 +21,25 @@
 module setup_timer(
 	input wire clk,
 	input wire reset,
-	output wire setup_start
+	output reg setup_start
     );
 	 
-	 reg [31:0] setup_delay = 0;
+	 //generate one cycle setup pulse long after reset
+	 reg [31:0] setup_delay = 32'hFFFF;
 	 
 	 always@(posedge clk)
 	 begin
 	 
+	 setup_start <= (setup_delay == 1) ? 1 : 0;
+	 
+	 if (setup_delay > 0)
+	 begin
+	 setup_delay <= reset ? 32'hFFFF : setup_delay-1;
+	 end
+	 else 
+	 begin
+	 setup_delay <= reset ? 32'hFFFF : 0;
+	 end 
 	 
 	 end
 

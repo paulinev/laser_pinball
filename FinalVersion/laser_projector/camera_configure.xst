@@ -1,4 +1,0 @@
-set -tmpdir "./xst/projnav.tmp"
-elaborate
--ifn camera_configure.prj
--ifmt mixed
