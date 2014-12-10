@@ -237,7 +237,8 @@ Unlike in the game of pong we put together in lab, we didn't have the luxury of 
 With the realization that we wanted to be able to define parts of our project purely in software, we decided to look into the Verilog implementations of the 6.004 Beta core available on past versions of the 6.111 website. The Beta fit our specifications well. Its 32-bit architecture was adequate for doing complex math in the physics module, as well as precisely controlling the laser galvos in the projection module. In addition, it was free, and all of us had experience writing assembly code for it from 6.004. We also considered using other free cores like Xilinx PicoBlaze, but were discouraged by its 8-bit architecture, which would not afford us the precision to do accurate physics modeling, or even make full use of the 12-bit DACs we used to drive the laser galvos. The Beta architecture used for the project will be discussed in more detail in section \ref{mbeta}.
 
 
-\subsubsection{The NES Controller}
+\subsubsection{The SNES Controller}
+Though we had originally wanted to use accelerometers to control the pinball game's paddles, we instead decided to use an SNES controller because it was far simpler to read. We simply mapped its buttons to one of the Beta's memory-mapped input ports and were able to read digital values directly from the controller.
 
 \subsection{Laser Controller} \label{laser}
 
@@ -261,7 +262,7 @@ The laser display module was implemented primarily on a Beta processor, with the
 
 Each sprite was broken up into line segments, and each line segment was broken up into sub-segments in order to not overdrive the galvos (which could only be driven a small distance at a time). The first item of each sprite (here "LONG(26)") is the number of line segments in that sprite. This was used as a countdown so the laser Beta knew when it had reached the end of the sprite. The numbers in the left column describe x (most significant two bytes) and y (least significant two bytes) offsets, and the numbers in the right column are the number of times the corresponding offset is repeated. These offsets describe the length and direction of each sub-segment.
 
- To draw the sprite, each offset in the table was split into its x and y components, sign-extended, and added to the initial x and y location received from the physics Beta; the initial location, which was registered, was then overwritten to store the current location. This new x-y point was then written to the galvos via the SPI module. A timer was set at 20kHz and the program delayed sending a new value to the galvos until the timer flag went high; during this period of time, the laser Beta polled two reserved shared memory locations for flipper trigger information, overwriting its stored paddle offsets in the sprite tables with new ones that appeared in the shared memory location. This allowed for the paddles to be updated every frame. This process was repeated with the same offset the specified number of times (drawing each sub-segment one at a time) until the end of the segment was reached; the next set of offsets was then loaded and the entire process was repeated until the segment counter ran out and the end of the sprite was reached. The process then began again with the next sprite.
+ To draw the sprite, each offset in the table was split into its x and y components, sign-extended, and added to the initial x and y location received from the physics Beta; the initial location, which was registered, was then overwritten to store the current location. This new x-y point was then written to the galvos via the SPI module. A timer was set at 20kHz and the program delayed sending a new value to the galvos until the timer flag went high; during this period of time, the laser Beta polled two reserved shared memory locations for flipper trigger information, overwriting its stored paddle offsets in the sprite tables with new ones that appeared in the shared memory location. This allowed for the paddles to be updated to either their "up" or "down" positions every frame. This process was repeated with the same offset the specified number of times (drawing each sub-segment one at a time) until the end of the segment was reached; the next set of offsets was then loaded and the entire process was repeated until the segment counter ran out and the end of the sprite was reached. The process then began again with the next sprite.
  
 Null offsets were inserted into the sprite table at the beginning and end to account for laser travel and power toggle time; null offsets were also added at sharp corners to counter the effects of the galvos' inertia.
 
@@ -310,6 +311,10 @@ We also encountered less common issues, such as one of our first figures being r
 \caption{Problematic register underflow causing the laser beam to shoot to the maximum extent of its range.}
 \end{figure}
 
+\subsubsection{Testing}
+
+Testing the laser driver would have been impossible without the 6.004 testing program BSIM. With BSIM we were able to step through the assembly program and verify that it was doing exactly what we wanted it to. This was most helpful in the drawing of the sprites; mapping each sprite to a list of signed hexadecimal offsets by hand was highly prone to error, which caused problematic overflow and underflow as in the figures above. 
+
 \section{Implementation Process} \label{implementation}
 \subsection{The $\mu$Beta Processor} \label{mbeta}
 The $\mu$Beta processor was based on the two-stage Beta from the old 6.111 course website.  First, the core was modified to have correct register initialization values to allow for simulation in ModelSim. We then discovered that the BEQ and BNE opcodes were incorrect, and fixed them. We added multiply to the Beta and remapped the memory space. 
@@ -338,8 +343,29 @@ Using our own FPGA board allowed us to work on the project at any time and place
 
 \section{Review and Recommendation}
 
-\section{Conclusion}
+As is likely obvious, we deeply underestimated the complexity of this project. Things that we assumed would be quick---like getting the camera working at a basic level, for example---ended up taking us weeks of work. We realized fairly late in the game that our project really required a processor; though we did manage to get a working Beta implementation, it took up so much of our time that we had little time left to work on the relevant parts of our project (object recognition, physics, and laser control). It's no surprise, then, that we didn't finish all parts of our project. Thinking back, we should have been less ambitious and scrapped the camera section entirely. Without having to fight with the camera and deal with vision processing, we would have had enough time to generate a working physics engine and laser controller, even with the necessary Beta implementation.
 
+On the plus side, though, implementing the Beta processor on an FPGA did teach us a lot. It was also truly amazing to be able to write code in assembly, load it into BRAM, and watch the processor behave as expected. Even things like simulating in ModelSim were exciting since we were effectively simulating a multicore processor at the gate level. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{physics_laser_interact_test01}
+\caption{The first test with the two Betas interacting correctly. You can see the SPI transmission occurring and the two Betas (the physics Beta as the host and the laser Beta as the client) using the shared memory space.}
+\end{figure}
+
+And once we implemented the Beta processor we actually did manage to get fairly close to completing all parts of our project. With an extra week, we likely could have finished, even with the hangups from the camera---had we initially decided on a multicore Beta architecture rather than restarting halfway through the project we would have made much more progress towards our original goal.
+
+One thing that would have helped tremendously (and could help in the future, if further iterations of this project are attempted) was a C-to-Beta-assembly compiler. Because the Beta instruction set is non-standard, no such industry-standard compiler exists and past students have relied on a compiler that is no longer maintained by its authors. Our attempts to revive this compiler for use on modern systems failed, but if we had had a compiler writing the physics engine would have been comparatively trivial. Fixed-point math in assembly language is not in any way intuitive and would have been much easier in a high-level language like C.
+
+Something else that could have sped up out testing process was a custom bootloader for the Betas on the FPGA. In order to test new code, we had to rebuild the two 16k word program memories (BRAMs) in ISE, then rebuild the entire project. This process took about 15 to 20 minutes, which held up our code testing frequently. Though we thoroughly simulated in both BSIM and ModelSim, one of our biggest sources of error was the physical system itself, which could only be tested by running the assembly code. Had we been able to serially load in a memory initialization, we would have been able to test code on the system much more often without having to rebuild the entire project.
+
+
+\section{Conclusion}
+All things considered, our project came together surprisingly well. Though not all elements of the project were integrated, most of them were fully functional as of the checkoff. The only exception to this was the physics engine, which was close to functional but not yet fully debugged. Though our pinball game is unplayable, the fact that we managed to design object recognition software with a terrible camera and build effectively a commercial laser projector (to display a gameboard with controllable paddles) is fairly amazing. While we're disappointed that we weren't able to get everything finished, we are extremely proud of the work that we did pull together.
+
+And, of course, we achieved our goal of making something really cool---a 400mW laser projecting a pinball board and an SNES controller to toggle the paddles is nothing to scoff at.
+
+\pagebreak
 \section{Code}
 \subsection{Beta Instruction Set}
 \begin{lstlisting}
