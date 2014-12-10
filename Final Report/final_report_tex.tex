@@ -373,7 +373,568 @@ And, of course, we achieved our goal of making something really cool---a 400mW l
 
 \pagebreak
 \section{Code}
-\subsection{Beta Instruction Set}
+\subsection{The Beta}
+\subsubsection{The Two-Stage Pipelined Beta}
+\begin{lstlisting}[language=Verilog]
+///////////////////////////////////////////////////////////////////////////////
+//
+//	2-stage pipelined Beta (one bidirectional memory port) [cjt]
+//
+///////////////////////////////////////////////////////////////////////////////
+
+module beta2(clk,reset,irq,xadr,ma,mdin,mdout,mwe);
+  input clk,reset,irq;
+  input [30:0] xadr;
+  output [31:0] ma,mdout;
+  input [31:0] mdin;
+  output mwe;
+
+  // beta2 registers
+  reg [31:0] npc = 0;
+  reg [31:0] pc_inc = 0;
+  reg [31:0] inst = 0;
+  reg [4:0] rc_save = 0;  // needed for second cycle on LD,LDR
+
+  // internal buses
+  wire [31:0] rd1,rd2,wd;
+  wire [31:0] a,b,xb,c,addsub,cmp,shift,boole,mult;
+
+  // control signals
+  wire wasel,werf,z,asel,bsel,csel;
+  wire addsub_op,cmp_lt,cmp_eq,shift_op,shift_sxt,boole_and,boole_or;
+  wire wd_addsub,wd_cmp,wd_shift,wd_boole,wd_mult;
+  wire msel,msel_next,branch,trap,interrupt;
+
+  // pc
+  wire [31:0] npc_inc,npc_next;
+  assign npc_inc = npc + 4;
+  assign npc_next = reset ? 32'h80000000 :
+                    msel ? npc :
+                    branch ? {npc[31] & addsub[31],addsub[30:2],2'b00} :
+                    trap ? 32'h80000004 :
+                    interrupt ? {1'b1,xadr} :
+                    {npc[31],npc_inc[30:0]};
+  always @ (posedge clk) begin
+    npc <= npc_next;   // logic for msel handled above
+    if (!msel) pc_inc <= {npc[31],npc_inc[30:0]};
+  end
+
+  // instruction reg
+  always @ (posedge clk) if (!msel) inst <= mdin;
+
+  // control logic
+  decode ctl(.clk(clk),.reset(reset),.irq(irq & !npc[31]),.z(z),
+             .opcode(inst[31:26]),
+             .asel(asel),.bsel(bsel),.csel(csel),.wasel(wasel),
+             .werf(werf),.msel(msel),.msel_next(msel_next),.mwe(mwe),
+             .addsub_op(addsub_op),.cmp_lt(cmp_lt),.cmp_eq(cmp_eq),
+             .shift_op(shift_op),.shift_sxt(shift_sxt),
+             .boole_and(boole_and),.boole_or(boole_or),
+             .wd_addsub(wd_addsub),.wd_cmp(wd_cmp),
+             .wd_shift(wd_shift),.wd_boole(wd_boole),.wd_mult(wd_mult),
+             .branch(branch),.trap(trap),.interrupt(interrupt));
+                  
+  // register file
+  wire [4:0] wa;
+  always @ (posedge clk) if (!msel) rc_save <= inst[25:21];
+  assign wa = msel ? rc_save : wasel ? 5'd30 : inst[25:21];
+
+  regfile rf(inst[20:16],rd1,inst[15:11],rd2,inst[25:21],mdout,
+                 wa,wd,clk,werf);
+
+  assign z = ~| rd1;   // used in BEQ/BNE instructions
+
+  // alu
+  assign a = asel ? pc_inc : rd1;
+  assign b = bsel ? c : rd2;
+  assign c = csel ? {{14{inst[15]}},inst[15:0],2'b00} :
+                    {{16{inst[15]}},inst[15:0]};
+
+  wire addsub_n,addsub_v,addsub_z;
+  assign xb = {32{addsub_op}} ^ b;
+  assign addsub = a + xb + addsub_op;
+  assign addsub_n = addsub[31];
+  assign addsub_v = (addsub[31] & ~a[31] & ~xb[31]) |
+                    (~addsub[31] & a[31] & xb[31]);
+  assign addsub_z = ~| addsub;
+
+  assign cmp[31:1] = 0;
+  assign cmp[0] = (cmp_lt & (addsub_n ^ addsub_v)) | (cmp_eq & addsub_z);
+
+  mul32 mpy(a,b,mult);
+
+  wire [31:0] shift_right;
+  // Verilog >>> operator not synthesized correctly, so do it by hand
+  shift_right sr(shift_sxt,a,b[4:0],shift_right);
+  assign shift = shift_op ? shift_right : a << b[4:0];
+
+  assign boole = boole_and ? (a & b) : boole_or ? (a | b) : a ^ b;
+
+  // result mux, listed in order of speed (slowest first)
+  assign wd = msel ? mdin :
+              wd_cmp ? cmp :
+              wd_addsub ? addsub :
+              wd_mult ? mult :
+              wd_shift ? shift :
+              wd_boole ? boole :
+              pc_inc;
+
+  // assume synchronous external memory
+  assign ma = msel_next ? {npc[31],addsub[30:0]} : npc_next;
+endmodule
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//	3-port register file
+//
+///////////////////////////////////////////////////////////////////////////////
+
+// Beta register file: 32 registers of 32 bits
+// R31 always reads as 0
+// 3 read ports, 1 write port
+module regfile(ra1,rd1,ra2,rd2,ra3,rd3,wa,wd,clk,werf);
+  input [4:0] ra1,ra2,ra3,wa;
+  output [31:0] rd1,rd2,rd3;
+  input [31:0] wd;
+  input clk,werf;
+
+  (* ram_style = "distributed" *)
+  reg [31:0] regfile[31:0];
+  //this may be required for simulation?
+  integer i; initial for (i = 0; i < 32; i = i + 1) regfile[i] = 32'h0;
+
+  assign rd1 = regfile[ra1];
+  assign rd2 = regfile[ra2];
+  assign rd3 = regfile[ra3];
+
+  always @ (posedge clk)
+    if (werf && wa != 31) regfile[wa] <= wd;
+
+endmodule
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//	Instruction decode (inst => datapath control signals)
+//
+///////////////////////////////////////////////////////////////////////////////
+
+module decode(clk,reset,irq,z,opcode,
+              asel,bsel,csel,wasel,werf,msel,msel_next,mwe,
+              addsub_op,cmp_lt,cmp_eq,
+              shift_op,shift_sxt,boole_and,boole_or,
+              wd_addsub,wd_cmp,wd_shift,wd_boole,wd_mult,
+	      branch,trap,interrupt);
+  input clk,reset,irq,z;
+  input [5:0] opcode;
+  output asel,bsel,csel,wasel,werf,msel,msel_next,mwe;
+  output addsub_op,shift_op,shift_sxt,cmp_lt,cmp_eq,boole_and,boole_or;
+  output wd_addsub,wd_cmp,wd_shift,wd_boole,wd_mult;
+  output branch,trap,interrupt;
+
+  reg asel,bsel,csel,wasel,mem_next;
+  reg addsub_op,shift_op,shift_sxt,cmp_lt,cmp_eq,boole_and,boole_or;
+  reg wd_addsub,wd_cmp,wd_shift,wd_boole,wd_mult;
+  reg branch,trap,interrupt;
+
+  // a little bit of state...
+  reg annul,msel,mwrite;
+
+  
+  //always @ (opcode or z or annul or msel or irq or reset)
+  always@(*)
+  begin
+    // initial assignments for all control signals
+    asel = 1'hx;
+    bsel = 1'hx;
+    csel = 1'hx;
+    addsub_op = 1'hx;
+    shift_op = 1'hx;
+    shift_sxt = 1'hx;
+    cmp_lt = 1'hx;
+    cmp_eq = 1'hx;
+    boole_and = 1'hx;
+    boole_or = 1'hx;
+
+    wasel = 0;
+    mem_next = 0;
+
+    wd_addsub = 0;
+    wd_cmp = 0;
+    wd_shift = 0;
+    wd_boole = 0;
+    wd_mult = 0;
+
+    branch = 0;
+    trap = 0;
+    interrupt = 0;
+
+    if (irq && !reset && !annul && !msel) begin
+      interrupt = 1;
+      wasel = 1;
+    end else casez (opcode)
+      6'b011000: begin   // LD
+                   asel = 0; bsel = 1; csel = 0;
+                   addsub_op = 0;
+		   mem_next = 1;
+                 end
+      6'b011001: begin   // ST
+                   asel = 0; bsel = 1; csel = 0;
+                   addsub_op = 0;
+		   mem_next = 1;
+                 end
+      6'b011011: begin   // JMP
+                   asel = 0; bsel = 1; csel = 0;
+                   addsub_op = 0;
+                   branch = !annul && !msel;
+                 end
+      6'b011100: begin   // BEQ //incorrect was 011101
+                   asel = 1; bsel = 1; csel = 1;
+                   addsub_op = 0;
+                   branch = !annul && !msel && z;
+                 end
+      6'b011101: begin   // BNE //incorrect was 0111100
+                   asel = 1; bsel = 1; csel = 1;
+                   addsub_op = 0;
+                   branch = !annul && !msel && ~z;
+                 end
+      6'b011111: begin   // LDR
+                   asel = 1; bsel = 1; csel = 1;
+                   addsub_op = 0;
+		   mem_next = 1;
+                 end
+      6'b1?0000: begin   // ADD, ADDC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   addsub_op = 0;
+                   wd_addsub = 1;
+                 end
+      6'b1?0001: begin   // SUB, SUBC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   addsub_op = 1;
+                   wd_addsub = 1;
+                 end
+      6'b1?0010: begin   // MUL, MULC
+                  asel = 0; bsel = opcode[4]; csel = 0;
+                  wd_mult = 1;
+                 end
+      6'b1?0100: begin   // CMPEQ, CMPEQC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   addsub_op = 1;
+		   cmp_eq = 1; cmp_lt = 0;
+                   wd_cmp = 1;
+                 end
+      6'b1?0101: begin   // CMPLT, CMPLTC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   addsub_op = 1;
+		   cmp_eq = 0; cmp_lt = 1;
+                   wd_cmp = 1;
+                 end
+      6'b1?0110: begin   // CMPLE, CMPLEC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   addsub_op = 1;
+		   cmp_eq = 1; cmp_lt = 1;
+                   wd_cmp = 1;
+                 end
+      6'b1?1000: begin   // AND, ANDC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   boole_and = 1; boole_or = 0;
+                   wd_boole = 1;
+                 end
+      6'b1?1001: begin   // OR, ORC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   boole_and = 0; boole_or = 1;
+                   wd_boole = 1;
+                 end
+      6'b1?1010: begin   // XOR, XORC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   boole_and = 0; boole_or = 0;
+                   wd_boole = 1;
+                 end
+      6'b1?1100: begin   // SHL, SHLC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   shift_op = 0;
+                   wd_shift = 1;
+                 end
+      6'b1?1101: begin   // SHR, SHRC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   shift_op = 1; shift_sxt = 0;
+                   wd_shift = 1;
+                 end
+      6'b1?1110: begin   // SRA, SRAC
+                   asel = 0; bsel = opcode[4]; csel = 0;
+                   shift_op = 1; shift_sxt = 1;
+                   wd_shift = 1;
+                 end
+      default:   begin   // illegal opcode
+                   trap = !annul && !msel; wasel = 1;
+                 end
+    endcase
+  end
+
+  // state
+  wire msel_next = !reset && !annul && mem_next && !msel;
+  wire mwrite_next = msel_next && opcode==6'b011001;
+ 
+  always @ (posedge clk)
+  begin
+    annul <= !reset && (trap || branch || interrupt);
+    msel <= msel_next;
+    mwrite <= mwrite_next;
+  end
+
+  assign mwe = mwrite_next;   // assume synchronous memory
+  assign werf = msel ? !mwrite : (!annul & !mem_next);
+endmodule
+
+///////////////////////////////////////////////////////////////////////////////
+//
+//	32-bit signed/unsiged right shift
+//
+///////////////////////////////////////////////////////////////////////////////
+
+module shift_right(sxt,a,b,shift_right);
+  input sxt;
+  input [31:0] a;
+  input [4:0] b;
+  output [31:0] shift_right;
+
+  wire [31:0] w,x,y,z;
+  wire sin;
+
+  assign sin = sxt & a[31];
+  assign w = b[0] ? {sin,a[31:1]} : a;
+  assign x = b[1] ? {{2{sin}},w[31:2]} : w;
+  assign y = b[2] ? {{4{sin}},x[31:4]} : x;
+  assign z = b[3] ? {{8{sin}},y[31:8]} : y;
+  assign shift_right = b[4] ? {{16{sin}},z[31:16]} : z;
+endmodule
+\end{lstlisting}
+
+\subsubsection{Beta Address Decoding}
+\begin{lstlisting}[language=Verilog]
+`timescale 1ns / 1ps
+module beta_addr_decode(
+	input wire [31:0] addr,
+	output reg sel_ram = 0,
+	output reg sel_IO =0,
+	output reg sel_read_shared =0,
+	output reg sel_write_shared =0,
+	output reg [2:0] read_select =0
+    );
+
+	always@(*)
+	begin
+	//remove the supervisor bit dummy
+	case(addr[30:16])
+	
+	0: begin //RAM select
+		sel_ram <=1; 
+		sel_IO <= 0;
+		sel_read_shared <= 0;
+		sel_write_shared <= 0;
+		read_select <= 0;
+	end
+	
+	1: begin //Memory mapped IO select 
+		sel_ram <=0; 
+		sel_IO <= 1;
+		sel_read_shared <= 0;
+		sel_write_shared <= 0;
+		read_select <= 1;
+	end
+	
+	2: begin //read block select
+		sel_ram <=0; 
+		sel_IO <= 0;
+		sel_read_shared <= 1;
+		sel_write_shared <= 0;
+		read_select <= 2;
+	end
+	
+	3: begin //write block select 
+		sel_ram <=0; 
+		sel_IO <= 0;
+		sel_read_shared <= 0;
+		sel_write_shared <= 1;
+		read_select <= 3;
+	end
+	
+	default : begin //this should never happen
+		sel_ram <=1; //read from main mem? I could trigger error IRQ
+		sel_IO <= 0;
+		sel_read_shared <= 0;
+		sel_write_shared <= 0;
+		read_select <= 0;
+	end 
+	endcase
+	
+	end
+endmodule
+\end{lstlisting}
+
+\subsubsection{Memory-Mapped I/O}
+\begin{lstlisting}[language=Verilog]
+//this is a basic memory mapped IO, SPI, inputs, and outputs
+module mapped_IO(
+	input wire clk,
+	input wire [31:0] addr,//from beta
+	input wire [31:0] din, //from beta
+	input wire mwe, //memory write enable from beta
+	input wire [31:0] in_port_a, in_port_b, // general use input port
+	output reg [31:0] dout =0, //data to beta
+	output reg [31:0] out_port_a = 0,
+	output reg [31:0] out_port_b = 0, // general output ports
+	input wire spi_miso, //spi stuff 
+	output wire spi_sclk,
+	output wire spi_mosi,
+	output reg irq
+    );
+	//this is on word offset
+	//registers: 
+	//	0000 - 0004 : in_port_a - in_port b
+	//	0008 - 000c : out_port_a - out_port_b
+	//	0010 - 001c : spi_config, spi_start, spi_tx, spi_rx
+	//	0020 - 002c : system timer 1
+
+	wire [31:0] spi_rx_data;
+	reg [31:0] spi_tx_data =0;
+	reg [31:0] spi_config = 32'h00_00_02_0a; //default to nice value
+
+	reg spi_start;
+	wire [31:0]spi_status;
+	
+	//timer 1 inputs
+	reg [31:0] timer1_cin = 32'h00_00_FF_FF;
+	reg timer1_irq_enable = 0;
+	reg timer1_clear_overflow = 0; //in always * block
+	reg timer1_mwe = 0; //in always * block 
+	
+	
+	//timer 1 outputs 
+	wire [31:0] timer1_cout;
+	wire timer1_irq;
+	wire timer1_overflow;
+	
+	
+	
+	spi_io beta_spi (
+    .clk(clk), 
+    .start(spi_start), 
+    .ctrl_reg(spi_config), 
+    .din(spi_tx_data), 
+    .dout(spi_rx_data), 
+    .status_reg(spi_status), 
+    .sclk(spi_sclk), 
+    .miso(spi_miso), 
+    .mosi(spi_mosi)
+    );
+	 
+	 system_timer beta_timer1 (
+    .clk(clk), 
+    .count_in(timer1_cin), 
+    .count_out(timer1_cout), 
+    .clear_overflow(timer1_clear_overflow), 
+    .irq_enable(timer1_irq_enable), 
+    .irq(timer1_irq), 
+    .mwe(timer1_mwe), 
+    .overflow(timer1_overflow)
+    );
+	 
+	 //handle addresses with no readback
+	 always @(*)
+	 begin
+		//spi start trigger
+		spi_start <= (mwe&&(addr[15:0]==16'h0014)&&din[0]);
+		
+		//timer1 overflow clear
+		timer1_clear_overflow <= (mwe&&(addr[15:0]==16'h002c)&&din[0]);
+		//timer1 mwe set to load new timer value
+		timer1_mwe <= (mwe&&(addr[15:0]==16'h0024));
+		
+		//deal with irq
+		irq <= timer1_irq; 
+	 end
+	 
+	//decode address
+	always @(posedge clk)
+	begin 
+		case(addr[15:0])
+		16'h0000: begin //in_port_a
+		//no write
+		dout <= in_port_a;
+		end
+
+		16'h0004: begin //in_port_b
+		//no write
+		dout <= in_port_b;
+		end
+
+		16'h0008: begin //out_port_a
+		dout <= out_port_a;
+		out_port_a <= mwe ? din : out_port_a;
+		end
+
+		16'h000c: begin //out_port_b
+		dout <= out_port_b;
+		out_port_b <= mwe ? din : out_port_b;
+		end
+		
+		16'h0010: begin //spi_config reg
+		dout <= spi_config;
+		spi_config <= mwe ? din : spi_config;
+		end
+		
+		16'h0014: begin //spi_start/status
+		//when wrote to, starts SPI
+		//does not retain data value
+		//spi start assignment occurs outside clocked logic
+		//when read, gives status
+		dout <= {31'b0,spi_status};
+		end
+		
+		16'h0018: begin //spi_tx_data
+		dout <= spi_tx_data;
+		spi_tx_data <= mwe ? din : spi_tx_data;
+		end
+		
+		16'h001c: begin //spi_rx_data
+		//read only
+		dout <= spi_rx_data;
+		end
+		
+		16'h0020: begin // timer 1 cout
+		//read only
+		dout <= timer1_cout;
+		end
+		
+		16'h0024: begin // timer 1 cin
+		//write and read
+		dout <= timer1_cin;
+		timer1_cin <= mwe ? din : timer1_cin;
+		end
+		
+		16'h0028: begin // timer 1 irq enable
+		dout <= {31'b0,timer1_irq_enable};
+		timer1_irq_enable <= mwe ? din[0] : timer1_irq_enable;
+		end
+		
+		16'h002c: begin //timer 1 overflow flag
+		//clearing is write only and occurs in unclocked block
+		//read only
+		dout <= {31'b0, timer1_overflow};
+		end
+
+		default: begin 
+		dout <= 0;
+		end
+		endcase
+	end
+	
+	
+
+endmodule
+\end{lstlisting}
+
+\subsubsection{Beta Instruction Set}
 \begin{lstlisting}
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||| 6.004 BETA Macro package -                  revised 9/28/11 SAW  |||
@@ -720,7 +1281,7 @@ PC_SUPERVISOR	   = 0x80000000		| the bit itself
 PC_MASK            = 0x7fffffff		| a mask for the rest of the PC
 \end{lstlisting}
 
-\subsection{Laser Controller Assembly}
+\subsubsection{Laser Controller Assembly}
 \begin{lstlisting}
 .include beta.uasm
 
@@ -1101,8 +1662,7 @@ STORAGE(128)
 |LONG(0x1EEB)
 \end{lstlisting}
 
-\subsection{Physics Engine Assembly}
-\subsubsection{Tested Copy for Checkoff: No implemented physics, paddle control only}
+\subsubsection{Tested Physics Engine for Checkoff: No implemented physics, paddle control only}
 \begin{lstlisting}
 .include beta.uasm		| Define Beta instructions, etc.
 .options clock tty
@@ -1460,7 +2020,7 @@ STORAGE(256)
 |LONG(0x1EEB)
 \end{lstlisting}
 
-\subsubsection{Untested working copy: Physics control}
+\subsubsection{Physics Engine Untested Working Copy}
 \begin{lstlisting}
 .include beta.uasm		| Define Beta instructions, etc.
 .options clock tty
@@ -2066,6 +2626,1436 @@ STORAGE(128)
 |LONG(0x4)
 |. = 0x400000
 |LONG(0x1EEB)
+\end{lstlisting}
+
+\subsection{Camera Module}
+\begin{lstlisting}[language=Verilog]
+module camera_full(
+	input wire clk_50,
+	input wire camera_pclk,
+	input wire reset,
+	input wire system_start,
+	input wire capture_frame,
+	input wire process_frame,
+	input wire camera_href,
+	input wire camera_vsync,
+	input wire [7:0] camera_data,
+	inout wire camera_scl,
+	inout wire camera_sda,
+	inout wire vga_scl,
+	inout wire vga_sda,
+	output wire camera_xclk,
+	output wire [11:0] vga_drive,
+	output reg vga_hsync,
+	output reg vga_vsync,
+	output reg vga_blank,
+	output wire beta_mwe,
+	output wire [31:0] beta_addr,
+	output wire [31:0] beta_din	
+    );
+	 
+	 wire [9:0] vga_hcount; //pixels counted from top left
+	 wire [9:0] vga_vcount; 
+	 wire [15:0] vga_addr;
+	 
+	 wire [9:0] camera_hcount;
+	 wire [9:0] camera_vcount;
+	 wire [15:0] camera_addr;
+	 
+	 wire [9:0] proc_hcount;
+	 wire [9:0] proc_vcount;
+	 wire [15:0] proc_addr;
+	 
+	 wire [15:0] buffer_read_addr;
+	 
+	 wire local_vsync; //local signals for VGA, need to be delayed
+	 wire local_hsync; 
+	 wire local_blank; 	
+	 
+	 wire image_process; //controlls mux for frame buffer
+	 
+	  
+	 wire [23:0] vga_data;
+	 wire [8:0] vga_pixel;
+	 wire [15:0] camera_pixel; //processed camera pixel
+	 wire mwe_camera;
+	 
+	 wire [8:0] frame_data; 
+	 wire image_hunt_mem_request; 
+	 
+	 //locations of detected objects
+	 wire [9:0] red_x, red_y;
+	 wire [9:0] green_x, green_y;
+	 wire [9:0] blue_x, blue_y;
+	 //detected object pixels
+	 wire [8:0] red_blob_pixel;
+	 wire [8:0] green_blob_pixel;
+	 wire [8:0] blue_blob_pixel; 
+	 wire [8:0] output_pixel;
+	 
+	 wire vga_pixel_invalid; 
+	 wire frame_proc_done;
+	
+	 assign output_pixel = vga_pixel_invalid ? 0 : vga_pixel | red_blob_pixel | green_blob_pixel | blue_blob_pixel;
+	 
+	 assign vga_data = {output_pixel[8:6], {5{output_pixel[6]}},
+								output_pixel[5:3], {5{output_pixel[3]}},
+								output_pixel[2:0], {5{output_pixel[0]}}};
+								
+	//mux for frame buffer
+	 assign vga_pixel = image_hunt_mem_request ?  9'b000_000_000: frame_data;
+	 assign buffer_read_addr = image_hunt_mem_request ? proc_addr : vga_addr ;
+	 
+	 reg blank_temp;
+	 reg hsync_temp;
+	 reg vsync_temp;
+	 
+	 //assign vga_vsync = local_vsync;
+	 //assign vga_hsync = local_hsync;
+	 //assign vga_blank = local_blank;
+	 
+	 //solve output delay, delay by two clock cycles
+	 always@(posedge clk_50)
+	 begin
+	 blank_temp <= local_blank;
+	 hsync_temp <= local_hsync;
+	 vsync_temp <= local_vsync;
+	 
+	 vga_blank <= blank_temp;
+	 vga_hsync <= hsync_temp;
+	 vga_vsync <= vsync_temp;
+	 end
+	 
+	 image_hunt process_a_frame (
+    .clk(clk_50), 
+    .mem_pixel_data(frame_data), 
+    .start(process_frame), 
+    .mem_request(image_hunt_mem_request), 
+    .done(frame_proc_done), 
+    .mem_hcount(proc_hcount), 
+    .mem_vcount(proc_vcount), 
+    .red_x(red_x), 
+    .red_y(red_y), 
+    .green_x(green_x), 
+    .green_y(green_y), 
+    .blue_x(blue_x), 
+    .blue_y(blue_y)
+    );
+
+	 
+	 
+	 
+	 //generate clock for camera
+	 camera_clk clk12_5_gen ( 
+    .CLKIN_IN(clk_50), 
+    .RST_IN(0), 
+    .CLKDV_OUT(camera_xclk),  
+    .CLK0_OUT(), 
+    .LOCKED_OUT()
+    );
+	 
+	 //create signals for VGA IC
+	 vga_pixel_drive drive_vga (
+    .hsync(local_hsync), 
+    .pixel_clk_2x(clk_50), 
+    .pixel_data(vga_data), 
+    .vga_out(vga_drive)
+    );
+	 
+	 //generate pixel count for VGA
+	 vga_drive vga_signal_gen (
+    .vclock(clk_50), 
+    .hcount(vga_hcount), 
+    .vcount(vga_vcount), 
+    .vsync(local_vsync), 
+    .hsync(local_hsync), 
+    .blank(local_blank)
+    );
+	 
+	 
+	 //i2c setup for vga
+	 vga_setup vga_monitor (
+    .clk(clk_50), 
+    .reset(reset), 
+    .start(system_start), 
+    .scl(vga_scl), 
+    .sda(vga_sda)
+    );
+	 
+	 //i2c setup for camera
+	 camera_configure camera_setup(
+    .clk(clk_50), 
+    .reset(reset), 
+    .start(system_start), 
+    .scl(camera_scl), 
+    .sda(camera_sda)
+    );
+
+	//capture a frame from camera and dump to memory 
+	camera_capture get_a_frame (
+    .camera_clk(camera_pclk), 
+    .start(capture_frame), 
+    .camera_vsync(camera_vsync), //input from camera
+    .camera_href(camera_href), //input from camera
+    .camera_dout(camera_data), //input data from camera
+    .mem_we(mwe_camera), //mwe for frame buffer
+    .mem_din(camera_pixel), //data to memory for frame buffer
+    .vcount(camera_vcount), // used to generate memory address
+    .hcount(camera_hcount), //used to generate camera memory address
+    .done() // done signal
+    );
+	 
+	 image_addr_gen camera_addr_gen (
+    .hcount(camera_hcount), 
+    .vcount(camera_vcount), 
+    .addr(camera_addr),
+	 .blank()
+    );
+	 
+	 image_addr_gen buffer_read_addr_gen (
+    .hcount(vga_hcount), 
+    .vcount(vga_vcount), 
+    .addr(vga_addr),
+	 .blank(vga_pixel_invalid)
+    );
+
+	image_addr_gen image_proc_gen(
+    .hcount(proc_hcount), 
+    .vcount(proc_vcount), 
+    .addr(proc_addr),
+	 .blank()
+    );
+	 
+	 
+	//240x240 9 bit color
+	//image is half resolution 
+	shared_video_mem frame_buff (
+    .clk_read(clk_50), 
+    .clk_write(camera_pclk), 
+    .write_addr(camera_addr), 
+    .read_addr(buffer_read_addr), 
+    .dout_camera(camera_pixel), 
+    .mwe_camera(mwe_camera), 
+    .dout_pixel(frame_data)
+    );
+
+
+	camera_write_to_beta beta_dump (
+    .clk(clk_50), 
+    .start(frame_proc_done), 
+    .red_x(red_x), 
+    .red_y(red_y), 
+    .green_x(green_x), 
+    .green_y(green_y), 
+    .blue_x(blue_x), 
+    .blue_y(blue_y), 
+    .beta_addr(beta_addr), 
+    .beta_data(beta_din), 
+    .beta_mwe(beta_mwe)
+    );
+
+	color_blob red_blob (
+    .clk(clk_50), 
+    .hcount(vga_hcount), 
+    .vcount(vga_vcount), 
+    .x_loc(red_x), 
+    .y_loc(red_y), 
+    .enable(1'b1), 
+    .color(9'b111_000_000), 
+    .pixel(red_blob_pixel)
+    );
+
+
+color_blob green_blob (
+    .clk(clk_50), 
+    .hcount(vga_hcount), 
+    .vcount(vga_vcount), 
+    .x_loc(green_x), 
+    .y_loc(green_y), 
+    .enable(1'b1), 
+    .color(9'b000_111_000), 
+    .pixel(green_blob_pixel)
+    );
+	 
+color_blob blue_blob (
+    .clk(clk_50), 
+    .hcount(vga_hcount), 
+    .vcount(vga_vcount), 
+    .x_loc(blue_x), 
+    .y_loc(blue_y), 
+    .enable(1'b1), 
+    .color(9'b000_000_111), 
+    .pixel(blue_blob_pixel)
+    );
+
+
+
+endmodule
+\end{lstlisting}
+
+\subsubsection{Find red, green, and blue loci in a frame}
+\begin{lstlisting}[language=Verilog]
+`timescale 1ns / 1ps
+//processes a 240x240 pixel frame
+//outputs locus of red, green, and blue
+module image_hunt(
+	input wire clk,
+	input wire [8:0] mem_pixel_data,
+	input wire start,
+	output reg mem_request = 0,
+	output reg done = 0,
+	output wire [9:0] mem_hcount,
+	output wire [9:0] mem_vcount,
+	output reg [9:0] red_x = 0,
+	output reg [9:0] red_y = 0,
+	output reg [9:0] green_x = 0,
+	output reg [9:0] green_y = 0,
+	output reg [9:0] blue_x = 0,
+	output reg [9:0] blue_y = 0
+    );
+	 
+	 parameter block_max = 58; //number of blocks minus 1
+	 
+	 reg [3:0] FSM_state = 0;
+	 
+	 //storage for cost function values
+	 reg [31:0] red_cost;
+	 reg [31:0] green_cost;
+	 reg [31:0] blue_cost; 
+	 
+	 reg [31:0] red_cost_max;
+	 reg [31:0] green_cost_max;
+	 reg [31:0] blue_cost_max;
+	 
+	 reg [7:0] block_x = 0;
+	 reg [7:0] block_y = 0; //current image segment
+	
+	 wire [8:0] pixel_0, pixel_1, pixel_2, pixel_3;
+	 wire [8:0] pixel_4, pixel_5, pixel_6, pixel_7;
+	 wire [8:0] pixel_8, pixel_9, pixel_a, pixel_b;
+	 wire [8:0] pixel_c, pixel_d, pixel_e, pixel_f;
+
+	 reg start_fetch = 0;
+	 
+	 //pipeline values
+	 
+	 reg[7:0] super_pixel_red;
+	 reg[7:0] super_pixel_green;
+	 reg[7:0] super_pixel_blue;
+	 
+	 wire load_done;
+	 
+	 always@(posedge clk)
+	 begin
+	 
+		 case(FSM_state)
+		 
+		 0: begin //reset and wait for start
+		 FSM_state <= start ? 1 : 0; 
+		 mem_request <= start ? 1 : 0;
+		 done <= 0;
+		 
+		 block_x <= 2;
+		 block_y <= 2;
+		 
+		 red_cost <= 0;
+		 green_cost <= 0;
+		 blue_cost <= 0;
+		 
+		 red_cost_max <= 0;
+		 green_cost_max <= 0;
+		 blue_cost_max <= 0;
+		 end
+ 
+		 1: begin //fetch_data;
+		 FSM_state <= 2;
+		 start_fetch <= 1; 
+		 end
+		 
+		 2: begin //wait for memory read
+		 FSM_state <= load_done ? 3 : 2;
+		 start_fetch <= 0;
+		 end
+		 
+		 3: begin //process data //I think I should limit the number of cascaded adds?
+		 FSM_state <= 4;
+		 super_pixel_red <= pixel_0[8:6]+pixel_1[8:6]+pixel_2[8:6]+pixel_3[8:6]
+		 +pixel_4[8:6]+pixel_5[8:6]+pixel_6[8:6]+pixel_7[8:6]
+		 +pixel_8[8:6]+pixel_9[8:6]+pixel_a[8:6]+pixel_b[8:6]
+		 +pixel_c[8:6]+pixel_d[8:6]+pixel_e[8:6]+pixel_f[8:6];
+		 
+		 super_pixel_green <= pixel_0[5:3]+pixel_1[5:3]+pixel_2[5:3]+pixel_3[5:3]
+		 +pixel_4[5:3]+pixel_5[5:3]+pixel_6[5:3]+pixel_7[5:3]
+		 +pixel_8[5:3]+pixel_9[5:3]+pixel_a[5:3]+pixel_b[5:3]
+		 +pixel_c[5:3]+pixel_d[5:3]+pixel_e[5:3]+pixel_f[5:3];
+		 
+		 super_pixel_blue <= pixel_0[2:0]+pixel_1[2:0]+pixel_2[2:0]+pixel_3[2:0]
+		 +pixel_4[2:0]+pixel_5[2:0]+pixel_6[2:0]+pixel_7[2:0] 
+		 +pixel_8[2:0]+pixel_9[2:0]+pixel_a[2:0]+pixel_b[2:0]
+		 +pixel_c[2:0]+pixel_d[2:0]+pixel_e[2:0]+pixel_f[2:0];
+		 end
+		 
+		 4: begin //process data
+		 FSM_state <= 5;
+		 red_cost <= ((super_pixel_red>super_pixel_green) && (super_pixel_red>super_pixel_blue)) ?
+		 (super_pixel_red-super_pixel_green)*(super_pixel_red-super_pixel_blue) : 0;
+		 
+		 green_cost <= ((super_pixel_green>super_pixel_red) && (super_pixel_green>super_pixel_blue)) ?
+		 (super_pixel_green-super_pixel_red)*(super_pixel_green-super_pixel_blue) : 0;
+		 
+		 blue_cost <= ((super_pixel_blue>super_pixel_green) && (super_pixel_blue>super_pixel_red)) ?
+		 (super_pixel_blue-super_pixel_red)*(super_pixel_blue-super_pixel_green) : 0;
+		 end
+		 		 
+		 5: begin //process results of block
+		 FSM_state <= (block_y >= block_max) && (block_x >= block_max) ? 6 : 1;
+		 
+		 red_cost_max <= (red_cost > red_cost_max) ? red_cost : red_cost_max;
+		 green_cost_max <= (green_cost > green_cost_max) ? green_cost : green_cost_max;
+		 blue_cost_max <= (blue_cost > blue_cost_max) ? blue_cost : blue_cost_max;
+		 
+		 red_x <= (red_cost >= red_cost_max) ? (block_x<<3) : red_x;
+		 red_y <= (red_cost >= red_cost_max) ? (block_y<<3) : red_y;
+		 
+		 green_x <= (green_cost >= green_cost_max) ? (block_x<<3) : green_x;
+		 green_y <= (green_cost >= green_cost_max) ? (block_y<<3) : green_y;
+		 
+		 blue_x <= (blue_cost >= blue_cost_max) ? (block_x<<3) : blue_x;
+		 blue_y <= (blue_cost >= blue_cost_max) ? (block_y<<3) : blue_y;
+		 
+		 //go x, then y,
+		 block_x <= (block_x >= block_max) ? 0 : block_x+1;
+		 block_y <= (block_x >= block_max) ? block_y+1 : block_y;
+		 
+		 //reset
+		 red_cost <= 0;
+		 green_cost <= 0;
+		 blue_cost <= 0;
+		 end
+		 
+		 6:begin //end state
+		 FSM_state <= 0;
+		 done <= 1;
+		 end
+		 
+		 endcase
+		 end
+		 
+		 
+	load_pixel_block data_fetch (
+    .clk(clk), 
+    .start(start_fetch), 
+    .block_x(block_x), 
+    .block_y(block_y), 
+    .memory_in(mem_pixel_data), 
+    .mem_hcount(mem_hcount), 
+    .mem_vcount(mem_vcount), 
+    .done(load_done), 
+    .pixel_0(pixel_0), 
+    .pixel_1(pixel_1), 
+    .pixel_2(pixel_2), 
+    .pixel_3(pixel_3), 
+    .pixel_4(pixel_4), 
+    .pixel_5(pixel_5), 
+    .pixel_6(pixel_6), 
+    .pixel_7(pixel_7), 
+    .pixel_8(pixel_8), 
+    .pixel_9(pixel_9), 
+    .pixel_a(pixel_a), 
+    .pixel_b(pixel_b), 
+    .pixel_c(pixel_c), 
+    .pixel_d(pixel_d), 
+    .pixel_e(pixel_e), 
+    .pixel_f(pixel_f)
+    );
+
+
+	
+		endmodule
+\end{lstlisting}
+\subsubsection{Create signals for VGA IC}
+\begin{lstlisting}[language=Verilog]
+//this contains some trick logic delays
+module vga_pixel_drive(
+	input wire hsync,
+	input wire pixel_clk_2x, //50 MHz
+	input wire [23:0] pixel_data,
+	output reg [11:0] vga_out
+    );
+	 
+	 reg pixel_ab; //0 for a, 1 for b
+	 reg hsync_last = 0;
+	 reg [23:0] stored_pixel;
+	 reg [11:0] pixel_b;
+	 
+	 
+	 always@(posedge pixel_clk_2x)
+	 begin
+		 hsync_last <= hsync;
+		 
+		pixel_ab <= ((hsync_last==0)&&(hsync==1)) ? 1 : ~pixel_ab;
+		
+		//latch input data on pixel_ab = a 
+		pixel_b <= pixel_data[11:0];
+		vga_out <= pixel_ab ? pixel_b : pixel_data[23:12];  
+	 end
+
+
+endmodule
+\end{lstlisting}
+
+\subsubsection{VGA Drive for Lower Resolution}
+\begin{lstlisting}[language=Verilog]
+//taken from 6.111 lab and altered for lower resolution
+//need to make this double the vclock
+module vga_drive(
+				input vclock, //twice the pixel clock
+            output wire [9:0] hcount,    // pixel number on current line
+            output wire [9:0] vcount,	 // line number
+            output reg vsync = 0,
+				output reg hsync = 0,
+				output reg blank = 0
+				);
+
+   // horizontal: 800 pixels total
+   // display 640 pixels per line
+   reg hblank = 0;
+	reg vblank = 0;
+	reg [10:0] vcount_d = 0;
+	reg [10:0] hcount_d = 0;
+	assign vcount = vcount_d[10:1];
+	assign hcount = hcount_d[10:1];
+	
+	
+   wire hsyncon,hsyncoff,hreset,hblankon;
+	
+   assign hblankon = (hcount_d == (639*2)); //blank after display width    
+   assign hsyncon = (hcount_d == (655*2)); // active video + front porch
+   assign hsyncoff = (hcount_d == (751*2)); //active video + front portch + sync
+   assign hreset = (hcount_d == (799*2)); //plus back porch
+
+   // vertical: 806 lines total
+   // display 480 lines
+   wire vsyncon,vsyncoff,vreset,vblankon;
+   assign vblankon = hreset & (vcount_d == (479*2));    
+   assign vsyncon = hreset & (vcount_d == (489*2));
+   assign vsyncoff = hreset & (vcount_d == (491*2));
+   assign vreset = hreset & (vcount_d == (524*2));
+
+   // sync and blanking
+   wire next_hblank,next_vblank;
+   assign next_hblank = hreset ? 0 : hblankon ? 1 : hblank;
+   assign next_vblank = vreset ? 0 : vblankon ? 1 : vblank;
+   always @(posedge vclock) begin
+      hcount_d <= hreset ? 0 : hcount_d + 1;
+      hblank <= next_hblank;
+      hsync <= hsyncon ? 0 : hsyncoff ? 1 : hsync;  // active low
+
+      vcount_d <= hreset ? (vreset ? 0 : vcount_d + 2) : vcount_d;
+      vblank <= next_vblank;
+      vsync <= vsyncon ? 0 : vsyncoff ? 1 : vsync;  // active low
+
+      blank <= next_vblank | (next_hblank & ~hreset);
+   end
+endmodule
+\end{lstlisting}
+
+\subsubsection{I2C Setup for VGA}
+\begin{lstlisting}[language=Verilog]
+module vga_setup(
+	input wire clk,
+	input wire reset, //reset on signal going high
+	input wire start,
+	inout scl,
+	inout sda
+    );
+	 
+	 parameter device_id = 8'hEC;
+	 
+	// reg [7:0] write_id;
+	 reg [7:0] write_reg;
+	 reg [7:0] write_data;
+	 reg [7:0] write_id;
+	 reg [4:0] FSM_state = 0;
+	 
+	 wire done;
+	 
+	 reg start_write = 0;
+	
+	 
+	 
+	 i2c_configure_reg instance_name (
+    .clk(clk), 
+    .reset(reset), 
+    .start(start_write), 
+    .write_reg(write_reg), 
+    .write_id(write_id), 
+    .write_data(write_data), 
+    .done(done), 
+    .scl(scl), 
+    .sda(sda)
+    );
+	 
+	 always@(posedge clk)
+	 begin
+	 case(FSM_state)
+
+		0: begin //start
+		FSM_state <= start ? 1 : 0;
+		start_write <= 0;
+		end
+
+		1: begin //configure clk mode reg
+		FSM_state <= 2;
+		write_id <= device_id;
+		write_reg <= 8'h9C; //clk setup
+		//write_data <= 8'h00; //clk is at pixel frequency
+		write_data <= 8'h01; //clk is at double pixel frequency
+		start_write <= 1;
+		end
+		
+		2: begin //wait for finish
+		FSM_state <= done ? 3 : 2;
+		start_write <= 0;
+		end
+		
+		3: begin //input data format
+		FSM_state <= 4;
+		write_id <= device_id;
+		write_reg <= 8'h9F; //input data format
+		write_data <= 8'b1000_0000; //Vsync, Hsync are active low
+		start_write <= 1;
+		end
+		
+		4: begin //wait for finish
+		FSM_state <= done ? 5 : 4;
+		start_write <= 0;
+		end
+		
+		5: begin //VGA bypass mode
+		FSM_state <= 6;
+		write_id <= device_id;
+		write_reg <= 8'hA1; //input data format
+		write_data <= 8'b0000_1001; //enable sync outputs, VGA bypass enabled
+		start_write <= 1;
+		end
+		
+		6: begin //wait for finish
+		FSM_state <= done ? 7 : 6;
+		start_write <= 0;
+		end
+		
+		7: begin //power enable
+		FSM_state <= 8;
+		write_id <= device_id;
+		write_reg <= 8'hc9; //power register
+		write_data <= 8'b0000_0000; //negate FPD
+		start_write <= 1;
+		end
+		
+		
+		8: begin //wait for finish
+		FSM_state <= done ? 9 : 8;
+		start_write <= 0;
+		end
+		
+		9: begin //return to start
+		FSM_state <= 0;
+		end
+		endcase
+		end
+
+	endmodule
+\end{lstlisting}
+
+\subsubsection{Camera Configuration}
+\begin{lstlisting}[language=Verilog]
+module camera_configure(
+input wire clk,
+	input wire reset, //reset on signal going high
+	input wire start,
+	inout scl,
+	inout sda
+    );
+	 
+	 parameter device_id = 8'h42; //camera address for writes
+	 parameter rom_locations = 30; 
+	 
+	 wire [7:0] write_reg;
+	 wire [7:0] write_data;
+	 reg [4:0] FSM_state = 0;
+	 
+	 wire done;
+	 
+	 reg start_write = 0;
+	 reg [5:0] rom_addr = 0;
+	 
+	 
+	 i2c_configure_reg camera_i2c (
+    .clk(clk), 
+    .reset(reset), 
+    .start(start_write), 
+    .write_reg(write_reg), 
+    .write_id(device_id), 
+    .write_data(write_data), 
+    .done(done), 
+    .scl(scl), 
+    .sda(sda)
+    );
+	 
+	 camera_setup_rom config_rom (
+	 .clk(clk),
+    .addr(rom_addr), 
+    .register(write_reg), 
+    .value(write_data)
+    );
+
+	 
+	 always@(posedge clk)
+	 begin
+	 case(FSM_state)
+	 
+	 0: begin //start
+	 FSM_state <= start ? 1 : 0;
+	 start_write <= 0;
+	 rom_addr <= 0;
+	 end
+	 
+	 1: begin //check rom value, give time for rom load
+	 FSM_state <= (rom_addr>=rom_locations) ? 5 : 2;
+	 end
+	 
+	 2: begin //start I2C
+	 FSM_state <= 3; 
+	 start_write <= 1;
+	 end
+	 
+	 3: begin //wait for end
+	 FSM_state <= done ? 4 : 3;
+	 end
+	 
+	 4: begin 
+	 FSM_state <= 1;
+	 rom_addr <= rom_addr +1;
+	 end
+	 
+	 5: begin //end state
+	 FSM_state <= 0;
+	 end
+	 endcase
+	 end
+	 
+endmodule
+\end{lstlisting}
+
+\subsubsection{Capture a frame from the camera and dump into memory}
+\begin{lstlisting}[language=Verilog]
+//takes 12.5Mhz camera clk, writes to memory, then frees up memory
+//wrapper for camera
+//stored as r[2:0]g[2:0]b[1:0]
+module camera_capture(
+	input wire camera_clk,
+	input wire start,
+	input wire camera_vsync,
+	input wire camera_href,
+	input wire [7:0] camera_dout,
+	output reg mem_request = 0,
+	output reg mem_we =0,
+	output reg [15:0] mem_din =0,
+	output reg [9:0] vcount,
+	output reg [9:0] hcount,
+	output reg done = 0
+	);
+
+
+	reg [3:0] FSM_state = 0;
+	reg camera_start = 0;
+	
+	
+	wire [15:0] pixel_data;
+	wire pixel_done;
+	wire camera_done;
+	wire [9:0] camera_vcount;
+	wire [9:0] camera_hcount;
+
+	camera_read camera_reader (
+    .p_clock(camera_clk), 
+    .vsync(camera_vsync), 
+    .href(camera_href), 
+    .p_data(camera_dout), 
+    .start(camera_start), 
+    .pixel_data(pixel_data), 
+    .pixel_done(pixel_done), 
+    .done(camera_done),
+	 .hcount(camera_hcount),
+	 .vcount(camera_vcount)
+    );
+	 
+	 
+	 always@(posedge camera_clk)
+	 begin
+	 
+	 case(FSM_state)
+	 
+	 0: begin //start state
+	 FSM_state <= start ? 1 : 0;	 
+	 done <= 0;
+	 end
+	 
+	 1: begin //start camera read 
+	 FSM_state <= 2;
+	 camera_start <= 1;
+	 mem_request <= 1;
+	 hcount <=0;
+	 vcount <=0;
+	 mem_we <= 0;
+	 end
+	 
+	 2: begin //wait 
+	 FSM_state <= camera_done ? 3:2;
+	 camera_start <= 0;
+	 mem_we <= pixel_done ? 1 :0;
+	 //mem_din <= {pixel_data[14:12],pixel_data[9:7], pixel_data[4:3]};
+	 mem_din <= pixel_data;
+	 hcount <= camera_hcount;
+	 vcount <= camera_vcount;
+	 end
+	 
+	 3: begin //free up memory
+	 FSM_state <= 0;
+	 mem_request <= 0;
+	 mem_we <= 0;
+	 done <= 1;
+	 end
+	 endcase
+	 end
+
+endmodule
+\end{lstlisting}
+
+\subsubsection{Write object locations to the physics Beta}
+\begin{lstlisting}[language=Verilog]
+module camera_write_to_beta(
+	input wire clk,
+	input wire start,
+	input wire [9:0] red_x,
+	input wire [9:0] red_y,
+	input wire [9:0] green_x,
+	input wire [9:0] green_y,
+	input wire [9:0] blue_x,
+	input wire [9:0] blue_y,
+	output reg [31:0] beta_addr =0,
+	output reg [31:0] beta_data =0,
+	output reg beta_mwe = 0
+    );
+	 
+	 
+	reg [5:0] FSM_state = 0;
+	
+	
+	always@(posedge clk)
+	begin
+	case(FSM_state)
+	
+	0: begin //wait for start signal
+	
+	FSM_state <= start ? 1 : 0;
+	end
+	
+	1: begin //write red 
+	FSM_state <= 2;
+	beta_addr <= 0;
+	beta_data <= {6'b0, red_x, 6'b0, red_y};
+	beta_mwe <= 1;
+	end
+	
+	2: begin //write green
+	FSM_state <= 3;
+	beta_addr <= 1;
+	beta_data <= {6'b0, green_x, 6'b0, red_y};
+	beta_mwe <= 1;
+	end
+	
+	3: begin //write blue
+	FSM_state <= 4;
+	beta_addr <= 2;
+	beta_data <= {6'b0, blue_x, 6'b0, blue_y};
+	beta_mwe <= 1;
+	end
+	
+	4: begin //write status register 
+	FSM_state <= 5;
+	beta_addr <= 32'b100;
+	beta_data <= 1; //done!
+	beta_mwe <= 1;
+	end
+	
+	5: begin //end state 
+	FSM_state <= 0;
+	beta_mwe <= 0;
+	end
+	endcase
+	end
+	
+
+endmodule
+\end{lstlisting}
+
+\subsubsection{Pixel cost function}
+\begin{lstlisting}[language=Verilog]
+module pixel_cost_function(
+	input [8:0] pixel_data,
+	output [8:0] pixel_red_cost,
+	output [8:0] pixel_green_cost,
+	output [8:0] pixel_blue_cost
+    );
+	
+	wire [2:0] red = pixel_data[8:6];
+	wire [2:0] green = pixel_data[5:3];
+	wire [2:0] blue = pixel_data[2:0];
+	
+	
+	assign pixel_red_cost = ((red>(green<<1)) && (red>(blue<<1)) && (red>(blue+red)) && (red>2)) ?
+									(red<<2)-(green<<1)-(blue<<1) : 0;
+									
+	assign pixel_blue_cost = ((blue>(green<<1)) && (blue>(red<<1)) && (blue>(red+green)) && (blue>2)) ?
+									(blue<<2) - (green<<1) - (red<<1) : 0;
+									
+	assign pixel_green_cost = ((green>(blue<<1)) && (green>(red<<1)) && (green>(red+blue)) &&(green>2)) ?
+									(green<<2) - (red<<1) - (blue<<1) : 0;
+	
+
+endmodule
+\end{lstlisting}
+\subsection{SNES Controller Interface}
+\begin{lstlisting}[language=Verilog]
+module nes_interface(
+	input wire clk_50, 
+	input wire controller_dout,
+	output reg controller_clk,
+	output reg controller_latch,
+	output reg updated,
+	output reg button_A,
+	output reg button_B,
+	output reg button_X,
+	output reg button_Y,
+	output reg button_L,
+	output reg button_R,
+	output reg button_N,
+	output reg button_E,
+	output reg button_S,
+	output reg button_W,
+	output reg button_START,
+	output reg button_SELECT
+    );
+	 
+	 
+	 parameter timer_state = 36; 
+	 parameter clk_period = 300;
+	 parameter update_delay = 30000;
+	 reg [31:0] counter = 0;
+	 reg [5:0] FSM_state_return = 0;
+	 reg [5:0] FSM_state = 0;
+	 
+	 
+	 //sample data on falling clock edge
+	 always@(posedge clk_50)
+	 begin
+	 case(FSM_state) 
+	 
+	 0: begin //start state
+	 FSM_state <= 1;
+	 updated <= 0;
+	 end
+	 
+	 1: begin //set latch and set timer
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 2;
+	 controller_latch <= 1;
+	 counter <= 2*clk_period; //12us
+	 end
+	 
+	 
+	 2: begin //latch goes low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 3;
+	 controller_latch <= 0;
+	 counter <= clk_period; 
+	 end
+	 
+	 3: begin //latch B and clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 4; 
+	 controller_clk <= 0;
+	 button_B <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 4: begin //clock go high
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 5;
+	 controller_clk <= 1; 
+	 counter <= clk_period;
+	 end
+	 
+	 5: begin //latch Y, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 6;
+	 controller_clk <= 0;
+	 button_Y <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 6: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 7;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 7: begin //latch SELECT, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 8;
+	 controller_clk <= 0;
+	 button_SELECT <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 8: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 9;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 9: begin //latch START, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 10;
+	 controller_clk <= 0;
+	 button_START <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 10: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 11;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 11: begin //latch N, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 12;
+	 controller_clk <= 0;
+	 button_N <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 12: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 13;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 13: begin //latch S, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 14;
+	 controller_clk <= 0;
+	 button_S <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 14: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 15;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 15: begin //latch W, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 16;
+	 controller_clk <= 0;
+	 button_W <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 16: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 17;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 17: begin //latch E, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 18;
+	 controller_clk <= 0;
+	 button_E <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 18: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 19;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 19: begin //latch A, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 20;
+	 controller_clk <= 0;
+	 button_A <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 20: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 21;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 21: begin //latch X, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 22;
+	 controller_clk <= 0;
+	 button_X <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 22: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 23;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 23: begin //latch L, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 24;
+	 controller_clk <= 0;
+	 button_L <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 24: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 25;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 25: begin //latch R, clk go low
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 26;
+	 controller_clk <= 0;
+	 button_R <= ~controller_dout;
+	 counter <= clk_period;
+	 end
+	 
+	 26: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 27;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 27: begin //clock go low //empty 1
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 28;
+	 controller_clk <= 0;
+	 counter <= clk_period;
+	 end
+	 
+	 28: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 29;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 29: begin //clock go low //empty 2
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 30;
+	 controller_clk <= 0;
+	 counter <= clk_period;
+	 end
+	 
+	 30: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 31;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 31: begin //clock go low //empty 3
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 32;
+	 controller_clk <= 0;
+	 counter <= clk_period;
+	 end
+	 
+	 32: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 33;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 33: begin //clock go low //empty 4
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 34;
+	 controller_clk <= 0;
+	 counter <= clk_period;
+	 end
+	 
+	 34: begin //clock go high 
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 35;
+	 controller_clk <= 1;
+	 counter <= clk_period;
+	 end
+	 
+	 35: begin //wait for next update interval
+	 FSM_state <= timer_state;
+	 FSM_state_return <= 0;
+	 counter <= update_delay; 
+	 end 
+	 
+	 timer_state: begin //count down and return to stored state
+	 FSM_state <= (counter == 0) ? FSM_state_return : timer_state;
+	 counter <= (counter == 0) ? 0 : counter - 1; 
+	 end
+	 endcase 
+	 end
+	 
+
+
+endmodule
+\end{lstlisting}
+\subsection{Pulling it all together}
+\begin{lstlisting}[language=Verilog]
+module laser_projector_full(
+	input wire clk, 
+	input wire reset,
+	input wire [7:0] dip_sw,
+	input wire paddle_l,
+	input wire paddle_r,
+	input wire up_button,
+	input wire down_button,
+	input wire left_button,
+	input wire right_button,
+	input wire [31:0] camera_addr,
+	input wire [31:0] camera_dout,
+	input wire camera_mwe,
+	output wire [2:0] laser_rgb,
+	output wire dac_mosi,
+	output wire dac_csn,
+	output wire dac_latchn,
+	output wire dac_sclk,
+	output wire [7:0] debug_led
+    );
+	 
+	 
+	 parameter xadr_physics = 31'h04;
+	 parameter xadr_laser = 31'h04;
+	
+	//wires for physics beta
+	wire mwe_physics;
+	wire irq_physics;
+	wire [31:0] ma_physics;
+	wire [31:0] mdin_physics;
+	wire [31:0] mdout_physics;
+	//memory mapped devices for physics beta
+	wire [31:0] ram_dout_physics;
+	wire [31:0] IO_dout_physics;
+	wire [31:0] shared_read_dout_physics;
+	wire [31:0] shared_write_dout_physics;
+	//selects for multiplexing the buss
+	wire [2:0] read_select_physics;
+	wire sel_ram_physics;
+	wire sel_IO_physics;
+	wire sel_read_shared_physics;
+	wire sel_write_shared_physics;
+	
+	
+	//wires for laser beta
+	wire mwe_laser;
+	wire irq_laser;
+	wire [31:0] ma_laser;
+	wire [31:0] mdin_laser;
+	wire [31:0] mdout_laser;
+	//memory mapped devices for laser beta
+	wire [31:0] ram_dout_laser;
+	wire [31:0] IO_dout_laser;
+	wire [31:0] shared_read_dout_laser;
+	wire [31:0] shared_write_dout_laser;
+	//selects for multiplexing the buss for laser beta
+	wire [2:0] read_select_laser;
+	wire sel_ram_laser;
+	wire sel_IO_laser;
+	wire sel_read_shared_laser;
+	wire sel_write_shared_laser;	
+	
+	wire [31:0] IO_port;
+	assign debug_led = IO_port[7:0];
+	
+	//memory mdin is data into beta
+	//memory mdout is data from beta to be written
+	
+	beta2 cpu_physics(
+	.clk(clk),
+	.reset(reset), 
+	.irq(irq_physics), 
+	.xadr(xadr_physics),
+	.ma(ma_physics), 
+	.mdin(mdin_physics), 
+	.mdout(mdout_physics), 
+	.mwe(mwe_physics)
+	);
+								
+	//16k mem
+	//14 bits wide, takes beta [15:2] because memory is byte aligned
+	physics_beta_mem physics_beta_ram (
+	.clka(clk), 
+	.dina(mdout_physics), 
+	.addra(ma_physics[15:2]),
+	.wea(mwe_physics && sel_ram_physics && (~reset)),	
+	.douta(ram_dout_physics) 
+	); 
+	
+	//decode data adress for reads
+	beta_addr_decode physics_decode (
+	.addr(ma_physics), 
+	.sel_ram(sel_ram_physics), 
+	.sel_IO(sel_IO_physics),
+	.sel_read_shared(sel_read_shared_physics), 
+	.sel_write_shared(sel_write_shared_physics),
+	.read_select(read_select_physics)
+	);
+	
+	//select mdin for beta
+	beta_read_decode physics_read_decode (
+	.clk(clk), 
+	.reset(reset),
+	.read_select(read_select_physics), 
+	.ram_dout(ram_dout_physics),
+	.IO_dout(IO_dout_physics), 
+	.shared_read_dout(shared_read_dout_physics), 
+	.shared_write_dout(shared_write_dout_physics),
+	.beta_mdin(mdin_physics)
+	);
+	
+	//memory mapped IO for physics beta
+	mapped_IO physics_beta_IO (
+    .clk(clk), 
+    .addr(ma_physics), 
+    .din(mdout_physics), 
+    .mwe(mwe_physics & sel_IO_physics), 
+    .in_port_a({26'b0,left_button,down_button,right_button,up_button,paddle_l,paddle_r}), 
+    .in_port_b({24'b0,dip_sw}), 
+    .dout(IO_dout_physics), 
+    .out_port_a(), 
+    .out_port_b(), 
+    .spi_miso(1'b0), 
+    .spi_sclk(), 
+    .spi_mosi(),
+	 .irq(irq_physics)
+    );
+	
+	//interface between camera fsm(host) and physics_beta (client)
+	memory_share physics_shared_memory (
+    .clk(clk), 
+    .mwe_host(camera_mwe), //camera we
+    .mwe_client(mwe_physics&&sel_read_shared_physics), 
+    .host_addr(camera_addr), //connection to camera FSM
+    .client_addr(ma_physics), 
+    .host_din(camera_dout), //dout of camera
+    .client_din(mdout_physics), //input to memory, output of beta
+    .host_dout(), //no camera yet
+    .client_dout(shared_read_dout_physics) //output from memory
+    );
+	
+	
+	//laser beta					
+	beta2 cpu_laser(
+	.clk(clk), 
+	.reset(reset), 
+	.irq(irq_laser), 
+	.xadr(xadr_laser), 
+	.ma(ma_laser), 
+	.mdin(mdin_laser),
+	.mdout(mdout_laser),
+	.mwe(mwe_laser)
+	);
+	
+	//16k mem
+	//14 bits wide, takes beta [15:2] because memory is byte aligned
+	hardware_beta_mem laser_beta_ram	(
+	.clka(clk),
+	.dina(mdout_laser), 
+	.addra(ma_laser[15:2]), 
+	.wea(mwe_laser&&sel_ram_laser&&(~reset)),
+	.douta(ram_dout_laser) 
+	);
+	
+	//decode memory addresses
+	beta_addr_decode laser_decode (
+	.addr(ma_laser),
+	.sel_ram(sel_ram_laser), 
+	.sel_IO(sel_IO_laser),
+	.sel_read_shared(sel_read_shared_laser), 
+	.sel_write_shared(sel_write_shared_laser),
+	.read_select(read_select_laser)
+	);
+											
+	
+	//write data back
+	beta_read_decode laser_read_decode (
+	.clk(clk),
+	.reset(reset),
+	.read_select(read_select_laser),
+	.ram_dout(ram_dout_laser),
+	.IO_dout(IO_dout_laser),
+	.shared_read_dout(shared_read_dout_laser), 
+	.shared_write_dout(shared_write_dout_laser),
+	.beta_mdin(mdin_laser)
+	);
+	
+	//memory mapped IO for laser beta
+	mapped_IO laser_beta_IO (
+    .clk(clk), 
+    .addr(ma_laser), 
+    .din(mdout_laser), 
+    .mwe(mwe_laser & sel_IO_laser), 
+    .in_port_a({24'b0,dip_sw}), 
+    .in_port_b(32'b0), 
+    .dout(IO_dout_laser), 
+    .out_port_a({dac_csn,dac_latchn, laser_rgb}), 
+    .out_port_b(IO_port), 
+    .spi_miso(1'b0),  
+    .spi_sclk(dac_sclk), 
+    .spi_mosi(dac_mosi),
+	 .irq(irq_laser)
+    );
+
+	//laser_beta is client, physics_beta is host
+	memory_share laser_shared_memory (
+    .clk(clk), 
+    .mwe_host(mwe_physics&&sel_write_shared_physics), 
+    .mwe_client(mwe_laser&&sel_read_shared_laser), 
+    .host_addr(ma_physics), 
+    .client_addr(ma_laser), 
+    .host_din(mdout_physics), //input to memory out of beta
+    .client_din(mdout_laser), 
+    .host_dout(shared_write_dout_physics), 
+    .client_dout(shared_read_dout_laser)
+    );
+	 
+endmodule
 \end{lstlisting}
 
 \printglossary
