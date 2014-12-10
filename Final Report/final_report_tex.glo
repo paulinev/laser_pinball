@@ -1,1 +1,10 @@
-\glossaryentry{Beta?\glossentry{Beta}|setentrycounter[]{page}\glsnumberformat}{12}
+(indexentry :tkey (("Beta" "\\glossentry{Beta}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("Galvo" "\\glossentry{galvo}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("Laser Beta" "\\glossentry{laser beta}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("Physics Beta" "\\glossentry{physics Beta}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("Sprite" "\\glossentry{sprite}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("Game object" "\\glossentry{game object}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("Memory-mapped I/O" "\\glossentry{memory-mapped i/o}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("I2C" "\\glossentry{i2c}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("SPI" "\\glossentry{spi}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 
+(indexentry :tkey (("Lookup table" "\\glossentry{lookup table}") ) :locref "{}{15}" :attr "pageglsnumberformat" ) 

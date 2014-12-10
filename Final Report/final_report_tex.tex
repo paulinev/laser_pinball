@@ -26,8 +26,10 @@
 \usepackage{textcomp}
 \usepackage{caption}
 \usepackage{gensymb}
-\usepackage{circuitikz}
-\usepackage{glossaries}
+\usepackage[acronym,xindy,toc,nonumberlist]{glossaries} % nomain, if you define glossaries in a file, and you use \include{INP-00-glossary}
+\makeglossaries
+\usepackage[xindy]{imakeidx}
+\makeindex
 \usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
 \usepackage{graphicx} % Required for the inclusion of images
 \setlength{\skip\footins}{1cm}
@@ -78,40 +80,8 @@ string=[b]'%
   tabsize=3
 }
 
-%----------------------------------------------------------------------------------------
-%	GLOSSARY
-%----------------------------------------------------------------------------------------
+\loadglsentries[main]{glossary}
 \makeglossaries
-\newglossaryentry{Beta}
-{
-  name=Beta,
-  description={A 32-bit processor designed in the MIT course 6.004. RISC architecture with a limited instruction set.}
-}
-
-\newglossaryentry{galvo}
-{
-  name=Galvo,
-  description={Short for galvanometer.}
-}
-
-\newglossaryentry{laser beta}
-{
-  name=Laser Beta,
-  description={A Beta to control the laser display.}
-}
-
-\newglossaryentry{physics Beta}
-{
-  name=Physics Beta,
-  description={A Beta to control the physics and game behavior.}
-}
-
-\newglossaryentry{sprite}
-{
-  name=Sprite,
-  description={an individual object to be displayed by the laser projector (for example, the left paddle).}
-}
-
 
 %----------------------------------------------------------------------------------------
 %	DOCUMENT INFORMATION
@@ -329,7 +299,7 @@ We also replaced the original memory mapping of the beta and added a shared memo
 
 Timing analysis of the $\mu$Beta processor revealed that it could be operated at slightly below 100MHz on the Virtex-5 FPGA used in the project with a few extra edits, but we chose to clock it at 50MHz to avoid any undesirable effects resulting from a faster clock speed. 
 
-We found that we could build a large number of 2-stage pipeline \gls{Beta} cores on our Virtex-5 board (almost 40). However, the number of processors that can feasibly be used is limited more realistically by the amount of memory each processor needs for program memory and storage. The two Beta cores that we used were given 16k words of memory each (implemented using BRAM), which proved to be sufficient with ample grow room for future modifications. The 50MHz clock speed chosen was more than adequate for our needs. Due to the physical limitations of our galvanometers, the highest estimate we could make for our frame rate was around 20Hz. In the Beta, all instructions are executed in a single cycle; running at 50MHz, we wouldn't have to worry about meeting our frame rate requirements.
+We found that we could build a large number of 2-stage pipeline Beta cores on our Virtex-5 board (almost 40). However, the number of processors that can feasibly be used is limited more realistically by the amount of memory each processor needs for program memory and storage. The two Beta cores that we used were given 16k words of memory each (implemented using BRAM), which proved to be sufficient with ample grow room for future modifications. The 50MHz clock speed chosen was more than adequate for our needs. Due to the physical limitations of our galvanometers, the highest estimate we could make for our frame rate was around 20Hz. In the Beta, all instructions are executed in a single cycle; running at 50MHz, we wouldn't have to worry about meeting our frame rate requirements.
 
 To program the Betas, we needed to pre-load the program memory with .coe files detailing the assembled instructions. Conveniently, the 6.004 BSIM program, readily available on the 6.004 course website, outputs both .bin and .coe files. The latter format is a list of comma-delimited hex values which represent the compiled Beta assembly code, which can be used to compile memories for use in Verilog modules by the ISE CoreGen program. With these memory files converted into memories for the Verilog Beta to read, we were able to simulate the Beta running through arbitrary code in ModelSim. Together with the infinitely useful BSIM simulation module that comes free with your copy of the 6.004 Beta assembler, our Verilog test benches proved invaluable to our testing process.
 
@@ -371,6 +341,14 @@ All things considered, our project came together surprisingly well. Though not a
 
 And, of course, we achieved our goal of making something really cool---a 400mW laser projecting a pinball board and an SNES controller to toggle the paddles is nothing to scoff at.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{safety}
+\end{figure}
+
+\pagebreak
+\glsaddall
+\printglossary
 \pagebreak
 \section{Code}
 \subsection{The Beta}
@@ -4057,7 +4035,5 @@ module laser_projector_full(
 	 
 endmodule
 \end{lstlisting}
-
-\printglossary
 
 \end{document}

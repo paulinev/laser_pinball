@@ -16,23 +16,24 @@
 \contentsline {subsection}{\numberline {4.4}Xilinx ML505 FPGA Board}{12}
 \contentsline {section}{\numberline {5}Review and Recommendation}{13}
 \contentsline {section}{\numberline {6}Conclusion}{14}
-\contentsline {section}{\numberline {7}Code}{15}
-\contentsline {subsection}{\numberline {7.1}The Beta}{15}
-\contentsline {subsubsection}{\numberline {7.1.1}The Two-Stage Pipelined Beta}{15}
-\contentsline {subsubsection}{\numberline {7.1.2}Beta Address Decoding}{20}
-\contentsline {subsubsection}{\numberline {7.1.3}Memory-Mapped I/O}{21}
-\contentsline {subsubsection}{\numberline {7.1.4}Beta Instruction Set}{24}
-\contentsline {subsubsection}{\numberline {7.1.5}Laser Controller Assembly}{30}
-\contentsline {subsubsection}{\numberline {7.1.6}Tested Physics Engine for Checkoff: No implemented physics, paddle control only}{37}
-\contentsline {subsubsection}{\numberline {7.1.7}Physics Engine Untested Working Copy}{43}
-\contentsline {subsection}{\numberline {7.2}Camera Module}{53}
-\contentsline {subsubsection}{\numberline {7.2.1}Find red, green, and blue loci in a frame}{57}
-\contentsline {subsubsection}{\numberline {7.2.2}Create signals for VGA IC}{61}
-\contentsline {subsubsection}{\numberline {7.2.3}VGA Drive for Lower Resolution}{61}
-\contentsline {subsubsection}{\numberline {7.2.4}I2C Setup for VGA}{62}
-\contentsline {subsubsection}{\numberline {7.2.5}Camera Configuration}{64}
-\contentsline {subsubsection}{\numberline {7.2.6}Capture a frame from the camera and dump into memory}{65}
-\contentsline {subsubsection}{\numberline {7.2.7}Write object locations to the physics Beta}{67}
-\contentsline {subsubsection}{\numberline {7.2.8}Pixel cost function}{68}
-\contentsline {subsection}{\numberline {7.3}SNES Controller Interface}{68}
-\contentsline {subsection}{\numberline {7.4}Pulling it all together}{74}
+\contentsline {section}{Glossary}{15}
+\contentsline {section}{\numberline {7}Code}{16}
+\contentsline {subsection}{\numberline {7.1}The Beta}{16}
+\contentsline {subsubsection}{\numberline {7.1.1}The Two-Stage Pipelined Beta}{16}
+\contentsline {subsubsection}{\numberline {7.1.2}Beta Address Decoding}{21}
+\contentsline {subsubsection}{\numberline {7.1.3}Memory-Mapped I/O}{22}
+\contentsline {subsubsection}{\numberline {7.1.4}Beta Instruction Set}{25}
+\contentsline {subsubsection}{\numberline {7.1.5}Laser Controller Assembly}{31}
+\contentsline {subsubsection}{\numberline {7.1.6}Tested Physics Engine for Checkoff: No implemented physics, paddle control only}{38}
+\contentsline {subsubsection}{\numberline {7.1.7}Physics Engine Untested Working Copy}{44}
+\contentsline {subsection}{\numberline {7.2}Camera Module}{54}
+\contentsline {subsubsection}{\numberline {7.2.1}Find red, green, and blue loci in a frame}{58}
+\contentsline {subsubsection}{\numberline {7.2.2}Create signals for VGA IC}{62}
+\contentsline {subsubsection}{\numberline {7.2.3}VGA Drive for Lower Resolution}{62}
+\contentsline {subsubsection}{\numberline {7.2.4}I2C Setup for VGA}{63}
+\contentsline {subsubsection}{\numberline {7.2.5}Camera Configuration}{65}
+\contentsline {subsubsection}{\numberline {7.2.6}Capture a frame from the camera and dump into memory}{66}
+\contentsline {subsubsection}{\numberline {7.2.7}Write object locations to the physics Beta}{68}
+\contentsline {subsubsection}{\numberline {7.2.8}Pixel cost function}{69}
+\contentsline {subsection}{\numberline {7.3}SNES Controller Interface}{69}
+\contentsline {subsection}{\numberline {7.4}Pulling it all together}{75}

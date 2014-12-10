@@ -1,0 +1,44 @@
+;; This logfile was generated automatically by `xindy'
+;; at 10.12.2014  16:38:00
+;; Indexstyle: "C:\\Users\\Pauline\\AppData\\Local\\Temp\\d_I6EiqSI6", Rawindex: "C:\\Users\\Pauline\\AppData\\Local\\Temp\\R8Z09G304C", Output: "final_report_tex.gls"
+
+
+Building indexentry-tree:
+Hierdepth of index is :TREE
+
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+
+Forming letter-groups:
+Letter-group: "„—Ú€" -> "B"
+Letter-group: "€´åÃ" -> "G"
+Letter-group: "´€Ð—Ë „—Ú€" -> "L"
+Letter-group: "È¤íÐ¨†Ð „—Ú€" -> "P"
+Letter-group: "ÐÈË¨Ú—" -> "S"
+Letter-group: "€»— Ã„¬—†Ú" -> "G"
+Letter-group: "»—»ÃËí»€ÈÈ— ¨/Ã" -> "M"
+Letter-group: "¨2†" -> "I"
+Letter-group: "ÐÈ¨" -> "S"
+Letter-group: "´ÃÃ®àÈ Ú€„´—" -> "L"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "„—Ú€" -> "B"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "€´åÃ" -> "G"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "¨2†" -> "I"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "´€Ð—Ë „—Ú€" -> "L"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "»—»ÃËí»€ÈÈ— ¨/Ã" -> "M"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "È¤íÐ¨†Ð „—Ú€" -> "P"
+sort-indexentries: (FORWARD BACKWARD FORWARD FORWARD)
+Letter-group: "ÐÈ¨" -> "S"
